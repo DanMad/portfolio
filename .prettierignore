@@ -1,0 +1,17 @@
+# Dependencies
+node_modules
+
+# Distributed version
+dist
+
+# Hidden directories
+.*/**
+
+# Ignore files
+.*ignore
+
+# Package files
+yarn.lock
+
+# Run Command files
+.*rc
