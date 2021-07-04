@@ -1,5 +1,6 @@
-const path = require('path');
 const babel = require('./babel.config.json');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const commonConfig = {
   entry: './src/index',
@@ -24,6 +25,12 @@ const commonConfig = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: path.join(__dirname, 'src/index.html'),
+    }),
+  ],
   resolve: {
     alias: {
       'react/jsx-runtime': require.resolve('./node_modules/react/jsx-runtime'),
