@@ -16,6 +16,7 @@
     "start": "webpack serve --env development"
   },
   "dependencies": {
+    "on-the-case": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
