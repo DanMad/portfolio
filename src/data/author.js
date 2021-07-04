@@ -1,5 +1,5 @@
 const author = {
-  name: 'Daniel Maddison',
+  name: 'daniel maddison',
   platforms: {
     linkedin: 'https://www.linkedin.com/in/daniel-maddisons-profile/',
     dribbble: 'https://dribbble.com/danmad',
