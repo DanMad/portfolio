@@ -11,9 +11,9 @@ const icons = {
   stackOverflow: StackOverflow,
 };
 
-const Icon = ({ type, size = 24 }) => {
+const Icon = ({ style, type, size = 24 }) => {
   const Component = icons[type];
-  return <Component size={size} />
+  return <Component size={size} style={style} />;
 };
 
 export { Icon as default };
