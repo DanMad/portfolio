@@ -34,7 +34,7 @@ const Footer = () => {
       </ul>
       <p className={getElement('copyright')}>
         © <span>Copyright</span> {toRange(copyrightYear, currentYear)},{' '}
-        {author.name}
+        {author.name.toTitleCase()}
       </p>
     </footer>
   );
