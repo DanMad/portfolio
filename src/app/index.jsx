@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 const App = () => (
   <>
     <h1>Hello world!</h1>
-    <Footer/>
+    <Footer />
   </>
 );
 

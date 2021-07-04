@@ -8,9 +8,4 @@ const data = {
   namespace,
 };
 
-export {
-  author,
-  copyrightYear,
-  data as default,
-  namespace
-};
+export { author, copyrightYear, data as default, namespace };

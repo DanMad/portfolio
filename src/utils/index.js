@@ -6,8 +6,4 @@ const utils = {
   toRange,
 };
 
-export {
-  BEM,
-  toRange,
-  utils as default,
-};
+export { BEM, toRange, utils as default };

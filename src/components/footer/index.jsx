@@ -17,9 +17,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer
-      className={`${getBlock()}${state.mounted ? ` ${ns}-mounted` : ''}`}
-    >
+    <footer className={`${getBlock()}${state.mounted ? ` ${ns}-mounted` : ''}`}>
       <ul className={getElement('list')}>
         {Object.keys(author.platforms).map((platform, i) => (
           <li className={getElement('item')} key={i}>
@@ -35,11 +33,7 @@ const Footer = () => {
         ))}
       </ul>
       <p className={getElement('copyright')}>
-        © <span>Copyright</span>
-        {' '}
-        {toRange(copyrightYear, currentYear)}
-        ,
-        {' '}
+        © <span>Copyright</span> {toRange(copyrightYear, currentYear)},{' '}
         {author.name}
       </p>
     </footer>

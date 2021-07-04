@@ -5,7 +5,7 @@ const author = {
     dribbble: 'https://dribbble.com/danmad',
     github: 'https://github.com/danmad',
     stackOverflow: 'https://stackoverflow.com/users/3654415/danmad',
-  }
+  },
 };
 
 export { author as default };
