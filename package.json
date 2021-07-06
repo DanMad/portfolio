@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "description": "A front-end site to house my portfolio",
   "homepage": "https://danmad.github.io/portfolio/",
   "bugs": "https://github.com/danmad/portfolio/issues",
   "repository": "https://github.com/danmad/portfolio.git",
