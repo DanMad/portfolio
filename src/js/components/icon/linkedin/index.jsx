@@ -1,6 +1,5 @@
 import { BEM } from '../../../utils';
 import SVG from '../../svg';
-import './styles.scss';
 
 const bem = BEM('icon');
 const { getBlock, getElement, getModifier } = bem;

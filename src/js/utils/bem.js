@@ -1,4 +1,4 @@
-import { namespace as ns } from '../data';
+import { namespace as ns } from '../../data';
 
 const BEM = (block) => {
   const getBlock = () => `${ns}-${block.trim()}`;

@@ -2,7 +2,6 @@ import Dribbble from './dribbble';
 import Github from './github';
 import Linkedin from './linkedin';
 import StackOverflow from './stack-overflow';
-import './styles.scss';
 
 const icons = {
   dribbble: Dribbble,

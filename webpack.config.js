@@ -1,10 +1,10 @@
-const babel = require('./babel.config.json');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const babel = require('./babel.config.json');
 
 const commonConfig = {
-  entry: './src/index',
+  entry: './src/js/index',
   module: {
     rules: [
       {
@@ -32,7 +32,7 @@ const commonConfig = {
     }),
     new HtmlWebpackPlugin({
       inject: 'body',
-      template: path.join(__dirname, 'src/index.html'),
+      template: path.join(__dirname, 'src/html/index.html'),
     }),
   ],
   resolve: {

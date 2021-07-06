@@ -1,5 +1,4 @@
 // import { BEM } from '../../utils';
-import './styles.scss';
 
 // const bem = BEM('svg');
 // const { getBlock } = bem;

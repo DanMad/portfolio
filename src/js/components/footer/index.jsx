@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { author, copyrightYear, namespace as ns } from '../../data';
+import { author, copyrightYear, namespace as ns } from '../../../data';
 import { BEM, toRange } from '../../utils';
 import Icon from '../icon';
-import './styles.scss';
 
 const bem = BEM('footer');
 const { getBlock, getElement } = bem;
@@ -34,7 +33,7 @@ const Footer = () => {
       </ul>
       <p className={getElement('copyright')}>
         © <span>Copyright</span> {toRange(copyrightYear, currentYear)},{' '}
-        {author.name.toTitleCase()}
+        {`${author.names.first} ${author.names.last}`.toTitleCase()}
       </p>
     </footer>
   );
