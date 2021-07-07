@@ -11,9 +11,7 @@
   "main": "dist/index.html",
   "scripts": {
     "build": "rm -rf dist && webpack",
-    "ci": "rm -rf node_modules && yarn install --frozen-lockfile",
-    "deploy": "gh-pages -d dist",
-    "prepare": "husky install",
+    "publish": "gh-pages -d dist",
     "sort-package": "sort-package-json",
     "start": "webpack serve --env development"
   },
