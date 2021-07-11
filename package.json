@@ -10,7 +10,7 @@
   "author": "DanMad",
   "main": "dist/index.html",
   "scripts": {
-    "build": "rm -rf dist/** && webpack --env production",
+    "build": "rm -rf dist && webpack --env production",
     "publish": "gh-pages -d dist",
     "start": "webpack serve --env development"
   },
