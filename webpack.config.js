@@ -72,7 +72,7 @@ module.exports = (env) => {
     mode: 'production',
     output: {
       filename: 'app.js',
-      publicPath: 'https://danmad.github.io/portfolio/',
+      publicPath: 'https://danielmaddison.io',
     },
   };
 };
