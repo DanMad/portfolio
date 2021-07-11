@@ -1,7 +1,6 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const babel = require('./babel.config.json');
 
 const commonConfig = {
   entry: './src/js/index',
@@ -14,7 +13,15 @@ const commonConfig = {
           {
             loader: 'babel-loader',
             options: {
-              presets: babel.presets,
+              presets: [
+                '@babel/env',
+                [
+                  '@babel/preset-react',
+                  {
+                    runtime: 'automatic',
+                  },
+                ],
+              ],
             },
           },
         ],
