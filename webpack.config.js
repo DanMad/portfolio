@@ -35,11 +35,11 @@ const commonConfig = {
   },
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: path.join(__dirname, 'src/CNAME'), to: '.' }],
+      patterns: [{ from: path.join(__dirname, './src/CNAME'), to: '.' }],
     }),
     new HtmlWebpackPlugin({
       inject: 'body',
-      template: path.join(__dirname, 'src/html/index.html'),
+      template: path.join(__dirname, './src/html/index.html'),
     }),
   ],
   resolve: {
@@ -57,7 +57,7 @@ module.exports = (env) => {
     return {
       ...commonConfig,
       devServer: {
-        contentBase: path.join(__dirname, 'dist/'),
+        contentBase: path.join(__dirname, './dist'),
         port: 3000,
       },
       mode: 'development',
