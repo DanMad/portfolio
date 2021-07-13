@@ -2,25 +2,37 @@
 CNAME
 
 # Dependencies
-node_modules
+node_modules/
+
+# Distribution directory
+dist/
+
+# Hidden directories
+.*/**
+!.github/**
 
 # Ignore files
 .*ignore
 
+# Image files
+*.gif
+*.ico
+*.jpg
+*.jpeg
+*.png
+
 # License
 LICENSE
 
-# MacOS
+# Log files
+*.log
+
+# Operating System
 .DS_Store
+Thumbs.db
 
 # Package files
 yarn.lock
 
 # Run Command files
 .*rc
-
-# Files within hidden folders
-.*/**
-
-# Distribution folder
-dist
