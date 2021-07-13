@@ -1,10 +1,10 @@
 # Daniel Maddison's Portfolio
 
-# Intstallation
+## Intstallation
 
 To install this repo, clone it on your local machine and run `yarn bootstrap` from its root directory.
 
-# Issues
+## Issues
 
 If you encounter any bugs, please [post an issue](https://github.com/DanMad/portfolio/issues/new).
 
