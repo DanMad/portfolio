@@ -5,7 +5,10 @@
   "description": "A front-end site to house my portfolio",
   "homepage": "https://www.danielmaddison.io",
   "bugs": "https://github.com/DanMad/portfolio/issues",
-  "repository": "https://github.com/DanMad/portfolio.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DanMad/portfolio.git"
+  },
   "license": "MIT",
   "author": "DanMad",
   "main": "dist/index.html",
