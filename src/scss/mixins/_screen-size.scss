@@ -1,0 +1,44 @@
+@import '../data/tokens.scss';
+@import '../functions/remove-unit';
+@import '../functions/to-em';
+
+@mixin media($queries) {
+  $has-valid-query: false;
+  $height: null;
+  $width: null;
+
+  @if (
+    map-has-key($queries, 'width') and
+      index(map-keys($media-sizes), map-get($queries, 'width'))
+  ) {
+    $has-valid-query: true;
+    $width: remove-unit(map-get($media-sizes, map-get($queries, 'width'))) + 1;
+  }
+
+  @if (
+    map-has-key($queries, 'height') and
+      index(map-keys($media-sizes), map-get($queries, 'height'))
+  ) {
+    $has-valid-query: true;
+    $height: remove-unit(map-get($media-sizes, map-get($queries, 'height'))) +
+      1;
+  }
+
+  $query: 'only screen';
+
+  @if ($width != null) {
+    $query: $query + ' and (min-width: #{to-em($width)})';
+  }
+
+  @if ($height != null) {
+    $query: $query + ' and (min-height: #{to-em($height)})';
+  }
+
+  @if ($has-valid-query == true) {
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

@@ -1,2 +1,8 @@
-@import 'functions/to-display-p3';
-@import 'functions/to-str';
+@import '../data/tokens';
+@import '../functions/remove-unit';
+@import '../functions/to-display-p3';
+@import '../functions/to-rem';
+@import '../functions/to-str';
+@import '../mixins/center';
+@import '../mixins/display-p3';
+@import '../mixins/screen-size';
