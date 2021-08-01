@@ -1,54 +1,20 @@
-@import './partials/core';
-@import './partials/root';
-@import './partials/reset';
+@import './base/core';
+@import './base/root';
+@import './base/reset';
+@import './layout/footer';
 
 html,
 body {
   font-family: $font-family-system;
 
-  // -webkit-font-smoothing and -moz-osx-font-smoothing properties improve font
-  // antialiasing on Mac OS.
+  // These rules improve font antialiasing on Mac OS.
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // Improve default text rendering.
+  // This rule improves text rendering.
   text-rendering: optimizeLegibility;
 
-  // The -webkit-tap-highlight-color property set to transparent removes the
-  // tinted overlay that appears on elements when tapped in Mobile Safari.
+  // This rule removes the overlay that appears on elements when tapped in
+  // Mobile Safari.
   -webkit-tap-highlight-color: transparent;
-}
-
-html {
-  background-color: blue;
-}
-
-@include media(
-  (
-    width: xs,
-  )
-) {
-  html {
-    background-color: blueviolet;
-  }
-}
-
-@include media(
-  (
-    height: s,
-  )
-) {
-  html {
-    background-color: red;
-  }
-}
-
-@include media(
-  (
-    height: m,
-  )
-) {
-  html {
-    background-color: greenyellow;
-  }
 }

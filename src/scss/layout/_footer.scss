@@ -1,0 +1,170 @@
+// @import '../../../scss/base/core';
+
+.#{$namespace}-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: to-rem(88px);
+  width: 100%;
+}
+
+.#{$namespace}-footer__list {
+  @include center(x);
+  display: flex;
+  height: to-rem(48px);
+  width: to-rem(192px);
+}
+
+.#{$namespace}-footer__item {
+  flex: 1;
+}
+
+.#{$namespace}-footer__link {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.#{$namespace}-footer__link > .#{$namespace}-icon {
+  @include center;
+  height: to-rem(16px);
+  width: to-rem(16px);
+  pointer-events: none;
+}
+
+.#{$namespace}-footer__statement {
+  @include center(x);
+  top: to-rem(48px);
+  font-size: to-rem(10px);
+  line-height: to-rem(16px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.#{$namespace}-footer__copyright {
+  display: none;
+}
+
+@include breakpoint(s) {
+  .#{$namespace}-footer {
+    height: to-rem(56px);
+  }
+
+  .#{$namespace}-footer__list {
+    left: to-rem(24px);
+    transform: none;
+  }
+
+  .#{$namespace}-footer__statement {
+    top: to-rem(16px);
+    right: to-rem(40px);
+    left: initial;
+    transform: none;
+    text-align: right;
+  }
+
+  .#{$namespace}-footer__copyright {
+    display: initial;
+  }
+}
+
+@include breakpoint(s, height) {
+  .#{$namespace}-footer {
+    height: to-rem(112px);
+  }
+
+  .#{$namespace}-footer__statement {
+    font-size: to-rem(11px);
+    line-height: to-rem(24px);
+  }
+
+  @include breakpoint(s) {
+    .#{$namespace}-footer {
+      height: to-rem(76px);
+    }
+
+    .#{$namespace}-footer__list {
+      left: to-rem(28px);
+      gap: to-rem(16px);
+      width: to-rem(240px);
+    }
+
+    .#{$namespace}-footer__link > .#{$namespace}-icon {
+      height: to-rem(24px);
+      width: to-rem(24px);
+    }
+
+    .#{$namespace}-footer__statement {
+      top: to-rem(12px);
+    }
+  }
+
+  @include breakpoint(m) {
+    .#{$namespace}-footer__list {
+      left: to-rem(52px);
+    }
+
+    .#{$namespace}-footer__statement {
+      right: to-rem(64px);
+    }
+  }
+}
+
+@include breakpoint(m, height) {
+  .#{$namespace}-footer {
+    height: to-rem(136px);
+  }
+
+  .#{$namespace}-footer__statement {
+    font-size: to-rem(12px);
+  }
+
+  @include breakpoint(s) {
+    .#{$namespace}-footer {
+      height: to-rem(100px);
+    }
+  }
+
+  @include breakpoint(l) {
+    .#{$namespace}-footer__list {
+      left: to-rem(92px);
+    }
+
+    .#{$namespace}-footer__statement {
+      right: to-rem(104px);
+    }
+  }
+}
+
+@include breakpoint(l, height) {
+  .#{$namespace}-footer {
+    height: to-rem(176px);
+  }
+
+  .#{$namespace}-footer__statement {
+    font-size: to-rem(13px);
+  }
+
+  @include breakpoint(s) {
+    .#{$namespace}-footer {
+      height: to-rem(100px);
+    }
+  }
+
+  @include breakpoint(m) {
+    .#{$namespace}-footer {
+      height: to-rem(140px);
+    }
+  }
+
+  @include breakpoint(l) {
+    .#{$namespace}-footer__list {
+      left: to-rem(92px);
+    }
+
+    .#{$namespace}-footer__statement {
+      right: to-rem(104px);
+    }
+  }
+}

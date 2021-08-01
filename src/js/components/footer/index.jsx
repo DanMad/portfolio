@@ -31,8 +31,9 @@ const Footer = () => {
           </li>
         ))}
       </ul>
-      <p className={getElement('copyright')}>
-        © <span>Copyright</span> {toRange(copyrightYear, currentYear)},{' '}
+      <p className={getElement('statement')}>
+        © <span className={getElement('copyright')}>Copyright </span>
+        {toRange(copyrightYear, currentYear)},{' '}
         {`${author.names.first} ${author.names.last}`.toTitleCase()}
       </p>
     </footer>
