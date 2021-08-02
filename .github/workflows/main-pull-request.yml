@@ -21,5 +21,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 'lts/fermium'
-      - run: chmod +x .github/check-package-version
-      - run: .github/check-package-version
+      - run: |
+        chmod +x .github/check-package-version
+        .github/check-package-version
