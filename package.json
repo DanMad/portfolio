@@ -20,17 +20,17 @@
     "start": "webpack serve --env development"
   },
   "dependencies": {
-    "color": "^4.0.0",
-    "on-the-case": "^1.1.8",
+    "color": "^4.0.1",
+    "on-the-case": "^2.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.12.10",
     "autoprefixer": "^10.3.1",
     "babel-loader": "^8.2.2",
@@ -43,11 +43,11 @@
     "postcss": "^8.3.6",
     "postcss-loader": "^6.1.1",
     "prettier": "^2.2.1",
-    "sass": "^1.36.0",
+    "sass": "^1.37.5",
     "sass-loader": "^12.1.0",
     "sort-package-json": "^1.50.0",
     "style-loader": "^3.2.1",
-    "webpack": "^5.47.0",
+    "webpack": "^5.48.0",
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
   }
