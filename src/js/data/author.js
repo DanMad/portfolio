@@ -1,9 +1,9 @@
 const author = {
-  names: {
+  name: {
     first: 'daniel',
     last: 'maddison',
   },
-  platforms: {
+  social: {
     linkedin: 'https://www.linkedin.com/in/daniel-maddisons-profile/',
     dribbble: 'https://dribbble.com/danmad',
     github: 'https://github.com/danmad',
