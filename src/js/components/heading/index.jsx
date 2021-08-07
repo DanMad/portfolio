@@ -1,14 +1,13 @@
 import { BEM } from '../../utils';
 
-const bem = BEM('h');
-const { getBlock } = bem;
+const { getBlock } = BEM('h');
 
-const Heading = ({ children, navigable, style, type = 1 }) => {
-  const Tag = `h${type}`;
+const Heading = ({ children, navigable, style, level = 1 }) => {
+  const Tag = `h${level}`;
 
   return (
     <Tag
-      className={`${getBlock()}${type}`}
+      className={`${getBlock()}${level}`}
       id={navigable && children.toKebabCase()}
       style={style}
     >

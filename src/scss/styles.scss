@@ -5,6 +5,7 @@
 
 html,
 body {
+  // overflow: hidden;
   font-family: $font-family-system;
 
   // These rules improve font antialiasing on Mac OS.
@@ -17,4 +18,11 @@ body {
   // This rule removes the overlay that appears on elements when tapped in
   // Mobile Safari.
   -webkit-tap-highlight-color: transparent;
+}
+
+.#{$namespace}-app {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: blueviolet;
 }
