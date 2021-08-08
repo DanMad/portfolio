@@ -38,6 +38,20 @@ const commonConfig = {
       patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
     new HtmlWebpackPlugin({
+      // chunks: ['about'],
+      filename: './about/index.html',
+      inject: 'body',
+      template: path.join(__dirname, './src/html/index.html'),
+    }),
+    new HtmlWebpackPlugin({
+      // chunks: ['contact'],
+      filename: './contact/index.html',
+      inject: 'body',
+      template: path.join(__dirname, './src/html/index.html'),
+    }),
+    new HtmlWebpackPlugin({
+      // chunks: ['portfolio'],
+      filename: './index.html',
       inject: 'body',
       template: path.join(__dirname, './src/html/index.html'),
     }),
