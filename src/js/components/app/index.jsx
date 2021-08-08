@@ -21,7 +21,7 @@ const App = () => {
   });
 
   const getPayload = () => {
-    fetch('data/payload.json', {
+    fetch('../data/payload.json', {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -64,30 +64,5 @@ const App = () => {
     );
   }
 };
-
-// const App = () => (
-//   <Router>
-//     <>
-//       <Nav />
-//       <Switch>
-//         {pages.map((page) => {
-//           const isExact = page.path === '/';
-//           const Page = Pages[page.title];
-
-//           return (
-//             <Route
-//               exact={isExact}
-//               key={page.title.toKebabCase()}
-//               path={page.path}
-//             >
-//               <Page />
-//             </Route>
-//           );
-//         })}
-//       </Switch>
-//       <Footer />
-//     </>
-//   </Router>
-// );
 
 export { App as default };
