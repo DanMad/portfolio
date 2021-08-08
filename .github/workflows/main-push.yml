@@ -20,3 +20,20 @@ jobs:
     - run: |
         chmod +x .github/scripts/create-github-release.sh
         .github/scripts/create-github-release.sh
+
+  create_github_pages_release:
+    name: Create GitHub Pages Release
+    needs: create_github_release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - run: |
+        yarn build
+        yarn deploy
+
+        #       - name: Deploy
+        # uses: peaceiris/actions-gh-pages@v3
+        # with:
+        #   github_token: ${{ secrets.GITHUB_TOKEN }}
+        #   publish_dir: ./dist
