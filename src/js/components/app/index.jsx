@@ -21,7 +21,7 @@ const App = () => {
   });
 
   const getPayload = () => {
-    fetch('/data/payload.json', {
+    fetch('~/data/payload.json', {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
