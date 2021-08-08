@@ -14,6 +14,7 @@
   "main": "dist/index.html",
   "scripts": {
     "bootstrap": "rm -rf node_moodules && yarn install && husky install && chmod +x .husky/*",
+    "bootstrap-frozen": "rm -rf node_modules && yarn install --frozen-lockfile && husky install && chmod +x .husky/*",
     "build": "rm -rf dist && webpack",
     "deploy": "gh-pages -d dist",
     "format": "sort-package-json && prettier --write \"**/*\"",
