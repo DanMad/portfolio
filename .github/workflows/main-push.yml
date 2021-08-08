@@ -28,6 +28,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
+    - run: |
+        npm install --global yarn
+        yarn bootstrap-frozen
+        yarn build
     - uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         branch: gh-pages
