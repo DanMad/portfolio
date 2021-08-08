@@ -1,12 +1,13 @@
 import 'on-the-case';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import About from '../about';
 import Contact from '../contact';
+// import Context from '../context';
 import Footer from '../footer';
 import Nav from '../nav';
 import Portfolio from '../portfolio';
 import '../../../scss/styles.scss';
-import { useEffect, useState } from 'react';
 
 const Pages = {
   about: About,
@@ -21,7 +22,7 @@ const App = () => {
   });
 
   const getPayload = () => {
-    fetch('../data/payload.json', {
+    fetch('/data/payload.json', {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
