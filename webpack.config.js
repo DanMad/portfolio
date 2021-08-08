@@ -35,7 +35,7 @@ const commonConfig = {
   },
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: path.join(__dirname, './src/CNAME'), to: '.' }],
+      patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
     new HtmlWebpackPlugin({
       inject: 'body',
