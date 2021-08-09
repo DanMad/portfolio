@@ -73,7 +73,7 @@ module.exports = (env) => {
       },
       mode: 'development',
       output: {
-        filename: 'app.js',
+        filename: 'js/app.js',
       },
     };
   }
@@ -82,7 +82,7 @@ module.exports = (env) => {
     ...commonConfig,
     mode: 'production',
     output: {
-      filename: 'app.js',
+      filename: 'js/app.js',
       publicPath: 'https://danielmaddison.io',
     },
   };

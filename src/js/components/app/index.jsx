@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import About from '../about';
 import Contact from '../contact';
-// import Context from '../context';
+import Context from '../context';
 import Footer from '../footer';
 import Nav from '../nav';
 import Portfolio from '../portfolio';
@@ -22,7 +22,7 @@ const App = () => {
   });
 
   const getPayload = () => {
-    fetch('/data/payload.json', {
+    fetch('/data/api.json', {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -42,8 +42,13 @@ const App = () => {
     const { author, created, pages } = state.payload;
 
     return (
-      <Router>
-        <>
+      <Context.Provider
+        value={{
+          appState: state,
+          setAppState: setState,
+        }}
+      >
+        <Router>
           <Nav pages={pages} />
           <Switch>
             {Object.keys(pages).map((pageKey) => {
@@ -60,8 +65,8 @@ const App = () => {
             })}
           </Switch>
           <Footer author={author} created={created} />
-        </>
-      </Router>
+        </Router>
+      </Context.Provider>
     );
   }
 };
