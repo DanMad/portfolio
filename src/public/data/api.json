@@ -1,26 +1,52 @@
 {
   "author": {
+    "education": [],
+    "experience": [
+      {
+        "employer": "Up Education",
+        "ended": null,
+        "logo": "",
+        "started": "2021-08-06",
+        "title": "Head of Design"
+      },
+      {
+        "employer": "Up Education",
+        "ended": null,
+        "logo": "",
+        "started": "2021-08-06",
+        "title": "Design Lead"
+      }
+    ],
     "name": {
-      "first": "daniel",
-      "last": "maddison"
+      "first": "Daniel",
+      "last": "Maddison"
     },
     "social": {
       "linkedin": "https://www.linkedin.com/in/daniel-maddisons-profile/",
       "dribbble": "https://dribbble.com/danmad",
-      "github": "https://github.com/danmad",
-      "stackOverflow": "https://stackoverflow.com/users/3654415/danmad"
+      "github": "https://github.com/danmad"
     }
   },
-  "created": [2021, 7, 6],
-  "pages": {
-    "portfolio": {
-      "innerHTML": []
+  "created": "2021-08-06",
+  "pages": [
+    {
+      "innerHTML": "<p>An awesome Portfolio page</p>",
+      "title": "portfolio"
     },
-    "about": {
-      "innerHTML": ""
+    {
+      "innerHTML": "<p>An awesome About page</p>",
+      "title": "about"
     },
-    "contact": {
-      "innerHTML": ""
+    {
+      "innerHTML": "<p>An awesome Contact page</p>",
+      "title": "contact"
     }
-  }
+  ],
+  "projects": [
+    {
+      "description": "A Visual Studio Code theme from a galaxy far, far away...",
+      "innerHTML": "",
+      "title": "A Galaxy Far, Far Away"
+    }
+  ]
 }

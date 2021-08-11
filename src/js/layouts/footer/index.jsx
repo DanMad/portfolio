@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { BEM, toRange } from '../../utils';
-import Icon from '../icon';
+import Icon from '../../components/icon';
 
 const { getBlock, getElement } = BEM('footer');
 const currentYear = new Date().getFullYear();

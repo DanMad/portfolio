@@ -45,18 +45,18 @@ const DelayedNavLink = (props) => {
   return <NavLink {...rest} to={to} onClick={handleClick} />;
 };
 
-// DelayLink.propTypes = {
-//   // Milliseconds to wait before registering the click.
-//   delay: PropTypes.number,
-//   // Called after the link is clicked and before the delay timer starts.
-//   onDelayStart: PropTypes.func,
-//   // Called after the delay timer ends.
-//   onDelayEnd: PropTypes.func,
-//   // Replace history or not
-//   replace: PropTypes.bool,
-//   // Link to go to
-//   to: PropTypes.string
-// };
+DelayedNavLink.propTypes = {
+  // Milliseconds to wait before registering the click.
+  delay: PropTypes.number,
+  // Called after the link is clicked and before the delay timer starts.
+  onDelayStart: PropTypes.func,
+  // Called after the delay timer ends.
+  onDelayEnd: PropTypes.func,
+  // Replace history or not
+  replace: PropTypes.bool,
+  // Link to go to
+  to: PropTypes.string,
+};
 
 DelayedNavLink.defaultProps = {
   replace: false,
