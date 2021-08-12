@@ -1,7 +1,7 @@
 import 'on-the-case';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-// import Footer from '../layouts/footer';
+import Footer from '../layouts/footer';
 import Nav from '../layouts/nav';
 import Page from '../layouts/page';
 import Context from '../components/context';
@@ -13,7 +13,7 @@ const App = () => {
     payload: {},
   });
 
-  const getPayload = () => {
+  useEffect(() => {
     fetch('/data/api.json', {
       headers: {
         'Content-Type': 'application/json',
@@ -21,18 +21,13 @@ const App = () => {
       },
     })
       .then((response) => response.json())
-      .then((payload) => setState({ loading: false, payload }));
-  };
-
-  useEffect(() => {
-    getPayload();
+      .then((payload) => setState({ loading: false, payload }))
+      .catch((error) => console.error(error));
   }, []);
 
   if (state.loading) {
-    return <h1>Loading</h1>;
+    return <span>Loading...</span>;
   } else {
-    const { pages, projects } = state.payload;
-
     return (
       <Context.Provider
         value={{
@@ -41,26 +36,32 @@ const App = () => {
         }}
       >
         <BrowserRouter>
-          <Nav pages={pages} />
+          <Nav pages={state.payload.pages} />
           <Switch>
             <Redirect exact from="/" to="/portfolio" />
-
-            {pages.map((page) => {
-              const { innerHTML, title } = page;
-
-              return (
-                <Route exact key={title} path={'/' + title.toKebabCase()}>
+            {state.payload.pages.map((page) => (
+              <Route
+                exact
+                key={page.title}
+                path={`/${page.title.toKebabCase()}`}
+              >
+                {page.title === 'portfolio' ? (
                   <Page
-                    innerHTML={innerHTML}
-                    slides={title === 'portfolio' ? projects : []}
-                    title={title}
-                    type={title === 'portfolio' ? 'slideshow' : 'static'}
+                    innerHTML={page.innerHTML}
+                    slides={state.payload.projects}
+                    title={page.title}
+                    type={'slideshow'}
                   />
-                </Route>
-              );
-            })}
+                ) : (
+                  <Page innerHTML={page.innerHTML} title={page.title} />
+                )}
+              </Route>
+            ))}
           </Switch>
-          {/* <Footer /> */}
+          <Footer
+            author={state.payload.author}
+            created={state.payload.created}
+          />
         </BrowserRouter>
       </Context.Provider>
     );

@@ -1,7 +1,6 @@
 // import { useEffect, useRef, useState } from 'react';
-// // import Context from '../context';
-// import Heading from './heading';
-// import '../../scss/styles.scss';
+import parse from 'html-react-parser';
+import Heading from '../heading';
 
 // const useEventListener = (eventName, handler, element = window) => {
 //   const savedHandler = useRef();
@@ -27,7 +26,7 @@
 //   }, [eventName, element]);
 // };
 
-const Portfolio = () => {
+const Slide = (props) => {
   //   const [slide, setSlide] = useState(0);
 
   //   const handleKeyDown = (e) => {
@@ -48,7 +47,19 @@ const Portfolio = () => {
 
   //   useEventListener('keydown', handleKeyDown);
 
-  return <h1>The Things I Make and Do.</h1>;
+  console.log(props.title);
+
+  return (
+    <div>
+      <div>
+        {/* <Heading>{props.title}</Heading> */}
+        <p>{props.description}</p>
+        <button>View project</button>
+      </div>
+      <div>{/* {parse(props.innerHTML)} */}</div>
+    </div>
+  );
+  // <h1>The Things I Make and Do.</h1>;
 };
 
 // // // import Color from 'color';
@@ -67,4 +78,4 @@ const Portfolio = () => {
 // // // console.log(`Bunker is dark: ${colors.bunker.isDark()}`);
 // // // console.log(`Green is dark: ${colors.bunker.isDark()}`);
 
-export { Portfolio as default };
+export { Slide as default };

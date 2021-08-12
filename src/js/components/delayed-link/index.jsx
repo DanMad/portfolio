@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
 
 // Source: https://gist.github.com/KimPaow/e900d5b9ac4aa483421c6d19f76bb296
 
-const DelayedNavLink = (props) => {
-  const { delay, onDelayStart, onDelayEnd, replace, to, ...rest } = props;
+const DelayedLink = (props) => {
+  const { delay, onDelayStart, onDelayEnd, replace, to, type, ...rest } = props;
+  const Component = type === 'default' ? Link : NavLink;
   const history = useHistory();
   const location = useLocation();
   let timeout = null;
@@ -42,27 +43,24 @@ const DelayedNavLink = (props) => {
     }, delay);
   };
 
-  return <NavLink {...rest} to={to} onClick={handleClick} />;
+  return <Component {...rest} to={to} onClick={handleClick} />;
 };
 
-DelayedNavLink.propTypes = {
-  // Milliseconds to wait before registering the click.
+DelayedLink.propTypes = {
   delay: PropTypes.number,
-  // Called after the link is clicked and before the delay timer starts.
   onDelayStart: PropTypes.func,
-  // Called after the delay timer ends.
   onDelayEnd: PropTypes.func,
-  // Replace history or not
   replace: PropTypes.bool,
-  // Link to go to
   to: PropTypes.string,
+  type: PropTypes.oneOf(['default', 'nav']),
 };
 
-DelayedNavLink.defaultProps = {
+DelayedLink.defaultProps = {
   replace: false,
   delay: 750,
   onDelayStart: () => {},
   onDelayEnd: () => {},
+  type: 'default',
 };
 
-export { DelayedNavLink as default };
+export { DelayedLink as default };

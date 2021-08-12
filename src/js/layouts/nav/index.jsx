@@ -1,25 +1,22 @@
 import PropTypes from 'prop-types';
-import DelayedNavLink from '../../components/delayed-nav-link';
+import DelayedLink from '../../components/delayed-link';
 import { BEM } from '../../utils';
 
 const { getBlock } = BEM('nav');
 
 const Nav = (props) => (
   <nav className={getBlock()}>
-    {props.pages.map((page) => {
-      const { title } = page;
-
-      return (
-        <DelayedNavLink
-          activeClassName={'active'}
-          exact
-          key={title}
-          to={'/' + title.toKebabCase()}
-        >
-          {title.toTitleCase()}
-        </DelayedNavLink>
-      );
-    })}
+    {props.pages.map((page) => (
+      <DelayedLink
+        activeClassName="active"
+        exact
+        key={page.title}
+        to={`/${page.title.toKebabCase()}`}
+        type="nav"
+      >
+        {page.title.toTitleCase()}
+      </DelayedLink>
+    ))}
   </nav>
 );
 

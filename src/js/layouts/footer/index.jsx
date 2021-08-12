@@ -5,14 +5,14 @@ import Icon from '../../components/icon';
 const { getBlock, getElement } = BEM('footer');
 const currentYear = new Date().getFullYear();
 
-const Footer = ({ author, created }) => (
+const Footer = (props) => (
   <footer className={getBlock()}>
     <ul className={getElement('list')}>
-      {Object.keys(author.social).map((platform) => (
+      {Object.keys(props.author.social).map((platform) => (
         <li className={getElement('item')} key={platform}>
           <a
             className={getElement('link')}
-            href={author.social[platform]}
+            href={props.author.social[platform]}
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -23,8 +23,8 @@ const Footer = ({ author, created }) => (
     </ul>
     <p className={getElement('statement')}>
       © <span className={getElement('copyright')}>Copyright </span>
-      {toRange(new Date(...created).getFullYear(), currentYear)},{' '}
-      {`${author.name.first} ${author.name.last}`.toTitleCase()}
+      {toRange(new Date(props.created).getFullYear(), currentYear)},{' '}
+      {`${props.author.name.first} ${props.author.name.last}`.toTitleCase()}
     </p>
   </footer>
 );
@@ -39,10 +39,9 @@ Footer.propTypes = {
       linkedin: PropTypes.string,
       dribbble: PropTypes.string,
       github: PropTypes.string,
-      stackOverflow: PropTypes.string,
     }),
-  }),
-  created: PropTypes.arrayOf(PropTypes.number),
+  }).isRequired,
+  created: PropTypes.string.isRequired,
 };
 
 export { Footer as default };

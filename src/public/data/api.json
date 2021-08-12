@@ -6,15 +6,36 @@
         "employer": "Up Education",
         "ended": null,
         "logo": "",
-        "started": "2021-08-06",
+        "started": "2020-12-03",
         "title": "Head of Design"
       },
       {
         "employer": "Up Education",
-        "ended": null,
+        "ended": "2020-12-02",
         "logo": "",
-        "started": "2021-08-06",
+        "started": "2020-01-04",
         "title": "Design Lead"
+      },
+      {
+        "employer": "Open Colleges",
+        "ended": "2020-01-03",
+        "logo": "",
+        "started": "2019-01-05",
+        "title": "Lead Product Designer"
+      },
+      {
+        "employer": "Open Colleges",
+        "ended": "2019-01-04",
+        "logo": "",
+        "started": "2018-04-16",
+        "title": "Lead Designer"
+      },
+      {
+        "employer": "Open Colleges",
+        "ended": "2018-04-15",
+        "logo": "",
+        "started": "2013-10-22",
+        "title": "Digital Designer"
       }
     ],
     "name": {
@@ -45,7 +66,7 @@
   "projects": [
     {
       "description": "A Visual Studio Code theme from a galaxy far, far away...",
-      "innerHTML": "",
+      "innerHTML": "<p>foo</p>",
       "title": "A Galaxy Far, Far Away"
     }
   ]

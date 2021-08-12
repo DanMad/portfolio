@@ -2,6 +2,14 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+const routes = [
+  '/',
+  '/about',
+  '/contact',
+  '/portfolio',
+  '/portfolio/a-galaxy-far-far-away',
+];
+
 const commonConfig = {
   entry: './src/js/index',
   module: {
@@ -37,20 +45,12 @@ const commonConfig = {
     new CopyPlugin({
       patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
-    new HtmlWebpackPlugin({
-      filename: './about/index.html',
-      inject: 'body',
-      template: path.join(__dirname, './src/html/index.html'),
-    }),
-    new HtmlWebpackPlugin({
-      filename: './contact/index.html',
-      inject: 'body',
-      template: path.join(__dirname, './src/html/index.html'),
-    }),
-    new HtmlWebpackPlugin({
-      filename: './index.html',
-      inject: 'body',
-      template: path.join(__dirname, './src/html/index.html'),
+    ...routes.map((route) => {
+      return new HtmlWebpackPlugin({
+        filename: `.${route}/index.html`,
+        inject: 'body',
+        template: path.join(__dirname, './src/html/index.html'),
+      });
     }),
   ],
   resolve: {

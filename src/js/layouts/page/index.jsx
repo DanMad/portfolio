@@ -2,6 +2,7 @@ import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 // import { Link, Route, useRouteMatch } from 'react-router-dom';
 import Heading from '../../components/heading';
+import Slide from '../../components/slide';
 
 const Page = (props) => {
   // The `path` lets us build <Route> paths that are
@@ -11,20 +12,43 @@ const Page = (props) => {
 
   // console.log(path, url);
 
-  if (props.type === 'slideshow') {
-    return <main></main>;
-  } else {
-    return (
-      <main>
-        <Heading>{props.title}</Heading>
-        {parse(props.innerHTML)}
-        {/* <Link to={`${url}/foo`}>Foo</Link>
-        <Route path={`${url}/foo`}>
-          <h2>Foo!</h2>
-        </Route> */}
-      </main>
-    );
-  }
+  // if (props.type === 'slideshow') {
+  //   return <main></main>;
+  // } else {
+  //   return (
+  //     <main>
+  //       <Heading>{props.title}</Heading>
+  //       {parse(props.innerHTML)}
+  //       {/* <Link to={`${url}/foo`}>Foo</Link>
+  //       <Route path={`${url}/foo`}>
+  //         <h2>Foo!</h2>
+  //       </Route> */}
+  //     </main>
+  //   );
+  // }
+
+  return (
+    <main>
+      {props.type === 'slideshow' ? (
+        <>
+          <Slide innerHTML={props.innerHTML} title={props.title} />
+          {props.slides.map((slide) => (
+            <Slide
+              description={slide.description}
+              innerHTML={slide.innerHTML}
+              key={slide.description}
+              title={slide.title}
+            />
+          ))}
+        </>
+      ) : (
+        <>
+          <Heading>{props.title}</Heading>
+          {parse(props.innerHTML)}
+        </>
+      )}
+    </main>
+  );
 };
 
 Page.propTypes = {
@@ -40,11 +64,11 @@ Page.propTypes = {
     ]),
   ),
   title: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['slideshow', 'static']),
+  type: PropTypes.oneOf(['default', 'slideshow']),
 };
 
 Page.defaultProps = {
-  type: 'static',
+  type: 'default',
 };
 
 export { Page as default };
