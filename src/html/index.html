@@ -2,13 +2,34 @@
 <html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="Daniel Maddison's Portfolio" />
+    <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
+    <!-- Fallback comes first with these two. Latter is ignored -->
+    <!-- document.querySelector('meta[name=theme-color]') -->
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="#0f0"
+      media="(prefers-color-scheme: dark)"
+      name="theme-color"
     />
+    <meta
+      content="#f0f"
+      media="(prefers-color-scheme: light)"
+      name="theme-color"
+    />
+    <!-- Open Graph | Possibly name attr instead of property -->
+    <meta content="image-url.png" property="og:image" />
+    <meta content="Daniel Maddison's Portfolio" property="og:title" />
+    <meta content="website" property="og:type" />
+    <meta content="https://www.danielmaddison.io" property="og:url" />
     <title>Welcome | Daniel Maddison</title>
   </head>
   <body>
+    <!--
+      env(safe-area-inset-top),
+      env(safe-area-inset-right),
+      env(safe-area-inset-bottom),
+      env(safe-area-inset-left),
+    -->
     <div class="dm-app"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
   </body>
