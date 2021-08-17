@@ -14,7 +14,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    fetch('/data/api.json', {
+    fetch('/api/data.json', {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
