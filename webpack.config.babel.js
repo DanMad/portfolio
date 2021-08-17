@@ -1,16 +1,11 @@
-const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+import 'on-the-case';
+import CnameWebpackPlugin from 'cname-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import { domain, namespace, pages, protocol } from './src/config';
 
-const routes = [
-  '/',
-  '/about',
-  '/contact',
-  '/portfolio',
-  '/portfolio/a-galaxy-far-far-away',
-];
-
-const commonConfig = {
+const commonWebpackConfig = {
   entry: './src/js/index',
   module: {
     rules: [
@@ -42,14 +37,34 @@ const commonConfig = {
     ],
   },
   plugins: [
+    new CnameWebpackPlugin({
+      domain,
+    }),
     new CopyPlugin({
       patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
-    ...routes.map((route) => {
+    ...pages.map((page) => {
+      let fileDir = '/';
+      let ogImage = 'default';
+      let title = domain;
+
+      if (page.length) {
+        fileDir = `/${page}`;
+        ogImage = page;
+        title = `${page.toTitleCase()} | ${domain}`;
+      }
+
       return new HtmlWebpackPlugin({
-        filename: `.${route}/index.html`,
+        filename: `.${fileDir}/index.html`,
         inject: 'body',
+        meta: {
+          'og:image': `/images/${ogImage}.png`,
+        },
         template: path.join(__dirname, './src/html/index.html'),
+        templateParameters: {
+          namespace,
+          title,
+        },
       });
     }),
   ],
@@ -63,10 +78,10 @@ const commonConfig = {
   },
 };
 
-module.exports = (env) => {
+export default (env) => {
   if (env.development) {
     return {
-      ...commonConfig,
+      ...commonWebpackConfig,
       devServer: {
         contentBase: path.join(__dirname, './dist'),
         port: 3000,
@@ -79,11 +94,11 @@ module.exports = (env) => {
   }
 
   return {
-    ...commonConfig,
+    ...commonWebpackConfig,
     mode: 'production',
     output: {
       filename: 'js/app.js',
-      publicPath: 'https://danielmaddison.io',
+      publicPath: protocol + domain,
     },
   };
 };
