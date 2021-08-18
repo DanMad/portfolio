@@ -1,0 +1,49 @@
+.#{$namespace}-preloader {
+  opacity: 0;
+  @include center;
+  top: 60%;
+  width: 50%;
+  max-width: to-rem(160px);
+  transition: all 0.2s ease;
+}
+
+.#{$namespace}-preloader.mounted {
+  opacity: 1;
+  top: 50%;
+}
+
+.#{$namespace}-preloader__track {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: to-rem(2px);
+  border-radius: to-rem(1px);
+  @include display-p3(background-color, #fa9f9f);
+}
+
+.#{$namespace}-preloader__bar {
+  position: absolute;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 100%;
+  border-radius: to-rem(1px);
+  @include display-p3(background-color, #f55252);
+}
+
+.#{$namespace}-preloader.mounted .#{$namespace}-preloader__bar {
+  animation: loading 1.5s ease infinite 0.2s;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  50% {
+    transform: translateX(150%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

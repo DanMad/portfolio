@@ -2,9 +2,37 @@ import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 // import { Link, Route, useRouteMatch } from 'react-router-dom';
 import Heading from '../../components/heading';
+import Preloader from '../../components/preloader';
 import Slide from '../../components/slide';
 
 const Page = (props) => {
+  // export default function App() {
+  // const [animateBeforeUnmount, setAnimateBeforeUnmount] = React.useState(false);
+  // const [isRendered, setIsRendered] = React.useState(true);
+  // const divRef = React.useRef();
+
+  // const handleAnimationEnd = () => {
+  //   setIsRendered(false);
+  //   setAnimateBeforeUnmount(false);
+  // };
+
+  // return (
+  //   <>
+  //     <button onClick={() => setAnimateBeforeUnmount(true)}>Toggle</button>
+  //     {isRendered && (
+  //       <div
+  //         onAnimationEnd={handleAnimationEnd}
+  //         ref={divRef}
+  //         className={`bg-square ${animateBeforeUnmount && "fade-out"}`}
+  //       />
+  //     )}
+  //   </>
+  // );
+
+  // useEffect(() => {
+  //   setTimeout(() => setState({ loading: false }), 3000);
+  // }, []);
+
   // The `path` lets us build <Route> paths that are
   // relative to the parent route, while the `url` lets
   // us build relative links.
@@ -45,6 +73,7 @@ const Page = (props) => {
         <>
           <Heading>{props.title}</Heading>
           {parse(props.innerHTML)}
+          <Preloader />
         </>
       )}
     </main>
