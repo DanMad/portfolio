@@ -1,21 +1,25 @@
-const name = {
-  first: 'daniel',
-  last: 'maddison',
-};
-
-name.initials = name.first.charAt(0) + name.last.charAt(0);
-
-const namespace = name.initials;
-const created = '2021-08-06';
-const domain = 'www.danielmaddison.io';
-const pages = ['', 'about', 'contact', 'portfolio'];
-const protocol = 'https://';
+import address from './address';
+import copyrightDate from './copyright-date';
+import name from './name';
+import namespace from './namespace';
+import pages from './pages';
+import social from './social';
 
 const config = {
-  domain,
+  address,
+  copyrightDate,
+  name,
   namespace,
   pages,
-  protocol,
+  social,
 };
 
-export { config as default, domain, namespace, pages, protocol };
+export {
+  address,
+  config as default,
+  copyrightDate,
+  name,
+  namespace,
+  pages,
+  social,
+};
