@@ -1,0 +1,48 @@
+$ns: $namespace;
+
+.#{$ns}-preloader {
+  @include center;
+  width: 50%;
+  max-width: to-rem(160px);
+}
+
+.#{$ns}-preloader__track {
+  overflow: hidden;
+  @include center(x);
+  height: to-rem(2px);
+  width: to-rem(8px);
+  border-radius: to-rem(1px);
+  @include display-p3(background-color, #fa9f9f);
+  transition: width 0.25s ease;
+}
+
+.#{$ns}-preloader.mounted > .#{$ns}-preloader__track {
+  width: 100%;
+}
+
+.#{$ns}-preloader__bar {
+  position: absolute;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 50%;
+  border-radius: to-rem(1px);
+  @include display-p3(background-color, #f55252);
+}
+
+.#{$ns}-preloader.mounted .#{$ns}-preloader__bar {
+  animation: loading 1.5s ease infinite 0.25s;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  50% {
+    transform: translateX(150%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

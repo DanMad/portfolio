@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-AU">
   <head>
+    <title><%= title %></title>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Welcome | Daniel Maddison</title>
+    <meta content="Daniel Maddison's Portfolio" name="description" />
+    <!-- document.querySelector('meta[name=theme-color]') -->
+    <meta content="#0f0" name="theme-color" />
+    <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
   </head>
   <body>
-    <div class="dm-app"></div>
+    <!--
+      env(safe-area-inset-top),
+      env(safe-area-inset-right),
+      env(safe-area-inset-bottom),
+      env(safe-area-inset-left),
+    -->
+    <div class="<%= namespace %>-app"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
   </body>
 </html>
