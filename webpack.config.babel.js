@@ -59,6 +59,14 @@ const commonWebpackConfig = {
         title: name.full.toTitleCase(),
       },
     }),
+    new HtmlWebpackPlugin({
+      ...commonHtmlWebpackConfig,
+      filename: './404.html',
+      templateParameters: {
+        namespace,
+        title: `Error | ${name.full}`.toTitleCase(),
+      },
+    }),
     ...pages.map(
       (page) =>
         new HtmlWebpackPlugin({
