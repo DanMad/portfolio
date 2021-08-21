@@ -3,7 +3,12 @@ import CnameWebpackPlugin from 'cname-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import { domain, namespace, pages, protocol } from './src/config';
+import { address, name, namespace, pages } from './src/config';
+
+const commonHtmlWebpackConfig = {
+  inject: 'body',
+  template: path.join(__dirname, './src/html/index.html'),
+};
 
 const commonWebpackConfig = {
   entry: './src/js/index',
@@ -38,35 +43,36 @@ const commonWebpackConfig = {
   },
   plugins: [
     new CnameWebpackPlugin({
-      domain,
+      domain: address.domain,
     }),
     new CopyPlugin({
       patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
-    ...pages.map((page) => {
-      let fileDir = '/';
-      let ogImage = 'default';
-      let title = domain;
-
-      if (page.length) {
-        fileDir = `/${page}`;
-        ogImage = page;
-        title = `${page.toTitleCase()} | ${domain}`;
-      }
-
-      return new HtmlWebpackPlugin({
-        filename: `.${fileDir}/index.html`,
-        inject: 'body',
-        meta: {
-          'og:image': `/images/${ogImage}.png`,
-        },
-        template: path.join(__dirname, './src/html/index.html'),
-        templateParameters: {
-          namespace,
-          title,
-        },
-      });
+    new HtmlWebpackPlugin({
+      ...commonHtmlWebpackConfig,
+      filename: './index.html',
+      meta: {
+        'og:image': '/images/index.png',
+      },
+      templateParameters: {
+        namespace,
+        title: name.full.toTitleCase(),
+      },
     }),
+    ...pages.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          ...commonHtmlWebpackConfig,
+          filename: `./${page.toKebabCase()}/index.html`,
+          meta: {
+            'og:image': `/images/${page}.png`,
+          },
+          templateParameters: {
+            namespace,
+            title: `${page} | ${name.full}`.toTitleCase(),
+          },
+        }),
+    ),
   ],
   resolve: {
     alias: {
@@ -78,12 +84,13 @@ const commonWebpackConfig = {
   },
 };
 
-export default (env) => {
+const webpackConfig = (env) => {
   if (env.development) {
     return {
       ...commonWebpackConfig,
       devServer: {
         contentBase: path.join(__dirname, './dist'),
+        historyApiFallback: true,
         port: 3000,
       },
       mode: 'development',
@@ -98,7 +105,9 @@ export default (env) => {
     mode: 'production',
     output: {
       filename: 'js/app.js',
-      publicPath: protocol + domain,
+      publicPath: address.URL,
     },
   };
 };
+
+export { webpackConfig as default };
