@@ -2,26 +2,23 @@ import { useContext } from 'react';
 import Context from '../context';
 import { BEM } from '../../utils';
 
-const { getBlock, getElement } = BEM('preloader');
+const { block, element } = BEM('preloader');
 
 const Preloader = () => {
-  const { preloaderClassName, setIsLoading } = useContext(Context);
+  const { isPreloaderMounted, setIsLoading } = useContext(Context);
 
   const handleTransitionEnd = () => {
-    if (preloaderClassName === '') {
+    if (!isPreloaderMounted) {
       setIsLoading(false);
     }
   };
 
-  const classNames =
-    preloaderClassName === ''
-      ? getBlock()
-      : `${getBlock()} ${preloaderClassName}`;
+  const classNames = isPreloaderMounted ? block() + ' mounted' : block();
 
   return (
     <div className={classNames} onTransitionEnd={handleTransitionEnd}>
-      <div className={getElement('track')}>
-        <div className={getElement('bar')} />
+      <div className={element('track')}>
+        <div className={element('bar')} />
       </div>
     </div>
   );

@@ -5,8 +5,8 @@ import StackOverflow from './stack-overflow';
 
 const icons = {
   dribbble: Dribbble,
-  github: Github,
-  linkedin: Linkedin,
+  gitHub: Github,
+  linkedIn: Linkedin,
   stackOverflow: StackOverflow,
 };
 

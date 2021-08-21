@@ -1,7 +1,6 @@
 // import { BEM } from '../../utils';
 
-// const bem = BEM('svg');
-// const { getBlock } = bem;
+// const { block } = BEM('svg');
 
 const SVG = (props) => (
   <svg

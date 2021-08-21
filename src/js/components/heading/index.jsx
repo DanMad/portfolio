@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { BEM } from '../../utils';
 
-const { getBlock } = BEM('h');
+const { block } = BEM('h');
 
 const Heading = (props) => {
   const Tag = 'h' + props.level;
 
   return (
-    <Tag className={getBlock() + props.level} id={props.children.toKebabCase()}>
+    <Tag className={block() + props.level} id={props.children.toKebabCase()}>
       {props.children.toTitleCase()}
     </Tag>
   );
