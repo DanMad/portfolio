@@ -1,33 +1,48 @@
 import 'on-the-case';
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import About from '../pages/about';
+import Contact from '../pages/contact';
+import NotFound from '../pages/not-found';
+import Portfolio from '../pages/portfolio';
 import Footer from '../layouts/footer';
 import Nav from '../layouts/nav';
-// import Page from '../layouts/page';
 import Context from '../components/context';
 import Preloader from '../components/preloader';
+import { copyrightDate, name, pages, social } from '../../config';
 import '../../scss/styles.scss';
+
+const Pages = {
+  about: About,
+  contact: Contact,
+  portfolio: Portfolio,
+};
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPreloaderMounted, setIsPreloaderMounted] = useState(false);
   const [isRouting, setIsRouting] = useState(false);
   const [data, setdata] = useState();
-  const [preloaderClassName, setPreloaderClassName] = useState('');
 
   useEffect(() => {
     if (isLoading) {
-      setPreloaderClassName('mounted');
+      setIsPreloaderMounted(true);
 
       let timer;
 
-      fetch('/api/data.json', {
+      fetch('/api/index.json', {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
       })
         .then((response) => {
-          // Mock a response time
+          // Mocked response time.
           return new Promise((resolve) => {
             timer = setTimeout(() => {
               resolve(response.json());
@@ -36,7 +51,7 @@ const App = () => {
         })
         .then((json) => {
           setdata(json);
-          setPreloaderClassName('');
+          setIsPreloaderMounted(false);
         })
         .catch((error) => console.error(error));
 
@@ -49,8 +64,9 @@ const App = () => {
   return (
     <Context.Provider
       value={{
+        data,
+        isPreloaderMounted,
         isRouting,
-        preloaderClassName,
         setIsLoading,
         setIsRouting,
       }}
@@ -58,31 +74,30 @@ const App = () => {
       {isLoading ? (
         <Preloader />
       ) : (
-        <BrowserRouter>
-          <Nav pages={data.pages} />
-          {/* <Switch>
-              <Redirect exact from="/" to="/portfolio" />
-              {data.pages.map((page) => (
+        <Router>
+          <Nav pages={pages} />
+          <Switch>
+            <Redirect exact from="/" to="/portfolio" />
+            {pages.map((page) => {
+              const Page = Pages[page];
+
+              return (
                 <Route
+                  component={Page}
                   exact
-                  key={page.title}
-                  path={`/${page.title.toKebabCase()}`}
-                >
-                  {page.title === 'portfolio' ? (
-                    <Page
-                      innerHTML={page.innerHTML}
-                      slides={data.projects}
-                      title={page.title}
-                      type={'slideshow'}
-                    />
-                  ) : (
-                    <Page innerHTML={page.innerHTML} title={page.title} />
-                  )}
-                </Route>
-              ))}
-            </Switch> */}
-          <Footer author={data.author} created={data.created} />
-        </BrowserRouter>
+                  key={page}
+                  path={`/${page.toKebabCase()}`}
+                />
+              );
+            })}
+            <Route component={NotFound} />
+          </Switch>
+          <Footer
+            copyrightDate={copyrightDate}
+            name={name.full}
+            social={social}
+          />
+        </Router>
       )}
     </Context.Provider>
   );

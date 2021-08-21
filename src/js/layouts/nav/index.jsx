@@ -1,32 +1,29 @@
 import PropTypes from 'prop-types';
 import DelayedLink from '../../components/delayed-link';
 import { BEM } from '../../utils';
+import { namespace as ns } from '../../../config';
 
-const { getBlock } = BEM('nav');
+const { block, element } = BEM('nav');
 
-const Nav = (props) => (
-  <nav className={getBlock()}>
-    {props.pages.map((page) => (
+const Nav = ({ pages }) => (
+  <nav className={block()}>
+    {pages.map((page) => (
       <DelayedLink
-        activeClassName="active"
+        activeClassName={`${ns}-active`}
+        className={element('link')}
         exact
-        key={page.title}
-        to={`/${page.title.toKebabCase()}`}
+        key={page}
+        to={`/${page.toKebabCase()}`}
         type="nav"
       >
-        {page.title.toTitleCase()}
+        {page.toTitleCase()}
       </DelayedLink>
     ))}
   </nav>
 );
 
 Nav.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      innerHTML: PropTypes.string,
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  pages: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export { Nav as default };
