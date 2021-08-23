@@ -1,4 +1,7 @@
-$ns: $namespace;
+@import '../utils/tokens';
+@import '../functions/to-rem';
+@import '../mixins/center';
+@import '../mixins/display-p3';
 
 .#{$ns}-preloader {
   @include center;

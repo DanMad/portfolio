@@ -3,6 +3,7 @@ import CnameWebpackPlugin from 'cname-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import tokenImporter from 'node-sass-token-importer';
 import { address, name, namespace, pages } from './src/config';
 
 const commonHtmlWebpackConfig = {
@@ -11,7 +12,7 @@ const commonHtmlWebpackConfig = {
 };
 
 const commonWebpackConfig = {
-  entry: './src/js/index',
+  entry: './src/js/app.jsx',
   module: {
     rules: [
       {
@@ -37,7 +38,19 @@ const commonWebpackConfig = {
       {
         exclude: /node_modules/,
         test: /\.s[ac]ss$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                importer: tokenImporter(),
+              },
+            },
+          },
+        ],
       },
     ],
   },
@@ -64,7 +77,7 @@ const commonWebpackConfig = {
       filename: './404.html',
       templateParameters: {
         namespace,
-        title: `Error | ${name.full}`.toTitleCase(),
+        title: `Uh-oh! | ${name.full}`.toTitleCase(),
       },
     }),
     ...pages.map(

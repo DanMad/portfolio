@@ -113,15 +113,15 @@
   ],
   "pages": [
     {
-      "html": "<h1>Heading</h1><p>Paragraph...</p>",
+      "html": "<h1>About</h1><p>A little about me...</p>",
       "name": "about"
     },
     {
-      "html": "<h1>Heading</h1><p>Paragraph...</p>",
+      "html": "<h1>Contact</h1><p>How to contact me...</p>",
       "name": "contact"
     },
     {
-      "html": "<h1>Heading</h1><p>Paragraph...</p>",
+      "html": "<h1>The Things I Make and Do</h1><p>Have a gander...</p>",
       "name": "portfolio"
     }
   ],

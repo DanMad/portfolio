@@ -1,12 +1,12 @@
 import Dribbble from './dribbble';
-import Github from './github';
-import Linkedin from './linkedin';
+import GitHub from './git-hub';
+import LinkedIn from './linked-in';
 import StackOverflow from './stack-overflow';
 
 const icons = {
   dribbble: Dribbble,
-  gitHub: Github,
-  linkedIn: Linkedin,
+  gitHub: GitHub,
+  linkedIn: LinkedIn,
   stackOverflow: StackOverflow,
 };
 
