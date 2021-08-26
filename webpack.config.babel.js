@@ -1,6 +1,6 @@
 import 'on-the-case';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import tokenImporter from 'node-sass-token-importer';
@@ -58,7 +58,7 @@ const commonWebpackConfig = {
     new CnameWebpackPlugin({
       domain: address.domain,
     }),
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
     new HtmlWebpackPlugin({
