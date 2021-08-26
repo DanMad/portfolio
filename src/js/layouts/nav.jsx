@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import DelayedLink from '../components/delayed-link';
+import DelayedNavLink from '../components/delayed-nav-link';
 import { BEM } from '../utils';
 import { namespace as ns } from '../../config';
 
@@ -8,7 +8,7 @@ const { block, element } = BEM('nav');
 const Nav = ({ pages }) => (
   <nav className={block()}>
     {pages.map((page) => (
-      <DelayedLink
+      <DelayedNavLink
         activeClassName={`${ns}-active`}
         className={element('link')}
         exact
@@ -17,7 +17,7 @@ const Nav = ({ pages }) => (
         type="nav"
       >
         {page.toTitleCase()}
-      </DelayedLink>
+      </DelayedNavLink>
     ))}
   </nav>
 );
