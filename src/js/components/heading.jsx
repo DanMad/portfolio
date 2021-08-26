@@ -3,18 +3,25 @@ import { BEM } from '../utils';
 
 const { block } = BEM('h');
 
-const Heading = (props) => {
-  const Tag = 'h' + props.level;
+const Heading = ({ children, className, level = 1 }) => {
+  const Tag = 'h' + level;
+  const classNames = className?.length
+    ? `${block() + level} ${className}`
+    : block() + level;
 
   return (
-    <Tag className={block() + props.level} id={props.children.toKebabCase()}>
-      {props.children.toTitleCase()}
+    <Tag
+      className={classNames}
+      // id={children.toKebabCase()}
+    >
+      {children.toTitleCase()}
     </Tag>
   );
 };
 
 Heading.propTypes = {
   children: PropTypes.string.isRequired,
+  className: PropTypes.string,
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
 };
 

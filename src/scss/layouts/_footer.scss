@@ -1,5 +1,6 @@
 @import '../utils/tokens';
 @import '../functions/to-rem';
+@import '../mixins/breakpoint';
 @import '../mixins/center';
 
 .#{$ns}-footer {

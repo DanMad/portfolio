@@ -18,16 +18,11 @@ import Preloader from './components/preloader';
 import { copyrightDate, name, namespace as ns, pages, social } from '../config';
 import '../scss/styles.scss';
 
-const Pages = {
-  about: About,
-  contact: Contact,
-  portfolio: Portfolio,
-};
-
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  // const [isPageMounted, setIsPageMounted] = useState(false);
+  // const [isPageRouting, setIsPageRouting] = useState(false);
   const [isPreloaderMounted, setIsPreloaderMounted] = useState(false);
-  const [isRouting, setIsRouting] = useState(false);
   const [data, setdata] = useState();
 
   useEffect(() => {
@@ -47,7 +42,7 @@ const App = () => {
           return new Promise((resolve) => {
             timer = setTimeout(() => {
               resolve(response.json());
-            }, 5000);
+            }, 3000);
           });
         })
         .then((json) => {
@@ -62,14 +57,18 @@ const App = () => {
     }
   }, [isLoading]);
 
+  // const [ projects ] = data.projects;
+
   return (
     <Context.Provider
       value={{
         data,
+        // isPageMounted,
         isPreloaderMounted,
-        isRouting,
+        // isRouting,
         setIsLoading,
-        setIsRouting,
+        // setIsPageMounted,
+        // setIsRouting,
       }}
     >
       {isLoading ? (
@@ -79,18 +78,9 @@ const App = () => {
           <Nav pages={pages} />
           <Switch>
             <Redirect exact from="/" to="/portfolio" />
-            {pages.map((page) => {
-              const Page = Pages[page];
-
-              return (
-                <Route
-                  component={Page}
-                  exact
-                  key={page}
-                  path={`/${page.toKebabCase()}`}
-                />
-              );
-            })}
+            <Route component={About} path="/about" />
+            <Route component={Contact} path="/contact" />
+            <Route component={Portfolio} path="/portfolio" />
             <Route component={NotFound} />
           </Switch>
           <Footer
