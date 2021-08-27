@@ -1,12 +1,15 @@
-import { useContext, useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import Context from '../components/context';
 import Slide from '../components/slide';
 import { useEventListener } from '../utils';
+import { transitionDuration } from '../../config';
 
 const Portfolio = ({ match }) => {
   const history = useHistory();
-  const { data } = useContext(Context);
+
+  const { data, isMounted, setIsMounted, setIsTransitioning } =
+    useContext(Context);
   const projects = data.projects;
   let paths = [
     '',
@@ -15,23 +18,31 @@ const Portfolio = ({ match }) => {
 
   const [slideIndex, setSlideIndex] = useState(0);
 
+  useEffect(() => {
+    if (isMounted) {
+      setIsMounted(false);
+      setIsTransitioning(true);
+
+      const timer = setTimeout(() => {
+        history.push(`/portfolio/${paths[slideIndex]}`);
+      }, 250);
+
+      return () => clearTimeout(timer);
+    }
+  }, [slideIndex]);
+
   const handleKeyDown = (e) => {
+    const isArrowKeyDown = e.keyCode === 40;
+    const isArrowKeyUp = e.keyCode === 38;
+
     e.preventDefault();
 
-    // Key down
-    if (e.keyCode === 40) {
-      if (slideIndex < paths.length - 1) {
-        history.push(`/portfolio/${paths[slideIndex + 1]}`);
-        setSlideIndex(slideIndex + 1);
-      }
+    if (isArrowKeyDown && slideIndex < paths.length - 1) {
+      setSlideIndex(slideIndex + 1);
     }
 
-    // Key up
-    if (e.keyCode === 38) {
-      if (slideIndex > 0) {
-        history.push(`/portfolio/${paths[slideIndex - 1]}`);
-        setSlideIndex(slideIndex - 1);
-      }
+    if (isArrowKeyUp && slideIndex > 0) {
+      setSlideIndex(slideIndex - 1);
     }
   };
 
@@ -39,7 +50,13 @@ const Portfolio = ({ match }) => {
 
   return (
     <>
-      <Route exact path={match.url} render={() => <h1>Portfolio</h1>} />
+      <Route
+        exact
+        path={match.url}
+        render={() => (
+          <Slide description="Testing, 1... 2... 3..." name="Hello World!" />
+        )}
+      />
       {projects.map((project) => (
         <Route
           key={project.name}

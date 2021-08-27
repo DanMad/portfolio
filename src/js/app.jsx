@@ -20,14 +20,14 @@ import '../scss/styles.scss';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  // const [isPageMounted, setIsPageMounted] = useState(false);
-  // const [isPageRouting, setIsPageRouting] = useState(false);
-  const [isPreloaderMounted, setIsPreloaderMounted] = useState(false);
+  // the following two states could probably become one; isVisbile, setIsVisible
+  const [isMounted, setIsMounted] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [data, setdata] = useState();
 
   useEffect(() => {
     if (isLoading) {
-      setIsPreloaderMounted(true);
+      setIsMounted(true);
 
       let timer;
 
@@ -47,7 +47,7 @@ const App = () => {
         })
         .then((json) => {
           setdata(json);
-          setIsPreloaderMounted(false);
+          setIsMounted(false);
         })
         .catch((error) => console.error(error));
 
@@ -57,18 +57,15 @@ const App = () => {
     }
   }, [isLoading]);
 
-  // const [ projects ] = data.projects;
-
   return (
     <Context.Provider
       value={{
         data,
-        // isPageMounted,
-        isPreloaderMounted,
-        // isRouting,
+        isMounted,
+        isTransitioning,
         setIsLoading,
-        // setIsPageMounted,
-        // setIsRouting,
+        setIsMounted,
+        setIsTransitioning,
       }}
     >
       {isLoading ? (

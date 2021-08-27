@@ -28,3 +28,24 @@ body {
   width: 100vw;
   @include display-p3(background-color, #fbb1b1);
 }
+
+.foo {
+  opacity: 0;
+  position: relative;
+  top: 50px;
+  transition: all 250ms ease;
+}
+
+.foo.mounted {
+  opacity: 1;
+  top: 0;
+}
+
+.dm-slide {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.dm-slide.mounted {
+  opacity: 1;
+}

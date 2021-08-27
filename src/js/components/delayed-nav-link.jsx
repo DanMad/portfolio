@@ -1,28 +1,29 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Context from '../components/context';
 
 // Source: https://gist.github.com/KimPaow/e900d5b9ac4aa483421c6d19f76bb296
 
 const DelayedNavLink = (props) => {
   const { delay, onDelayStart, onDelayEnd, replace, to, ...rest } = props;
+  const { setIsTransitioning } = useContext(Context);
   const history = useHistory();
-  // history.location instead of second hook?
   const location = useLocation();
-  let timeout = null;
+  let timer;
 
   useEffect(() => {
     return () => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
+      clearTimeout(timer);
     };
-  }, [timeout]);
+  }, [timer]);
 
   const handleClick = (e) => {
     if (location?.pathname === to) {
       return;
     }
+
+    setIsTransitioning(true);
 
     onDelayStart(e, to);
 
