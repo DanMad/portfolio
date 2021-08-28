@@ -19,7 +19,7 @@
   transition: width 0.25s ease;
 }
 
-.#{$ns}-preloader.mounted > .#{$ns}-preloader__track {
+.#{$ns}-preloader.ready > .#{$ns}-preloader__track {
   width: 100%;
 }
 
@@ -32,7 +32,7 @@
   @include display-p3(background-color, #f55252);
 }
 
-.#{$ns}-preloader.mounted .#{$ns}-preloader__bar {
+.#{$ns}-preloader.ready .#{$ns}-preloader__bar {
   animation: loading 1.5s ease infinite 0.25s;
 }
 

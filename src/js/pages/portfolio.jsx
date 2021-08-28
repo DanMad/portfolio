@@ -1,15 +1,14 @@
 import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Context from '../components/context';
 import Slide from '../components/slide';
 import { useEventListener } from '../utils';
-import { transitionDuration } from '../../config';
+// import { transitionDuration } from '../../config';
 
 const Portfolio = ({ match }) => {
   const history = useHistory();
-
-  const { data, isMounted, setIsMounted, setIsTransitioning } =
-    useContext(Context);
+  const { data, isReady, setIsReady } = useContext(Context);
   const projects = data.projects;
   let paths = [
     '',
@@ -17,19 +16,6 @@ const Portfolio = ({ match }) => {
   ];
 
   const [slideIndex, setSlideIndex] = useState(0);
-
-  useEffect(() => {
-    if (isMounted) {
-      setIsMounted(false);
-      setIsTransitioning(true);
-
-      const timer = setTimeout(() => {
-        history.push(`/portfolio/${paths[slideIndex]}`);
-      }, 250);
-
-      return () => clearTimeout(timer);
-    }
-  }, [slideIndex]);
 
   const handleKeyDown = (e) => {
     const isArrowKeyDown = e.keyCode === 40;
@@ -48,11 +34,25 @@ const Portfolio = ({ match }) => {
 
   useEventListener('keydown', handleKeyDown);
 
+  useEffect(() => {
+    if (!isReady) return;
+
+    setIsReady(false);
+
+    const timer = setTimeout(() => {
+      history.push(match.path + '/' + paths[slideIndex]);
+    }, 250);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [slideIndex]);
+
   return (
     <>
       <Route
         exact
-        path={match.url}
+        path={match.path}
         render={() => (
           <Slide description="Testing, 1... 2... 3..." name="Hello World!" />
         )}
@@ -66,6 +66,12 @@ const Portfolio = ({ match }) => {
       ))}
     </>
   );
+};
+
+Portfolio.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export { Portfolio as default };

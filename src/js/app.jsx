@@ -7,67 +7,58 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import Context from './components/context';
+import Preloader from './components/preloader';
+import Footer from './layouts/footer';
+import Nav from './layouts/nav';
 import About from './pages/about';
 import Contact from './pages/contact';
 import NotFound from './pages/not-found';
 import Portfolio from './pages/portfolio';
-import Footer from './layouts/footer';
-import Nav from './layouts/nav';
-import Context from './components/context';
-import Preloader from './components/preloader';
 import { copyrightDate, name, namespace as ns, pages, social } from '../config';
 import '../scss/styles.scss';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  // the following two states could probably become one; isVisbile, setIsVisible
-  const [isMounted, setIsMounted] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const [data, setdata] = useState();
 
   useEffect(() => {
-    if (isLoading) {
-      setIsMounted(true);
+    if (!isLoading) return;
 
-      let timer;
+    let timer;
 
-      fetch('/api/index.json', {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+    setIsReady(true);
+
+    fetch('/api/index.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((response) => {
+        // Mocked response time.
+        return new Promise((resolve) => {
+          timer = setTimeout(() => {
+            resolve(response.json());
+          }, 3000);
+        });
       })
-        .then((response) => {
-          // Mocked response time.
-          return new Promise((resolve) => {
-            timer = setTimeout(() => {
-              resolve(response.json());
-            }, 3000);
-          });
-        })
-        .then((json) => {
-          setdata(json);
-          setIsMounted(false);
-        })
-        .catch((error) => console.error(error));
+      .then((json) => {
+        setdata(json);
+        setIsReady(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-      return () => {
-        clearTimeout(timer);
-      };
-    }
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isLoading]);
 
   return (
-    <Context.Provider
-      value={{
-        data,
-        isMounted,
-        isTransitioning,
-        setIsLoading,
-        setIsMounted,
-        setIsTransitioning,
-      }}
-    >
+    <Context.Provider value={{ data, isReady, setIsLoading, setIsReady }}>
       {isLoading ? (
         <Preloader />
       ) : (

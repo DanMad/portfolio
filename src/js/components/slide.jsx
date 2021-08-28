@@ -7,16 +7,13 @@ import { BEM } from '../utils';
 const { block, element } = BEM('slide');
 
 const Slide = (props) => {
-  const { data, isMounted, setIsMounted, setIsTransitioning } =
-    useContext(Context);
+  const { data, isReady, setIsReady } = useContext(Context);
+  const classNames = isReady ? block() + ' mounted' : block();
 
   useEffect(() => {
-    setIsMounted(true);
-    setIsTransitioning(false);
+    setIsReady(true);
     // setTheme happens on slide mount
   }, []);
-
-  const classNames = isMounted ? block() + ' mounted' : block();
 
   return (
     <div className={classNames}>

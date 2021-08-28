@@ -1,36 +1,31 @@
-// import { useContext } from 'react';
-import PropTypes from 'prop-types';
-// import Context from '../components/context';
 import DelayedNavLink from '../components/delayed-nav-link';
 import { BEM } from '../utils';
-import { namespace as ns } from '../../config';
+import { pages } from '../../config';
 
 const { block, element } = BEM('nav');
 
-const Nav = ({ pages }) => {
-  // const { setIsTransitioning } = useContext(Context);
+const Nav = () => {
+  const handleClick = (page) => {
+    console.log(page);
+  };
 
   return (
     <nav className={block()}>
       {pages.map((page) => (
         <DelayedNavLink
-          activeClassName={`${ns}-active`}
+          activeClassName="active"
           className={element('link')}
           exact
           key={page}
-          // onClick={handleClick}
-          to={`/${page.toKebabCase()}`}
-          type="nav"
+          onClick={() => handleClick(page)}
+          to={'/' + page.toKebabCase()}
         >
           {page.toTitleCase()}
         </DelayedNavLink>
       ))}
+      <div className={element('underline')} />
     </nav>
   );
-};
-
-Nav.propTypes = {
-  pages: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export { Nav as default };

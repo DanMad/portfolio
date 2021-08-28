@@ -3,63 +3,44 @@ import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Context from '../components/context';
 
-// Source: https://gist.github.com/KimPaow/e900d5b9ac4aa483421c6d19f76bb296
-
 const DelayedNavLink = (props) => {
-  const { delay, onDelayStart, onDelayEnd, replace, to, ...rest } = props;
-  const { setIsTransitioning } = useContext(Context);
   const history = useHistory();
   const location = useLocation();
+  const { setIsReady } = useContext(Context);
+  const { onClick, to, ...misc } = props;
+
   let timer;
 
-  useEffect(() => {
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [timer]);
-
   const handleClick = (e) => {
-    if (location?.pathname === to) {
-      return;
-    }
-
-    setIsTransitioning(true);
-
-    onDelayStart(e, to);
-
-    if (e.defaultPrevented) {
-      return;
-    }
+    if (location.pathname === to) return;
 
     e.preventDefault();
+    setIsReady(false);
 
-    timeout = setTimeout(() => {
-      if (replace) {
-        history.replace(to);
-      } else {
-        history.push(to);
-      }
+    timer = setTimeout(() => {
+      history.push(to);
+    }, 750);
 
-      onDelayEnd(e, to);
-    }, delay);
+    onClick();
   };
 
-  return <NavLink {...rest} to={to} onClick={handleClick} />;
+  useEffect(
+    () => () => {
+      clearTimeout(timer);
+    },
+    [timer],
+  );
+
+  return <NavLink onClick={handleClick} to={to} {...misc} />;
 };
 
 DelayedNavLink.propTypes = {
-  delay: PropTypes.number,
-  onDelayStart: PropTypes.func,
-  onDelayEnd: PropTypes.func,
-  replace: PropTypes.bool,
-  to: PropTypes.string,
+  onClick: PropTypes.func,
+  to: PropTypes.string.isRequired,
 };
 
 DelayedNavLink.defaultProps = {
-  replace: false,
-  delay: 750,
-  onDelayStart: () => {},
-  onDelayEnd: () => {},
+  onClick: () => {},
 };
 
 export { DelayedNavLink as default };

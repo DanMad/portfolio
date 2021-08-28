@@ -5,15 +5,12 @@ import { BEM } from '../utils';
 const { block, element } = BEM('preloader');
 
 const Preloader = () => {
-  const { isMounted, setIsLoading } = useContext(Context);
+  const { isReady, setIsLoading } = useContext(Context);
+  const classNames = block() + (isReady ? ' ready' : '');
 
   const handleTransitionEnd = () => {
-    if (!isMounted) {
-      setIsLoading(false);
-    }
+    if (!isReady) setIsLoading(false);
   };
-
-  const classNames = isMounted ? block() + ' mounted' : block();
 
   return (
     <div className={classNames} onTransitionEnd={handleTransitionEnd}>
