@@ -71,11 +71,11 @@ const App = () => {
             <Route component={Portfolio} path="/portfolio" />
             <Route component={NotFound} />
           </Switch>
-          <Footer
+          {/* <Footer
             copyrightDate={copyrightDate}
             name={name.full}
             social={social}
-          />
+          /> */}
         </Router>
       )}
     </Context.Provider>

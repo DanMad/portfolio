@@ -1,0 +1,41 @@
+@import '../utils/tokens';
+@import '../functions/to-rem';
+@import '../mixins/center';
+@import '../mixins/display-p3';
+
+.#{$ns}-nav {
+  position: fixed;
+  bottom: env(safe-area-inset-bottom);
+  left: env(safe-area-inset-left);
+  height: to-rem(80px);
+  width: 100%;
+}
+
+.#{$ns}-nav__inner {
+  position: relative;
+  @include center;
+}
+
+.#{$ns}-nav__link {
+  margin-right: to-rem(24px);
+  @include display-p3(color, #000);
+  font-size: to-rem(14px);
+  font-weight: 600;
+  line-height: to-rem(48px);
+  text-decoration: none;
+}
+
+.#{$ns}-nav__link:last-of-type {
+  margin-right: 0;
+}
+
+.#{$ns}-nav__underline {
+  position: absolute;
+  bottom: to-rem(10px);
+  transform: translateX(-50%);
+  height: to-rem(2px);
+  border-radius: to-rem(1px);
+  @include display-p3(background-color, #f55252);
+  transition: left 300ms cubic-bezier(0.6, 0, 0.5, 1.4), width 300ms ease;
+  pointer-events: none;
+}
