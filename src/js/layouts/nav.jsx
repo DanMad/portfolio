@@ -32,16 +32,23 @@ const Nav = () => {
 
     let left = 0;
 
-    for (let i = 0; i <= activeLinkIndex; i++) {
-      if (i !== activeLinkIndex) {
-        left += refs.current[i].offsetWidth + 24;
-      } else {
-        left += refs.current[i].offsetWidth / 2;
+    // This needs to be in place for '/' url (as opposed to '/portfolio)
+    if (activeLinkIndex !== -1) {
+      for (let i = 0; i <= activeLinkIndex; i++) {
+        if (i !== activeLinkIndex) {
+          left += refs.current[i].offsetWidth + 24;
+        } else {
+          left += refs.current[i].offsetWidth / 2;
+        }
       }
-    }
+      setUnderlineLeft(left);
+      setUnderlineWidth(refs.current[activeLinkIndex].offsetWidth);
+    } else {
+      left += refs.current[0].offsetWidth / 2;
 
-    setUnderlineLeft(left);
-    setUnderlineWidth(refs.current[activeLinkIndex].offsetWidth);
+      setUnderlineLeft(left);
+      setUnderlineWidth(refs.current[0].offsetWidth);
+    }
   }, []);
 
   return (
