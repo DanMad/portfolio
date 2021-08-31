@@ -1,79 +1,68 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import Context from '../components/context';
 import DelayedNavLink from '../components/delayed-nav-link';
 import { BEM } from '../utils';
-import { pages } from '../../config';
 
 const { block, element } = BEM('nav');
 
 const Nav = () => {
-  const refs = useRef([]);
-  const [underlineLeft, setUnderlineLeft] = useState();
-  const [underlineWidth, setUnderlineWidth] = useState();
+  const { data } = useContext(Context);
+  const links = useRef([]);
+  const [strokeStyles, setStrokeStyles] = useState();
 
-  const handleClick = (activeLinkIndex) => {
+  const toStrokeStyles = (linkIndex) => {
+    const width = links.current[linkIndex].offsetWidth;
     let left = 0;
 
-    for (let i = 0; i <= activeLinkIndex; i++) {
-      if (i !== activeLinkIndex) {
-        left += refs.current[i].offsetWidth + 24;
+    for (let i = 0; i <= linkIndex; i++) {
+      if (i === linkIndex) {
+        left += links.current[i].offsetWidth / 2;
       } else {
-        left += refs.current[i].offsetWidth / 2;
+        left += links.current[i].offsetWidth + 24;
       }
     }
 
-    setUnderlineLeft(left);
-    setUnderlineWidth(refs.current[activeLinkIndex].offsetWidth);
+    return {
+      left,
+      width,
+    };
+  };
+
+  const handleClick = (linkIndex) => {
+    const styles = toStrokeStyles(linkIndex);
+
+    setStrokeStyles(styles);
   };
 
   useEffect(() => {
-    const activeLinkIndex = refs.current.findIndex((ref) =>
-      ref.className.includes('active'),
+    const activeLink = links.current.findIndex((link) =>
+      link.className.includes('active'),
     );
+    const linkIndex = activeLink !== -1 ? activeLink : 0;
+    const styles = toStrokeStyles(linkIndex);
 
-    let left = 0;
-
-    // This needs to be in place for '/' url (as opposed to '/portfolio)
-    if (activeLinkIndex !== -1) {
-      for (let i = 0; i <= activeLinkIndex; i++) {
-        if (i !== activeLinkIndex) {
-          left += refs.current[i].offsetWidth + 24;
-        } else {
-          left += refs.current[i].offsetWidth / 2;
-        }
-      }
-      setUnderlineLeft(left);
-      setUnderlineWidth(refs.current[activeLinkIndex].offsetWidth);
-    } else {
-      left += refs.current[0].offsetWidth / 2;
-
-      setUnderlineLeft(left);
-      setUnderlineWidth(refs.current[0].offsetWidth);
-    }
+    setStrokeStyles(styles);
   }, []);
+
+  const pageNames = data.pages.map((page) => page.name);
 
   return (
     <nav className={block()}>
       <div className={element('inner')}>
-        {pages.map((page, i) => (
+        {pageNames.map((pageName, i) => (
           <DelayedNavLink
             activeClassName="active"
             className={element('link')}
             exact
-            key={page}
+            key={pageName}
             onClick={() => handleClick(i)}
-            innerRef={(ref) => (refs.current[i] = ref)}
-            to={'/' + page.toKebabCase()}
+            innerRef={(link) => (links.current[i] = link)}
+            to={'/' + pageName.toKebabCase()}
           >
-            {page.toTitleCase()}
+            {pageName.toTitleCase()}
           </DelayedNavLink>
         ))}
-        <div
-          className={element('underline')}
-          style={{
-            left: underlineLeft,
-            width: underlineWidth,
-          }}
-        />
+        <div className={element('stroke')} style={strokeStyles} />
       </div>
     </nav>
   );

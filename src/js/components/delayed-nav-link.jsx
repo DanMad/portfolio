@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import { useContext, useEffect } from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Context from '../components/context';
 
 const DelayedNavLink = (props) => {

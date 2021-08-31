@@ -15,8 +15,10 @@ import About from './pages/about';
 import Contact from './pages/contact';
 import NotFound from './pages/not-found';
 import Portfolio from './pages/portfolio';
-import { copyrightDate, name, namespace as ns, pages, social } from '../config';
+import { BEM } from './utils';
 import '../scss/styles.scss';
+
+const { block } = BEM('app');
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +65,7 @@ const App = () => {
         <Preloader />
       ) : (
         <Router>
-          <Nav pages={pages} />
+          <Nav />
           <Switch>
             <Redirect exact from="/" to="/portfolio" />
             <Route component={About} path="/about" />
@@ -71,15 +73,11 @@ const App = () => {
             <Route component={Portfolio} path="/portfolio" />
             <Route component={NotFound} />
           </Switch>
-          {/* <Footer
-            copyrightDate={copyrightDate}
-            name={name.full}
-            social={social}
-          /> */}
+          <Footer />
         </Router>
       )}
     </Context.Provider>
   );
 };
 
-render(<App />, document.querySelector(`.${ns}-app`));
+render(<App />, document.querySelector('.' + block()));

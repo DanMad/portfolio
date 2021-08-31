@@ -4,7 +4,7 @@ import name from './name';
 import namespace from './namespace';
 import pages from './pages';
 import social from './social';
-import transitionDuration from './transition-duration';
+// import transitionDuration from './transition-duration';
 
 const config = {
   address,
@@ -13,7 +13,7 @@ const config = {
   namespace,
   pages,
   social,
-  transitionDuration,
+  // transitionDuration,
 };
 
 export {
@@ -24,5 +24,5 @@ export {
   namespace,
   pages,
   social,
-  transitionDuration,
+  // transitionDuration,
 };

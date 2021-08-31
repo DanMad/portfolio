@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Context from '../components/context';
 import Slide from '../components/slide';
 import { useEventListener } from '../utils';

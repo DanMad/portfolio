@@ -113,16 +113,16 @@
   ],
   "pages": [
     {
+      "content": "<h1>The Things I Make and Do</h1><p>Have a gander...</p>",
+      "name": "portfolio"
+    },
+    {
       "content": "<p>A little about me...</p>",
       "name": "about"
     },
     {
       "content": "<p>How to contact me...</p>",
       "name": "contact"
-    },
-    {
-      "content": "<h1>The Things I Make and Do</h1><p>Have a gander...</p>",
-      "name": "portfolio"
     }
   ],
   "projects": [

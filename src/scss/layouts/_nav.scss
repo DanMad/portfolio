@@ -29,7 +29,7 @@
   margin-right: 0;
 }
 
-.#{$ns}-nav__underline {
+.#{$ns}-nav__stroke {
   position: absolute;
   bottom: to-rem(10px);
   transform: translateX(-50%);
