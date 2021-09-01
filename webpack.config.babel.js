@@ -110,9 +110,9 @@ const webpackConfig = (env) => {
     return {
       ...commonWebpackConfig,
       devServer: {
-        contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
         port: 3000,
+        static: path.join(__dirname, './dist'),
       },
       mode: 'development',
       output: {
