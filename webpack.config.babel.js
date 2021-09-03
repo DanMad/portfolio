@@ -61,39 +61,22 @@ const commonWebpackConfig = {
     new CopyWebpackPlugin({
       patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
-    new HtmlWebpackPlugin({
-      ...commonHtmlWebpackConfig,
-      filename: './index.html',
-      meta: {
-        'og:image': '/images/index.png',
-      },
-      templateParameters: {
-        namespace,
-        title: name.full.toTitleCase(),
-      },
+    ...pages.map((page) => {
+      const dirname = 'dirname' in page ? page.dirname : './';
+      const filename = 'filename' in page ? page.filename : 'index.html';
+      const fullName = name.full.toTitleCase();
+      const pageTitle = page.title.toTitleCase();
+
+      return new HtmlWebpackPlugin({
+        ...commonHtmlWebpackConfig,
+        filename: dirname + filename,
+        templateParameters: {
+          name: fullName,
+          namespace,
+          title: pageTitle + ' | ' + fullName,
+        },
+      });
     }),
-    new HtmlWebpackPlugin({
-      ...commonHtmlWebpackConfig,
-      filename: './404.html',
-      templateParameters: {
-        namespace,
-        title: `Uh-oh! | ${name.full}`.toTitleCase(),
-      },
-    }),
-    ...pages.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          ...commonHtmlWebpackConfig,
-          filename: `./${page.toKebabCase()}/index.html`,
-          meta: {
-            'og:image': `/images/${page}.png`,
-          },
-          templateParameters: {
-            namespace,
-            title: `${page} | ${name.full}`.toTitleCase(),
-          },
-        }),
-    ),
   ],
   resolve: {
     alias: {

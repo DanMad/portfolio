@@ -130,7 +130,7 @@
       "colors": {
         "accent": "#f0f",
         "lighting": "#ff0",
-        "surface": "#f0f",
+        "surface": "#0a0f17",
         "surfaceAlt": "#ff0"
       },
       "content": "<h1>A Galaxy Far, Far Away</h1><p>Paragraph...</p>",
@@ -142,7 +142,7 @@
       "colors": {
         "accent": "#0ff",
         "lighting": "#ff0",
-        "surface": "#f0f",
+        "surface": "#f6f6f8",
         "surfaceAlt": "#ff0"
       },
       "content": "<h1>OCDS</h1><p>Paragraph...</p>",

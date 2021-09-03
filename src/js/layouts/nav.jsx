@@ -1,45 +1,27 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import Context from '../components/context';
 import DelayedNavLink from '../components/delayed-nav-link';
-import { BEM } from '../utils';
+import { BEM, toStrokeStyles } from '../utils';
 
 const { block, element } = BEM('nav');
 
 const Nav = () => {
   const { data } = useContext(Context);
-  const links = useRef([]);
+  const linkRefs = useRef([]);
   const [strokeStyles, setStrokeStyles] = useState();
 
-  const toStrokeStyles = (linkIndex) => {
-    const width = links.current[linkIndex].offsetWidth;
-    let left = 0;
-
-    for (let i = 0; i <= linkIndex; i++) {
-      if (i === linkIndex) {
-        left += links.current[i].offsetWidth / 2;
-      } else {
-        left += links.current[i].offsetWidth + 24;
-      }
-    }
-
-    return {
-      left,
-      width,
-    };
-  };
-
   const handleClick = (linkIndex) => {
-    const styles = toStrokeStyles(linkIndex);
+    const styles = toStrokeStyles(linkIndex, linkRefs);
 
     setStrokeStyles(styles);
   };
 
   useEffect(() => {
-    const activeLink = links.current.findIndex((link) =>
+    const activeLink = linkRefs.current.findIndex((link) =>
       link.className.includes('active'),
     );
     const linkIndex = activeLink !== -1 ? activeLink : 0;
-    const styles = toStrokeStyles(linkIndex);
+    const styles = toStrokeStyles(linkIndex, linkRefs);
 
     setStrokeStyles(styles);
   }, []);
@@ -56,7 +38,7 @@ const Nav = () => {
             exact
             key={pageName}
             onClick={() => handleClick(i)}
-            innerRef={(link) => (links.current[i] = link)}
+            innerRef={(linkRef) => (linkRefs.current[i] = linkRef)}
             to={'/' + pageName.toKebabCase()}
           >
             {pageName.toTitleCase()}

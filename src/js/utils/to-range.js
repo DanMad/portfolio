@@ -1,13 +1,13 @@
-const toRange = (start, end) => {
+const toRange = (start, end, separator = '–') => {
   if (start === end) {
-    return `${end}`;
+    return '' + end;
   }
 
   if (start > end) {
-    return `${end}–${start}`;
+    return end + separator + start;
   }
 
-  return `${start}–${end}`;
+  return start + separator + end;
 };
 
 export { toRange as default };

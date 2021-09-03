@@ -3,13 +3,23 @@
   <head>
     <title><%= title %></title>
     <meta charset="UTF-8" />
-    <meta content="Daniel Maddison's Portfolio" name="description" />
+    <meta content="<%= name %>'s Portfolio" name="description" />
+    <meta content="The things I make and do." name="og:description" />
+    <meta content="./images/open-graph/image.png" name="og:image" />
+    <meta content="<%= name %>'s Portfolio" name="og:title" />
+    <meta content="website" name="og:type" />
     <!-- document.querySelector('meta[name=theme-color]') -->
     <meta content="#0f0" name="theme-color" />
     <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
   </head>
   <body>
     <div class="<%= namespace %>-app"></div>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <h1>Hi there! 👋</h1>
+      <p>
+        You're going to need to enable JavaScript so that my portfolio can do
+        its thing...
+      </p>
+    </noscript>
   </body>
 </html>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Context from '../components/context';
 import Heading from './heading';
 import { BEM } from '../utils';
+import { namespace as ns } from '../../config';
 
 const { block, element } = BEM('slide');
 
@@ -12,7 +13,11 @@ const Slide = (props) => {
 
   useEffect(() => {
     setIsReady(true);
+
     // setTheme happens on slide mount
+    if (!props.colors) return;
+    const app = document.querySelector(`.${ns}-app`);
+    app.style.backgroundColor = props.colors.surface;
   }, []);
 
   return (

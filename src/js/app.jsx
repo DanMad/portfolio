@@ -21,9 +21,15 @@ import '../scss/styles.scss';
 const { block } = BEM('app');
 
 const App = () => {
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
-  const [data, setdata] = useState();
+  // const [theme, setTheme] = useState({
+  //   accent: 'rgb(245, 82, 82)',
+  //   background: 'rgb(251, 177, 177)',
+  //   backgroundAlt: 'rgb(250, 152, 152)',
+  //   lighting: 'rgba(249, 192, 6, 0.04)',
+  // });
 
   useEffect(() => {
     if (!isLoading) return;
@@ -47,8 +53,8 @@ const App = () => {
         });
       })
       .then((json) => {
-        setdata(json);
         setIsReady(false);
+        setData(json);
       })
       .catch((error) => {
         console.error(error);

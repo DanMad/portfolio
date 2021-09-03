@@ -4,6 +4,9 @@ import { copyrightDate, name, social } from '../../config';
 
 const { block, element } = BEM('footer');
 
+const copyrightYear = new Date(copyrightDate).getFullYear();
+const currentYear = new Date().getFullYear();
+
 const Footer = () => (
   <footer className={block()}>
     <ul className={element('list')}>
@@ -22,8 +25,7 @@ const Footer = () => (
     </ul>
     <p className={element('statement')}>
       © <span className={element('copyright')}>Copyright </span>
-      {toRange(new Date(copyrightDate).getFullYear(), new Date().getFullYear())}
-      , {name.full.toTitleCase()}
+      {toRange(copyrightYear, currentYear)}, {name.full.toTitleCase()}
     </p>
   </footer>
 );

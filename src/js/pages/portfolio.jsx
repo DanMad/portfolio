@@ -12,7 +12,7 @@ const Portfolio = ({ match }) => {
   const projects = data.projects;
   let paths = [
     '',
-    ...data.projects.map((project) => project.name.replace(/\s/g, '-')),
+    ...data.projects.map((project) => project.name.toKebabCase()),
   ];
 
   const [slideIndex, setSlideIndex] = useState(0);
@@ -60,7 +60,7 @@ const Portfolio = ({ match }) => {
       {projects.map((project) => (
         <Route
           key={project.name}
-          path={match.path + '/' + project.name.replace(/\s/g, '-')}
+          path={match.path + '/' + project.name.toKebabCase()}
           render={() => <Slide {...project} />}
         />
       ))}
