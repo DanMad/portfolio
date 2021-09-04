@@ -15,7 +15,7 @@ import About from './pages/about';
 import Contact from './pages/contact';
 import NotFound from './pages/not-found';
 import Portfolio from './pages/portfolio';
-import { BEM } from './utils';
+import { BEM, hasTouchEvents } from './utils';
 import '../scss/styles.scss';
 
 const { block } = BEM('app');
@@ -30,6 +30,12 @@ const App = () => {
   //   backgroundAlt: 'rgb(250, 152, 152)',
   //   lighting: 'rgba(249, 192, 6, 0.04)',
   // });
+
+  useEffect(() => {
+    if (hasTouchEvents()) {
+      document.body.classList.add('dm-touch-events');
+    }
+  }, []);
 
   useEffect(() => {
     if (!isLoading) return;
@@ -72,6 +78,7 @@ const App = () => {
       ) : (
         <Router>
           <Nav />
+          <div>{hasTouchEvents() ? 'winning' : ''}</div>
           <Switch>
             <Redirect exact from="/" to="/portfolio" />
             <Route component={About} path="/about" />
