@@ -6,11 +6,6 @@ import path from 'path';
 import tokenImporter from 'node-sass-token-importer';
 import { address, name, namespace, pages } from './src/config';
 
-const commonHtmlWebpackConfig = {
-  inject: 'body',
-  template: path.join(__dirname, './src/html/index.html'),
-};
-
 const commonWebpackConfig = {
   entry: './src/js/app.jsx',
   module: {
@@ -67,9 +62,12 @@ const commonWebpackConfig = {
       const fullName = name.full.toTitleCase();
       const pageTitle = page.title.toTitleCase();
 
+      // inline css for preloader theme
+
       return new HtmlWebpackPlugin({
-        ...commonHtmlWebpackConfig,
+        inject: 'body',
         filename: dirname + filename,
+        template: path.join(__dirname, './src/html/index.html'),
         templateParameters: {
           name: fullName,
           namespace,
@@ -100,6 +98,7 @@ const webpackConfig = (env) => {
       mode: 'development',
       output: {
         filename: 'js/app.js',
+        publicPath: 'http://localhost:3000',
       },
     };
   }
