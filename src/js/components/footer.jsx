@@ -1,4 +1,4 @@
-import Icon from '../components/icon';
+import Icon from './icon';
 import { BEM, toRange } from '../utils';
 import { copyrightDate, name, social } from '../../config';
 

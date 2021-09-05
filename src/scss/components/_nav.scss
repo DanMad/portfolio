@@ -18,7 +18,7 @@
 
 .#{$ns}-nav__link {
   margin-right: to-rem(24px);
-  @include display-p3(color, #000);
+  color: currentColor;
   font-size: to-rem(14px);
   font-weight: 600;
   line-height: to-rem(48px);
@@ -35,7 +35,7 @@
   transform: translateX(-50%);
   height: to-rem(2px);
   border-radius: to-rem(1px);
-  @include display-p3(background-color, #f55252);
-  transition: all 300ms ease;
+  background-color: currentColor;
+  transition: left 300ms ease, width 300ms ease;
   pointer-events: none;
 }
