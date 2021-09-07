@@ -9,13 +9,13 @@ import {
 } from 'react-router-dom';
 import Context from './components/context';
 import Preloader from './components/preloader';
-import Footer from './layouts/footer';
-import Nav from './layouts/nav';
+import Footer from './components/footer';
+import Nav from './components/nav';
 import About from './pages/about';
 import Contact from './pages/contact';
 import NotFound from './pages/not-found';
 import Portfolio from './pages/portfolio';
-import { BEM, hasTouchEvents } from './utils';
+import { BEM } from './utils';
 import '../scss/styles.scss';
 
 const { block } = BEM('app');
@@ -24,18 +24,6 @@ const App = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
-  // const [theme, setTheme] = useState({
-  //   accent: 'rgb(245, 82, 82)',
-  //   background: 'rgb(251, 177, 177)',
-  //   backgroundAlt: 'rgb(250, 152, 152)',
-  //   lighting: 'rgba(249, 192, 6, 0.04)',
-  // });
-
-  useEffect(() => {
-    if (hasTouchEvents()) {
-      document.body.classList.add('dm-touch-events');
-    }
-  }, []);
 
   useEffect(() => {
     if (!isLoading) return;
@@ -78,7 +66,6 @@ const App = () => {
       ) : (
         <Router>
           <Nav />
-          <div>{hasTouchEvents() ? 'winning' : ''}</div>
           <Switch>
             <Redirect exact from="/" to="/portfolio" />
             <Route component={About} path="/about" />
@@ -86,7 +73,7 @@ const App = () => {
             <Route component={Portfolio} path="/portfolio" />
             <Route component={NotFound} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       )}
     </Context.Provider>

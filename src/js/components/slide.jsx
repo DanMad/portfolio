@@ -2,22 +2,17 @@ import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../components/context';
 import Heading from './heading';
-import { BEM } from '../utils';
-import { namespace as ns } from '../../config';
+import { BEM, setTheme } from '../utils';
 
 const { block, element } = BEM('slide');
 
 const Slide = (props) => {
-  const { data, isReady, setIsReady } = useContext(Context);
+  const { isReady, setIsReady } = useContext(Context);
   const classNames = isReady ? block() + ' mounted' : block();
 
   useEffect(() => {
     setIsReady(true);
-
-    // setTheme happens on slide mount
-    if (!props.colors) return;
-    const app = document.querySelector(`.${ns}-app`);
-    app.style.backgroundColor = props.colors.surface;
+    setTheme(props.theme);
   }, []);
 
   return (
@@ -31,16 +26,16 @@ const Slide = (props) => {
 };
 
 Slide.propTypes = {
-  colors: PropTypes.shape({
-    accent: PropTypes.string,
-    lighting: PropTypes.string,
-    surface: PropTypes.string,
-    surfaceAlt: PropTypes.string,
-  }),
   content: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
+  theme: PropTypes.shape({
+    backgroundPrimary: PropTypes.string,
+    backgroundSecondary: PropTypes.string,
+    focus: PropTypes.string,
+    lighting: PropTypes.string,
+  }),
 };
 
 export { Slide as default };
