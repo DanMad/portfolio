@@ -59,10 +59,9 @@ const commonWebpackConfig = {
     ...pages.map((page) => {
       const dirname = 'dirname' in page ? page.dirname : './';
       const filename = 'filename' in page ? page.filename : 'index.html';
+      const styles = 'styles' in page ? page.styles : '';
       const fullName = name.full.toTitleCase();
       const pageTitle = page.title.toTitleCase();
-
-      // inline css for preloader theme
 
       return new HtmlWebpackPlugin({
         inject: 'body',
@@ -72,6 +71,7 @@ const commonWebpackConfig = {
           name: fullName,
           namespace,
           title: pageTitle + ' | ' + fullName,
+          styles,
         },
       });
     }),
