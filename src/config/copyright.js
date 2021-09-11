@@ -1,0 +1,21 @@
+import { toRange } from '../js/utils';
+import name from './name';
+
+const date = '2021-08-06';
+const holder = name.full;
+
+const copyright = {
+  date,
+  holder,
+  get statement() {
+    const copyrightYear = new Date(this.date).getFullYear();
+    const currentYear = new Date().getFullYear();
+
+    return (
+      `© Copyright ${holder.toTitleCase()} ` +
+      toRange(copyrightYear, currentYear)
+    );
+  },
+};
+
+export { copyright as default };

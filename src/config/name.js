@@ -1,12 +1,15 @@
+const first = 'daniel';
+const last = 'maddison';
+
 const name = {
-  first: 'daniel',
+  first,
   get full() {
-    return `${this.first} ${this.last}`;
+    return this.first + ' ' + this.last;
   },
-  last: 'maddison',
   get initials() {
     return this.first.charAt(0) + this.last.charAt(0);
   },
+  last,
 };
 
 export { name as default };

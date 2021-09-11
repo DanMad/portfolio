@@ -2,8 +2,8 @@ import ns from './namespace';
 
 const toStyles = (bg, fg) =>
   '<style>' +
-  `.${ns}-preloader{` +
-  `background-color:${bg};` +
+  `body{` +
+  `background-color:${bg}!important;` +
   `color:${fg};` +
   '}' +
   '</style>';
@@ -18,29 +18,29 @@ const pages = [
   },
   {
     get dirname() {
-      return './' + this.title.toKebabCase() + '/';
+      return `./${this.title.toKebabCase()}/`;
     },
     title: 'about',
   },
   {
     get dirname() {
-      return './' + this.title.toKebabCase() + '/';
+      return `./${this.title.toKebabCase()}/`;
     },
     title: 'contact',
   },
   {
     get dirname() {
-      return './' + this.title.toKebabCase() + '/';
+      return `./${this.title.toKebabCase()}/`;
     },
     title: 'portfolio',
   },
   {
     get dirname() {
-      return './' + this.title.toKebabCase() + '/';
+      return `./portfolio/${this.title.toKebabCase()}/`;
     },
     title: 'a galaxy far far away',
     get styles() {
-      return toStyles('#fff', '#000');
+      return toStyles('#000', '#fff');
     },
   },
 ];
