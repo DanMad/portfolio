@@ -1,0 +1,51 @@
+@import '../utils/tokens';
+@import '../mixins/display-p3';
+
+body {
+  // Test to see if this will cause issues on standard pages that include scroll.
+  overflow: hidden;
+
+  @include display-p3(background-color, #fbb1b1);
+  @include display-p3(color, rgba(0, 0, 0, 0.81));
+  font-family: $font-family-system;
+
+  // These rules improve font antialiasing on Mac OS.
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // This rule improves text rendering.
+  text-rendering: optimizeLegibility;
+
+  // This rule removes the overlay that appears on elements when tapped in
+  // Mobile Safari.
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.#{$ns}-dark {
+  @include display-p3(color, rgba(255, 255, 255, 0.81));
+}
+
+// has mouse
+@media (any-hover: hover) {
+}
+
+.foo {
+  opacity: 0;
+  position: relative;
+  top: 50px;
+  transition: all 250ms ease;
+}
+
+.foo.mounted {
+  opacity: 1;
+  top: 0;
+}
+
+.dm-slide {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.dm-slide.mounted {
+  opacity: 1;
+}

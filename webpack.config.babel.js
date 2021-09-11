@@ -1,17 +1,13 @@
 import 'on-the-case';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import tokenImporter from 'node-sass-token-importer';
 import { address, name, namespace, pages } from './src/config';
 
-const commonHtmlWebpackConfig = {
-  inject: 'body',
-  template: path.join(__dirname, './src/html/index.html'),
-};
-
 const commonWebpackConfig = {
-  entry: './src/js/index',
+  entry: './src/js/app.jsx',
   module: {
     rules: [
       {
@@ -37,7 +33,19 @@ const commonWebpackConfig = {
       {
         exclude: /node_modules/,
         test: /\.s[ac]ss$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                importer: tokenImporter(),
+              },
+            },
+          },
+        ],
       },
     ],
   },
@@ -45,42 +53,28 @@ const commonWebpackConfig = {
     new CnameWebpackPlugin({
       domain: address.domain,
     }),
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
     }),
-    new HtmlWebpackPlugin({
-      ...commonHtmlWebpackConfig,
-      filename: './index.html',
-      meta: {
-        'og:image': '/images/index.png',
-      },
-      templateParameters: {
-        namespace,
-        title: name.full.toTitleCase(),
-      },
+    ...pages.map((page) => {
+      const dirname = 'dirname' in page ? page.dirname : './';
+      const filename = 'filename' in page ? page.filename : 'index.html';
+      const styles = 'styles' in page ? page.styles : '';
+      const fullName = name.full.toTitleCase();
+      const pageTitle = page.title.toTitleCase();
+
+      return new HtmlWebpackPlugin({
+        inject: 'body',
+        filename: dirname + filename,
+        template: path.join(__dirname, './src/html/index.html'),
+        templateParameters: {
+          name: fullName,
+          namespace,
+          title: pageTitle + ' | ' + fullName,
+          styles,
+        },
+      });
     }),
-    new HtmlWebpackPlugin({
-      ...commonHtmlWebpackConfig,
-      filename: './404.html',
-      templateParameters: {
-        namespace,
-        title: `Error | ${name.full}`.toTitleCase(),
-      },
-    }),
-    ...pages.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          ...commonHtmlWebpackConfig,
-          filename: `./${page.toKebabCase()}/index.html`,
-          meta: {
-            'og:image': `/images/${page}.png`,
-          },
-          templateParameters: {
-            namespace,
-            title: `${page} | ${name.full}`.toTitleCase(),
-          },
-        }),
-    ),
   ],
   resolve: {
     alias: {
@@ -97,13 +91,14 @@ const webpackConfig = (env) => {
     return {
       ...commonWebpackConfig,
       devServer: {
-        contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
         port: 3000,
+        static: path.join(__dirname, './dist'),
       },
       mode: 'development',
       output: {
         filename: 'js/app.js',
+        publicPath: 'http://localhost:3000',
       },
     };
   }

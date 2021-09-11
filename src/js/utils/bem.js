@@ -1,19 +1,26 @@
 import { namespace as ns } from '../../config';
 
-const BEM = (b) => {
-  const block = () => `${ns}-${b.trim()}`;
+const elementSeparator = '__';
+const modifierSeparator = '--';
 
-  const element = (e) => `${block()}__${e.trim()}`;
+const BEM = (block) => {
+  const b = () => ns + '-' + block.trim();
 
-  const modifier = (m, e) => {
-    if (!e) {
-      return `${block()}--${m.trim()}`;
+  const e = (element) => b() + elementSeparator + element.trim();
+
+  const m = (modifier, element) => {
+    if (!element) {
+      return b() + modifierSeparator + modifier.trim();
     }
 
-    return `${e.indexOf(block()) === -1 ? element(e) : e.trim()}--${m.trim()}`;
+    return (
+      (element.indexOf(b()) === -1 ? e(element) : element.trim()) +
+      modifierSeparator +
+      modifier.trim()
+    );
   };
 
-  return { block, element, modifier };
+  return { b, e, m };
 };
 
 export { BEM as default };
