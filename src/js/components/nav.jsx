@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import Context from './context';
 import DelayedNavLink from './delayed-nav-link';
-import { BEM, toStrokeStyles } from '../utils';
+import { BEM, toStrokeStyles, useEventListener } from '../utils';
 
-const { block, element } = BEM('nav');
+const { b, e } = BEM('nav');
 
 const Nav = () => {
   const { data } = useContext(Context);
@@ -16,7 +16,7 @@ const Nav = () => {
     setStrokeStyles(styles);
   };
 
-  useEffect(() => {
+  const handleStroke = () => {
     const activeLink = linkRefs.current.findIndex((link) =>
       link.className.includes('active'),
     );
@@ -24,17 +24,24 @@ const Nav = () => {
     const styles = toStrokeStyles(linkIndex, linkRefs);
 
     setStrokeStyles(styles);
+  };
+
+  useEffect(() => {
+    handleStroke();
   }, []);
+
+  // Browser Navigation buttons
+  useEventListener('popstate', handleStroke);
 
   const pageNames = data.pages.map((page) => page.name);
 
   return (
-    <nav className={block()}>
-      <div className={element('inner')}>
+    <nav className={b()}>
+      <div className={e('inner')}>
         {pageNames.map((pageName, i) => (
           <DelayedNavLink
             activeClassName="active"
-            className={element('link')}
+            className={e('link')}
             exact
             key={pageName}
             onClick={() => handleClick(i)}
@@ -44,7 +51,7 @@ const Nav = () => {
             {pageName.toTitleCase()}
           </DelayedNavLink>
         ))}
-        <div className={element('stroke')} style={strokeStyles} />
+        <div className={e('stroke')} style={strokeStyles} />
       </div>
     </nav>
   );
