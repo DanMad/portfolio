@@ -4,11 +4,11 @@ import Context from '../components/context';
 import Heading from './heading';
 import { BEM, setTheme } from '../utils';
 
-const { block, element } = BEM('slide');
+const { b, e } = BEM('slide');
 
 const Slide = (props) => {
   const { isReady, setIsReady } = useContext(Context);
-  const classNames = isReady ? block() + ' mounted' : block();
+  const classNames = isReady ? b() + ' mounted' : b();
 
   useEffect(() => {
     setIsReady(true);
@@ -17,9 +17,9 @@ const Slide = (props) => {
 
   return (
     <div className={classNames}>
-      <div className={element('inner')}>
-        <Heading className={element('name')}>{props.name}</Heading>
-        <p className={element('description')}>{props.description}</p>
+      <div className={e('inner')}>
+        <Heading className={e('name')}>{props.name}</Heading>
+        <p className={e('description')}>{props.description}</p>
       </div>
     </div>
   );

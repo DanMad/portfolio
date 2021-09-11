@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import Context from './context';
 import { BEM } from '../utils';
 
-const { block, element } = BEM('preloader');
+const { b, e } = BEM('preloader');
 
 const Preloader = () => {
   const { isReady, setIsLoading } = useContext(Context);
-  const classNames = block() + (isReady ? ' ready' : '');
+  const classNames = b() + (isReady ? ' ready' : '');
 
   const handleTransitionEnd = () => {
     if (!isReady) setIsLoading(false);
@@ -14,8 +14,8 @@ const Preloader = () => {
 
   return (
     <div className={classNames} onTransitionEnd={handleTransitionEnd}>
-      <div className={element('track')}>
-        <div className={element('bar')} />
+      <div className={e('track')}>
+        <div className={e('bar')} />
       </div>
     </div>
   );

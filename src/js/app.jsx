@@ -18,7 +18,7 @@ import Portfolio from './pages/portfolio';
 import { BEM } from './utils';
 import '../scss/styles.scss';
 
-const { block } = BEM('app');
+const { b } = BEM('app');
 
 const App = () => {
   const [data, setData] = useState();
@@ -80,4 +80,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.querySelector('.' + block()));
+render(<App />, document.querySelector('.' + b()));
