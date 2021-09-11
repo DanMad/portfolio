@@ -113,24 +113,42 @@
   ],
   "pages": [
     {
-      "html": "<h1>Heading</h1><p>Paragraph...</p>",
+      "content": "<h1>The Things I Make and Do</h1><p>Have a gander...</p>",
+      "name": "portfolio"
+    },
+    {
+      "content": "<p>A little about me...</p>",
       "name": "about"
     },
     {
-      "html": "<h1>Heading</h1><p>Paragraph...</p>",
+      "content": "<p>How to contact me...</p>",
       "name": "contact"
-    },
-    {
-      "html": "<h1>Heading</h1><p>Paragraph...</p>",
-      "name": "portfolio"
     }
   ],
   "projects": [
     {
-      "colors": {},
+      "content": "<h1>A Galaxy Far, Far Away</h1><p>Paragraph...</p>",
       "description": "A Visual Studio Code theme from a galaxy far, far away...",
-      "html": "<h1>Heading</h1><p>Paragraph...</p>",
-      "name": "a galaxy far, far away theme"
+      "image": "<svg></svg>",
+      "name": "a galaxy far far away theme",
+      "theme": {
+        "backgroundPrimary": "rgb(10, 15, 23)",
+        "backgroundSecondary": "rgb(1, 2, 3)",
+        "focus": "rgb(244, 80, 10)",
+        "lighting": "rgba(193, 10, 10, 0.03)"
+      }
+    },
+    {
+      "content": "<h1>OCDS</h1><p>Paragraph...</p>",
+      "description": "Open Colleges' Design System",
+      "image": "<svg></svg>",
+      "name": "OCDS",
+      "theme": {
+        "backgroundPrimary": "rgb(249, 248, 248)",
+        "backgroundSecondary": "rgb(236, 235, 235)",
+        "focus": "rgb(17, 160, 173)",
+        "lighting": "rgba(193, 10, 10, 0.03)"
+      }
     }
   ]
 }
