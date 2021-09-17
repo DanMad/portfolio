@@ -1,6 +1,8 @@
 import Color from 'color';
 import { namespace as ns } from '../../config';
 
+// amend so that the dfault theme is set as a fallback...
+
 const setTheme = (theme) => {
   const body = document.body;
   const lighting = document.querySelector(`.${ns}-lighting`);

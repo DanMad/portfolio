@@ -54,24 +54,19 @@ const commonWebpackConfig = {
       domain: address.domain,
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: path.join(__dirname, './src/public'), to: '.' }],
+      patterns: [{ from: path.join(__dirname, './src/static'), to: '.' }],
     }),
-    ...pages.map((page) => {
-      const dirname = 'dirname' in page ? page.dirname : './';
-      const filename = 'filename' in page ? page.filename : 'index.html';
-      const styles = 'styles' in page ? page.styles : '';
-      const fullName = name.full.toTitleCase();
-      const pageTitle = page.title.toTitleCase();
 
+    ...pages.map((page) => {
       return new HtmlWebpackPlugin({
         inject: 'body',
-        filename: dirname + filename,
+        filename: './' + page.path + page.fileName,
         template: path.join(__dirname, './src/html/index.html'),
         templateParameters: {
-          name: fullName,
+          name: name.full.toTitleCase(),
           namespace,
-          title: pageTitle + ' | ' + fullName,
-          styles,
+          styles: page.styles,
+          title: page.title + ' | ' + name.full.toTitleCase(),
         },
       });
     }),
@@ -91,14 +86,28 @@ const webpackConfig = (env) => {
     return {
       ...commonWebpackConfig,
       devServer: {
-        historyApiFallback: true,
+        historyApiFallback: {
+          rewrites: [
+            ...pages
+              .filter((page) => page.path !== '')
+              .map((page) => ({
+                from: new RegExp('/' + page.path.slice(0, -1)),
+                to: '/' + page.path + page.fileName,
+              })),
+            { from: /./, to: '/404.html' },
+          ],
+          // rewrites: [
+          //   { from: /\/portfolio\/a-galaxy-far-far-away/, to: '/portfolio/a-galaxy-far-far-away/index.html' },
+          //   { from: /./, to: '/404.html' },
+          // ]
+        },
         port: 3000,
-        static: path.join(__dirname, './dist'),
+        static: ['src/static'],
       },
       mode: 'development',
       output: {
         filename: 'js/app.js',
-        publicPath: 'http://localhost:3000',
+        publicPath: '/',
       },
     };
   }
