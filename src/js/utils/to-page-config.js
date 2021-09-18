@@ -1,7 +1,7 @@
 import 'on-the-case';
 import defaultTheme from '../../config/theme';
 import toCSSVariable from './to-css-variable';
-// import toDisplayP3 from './to-display-p3';
+import toDisplayP3 from './to-display-p3';
 
 const toPageConfig = (name, options = {}) => {
   const pageConfig = {
@@ -33,15 +33,14 @@ const toPageConfig = (name, options = {}) => {
     pageConfig.styles += toCSSVariable(themeVar) + `:${theme[themeVar]};`;
   });
 
-  // pageConfig.styles += '}@supports(color:color(display-p3 1 1 1)){:root{';
+  pageConfig.styles += '}@supports(color:color(display-p3 1 1 1)){:root{';
 
-  // Object.keys(theme).map((themeVar) => {
-  //   pageConfig.styles += toCSSVariable(themeVar) + `:${theme[themeVar]};`;
-  //   // pageConfig.styles +=
-  //   //   toCSSVariable(themeVar) + `:${toDisplayP3(theme[themeVar])};`;
-  // });
+  Object.keys(theme).map((themeVar) => {
+    pageConfig.styles +=
+      toCSSVariable(themeVar) + `:${toDisplayP3(theme[themeVar])};`;
+  });
 
-  pageConfig.styles += '}</style>';
+  pageConfig.styles += '}}</style>';
 
   return pageConfig;
 };
