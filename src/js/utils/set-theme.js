@@ -1,27 +1,33 @@
 import Color from 'color';
-import ns from '../../config/namespace';
+import defaultTheme from '../../config/theme';
+import hasDisplayP3Support from './has-display-p3-support';
+import toCSSVariable from './to-css-variable';
+import toDisplayP3 from './to-display-p3';
 
-// amend so that the dfault theme is set as a fallback...
+const setTheme = (theme = defaultTheme) => {
+  const root = document.documentElement;
 
-const setTheme = (theme) => {
-  const body = document.body;
-  const lighting = document.querySelector(`.${ns}-lighting`);
+  Object.keys(theme).map((themeToken) => {
+    const themeVar = toCSSVariable(themeToken);
+    let themeColor = hasDisplayP3Support()
+      ? toDisplayP3(theme[themeToken])
+      : theme[themeToken];
 
-  if (typeof theme === 'undefined') {
-    body.classList.remove(ns + '-dark');
-    body.style.background = '';
-    lighting.style.background = '';
+    root.style.setProperty(themeVar, themeColor);
+  });
+
+  const foregroundPrimary = toCSSVariable('foreground-primary');
+  // const foregroundSecondary = toCSSVariable('foreground-secondary');
+  const isDark = Color(theme.backgroundPrimary).isDark();
+
+  if (isDark) {
+    const white = toCSSVariable('white');
+
+    root.style.setProperty(foregroundPrimary, white);
   } else {
-    const isDark = Color(theme.backgroundPrimary).isDark();
+    const black = toCSSVariable('black');
 
-    if (isDark) {
-      body.classList.add(ns + '-dark');
-    } else {
-      body.classList.remove(ns + '-dark');
-    }
-
-    body.style.background = theme.backgroundPrimary;
-    lighting.style.background = theme.lighting;
+    root.style.setProperty(foregroundPrimary, black);
   }
 };
 
