@@ -5,6 +5,7 @@ import name from './name';
 import namespace from './namespace';
 import pages from './pages';
 import social from './social';
+import theme from './theme';
 
 const config = {
   address,
@@ -14,6 +15,7 @@ const config = {
   namespace,
   pages,
   social,
+  theme,
 };
 
 export {
@@ -25,4 +27,5 @@ export {
   namespace,
   pages,
   social,
+  theme,
 };

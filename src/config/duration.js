@@ -1,13 +1,13 @@
 const unit = 100;
 
 const duration = {
-  get pageIn() {
+  get pageTransitionIn() {
     return this.unit * 3;
   },
-  get pageOut() {
-    return this.pageIn + this.themeChange;
+  get pageTransitionOut() {
+    return this.pageTransitionIn + this.themeTransition;
   },
-  get themeChange() {
+  get themeTransition() {
     return this.unit * 2;
   },
   unit,

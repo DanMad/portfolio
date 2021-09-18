@@ -20,7 +20,7 @@ const DelayedNavLink = (props) => {
 
     timer = setTimeout(() => {
       history.push(to);
-    }, duration.pageOut);
+    }, duration.pageTransitionOut);
 
     onClick();
   };

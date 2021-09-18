@@ -1,3 +1,4 @@
+import 'on-the-case';
 import { toRange } from '../js/utils';
 import name from './name';
 
