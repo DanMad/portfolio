@@ -1,20 +1,22 @@
 import Color from 'color';
 
-const toDisplayP3 = (color) => {
-  const r = Color(color).red();
-  const g = Color(color).green();
-  const b = Color(color).blue();
-  const a = Color(color).alpha();
+const toDisplayP3 = (rgb) => {
+  const color = Color(rgb);
 
-  let statement = `color(display-p3 ${r / 255} ${g / 255} ${b / 255}`;
+  const red = color.red();
+  const green = color.green();
+  const blue = color.blue();
+  const alpha = color.alpha();
 
-  if (a !== 1) {
-    statement += ` / ${a * 100}%`;
+  let displayP3 = `color(display-p3 ${red / 255} ${green / 255} ${blue / 255}`;
+
+  if (alpha !== 1) {
+    displayP3 += ` / ${alpha * 100}%`;
   }
 
-  statement += ')';
+  displayP3 += ')';
 
-  return statement;
+  return displayP3;
 };
 
 export { toDisplayP3 as default };

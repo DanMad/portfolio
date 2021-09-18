@@ -1,5 +1,5 @@
 import 'on-the-case';
-import { namespace as ns } from '../../config';
+import ns from '../../config/namespace';
 
 const elementSeparator = '__';
 const modifierSeparator = '--';

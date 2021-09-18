@@ -1,5 +1,5 @@
 import 'on-the-case';
-import { toRange } from '../js/utils';
+import toRange from '../js/utils/to-range';
 import name from './name';
 
 const date = '2021-08-06';

@@ -1,5 +1,5 @@
 import Color from 'color';
-import { namespace as ns } from '../../config';
+import ns from '../../config/namespace';
 
 // amend so that the dfault theme is set as a fallback...
 
