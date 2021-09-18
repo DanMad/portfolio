@@ -1,13 +1,15 @@
 const toRange = (start, end, separator = '–') => {
+  let range;
+
   if (start === end) {
-    return '' + end;
+    range = '' + end;
+  } else if (start > end) {
+    range = end + separator + start;
+  } else {
+    range = start + separator + end;
   }
 
-  if (start > end) {
-    return end + separator + start;
-  }
-
-  return start + separator + end;
+  return range;
 };
 
 export { toRange as default };
