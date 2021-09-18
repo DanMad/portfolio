@@ -2,14 +2,14 @@ import Icon from './icon';
 import { BEM } from '../utils';
 import { copyright, social } from '../../config';
 
-const { block, element } = BEM('footer');
+const { toBlock, toElement } = BEM('footer');
 const Footer = () => (
-  <footer className={block()}>
-    <ul className={element('list')}>
+  <footer className={toBlock()}>
+    <ul className={toElement('list')}>
       {Object.keys(social).map((platform) => (
-        <li className={element('item')} key={platform}>
+        <li className={toElement('item')} key={platform}>
           <a
-            className={element('link')}
+            className={toElement('link')}
             href={social[platform]}
             rel="noopener noreferrer"
             target="_blank"
@@ -19,7 +19,7 @@ const Footer = () => (
         </li>
       ))}
     </ul>
-    <p className={element('statement')}>{copyright.statement}</p>
+    <p className={toElement('statement')}>{copyright.statement}</p>
   </footer>
 );
 

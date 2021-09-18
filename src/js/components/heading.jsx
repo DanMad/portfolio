@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { BEM } from '../utils';
 
-const { b } = BEM('h');
+const { toBlock } = BEM('h');
 
 const Heading = ({ children, className, level = 1 }) => {
   const Tag = 'h' + level;
   const classNames = className?.length
-    ? `${b() + level} ${className}`
-    : b() + level;
+    ? `${toBlock() + level} ${className}`
+    : toBlock() + level;
 
   return (
     <Tag

@@ -1,26 +1,34 @@
+import 'on-the-case';
 import { namespace as ns } from '../../config';
 
 const elementSeparator = '__';
 const modifierSeparator = '--';
 
 const BEM = (block) => {
-  const b = () => ns + '-' + block.trim();
+  const toBlock = () => ns + '-' + block.toKebabCase().trim();
 
-  const e = (element) => b() + elementSeparator + element.trim();
+  const toElement = (element) =>
+    toBlock() + elementSeparator + element.toKebabCase().trim();
 
-  const m = (modifier, element) => {
+  const toModifier = (modifier, element) => {
+    let blockAndElement;
+
     if (!element) {
-      return b() + modifierSeparator + modifier.trim();
+      blockAndElement = toBlock();
+    } else if (element.indexOf(toBlock()) === -1) {
+      blockAndElement = toElement(element);
+    } else {
+      blockAndElement = element.toKebabCase().trim();
     }
 
-    return (
-      (element.indexOf(b()) === -1 ? e(element) : element.trim()) +
-      modifierSeparator +
-      modifier.trim()
-    );
+    return blockAndElement + modifierSeparator + modifier.toKebabCase().trim();
   };
 
-  return { b, e, m };
+  return {
+    toBlock,
+    toElement,
+    toModifier,
+  };
 };
 
 export { BEM as default };

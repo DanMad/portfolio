@@ -3,7 +3,7 @@ import Context from './context';
 import DelayedNavLink from './delayed-nav-link';
 import { BEM, toStrokeStyles, useEventListener } from '../utils';
 
-const { b, e } = BEM('nav');
+const { toBlock, toElement } = BEM('nav');
 
 const Nav = () => {
   const { data } = useContext(Context);
@@ -36,12 +36,12 @@ const Nav = () => {
   const pageNames = data.pages.map((page) => page.name);
 
   return (
-    <nav className={b()}>
-      <div className={e('inner')}>
+    <nav className={toBlock()}>
+      <div className={toElement('inner')}>
         {pageNames.map((pageName, i) => (
           <DelayedNavLink
             activeClassName="active"
-            className={e('link')}
+            className={toElement('link')}
             exact
             key={pageName}
             onClick={() => handleClick(i)}
@@ -51,7 +51,7 @@ const Nav = () => {
             {pageName.toTitleCase()}
           </DelayedNavLink>
         ))}
-        <div className={e('stroke')} style={strokeStyles} />
+        <div className={toElement('stroke')} style={strokeStyles} />
       </div>
     </nav>
   );
