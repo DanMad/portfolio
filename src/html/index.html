@@ -13,6 +13,8 @@
     <%= styles %>
   </head>
   <body>
+    <div aria-hidden="true" class="<%= namespace %>-body-double"></div>
+    <div class="<%= namespace %>-app"></div>
     <noscript>
       <h1>Hi! 👋</h1>
       <p>
@@ -20,7 +22,5 @@
         its thing...
       </p>
     </noscript>
-    <div class="<%= namespace %>-app"></div>
-    <div aria-hidden="true" class="<%= namespace %>-lighting"></div>
   </body>
 </html>
