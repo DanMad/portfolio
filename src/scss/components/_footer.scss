@@ -1,4 +1,4 @@
-@import '../utils/tokens';
+@import '../tokens/namespace';
 @import '../functions/to-rem';
 @import '../mixins/breakpoint';
 @import '../mixins/center';
@@ -30,7 +30,7 @@
 }
 
 .#{$ns}-footer__link > .#{$ns}-icon {
-  @include center;
+  @include center();
   height: to-rem(16px);
   width: to-rem(16px);
   pointer-events: none;
@@ -115,58 +115,58 @@
 }
 
 @include breakpoint(m, height) {
-  .#{$namespace}-footer {
+  .#{$ns}-footer {
     height: to-rem(136px);
   }
 
-  .#{$namespace}-footer__statement {
+  .#{$ns}-footer__statement {
     font-size: to-rem(12px);
   }
 
   @include breakpoint(s) {
-    .#{$namespace}-footer {
+    .#{$ns}-footer {
       height: to-rem(100px);
     }
   }
 
   @include breakpoint(l) {
-    .#{$namespace}-footer__list {
+    .#{$ns}-footer__list {
       left: to-rem(92px);
     }
 
-    .#{$namespace}-footer__statement {
+    .#{$ns}-footer__statement {
       right: to-rem(104px);
     }
   }
 }
 
 @include breakpoint(l, height) {
-  .#{$namespace}-footer {
+  .#{$ns}-footer {
     height: to-rem(176px);
   }
 
-  .#{$namespace}-footer__statement {
+  .#{$ns}-footer__statement {
     font-size: to-rem(13px);
   }
 
   @include breakpoint(s) {
-    .#{$namespace}-footer {
+    .#{$ns}-footer {
       height: to-rem(100px);
     }
   }
 
   @include breakpoint(m) {
-    .#{$namespace}-footer {
+    .#{$ns}-footer {
       height: to-rem(140px);
     }
   }
 
   @include breakpoint(l) {
-    .#{$namespace}-footer__list {
+    .#{$ns}-footer__list {
       left: to-rem(92px);
     }
 
-    .#{$namespace}-footer__statement {
+    .#{$ns}-footer__statement {
       right: to-rem(104px);
     }
   }

@@ -1,18 +1,18 @@
 @use 'sass:math';
 
-@function to-display-p3($color) {
-  $r: red($color);
-  $g: green($color);
-  $b: blue($color);
-  $a: alpha($color);
+@function to-display-p3($rgb) {
+  $red: red($rgb);
+  $green: green($rgb);
+  $blue: blue($rgb);
+  $alpha: alpha($rgb);
 
-  $statement: 'color(display-p3 #{math.div($r, 255)} #{math.div($g, 255)} #{math.div($b, 255)}';
+  $display-p3: 'color(display-p3 #{math.div($red, 255)} #{math.div($green, 255)} #{math.div($blue, 255)}';
 
-  @if $a != 1 {
-    $statement: $statement + ' / #{$a * 100%}';
+  @if $alpha != 1 {
+    $display-p3: $display-p3 + ' / #{$alpha * 100%}';
   }
 
-  $statement: $statement + ')';
+  $display-p3: $display-p3 + ')';
 
-  @return unquote($statement);
+  @return unquote($display-p3);
 }

@@ -1,10 +1,9 @@
-@import '../utils/tokens';
+@import '../tokens/namespace';
 @import '../functions/to-rem';
 @import '../mixins/center';
-@import '../mixins/display-p3';
 
 .#{$ns}-preloader {
-  @include center;
+  @include center();
   width: 50%;
   max-width: to-rem(160px);
 }
@@ -15,7 +14,7 @@
   height: to-rem(2px);
   width: to-rem(8px);
   border-radius: to-rem(1px);
-  @include display-p3(background-color, #fa9f9f);
+  background-color: to-theme-var(background-tertiary);
   transition: width 0.25s ease;
 }
 
@@ -29,7 +28,7 @@
   height: 100%;
   width: 50%;
   border-radius: to-rem(1px);
-  @include display-p3(background-color, #f55252);
+  background-color: to-theme-var(accent);
 }
 
 .#{$ns}-preloader.ready .#{$ns}-preloader__bar {

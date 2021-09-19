@@ -1,0 +1,5 @@
+@import '../tokens/namespace';
+
+@function to-theme-var($value) {
+  @return var(--#{$ns}-#{$value});
+}

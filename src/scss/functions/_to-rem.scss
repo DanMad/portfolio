@@ -1,5 +1,6 @@
 @use 'sass:math';
-@import '../utils/tokens';
+
+@import '../tokens/typography';
 @import './remove-unit';
 
 @function to-rem($values...) {

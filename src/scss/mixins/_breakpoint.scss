@@ -1,4 +1,4 @@
-@import '../utils/tokens.scss';
+@import '../tokens/breakpoints';
 
 @mixin breakpoint($size, $dimension: width) {
   @media only screen and (min-#{$dimension}: map-get($breakpoints, $size)) {
