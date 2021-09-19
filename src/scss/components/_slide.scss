@@ -1,0 +1,8 @@
+.dm-slide {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.dm-slide.ready {
+  opacity: 1;
+}

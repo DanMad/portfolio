@@ -1,3 +1,4 @@
+@import '../tokens/namespace';
 @import '../tokens/typography';
 @import '../functions/to-theme-var';
 
@@ -29,28 +30,50 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-body::after {
-  content: '';
+// body::after {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   transform: translateX(50%);
+//   height: 100vh;
+//   width: 100vw;
+//   background: radial-gradient(
+//     circle,
+//     to-theme-var(lighting) 0%,
+//     transparent 70.66% /* this scale needs more testing */
+//   );
+//   pointer-events: none;
+// }
+
+// The <body> double element exists so that CSS gradients are transitionable
+// through the use of the opacity property. They are not transitionable through
+// the use of the background property.
+.#{$ns}-body-double {
+  opacity: 0;
   position: absolute;
   top: 0;
-  right: 0;
-  transform: translateX(50%);
-  height: 100vh;
-  width: 100vw;
-  background: radial-gradient(
-    circle,
-    to-theme-var(lighting) 0%,
-    transparent 70.66% /* this scale needs more testing */
-  );
-  pointer-events: none;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: red;
+  // background: linear-gradient(
+  //   to bottom left,
+  //   to-theme-var(background-primary-transitioning),
+  //   to-theme-var(background-secondary-transitioning)
+  // );
+  transition: opacity 500ms ease;
 }
 
-// Move these rules.
-.dm-slide {
-  opacity: 0;
-  transition: opacity 250ms ease;
-}
-
-.dm-slide.ready {
+.#{$ns}-body-double.ready {
   opacity: 1;
+  transition: opacity 0ms ease;
+}
+
+.#{$ns}-app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
