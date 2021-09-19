@@ -96,10 +96,6 @@ const webpackConfig = (env) => {
               })),
             { from: /./, to: '/404.html' },
           ],
-          // rewrites: [
-          //   { from: /\/portfolio\/a-galaxy-far-far-away/, to: '/portfolio/a-galaxy-far-far-away/index.html' },
-          //   { from: /./, to: '/404.html' },
-          // ]
         },
         port: 3000,
         static: ['src/static'],
