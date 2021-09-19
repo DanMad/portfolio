@@ -1,18 +1,18 @@
 const toStrokeStyles = (linkIndex, linkRefs) => {
-  let left = 0;
+  const strokeStyles = {
+    left: 0,
+    width: linkRefs.current[linkIndex].offsetWidth,
+  };
 
   for (let i = 0; i <= linkIndex; i++) {
     if (i === linkIndex) {
-      left += linkRefs.current[i].offsetWidth / 2;
+      strokeStyles.left += linkRefs.current[i].offsetWidth / 2;
     } else {
-      left += linkRefs.current[i].offsetWidth + 24;
+      strokeStyles.left += linkRefs.current[i].offsetWidth + 24;
     }
   }
 
-  return {
-    left,
-    width: linkRefs.current[linkIndex].offsetWidth,
-  };
+  return strokeStyles;
 };
 
 export { toStrokeStyles as default };
