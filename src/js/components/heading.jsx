@@ -3,11 +3,10 @@ import { BEM } from '../utils';
 
 const { toBlock } = BEM('h');
 
-const Heading = ({ children, className, level = 1 }) => {
+const Heading = ({ children, className, level }) => {
   const Tag = 'h' + level;
-  const classNames = className?.length
-    ? `${toBlock() + level} ${className}`
-    : toBlock() + level;
+  const classNames =
+    toBlock() + level + (className?.length ? ` ${className}` : '');
 
   return (
     <Tag
@@ -26,7 +25,7 @@ Heading.propTypes = {
 };
 
 Heading.defaultProps = {
-  level: 1,
+  level: 2,
 };
 
 export { Heading as default };

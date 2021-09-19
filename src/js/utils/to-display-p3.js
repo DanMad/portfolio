@@ -2,7 +2,6 @@ import Color from 'color';
 
 const toDisplayP3 = (rgb) => {
   const color = Color(rgb);
-
   const red = color.red();
   const green = color.green();
   const blue = color.blue();

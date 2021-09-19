@@ -5,13 +5,20 @@ const pages = [
   toPageConfig('ocds', {
     parentRoute: 'portfolio',
     theme: {
-      backgroundPrimary: 'yellow',
+      accent: 'rgb(17, 160, 173)',
+      backgroundPrimary: 'rgb(249, 248, 248)',
+      backgroundSecondary: 'rgb(236, 235, 235)',
+      lighting: 'rgba(193, 10, 10, 0.03)',
     },
   }),
   toPageConfig('a galaxy far, far away', {
     parentRoute: 'portfolio',
     theme: {
-      backgroundPrimary: '#000',
+      accent: 'rgb(244, 80, 10)',
+      backgroundPrimary: 'rgb(10, 15, 23)',
+      backgroundSecondary: 'rgb(1, 2, 3)',
+      backgroundTertiary: 'green',
+      lighting: 'rgba(193, 10, 10, 0.03)',
     },
   }),
   toPageConfig('contact'),
