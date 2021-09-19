@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
+// import { transitionDuration } from '../../config';
 import Context from '../components/context';
 import Slide from '../components/slide';
 import { useEventListener } from '../utils';
-// import { transitionDuration } from '../../config';
 
 const Portfolio = ({ match }) => {
   const history = useHistory();
@@ -47,6 +47,8 @@ const Portfolio = ({ match }) => {
       clearTimeout(timer);
     };
   }, [slideIndex]);
+
+  console.log(slideIndex);
 
   return (
     <>

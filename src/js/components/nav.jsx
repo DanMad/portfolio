@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import { BEM, toStrokeStyles, useEventListener } from '../utils';
 import Context from './context';
 import DelayedNavLink from './delayed-nav-link';
-import { BEM, toStrokeStyles, useEventListener } from '../utils';
 
 const { toBlock, toElement } = BEM('nav');
 

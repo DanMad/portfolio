@@ -1,14 +1,14 @@
-import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useContext, useEffect } from 'react';
 import Context from '../components/context';
-import Heading from './heading';
 import { BEM, setTheme } from '../utils';
+import Heading from './heading';
 
 const { toBlock, toElement } = BEM('slide');
 
 const Slide = (props) => {
   const { isReady, setIsReady } = useContext(Context);
-  const classNames = isReady ? toBlock() + ' mounted' : toBlock();
+  const classNames = toBlock() + (isReady ? ' ready' : '');
 
   useEffect(() => {
     setIsReady(true);
