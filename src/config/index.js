@@ -4,7 +4,6 @@ import duration from './duration';
 import name from './name';
 import namespace from './namespace';
 import pages from './pages';
-import social from './social';
 import theme from './theme';
 
 const config = {
@@ -14,7 +13,6 @@ const config = {
   name,
   namespace,
   pages,
-  social,
   theme,
 };
 
@@ -26,6 +24,5 @@ export {
   name,
   namespace,
   pages,
-  social,
   theme,
 };
