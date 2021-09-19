@@ -132,9 +132,9 @@
       "image": "<svg></svg>",
       "name": "a galaxy far far away theme",
       "theme": {
+        "accent": "rgb(244, 80, 10)",
         "backgroundPrimary": "rgb(10, 15, 23)",
         "backgroundSecondary": "rgb(1, 2, 3)",
-        "focus": "rgb(244, 80, 10)",
         "lighting": "rgba(193, 10, 10, 0.03)"
       }
     },
@@ -144,11 +144,25 @@
       "image": "<svg></svg>",
       "name": "OCDS",
       "theme": {
+        "accent": "rgb(17, 160, 173)",
         "backgroundPrimary": "rgb(249, 248, 248)",
         "backgroundSecondary": "rgb(236, 235, 235)",
-        "focus": "rgb(17, 160, 173)",
         "lighting": "rgba(193, 10, 10, 0.03)"
       }
+    }
+  ],
+  "social": [
+    {
+      "name": "dribbble",
+      "URL": "https://dribbble.com/danmad"
+    },
+    {
+      "name": "gitHub",
+      "URL": "https://github.com/danmad"
+    },
+    {
+      "name": "linkedIn",
+      "URL": "https://www.linkedin.com/in/daniel-maddisons-profile/"
     }
   ]
 }
