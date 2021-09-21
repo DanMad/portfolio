@@ -130,7 +130,7 @@
       "content": "<h1>A Galaxy Far, Far Away</h1><p>Paragraph...</p>",
       "description": "A Visual Studio Code theme from a galaxy far, far away...",
       "image": "<svg></svg>",
-      "name": "a galaxy far far away theme",
+      "name": "a galaxy far, far away theme",
       "theme": {
         "accent": "rgb(244, 80, 10)",
         "backgroundPrimary": "rgb(10, 15, 23)",
