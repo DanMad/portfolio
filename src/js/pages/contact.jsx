@@ -1,5 +1,7 @@
 import parse from 'html-react-parser';
 import { useContext, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { address } from '../../config';
 import Context from '../components/context';
 import Heading from '../components/heading';
 import { setTheme } from '../utils';
@@ -14,6 +16,11 @@ const Contact = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Contact | {address.secondLevelDomain + address.topLevelDomain}
+        </title>
+      </Helmet>
       <Heading level={1}>contact</Heading>
       {parse(content)}
     </>

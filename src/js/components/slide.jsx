@@ -1,5 +1,8 @@
+import 'on-the-case';
 import PropTypes from 'prop-types';
 import { useContext, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { address } from '../../config';
 import Context from '../components/context';
 import { BEM, setTheme } from '../utils';
 import Heading from './heading';
@@ -16,12 +19,20 @@ const Slide = (props) => {
   }, []);
 
   return (
-    <div className={classNames}>
-      <div className={toElement('inner')}>
-        <Heading className={toElement('name')}>{props.name}</Heading>
-        <p className={toElement('description')}>{props.description}</p>
+    <>
+      <Helmet>
+        <title>
+          {props.name.toTitleCase()} |{' '}
+          {address.secondLevelDomain + address.topLevelDomain}
+        </title>
+      </Helmet>
+      <div className={classNames}>
+        <div className={toElement('inner')}>
+          <Heading className={toElement('name')}>{props.name}</Heading>
+          <p className={toElement('description')}>{props.description}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
