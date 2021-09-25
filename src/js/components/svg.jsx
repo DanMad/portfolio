@@ -1,14 +1,26 @@
-const SVG = (props) => (
+import PropTypes from 'prop-types';
+
+const SVG = ({ children, height, width, ...rest }) => (
   <svg
-    className={props.className}
-    height={props.height}
-    width={props.width}
-    style={props.style}
-    viewBox={`0 0 ${props.width} ${props.height}`}
+    {...rest}
+    height={height}
+    width={width}
+    viewBox={`0 0 ${width} ${height}`}
     xmlns="http://www.w3.org/2000/svg"
   >
-    {props.children}
+    {children}
   </svg>
 );
+
+SVG.propTypes = {
+  'aria-hidden': PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  className: PropTypes.string,
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+};
 
 export { SVG as default };

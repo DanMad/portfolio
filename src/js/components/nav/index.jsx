@@ -1,7 +1,8 @@
+import 'on-the-case';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { BEM, toStrokeStyles, useEventListener } from '../utils';
-import Context from './context';
-import DelayedNavLink from './delayed-nav-link';
+import { BEM, toStrokeStyles, useEventListener } from '../../utils';
+import Context from '../context';
+import DelayedNavLink from '../delayed-nav-link';
 
 const { toBlock, toElement } = BEM('nav');
 
@@ -31,28 +32,26 @@ const Nav = () => {
   }, []);
 
   // Browser Navigation buttons
-  useEventListener('popstate', handleStroke);
+  // useEventListener('popstate', handleStroke);
 
   const pageNames = data.pages.map((page) => page.name);
 
   return (
     <nav className={toBlock()}>
-      <div className={toElement('inner')}>
-        {pageNames.map((pageName, i) => (
-          <DelayedNavLink
-            activeClassName="active"
-            className={toElement('link')}
-            exact
-            key={pageName}
-            onClick={() => handleClick(i)}
-            innerRef={(linkRef) => (linkRefs.current[i] = linkRef)}
-            to={'/' + pageName.toKebabCase()}
-          >
-            {pageName.toTitleCase()}
-          </DelayedNavLink>
-        ))}
-        <div className={toElement('stroke')} style={strokeStyles} />
-      </div>
+      {pageNames.map((pageName, i) => (
+        <DelayedNavLink
+          activeClassName="active"
+          className={toElement('link')}
+          exact
+          key={pageName}
+          onClick={() => handleClick(i)}
+          innerRef={(linkRef) => (linkRefs.current[i] = linkRef)}
+          to={'/' + pageName.toKebabCase()}
+        >
+          {pageName.toTitleCase()}
+        </DelayedNavLink>
+      ))}
+      <div className={toElement('stroke')} style={strokeStyles} />
     </nav>
   );
 };

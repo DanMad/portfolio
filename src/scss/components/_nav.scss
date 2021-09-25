@@ -1,41 +1,59 @@
 @import '../tokens/namespace';
 @import '../functions/to-rem';
+@import '../mixins/breakpoint';
 @import '../mixins/center';
-@import '../mixins/display-p3';
+@import '../mixins/has-touch';
 
 .#{$ns}-nav {
-  position: fixed;
-  bottom: env(safe-area-inset-bottom);
-  left: env(safe-area-inset-left);
-  height: to-rem(80px);
-  width: 100%;
-}
-
-.#{$ns}-nav__inner {
-  position: relative;
-  @include center();
+  z-index: 1;
+  @include center(x);
+  top: calc(env(safe-area-inset-top) + #{to-rem(16px)});
+  display: flex;
+  height: to-rem(48px);
 }
 
 .#{$ns}-nav__link {
-  margin-right: to-rem(24px);
+  padding-right: to-rem(2px);
+  padding-left: to-rem(2px);
+  margin-right: to-rem(14px);
+  margin-left: to-rem(14px);
+  outline: none;
   color: currentColor;
-  font-size: to-rem(14px);
+  font-size: to-rem(12px);
   font-weight: 600;
   line-height: to-rem(48px);
   text-decoration: none;
-}
-
-.#{$ns}-nav__link:last-of-type {
-  margin-right: 0;
+  user-select: none;
 }
 
 .#{$ns}-nav__stroke {
   position: absolute;
-  bottom: to-rem(10px);
+  bottom: to-rem(12px);
   transform: translateX(-50%);
   height: to-rem(2px);
   border-radius: to-rem(1px);
   background-color: currentColor;
-  transition: left 300ms ease, width 300ms ease;
+  transition: left 300ms cubic-bezier(0.25, -0.25, 0.25, 1.25), width 300ms ease;
   pointer-events: none;
+}
+
+@include has-touch() {
+  .#{$ns}-nav {
+    top: unset;
+    bottom: calc(env(safe-area-inset-bottom) + #{to-rem(8px)});
+  }
+}
+
+@include breakpoint(s) {
+  // .#{$ns}-nav {
+  //   top: calc(env(safe-area-inset-top) + #{to-rem(40px)});
+  //   left: unset;
+  //   right: to-rem(36px);
+  //   transform: unset;
+  // }
+
+  // .#{$ns}-nav__link { // ??
+  //   margin-right: to-rem(18px);
+  //   margin-left: to-rem(18px);
+  // }
 }

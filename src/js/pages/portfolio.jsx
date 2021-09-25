@@ -1,7 +1,7 @@
+import 'on-the-case';
 import PropTypes from 'prop-types';
 import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
-// import { transitionDuration } from '../../config';
 import Context from '../components/context';
 import Slide from '../components/slide';
 import { useEventListener } from '../utils';
@@ -10,10 +10,7 @@ const Portfolio = ({ match }) => {
   const history = useHistory();
   const { data, isReady, setIsReady } = useContext(Context);
   const projects = data.projects;
-  let paths = [
-    '',
-    ...data.projects.map((project) => project.name.toKebabCase()),
-  ];
+  let paths = ['', ...data.projects.map((project) => project.name)];
 
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -21,7 +18,8 @@ const Portfolio = ({ match }) => {
     const isArrowKeyDown = e.keyCode === 40;
     const isArrowKeyUp = e.keyCode === 38;
 
-    e.preventDefault();
+    // changes global behaviour. Be careful. Put in conditional.
+    // e.preventDefault();
 
     if (isArrowKeyDown && slideIndex < paths.length - 1) {
       setSlideIndex(slideIndex + 1);
@@ -35,12 +33,15 @@ const Portfolio = ({ match }) => {
   useEventListener('keydown', handleKeyDown);
 
   useEffect(() => {
-    if (!isReady) return;
+    if (!isReady) {
+      return;
+    }
 
     setIsReady(false);
 
     const timer = setTimeout(() => {
-      history.push(match.path + '/' + paths[slideIndex]);
+      // .toKebabCase() doesn't work here.
+      history.push(match.path + '/' + paths[slideIndex].toKebabCase());
     }, 250);
 
     return () => {
@@ -48,15 +49,13 @@ const Portfolio = ({ match }) => {
     };
   }, [slideIndex]);
 
-  console.log(slideIndex);
-
   return (
     <>
       <Route
         exact
         path={match.path}
         render={() => (
-          <Slide description="Testing, 1... 2... 3..." name="Hello World!" />
+          <Slide description="Testing, 1... 2... 3..." name="Portfolio" />
         )}
       />
       {projects.map((project) => (

@@ -73,7 +73,7 @@ const App = () => {
             <Route component={Portfolio} path="/portfolio" />
             <Route component={NotFound} />
           </Switch>
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       )}
     </Context.Provider>

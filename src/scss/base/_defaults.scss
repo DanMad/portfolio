@@ -1,21 +1,43 @@
 @import '../tokens/namespace';
 @import '../tokens/typography';
+@import '../functions/to-rem';
 @import '../functions/to-theme-var';
 
-html {
-  height: 100%;
+// This rule styles the browser's selection color in Firefox.
+::-moz-selection {
+  background-color: to-theme-var(accent);
+  color: to-theme-var(foreground-secondary);
 }
 
-body {
-  // Test to see if this will cause issues on standard pages that include scroll.
-  overflow: hidden;
+// This rule styles the browser's selection color.
+::selection {
+  background-color: to-theme-var(accent);
+  color: to-theme-var(foreground-secondary);
+}
 
+* {
+  box-sizing: border-box;
+
+  // These properties hide scrollbars for IE, Edge and Firefox.
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+// This rule hides scrollbars in Chrome, Safari and Opera.
+::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  overflow: hidden;
   height: 100%;
   background: linear-gradient(
     to bottom left,
     to-theme-var(background-primary),
     to-theme-var(background-secondary)
   );
+  color: to-theme-var(foreground-primary);
   font-family: $font-family-system;
 
   // These rules improve font antialiasing on Mac OS.
@@ -30,44 +52,53 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-// body::after {
-//   content: '';
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   transform: translateX(50%);
-//   height: 100vh;
-//   width: 100vw;
-//   background: radial-gradient(
-//     circle,
-//     to-theme-var(lighting) 0%,
-//     transparent 70.66% /* this scale needs more testing */
-//   );
-//   pointer-events: none;
-// }
+body::after {
+  content: '';
+  filter: blur(to-rem(200px));
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  height: 100vh;
+  width: 100vh;
+  border-radius: 100%;
+  background: to-theme-var(lighting);
+  pointer-events: none;
+}
 
 // The <body> double element exists so that CSS gradients are transitionable
 // through the use of the opacity property. They are not transitionable through
 // the use of the background property.
 .#{$ns}-body-double {
   opacity: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background: red;
-  // background: linear-gradient(
-  //   to bottom left,
-  //   to-theme-var(background-primary-transitioning),
-  //   to-theme-var(background-secondary-transitioning)
-  // );
-  transition: opacity 500ms ease;
+  background: linear-gradient(
+    to bottom left,
+    to-theme-var(background-primary-double),
+    to-theme-var(background-secondary-double)
+  );
+  pointer-events: none;
 }
 
-.#{$ns}-body-double.ready {
-  opacity: 1;
-  transition: opacity 0ms ease;
+.#{$ns}-body-double.active {
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: bodyDoubleFadeOut;
+  animation-timing-function: ease;
+}
+
+@keyframes bodyDoubleFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .#{$ns}-app {

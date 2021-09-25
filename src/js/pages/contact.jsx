@@ -4,7 +4,9 @@ import { Helmet } from 'react-helmet';
 import { address } from '../../config';
 import Context from '../components/context';
 import Heading from '../components/heading';
-import { setTheme } from '../utils';
+import { BEM, setTheme } from '../utils';
+
+const { toBlock } = BEM('main');
 
 const Contact = () => {
   const { data } = useContext(Context);
@@ -21,8 +23,10 @@ const Contact = () => {
           Contact | {address.secondLevelDomain + address.topLevelDomain}
         </title>
       </Helmet>
-      <Heading level={1}>contact</Heading>
-      {parse(content)}
+      <main className={toBlock()}>
+        <Heading level={1}>contact</Heading>
+        {parse(content)}
+      </main>
     </>
   );
 };

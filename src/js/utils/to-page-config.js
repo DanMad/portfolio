@@ -31,6 +31,7 @@ const toPageConfig = (name, options = {}) => {
 
   Object.keys(theme).map((themeVar) => {
     pageConfig.styles += toCSSVariable(themeVar) + `:${theme[themeVar]};`;
+    // pageConfig.styles += toCSSVariable(themeVar + '-double') + `:${theme[themeVar]};`;
   });
 
   pageConfig.styles += '}@supports(color:color(display-p3 1 1 1)){:root{';
@@ -38,6 +39,8 @@ const toPageConfig = (name, options = {}) => {
   Object.keys(theme).map((themeVar) => {
     pageConfig.styles +=
       toCSSVariable(themeVar) + `:${toDisplayP3(theme[themeVar])};`;
+    // pageConfig.styles +=
+    //   toCSSVariable(themeVar + '-double') + `:${toDisplayP3(theme[themeVar])};`;
   });
 
   pageConfig.styles += '}}</style>';
