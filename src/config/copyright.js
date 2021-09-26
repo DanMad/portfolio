@@ -2,7 +2,7 @@ import 'on-the-case';
 import toRange from '../js/utils/to-range';
 import name from './name';
 
-const date = '2021-08-06';
+const date = '2021-07-02';
 const holder = name.full;
 
 const copyright = {
