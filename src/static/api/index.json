@@ -153,16 +153,16 @@
   ],
   "social": [
     {
-      "name": "dribbble",
-      "URL": "https://dribbble.com/danmad"
+      "name": "linkedin",
+      "URL": "https://www.linkedin.com/in/daniel-maddisons-profile/"
     },
     {
       "name": "github",
       "URL": "https://github.com/danmad"
     },
     {
-      "name": "linkedin",
-      "URL": "https://www.linkedin.com/in/daniel-maddisons-profile/"
+      "name": "dribbble",
+      "URL": "https://dribbble.com/danmad"
     }
   ]
 }

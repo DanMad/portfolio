@@ -11,14 +11,14 @@ const components = {
   linkedin: Linkedin,
 };
 
-const { toBlock, toElement } = BEM('social');
+const { toBlock } = BEM('social');
 
 const Social = ({ name }) => {
   const Component = components[name];
 
   return (
-    <SVG aria-hidden={true} className={toBlock()} height="48" width="48">
-      <Component toElement={toElement} />
+    <SVG aria-hidden={true} className={toBlock()} height="44" width="44">
+      <Component />
     </SVG>
   );
 };

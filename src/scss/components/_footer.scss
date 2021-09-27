@@ -7,8 +7,8 @@
 .#{$ns}-footer {
   z-index: 1;
   @include center(x);
-  bottom: calc(env(safe-area-inset-bottom) + #{to-rem(40px)});
-  height: to-rem(64px);
+  bottom: env(safe-area-inset-bottom);
+  height: to-rem(84px);
 }
 
 .#{$ns}-footer__list {
@@ -17,8 +17,18 @@
 }
 
 .#{$ns}-footer__item {
-  height: to-rem(48px);
-  width: to-rem(48px);
+  height: to-rem(44px);
+  width: to-rem(44px);
+  margin-right: to-rem(4px);
+  margin-left: to-rem(4px);
+}
+
+.#{$ns}-footer__item:first-of-type {
+  margin-left: 0;
+}
+
+.#{$ns}-footer__item:last-of-type {
+  margin-right: 0;
 }
 
 .#{$ns}-footer__link {
@@ -31,7 +41,7 @@
 
 .#{$ns}-footer__statement {
   font-size: to-rem(10px);
-  line-height: to-rem(16px);
+  line-height: to-rem(20px);
   text-align: center;
   white-space: nowrap;
   pointer-events: none;
@@ -40,124 +50,74 @@
 
 @include has-touch() {
   .#{$ns}-footer {
-    top: calc(env(safe-area-inset-top) + #{to-rem(24px)});
+    top: env(safe-area-inset-top);
     bottom: unset;
     display: flex;
     flex-direction: column-reverse;
   }
 }
 
-@include breakpoint(s) {
+@include breakpoint(m) {
   .#{$ns}-footer {
-    top: unset;
-    bottom: calc(env(safe-area-inset-bottom) + #{to-rem(40px)});
-    left: calc(env(safe-area-inset-left) + #{to-rem(40px)});
-    right: calc(env(safe-area-inset-right) + #{to-rem(56px)});
+    left: unset;
     transform: unset;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: to-rem(48px);
+    height: to-rem(60px);
+    width: 100%;
+  }
+
+  .#{$ns}-footer__list {
+    @include center(y);
+    left: calc(env(safe-area-inset-left) + #{to-rem(20px)});
+    justify-content: unset;
+  }
+
+  .#{$ns}-footer__statement {
+    @include center(y);
+    right: calc(env(safe-area-inset-right) + #{to-rem(32px)});
+  }
+
+  @include has-touch() {
+    .#{$ns}-footer {
+      top: unset;
+      bottom: env(safe-area-inset-bottom);
+      display: unset;
+      flex-direction: unset;
+    }
   }
 }
 
-// @include breakpoint(s, height) {
-//   .#{$ns}-footer {
-//     height: to-rem(112px);
-//   }
+@include breakpoint(l) {
+  .#{$ns}-footer__list {
+    left: calc(env(safe-area-inset-left) + #{to-rem(40px)});
+    justify-content: unset;
+  }
 
-//   .#{$ns}-footer__statement {
-//     font-size: to-rem(11px);
-//     line-height: to-rem(24px);
-//   }
+  .#{$ns}-footer__statement {
+    @include center(y);
+    right: calc(env(safe-area-inset-right) + #{to-rem(52px)});
+  }
+}
 
-//   @include breakpoint(s) {
-//     .#{$ns}-footer {
-//       height: to-rem(76px);
-//     }
+@include breakpoint(m, height) {
+  .#{$ns}-footer {
+    height: to-rem(96px);
+  }
 
-//     .#{$ns}-footer__list {
-//       left: to-rem(28px);
-//       gap: to-rem(16px);
-//       width: to-rem(240px);
-//     }
+  @include breakpoint(m) {
+    .#{$ns}-footer {
+      height: to-rem(84px);
+    }
+  }
+}
 
-//     .#{$ns}-footer__link > .#{$ns}-icon {
-//       height: to-rem(24px);
-//       width: to-rem(24px);
-//     }
+@include breakpoint(l, height) {
+  .#{$ns}-footer {
+    height: to-rem(116px);
+  }
 
-//     .#{$ns}-footer__statement {
-//       top: to-rem(12px);
-//     }
-//   }
-
-//   @include breakpoint(m) {
-//     .#{$ns}-footer__list {
-//       left: to-rem(52px);
-//     }
-
-//     .#{$ns}-footer__statement {
-//       right: to-rem(64px);
-//     }
-//   }
-// }
-
-// @include breakpoint(m, height) {
-//   .#{$ns}-footer {
-//     height: to-rem(136px);
-//   }
-
-//   .#{$ns}-footer__statement {
-//     font-size: to-rem(12px);
-//   }
-
-//   @include breakpoint(s) {
-//     .#{$ns}-footer {
-//       height: to-rem(100px);
-//     }
-//   }
-
-//   @include breakpoint(l) {
-//     .#{$ns}-footer__list {
-//       left: to-rem(92px);
-//     }
-
-//     .#{$ns}-footer__statement {
-//       right: to-rem(104px);
-//     }
-//   }
-// }
-
-// @include breakpoint(l, height) {
-//   .#{$ns}-footer {
-//     height: to-rem(176px);
-//   }
-
-//   .#{$ns}-footer__statement {
-//     font-size: to-rem(13px);
-//   }
-
-//   @include breakpoint(s) {
-//     .#{$ns}-footer {
-//       height: to-rem(100px);
-//     }
-//   }
-
-//   @include breakpoint(m) {
-//     .#{$ns}-footer {
-//       height: to-rem(140px);
-//     }
-//   }
-
-//   @include breakpoint(l) {
-//     .#{$ns}-footer__list {
-//       left: to-rem(92px);
-//     }
-
-//     .#{$ns}-footer__statement {
-//       right: to-rem(104px);
-//     }
-//   }
-// }
+  @include breakpoint(m) {
+    .#{$ns}-footer {
+      height: to-rem(124px);
+    }
+  }
+}
