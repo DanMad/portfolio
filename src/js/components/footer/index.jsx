@@ -13,24 +13,23 @@ const Footer = () => {
 
   return (
     <footer className={toBlock()}>
-      <ul className={toElement('list')}>
+      <div className={toElement('inner')}>
         {Object.keys(social).map((key) => {
           const { name, URL } = social[key];
 
           return (
-            <li className={toElement('item')} key={name}>
-              <a
-                className={toElement('link')}
-                href={URL}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <Social name={name} />
-              </a>
-            </li>
+            <a
+              className={toElement('link')}
+              href={URL}
+              key={name}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Social name={name} />
+            </a>
           );
         })}
-      </ul>
+      </div>
       <p className={toElement('statement')}>{statement}</p>
     </footer>
   );

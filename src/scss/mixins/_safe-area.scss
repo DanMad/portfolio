@@ -1,0 +1,11 @@
+@import '../functions/to-rem';
+
+@mixin safe-area($dimension, $pixels: null) {
+  @if ($pixels == null) {
+    #{$dimension}: env(safe-area-inset-#{$dimension});
+  } @else {
+    #{$dimension}: calc(
+      env(safe-area-inset-#{$dimension}) + #{to-rem($pixels)}
+    );
+  }
+}
