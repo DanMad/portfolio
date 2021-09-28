@@ -4,7 +4,9 @@ import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import Context from '../components/context';
 import Slide from '../components/slide';
-import { useEventListener } from '../utils';
+import { BEM, useEventListener } from '../utils';
+
+const { toBlock } = BEM('main');
 
 const Portfolio = ({ match }) => {
   const history = useHistory();
@@ -50,11 +52,12 @@ const Portfolio = ({ match }) => {
   }, [slideIndex]);
 
   return (
-    <>
+    <main className={toBlock()}>
       <Route
         exact
         path={match.path}
         render={() => (
+          // needs theme prop, I think
           <Slide description="Testing, 1... 2... 3..." name="Portfolio" />
         )}
       />
@@ -65,7 +68,7 @@ const Portfolio = ({ match }) => {
           render={() => <Slide {...project} />}
         />
       ))}
-    </>
+    </main>
   );
 };
 

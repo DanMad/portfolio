@@ -1,0 +1,92 @@
+@import '../tokens/namespace';
+@import '../functions/to-rem';
+@import '../mixins/breakpoint';
+@import '../mixins/has-touch';
+
+.#{$ns}-main {
+  position: absolute;
+  @include safe-area(top, 60px);
+  @include safe-area(right, 20px);
+  @include safe-area(bottom, 92px);
+  @include safe-area(left, 20px);
+}
+
+@include has-touch() {
+  .#{$ns}-main {
+    @include safe-area(top, 92px);
+    @include safe-area(bottom, 60px);
+  }
+}
+
+@include breakpoint(m) {
+  .#{$ns}-main {
+    @include safe-area(right, 32px);
+    @include safe-area(bottom, 60px);
+    @include safe-area(left, 32px);
+  }
+
+  @include has-touch() {
+    .#{$ns}-main {
+      @include safe-area(top, 60px);
+    }
+  }
+}
+
+@include breakpoint(l) {
+  .#{$ns}-main {
+    @include safe-area(right, 52px);
+    @include safe-area(left, 52px);
+  }
+}
+
+@include breakpoint(m, height) {
+  .#{$ns}-main {
+    @include safe-area(top, 84px);
+    @include safe-area(bottom, 116px);
+  }
+
+  @include has-touch() {
+    .#{$ns}-main {
+      @include safe-area(top, 116px);
+      @include safe-area(bottom, 84px);
+    }
+  }
+
+  @include breakpoint(m) {
+    .#{$ns}-main {
+      @include safe-area(bottom, 84px);
+    }
+
+    @include has-touch() {
+      .#{$ns}-main {
+        @include safe-area(top, 84px);
+      }
+    }
+  }
+}
+
+@include breakpoint(l, height) {
+  .#{$ns}-main {
+    @include safe-area(top, 124px);
+    @include safe-area(bottom, 156px);
+  }
+
+  @include has-touch() {
+    .#{$ns}-main {
+      @include safe-area(top, 156px);
+      @include safe-area(bottom, 124px);
+    }
+  }
+
+  @include breakpoint(m) {
+    .#{$ns}-main {
+      @include safe-area(bottom, 124px);
+    }
+
+    @include has-touch() {
+      .#{$ns}-main {
+        @include safe-area(top, 124px);
+      }
+    }
+  }
+}
