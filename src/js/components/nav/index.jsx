@@ -40,7 +40,6 @@ const Nav = () => {
     <nav className={toBlock()}>
       {pageNames.map((pageName, i) => (
         <DelayedNavLink
-          activeClassName="active"
           className={toElement('link')}
           exact
           key={pageName}

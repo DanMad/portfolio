@@ -8,7 +8,7 @@ const toStrokeStyles = (linkIndex, linkRefs) => {
     if (i === linkIndex) {
       strokeStyles.left += linkRefs.current[i].offsetWidth / 2;
     } else {
-      strokeStyles.left += linkRefs.current[i].offsetWidth + 24;
+      strokeStyles.left += linkRefs.current[i].offsetWidth + 32;
     }
   }
 

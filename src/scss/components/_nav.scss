@@ -3,32 +3,43 @@
 @import '../mixins/breakpoint';
 @import '../mixins/center';
 @import '../mixins/has-touch';
+@import '../mixins/safe-area';
 
 .#{$ns}-nav {
   z-index: 1;
   @include center(x);
-  top: calc(env(safe-area-inset-top) + #{to-rem(16px)});
+  @include safe-area(top, 8px);
   display: flex;
-  height: to-rem(48px);
+  align-items: flex-end;
+  height: to-rem(44px);
 }
 
 .#{$ns}-nav__link {
-  padding-right: to-rem(2px);
-  padding-left: to-rem(2px);
-  margin-right: to-rem(14px);
-  margin-left: to-rem(14px);
+  height: to-rem(44px);
+  padding-top: to-rem(12px);
+  padding-bottom: to-rem(12px);
+  margin-right: to-rem(16px);
+  margin-left: to-rem(16px);
   outline: none;
   color: currentColor;
   font-size: to-rem(12px);
-  font-weight: 600;
-  line-height: to-rem(48px);
+  font-weight: 700;
+  line-height: to-rem(20px);
   text-decoration: none;
   user-select: none;
 }
 
+.#{$ns}-nav__link:first-of-type {
+  margin-left: 0;
+}
+
+.#{$ns}-nav__link:last-of-type {
+  margin-right: 0;
+}
+
 .#{$ns}-nav__stroke {
   position: absolute;
-  bottom: to-rem(12px);
+  bottom: to-rem(10px);
   transform: translateX(-50%);
   height: to-rem(2px);
   border-radius: to-rem(1px);
@@ -40,20 +51,71 @@
 @include has-touch() {
   .#{$ns}-nav {
     top: unset;
-    bottom: calc(env(safe-area-inset-bottom) + #{to-rem(8px)});
+    @include safe-area(bottom, 8px);
   }
 }
 
-@include breakpoint(s) {
-  // .#{$ns}-nav {
-  //   top: calc(env(safe-area-inset-top) + #{to-rem(40px)});
-  //   left: unset;
-  //   right: to-rem(36px);
-  //   transform: unset;
-  // }
+@include breakpoint(m) {
+  .#{$ns}-nav {
+    left: unset;
+    @include safe-area(right, 32px);
+    transform: unset;
+  }
 
-  // .#{$ns}-nav__link { // ??
-  //   margin-right: to-rem(18px);
-  //   margin-left: to-rem(18px);
-  // }
+  @include has-touch() {
+    .#{$ns}-nav {
+      @include safe-area(top, 8px);
+      bottom: unset;
+    }
+  }
+}
+
+@include breakpoint(l) {
+  .#{$ns}-nav {
+    @include safe-area(right, 52px);
+  }
+}
+
+@include breakpoint(m, height) {
+  .#{$ns}-nav {
+    @include safe-area(top, 20px);
+  }
+
+  @include has-touch() {
+    .#{$ns}-nav {
+      top: unset;
+      @include safe-area(bottom, 20px);
+    }
+  }
+
+  @include breakpoint(m) {
+    @include has-touch() {
+      .#{$ns}-nav {
+        @include safe-area(top, 20px);
+        bottom: unset;
+      }
+    }
+  }
+}
+
+@include breakpoint(l, height) {
+  .#{$ns}-nav {
+    @include safe-area(top, 40px);
+  }
+
+  @include has-touch() {
+    .#{$ns}-nav {
+      top: unset;
+      @include safe-area(bottom, 40px);
+    }
+  }
+
+  @include breakpoint(m) {
+    @include has-touch() {
+      .#{$ns}-nav {
+        @include safe-area(top, 40px);
+        bottom: unset;
+      }
+    }
+  }
 }
