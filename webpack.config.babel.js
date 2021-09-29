@@ -66,7 +66,7 @@ const commonWebpackConfig = {
           name: name.full.toTitleCase(),
           namespace,
           styles: page.styles,
-          title: address.secondLevelDomain + address.topLevelDomain,
+          title: address.nakedDomain,
         },
       });
     }),

@@ -14,9 +14,7 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>
-          404 | {address.secondLevelDomain + address.topLevelDomain}
-        </title>
+        <title>404 | {address.nakedDomain}</title>
       </Helmet>
       <main className={toBlock()}>
         <Heading level={1}>404</Heading>

@@ -20,9 +20,7 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>
-          About | {address.secondLevelDomain + address.topLevelDomain}
-        </title>
+        <title>About | {address.nakedDomain}</title>
       </Helmet>
       <main className={toBlock()}>
         <Heading level={1}>about</Heading>

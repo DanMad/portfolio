@@ -1,18 +1,17 @@
 import name from './name';
 
+const domains = ['www.', name.first + name.last, '.io'];
 const protocol = 'https://';
-const secondLevelDomain = name.first + name.last;
-const thirdLevelDomain = 'www.';
-const topLevelDomain = '.io';
 
 const address = {
   get domain() {
-    return this.thirdLevelDomain + this.secondLevelDomain + this.topLevelDomain;
+    return this.domains.join('');
+  },
+  domains,
+  get nakedDomain() {
+    return this.domains.slice(1).join('');
   },
   protocol,
-  secondLevelDomain,
-  thirdLevelDomain,
-  topLevelDomain,
   get URL() {
     return this.protocol + this.domain;
   },

@@ -22,8 +22,7 @@ const Slide = (props) => {
     <>
       <Helmet>
         <title>
-          {props.name.toTitleCase()} |{' '}
-          {address.secondLevelDomain + address.topLevelDomain}
+          {props.name.toTitleCase()} | {address.nakedDomain}
         </title>
       </Helmet>
       <div className={classNames}>

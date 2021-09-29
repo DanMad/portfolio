@@ -19,9 +19,7 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>
-          Contact | {address.secondLevelDomain + address.topLevelDomain}
-        </title>
+        <title>Contact | {address.nakedDomain}</title>
       </Helmet>
       <main className={toBlock()}>
         <Heading level={1}>contact</Heading>
