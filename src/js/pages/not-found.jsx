@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { address } from '../../config';
+import Head from '../components/head';
 import Heading from '../components/heading';
 import { BEM, setTheme } from '../utils';
 
@@ -13,9 +12,7 @@ const NotFound = () => {
 
   return (
     <>
-      <Helmet>
-        <title>404 | {address.nakedDomain}</title>
-      </Helmet>
+      <Head title="404" />
       <main className={toBlock()}>
         <Heading level={1}>404</Heading>
       </main>

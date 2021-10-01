@@ -1,10 +1,9 @@
 import 'on-the-case';
 import PropTypes from 'prop-types';
 import { useContext, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { address } from '../../config';
 import Context from '../components/context';
 import { BEM, setTheme } from '../utils';
+import Head from './head';
 import Heading from './heading';
 
 const { toBlock, toElement } = BEM('slide');
@@ -20,11 +19,7 @@ const Slide = (props) => {
 
   return (
     <>
-      <Helmet>
-        <title>
-          {props.name.toTitleCase()} | {address.nakedDomain}
-        </title>
-      </Helmet>
+      <Head title={props.name} />
       <div className={classNames}>
         <div className={toElement('inner')}>
           <Heading className={toElement('name')}>{props.name}</Heading>

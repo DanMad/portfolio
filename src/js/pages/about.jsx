@@ -1,8 +1,7 @@
 import parse from 'html-react-parser';
 import { useContext, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { address } from '../../config';
 import Context from '../components/context';
+import Head from '../components/head';
 import Heading from '../components/heading';
 import { BEM, setTheme } from '../utils';
 
@@ -19,9 +18,7 @@ const About = () => {
 
   return (
     <>
-      <Helmet>
-        <title>About | {address.nakedDomain}</title>
-      </Helmet>
+      <Head title="about" />
       <main className={toBlock()}>
         <Heading level={1}>about</Heading>
         {parse(content)}
