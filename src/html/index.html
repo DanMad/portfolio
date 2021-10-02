@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html lang="en-a">
+<html lang="en-AU" prefix="og: https://ogp.me/ns#">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
-    <meta content="#0f0" name="theme-color" />
+    <meta charset="UTF-8" />
     <title><%= title %></title>
-    <meta content="<%= name %>'s Portfolio" name="description" />
-    <meta content="The things I make and do." name="og:description" />
-    <meta content="./images/open-graph/image.png" name="og:image" />
-    <meta content="<%= name %>'s Portfolio" name="og:title" />
-    <meta content="website" name="og:type" />
+    <meta content="<%= description %>" name="description" />
+    <meta content="<%= name %>" name="author" />
+    <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
+    <meta content="<%= themeColor %>" name="theme-color" />
     <%= styles %>
+    <meta content="<%= description %>" property="og:description" />
+    <meta content="<%= image =>" property="og:image" />
+    <meta content="en_AU" property="og:locale" />
+    <meta content="<%= title %>" property="og:title" />
+    <meta content="website" property="og:type" />
+    <meta content="<%= URL %>" property="og:url" />
+    <meta content="summary" name="twitter:card" />
+    <meta content="<%= description %>" name="twitter:description" />
+    <meta content="<%= image %>" name="twitter:image" />
+    <meta content="<%= imageAlt %>" name="twitter:image:alt" />
+    <meta content="<%= URL %>" name="twitter:site" />
+    <meta content="<%= title %>" name="twitter:title" />
+    <meta content="<%= robots %>" name="robots" />
+    <link href="<%= URL %>" rel="canonical" />
   </head>
   <body>
-    <div aria-hidden="true" class="<%= namespace %>-body-double"></div>
-    <div class="<%= namespace %>-app"></div>
+    <div aria-hidden="true" class="<%= ns %>-body-double"></div>
+    <div class="<%= ns %>-app"></div>
     <noscript>
       <h1>Hi! 👋</h1>
       <p>

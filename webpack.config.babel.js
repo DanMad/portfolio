@@ -63,10 +63,15 @@ const commonWebpackConfig = {
         filename: './' + page.path + page.fileName,
         template: path.join(__dirname, './src/html/index.html'),
         templateParameters: {
+          description: 'INSERT DESCRIPTION',
+          image: 'INSERT IMAGE URL',
+          imageAlt: 'INSERT IMAGE ALT TEXT',
           name: name.full.toTitleCase(),
-          namespace,
+          ns: namespace,
           styles: page.styles,
-          title: address.nakedDomain,
+          title: 'INSERT TITLE',
+          themeColor: 'INSERT THEME VARIABLE',
+          URL: address.URL,
         },
       });
     }),

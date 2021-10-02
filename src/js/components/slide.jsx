@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useContext, useEffect } from 'react';
 import Context from '../components/context';
 import { BEM, setTheme } from '../utils';
-import Head from './head';
 import Heading from './heading';
+import SEO from './seo';
 
 const { toBlock, toElement } = BEM('slide');
 
@@ -19,7 +19,7 @@ const Slide = (props) => {
 
   return (
     <>
-      <Head title={props.name} />
+      <SEO title={props.name} />
       <div className={classNames}>
         <div className={toElement('inner')}>
           <Heading className={toElement('name')}>{props.name}</Heading>

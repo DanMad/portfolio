@@ -1,8 +1,8 @@
 import parse from 'html-react-parser';
 import { useContext, useEffect } from 'react';
 import Context from '../components/context';
-import Head from '../components/head';
 import Heading from '../components/heading';
+import SEO from '../components/seo';
 import { BEM, setTheme } from '../utils';
 
 const { toBlock } = BEM('main');
@@ -18,7 +18,12 @@ const About = () => {
 
   return (
     <>
-      <Head title="about" />
+      <SEO
+        canonicalURL="foo-bar"
+        description="foo-bar"
+        themeColor="red"
+        title="about"
+      />
       <main className={toBlock()}>
         <Heading level={1}>about</Heading>
         {parse(content)}
