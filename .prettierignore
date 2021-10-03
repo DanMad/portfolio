@@ -1,3 +1,11 @@
+# Asset files
+*.gif
+*.ico
+*.jpg
+*.jpeg
+*.png
+*.svg
+
 # CNAME
 CNAME
 
@@ -13,13 +21,6 @@ dist/
 
 # Ignore files
 .*ignore
-
-# Image files
-*.gif
-*.ico
-*.jpg
-*.jpeg
-*.png
 
 # License
 LICENSE
