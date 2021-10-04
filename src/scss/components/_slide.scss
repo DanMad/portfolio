@@ -1,8 +1,10 @@
-.dm-slide {
+@import '../tokens/namespace';
+
+.#{$ns}-slide {
   opacity: 0;
   transition: opacity 250ms ease;
 }
 
-.dm-slide.ready {
+.#{$ns}-slide.ready {
   opacity: 1;
 }
