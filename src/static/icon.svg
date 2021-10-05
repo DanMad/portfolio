@@ -1,0 +1,17 @@
+<svg
+  fill="none"
+  height="512"
+  viewBox="0 0 512 512"
+  width="512"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <style>
+      .favicon {
+        fill: #fbb1b1;
+        fill: color(display-p3 0.984314 0.694118 0.694118);
+      }
+    </style>
+  </defs>
+  <circle class="favicon" cx="256" cy="256" r="256" />
+</svg>

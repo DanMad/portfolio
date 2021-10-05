@@ -3,9 +3,7 @@ import { useContext, useEffect } from 'react';
 import Context from '../components/context';
 import Heading from '../components/heading';
 import SEO from '../components/seo';
-import { BEM, setTheme } from '../utils';
-
-const { toBlock } = BEM('main');
+import { setTheme } from '../utils';
 
 const Contact = () => {
   const { data } = useContext(Context);
@@ -18,10 +16,8 @@ const Contact = () => {
   return (
     <>
       <SEO title="contact" />
-      <main className={toBlock()}>
-        <Heading level={1}>contact</Heading>
-        {parse(content)}
-      </main>
+      <Heading level="1">contact</Heading>
+      {parse(content)}
     </>
   );
 };
