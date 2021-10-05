@@ -1,12 +1,12 @@
 import 'on-the-case';
-import CnameWebpackPlugin from 'cname-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CnamePlugin from 'cname-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import HtmlPlugin from 'html-webpack-plugin';
 import path from 'path';
 import tokenImporter from 'node-sass-token-importer';
-import { address, name, namespace, pages } from './src/config';
+import { address, namespace as ns, pages } from './src/config';
 
-const commonWebpackConfig = {
+const commonConfig = {
   entry: './src/js/app.jsx',
   module: {
     rules: [
@@ -50,31 +50,32 @@ const commonWebpackConfig = {
     ],
   },
   plugins: [
-    new CnameWebpackPlugin({
+    new CnamePlugin({
       domain: address.domain,
     }),
-    new CopyWebpackPlugin({
+    new CopyPlugin({
       patterns: [{ from: path.join(__dirname, './src/static'), to: '.' }],
     }),
-
-    ...pages.map((page) => {
-      return new HtmlWebpackPlugin({
-        inject: 'body',
-        filename: './' + page.path + page.fileName,
-        template: path.join(__dirname, './src/html/index.html'),
-        templateParameters: {
-          description: 'INSERT DESCRIPTION',
-          image: 'INSERT IMAGE URL',
-          imageAlt: 'INSERT IMAGE ALT TEXT',
-          name: name.full.toTitleCase(),
-          ns: namespace,
-          styles: page.styles,
-          title: 'INSERT TITLE',
-          themeColor: 'INSERT THEME VARIABLE',
-          URL: address.URL,
-        },
-      });
-    }),
+    ...pages.map(
+      (page) =>
+        new HtmlPlugin({
+          inject: 'body',
+          filename: './' + page.path + page.filename,
+          template: path.join(__dirname, './src/html/index.html'),
+          templateParameters: {
+            ns,
+            author: page.author.toTitleCase(),
+            description: page.description,
+            image: page.image,
+            imageAlt: page.imageAlt,
+            robots: page.robots,
+            styles: page.styles,
+            themeColor: page.themeColor,
+            title: page.title.toTitleCase(),
+            URL: page.URL,
+          },
+        }),
+    ),
   ],
   resolve: {
     alias: {
@@ -89,7 +90,7 @@ const commonWebpackConfig = {
 const webpackConfig = (env) => {
   if (env.development) {
     return {
-      ...commonWebpackConfig,
+      ...commonConfig,
       devServer: {
         historyApiFallback: {
           rewrites: [
@@ -97,7 +98,7 @@ const webpackConfig = (env) => {
               .filter((page) => page.path !== '')
               .map((page) => ({
                 from: new RegExp('/' + page.path.slice(0, -1)),
-                to: '/' + page.path + page.fileName,
+                to: '/' + page.path + page.filename,
               })),
             { from: /./, to: '/404.html' },
           ],
@@ -114,7 +115,7 @@ const webpackConfig = (env) => {
   }
 
   return {
-    ...commonWebpackConfig,
+    ...commonConfig,
     mode: 'production',
     output: {
       filename: 'js/app.js',

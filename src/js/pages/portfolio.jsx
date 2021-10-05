@@ -4,23 +4,31 @@ import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import Context from '../components/context';
 import Slide from '../components/slide';
-import { BEM, useEventListener } from '../utils';
-
-const { toBlock } = BEM('main');
+import { useEventListener } from '../utils';
 
 const Portfolio = ({ match }) => {
-  const history = useHistory();
   const { data, isReady, setIsReady } = useContext(Context);
-  const projects = data.projects;
-  let paths = ['', ...data.projects.map((project) => project.name)];
+  const history = useHistory();
+  let paths = [
+    '',
+    ...data.projects.map((project) => project.name.toKebabCase()),
+  ];
 
-  const [slideIndex, setSlideIndex] = useState(0);
+  let initIndex = 0;
+
+  paths.map((path, index) => {
+    if ('/portfolio/' + path === history.location.pathname) {
+      initIndex = index;
+    }
+  });
+
+  const [slideIndex, setSlideIndex] = useState(initIndex);
 
   const handleKeyDown = (e) => {
     const isArrowKeyDown = e.keyCode === 40;
     const isArrowKeyUp = e.keyCode === 38;
 
-    // changes global behaviour. Be careful. Put in conditional.
+    // changes global behaviour. Be careful. Put in conditional?
     // e.preventDefault();
 
     if (isArrowKeyDown && slideIndex < paths.length - 1) {
@@ -34,6 +42,34 @@ const Portfolio = ({ match }) => {
 
   useEventListener('keydown', handleKeyDown);
 
+  // Swipe testing
+  // ---------------------------------------------------------------------------
+  let touchstartY = 0;
+  let touchendY = 0;
+
+  const handleSwipe = () => {
+    if (touchendY > touchstartY && slideIndex > 0) {
+      setSlideIndex(slideIndex - 1);
+    }
+
+    if (touchendY < touchstartY && slideIndex < paths.length - 1) {
+      setSlideIndex(slideIndex + 1);
+    }
+
+    touchstartY = 0;
+    touchendY = 0;
+  };
+
+  useEventListener('touchstart', (e) => {
+    touchstartY = e.changedTouches[0].screenY;
+  });
+
+  useEventListener('touchend', (e) => {
+    touchendY = e.changedTouches[0].screenY;
+    handleSwipe();
+  });
+  // ---------------------------------------------------------------------------
+
   useEffect(() => {
     if (!isReady) {
       return;
@@ -43,7 +79,9 @@ const Portfolio = ({ match }) => {
 
     const timer = setTimeout(() => {
       // .toKebabCase() doesn't work here.
-      history.push(match.path + '/' + paths[slideIndex].toKebabCase());
+      history.push(
+        match.path + (!paths[slideIndex].length ? '' : '/' + paths[slideIndex]),
+      );
     }, 250);
 
     return () => {
@@ -52,23 +90,22 @@ const Portfolio = ({ match }) => {
   }, [slideIndex]);
 
   return (
-    <main className={toBlock()}>
+    <>
       <Route
         exact
         path={match.path}
         render={() => (
-          // needs theme prop, I think
           <Slide description="Testing, 1... 2... 3..." name="Portfolio" />
         )}
       />
-      {projects.map((project) => (
+      {data.projects.map((project) => (
         <Route
           key={project.name}
           path={match.path + '/' + project.name.toKebabCase()}
           render={() => <Slide {...project} />}
         />
       ))}
-    </main>
+    </>
   );
 };
 

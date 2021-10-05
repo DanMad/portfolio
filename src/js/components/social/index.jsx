@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { BEM } from '../../../utils';
-import SVG from '../../svg';
+import { BEM } from '../../utils';
+import SVG from '../svg';
 import Dribbble from './dribbble';
 import Github from './github';
 import Linkedin from './linkedin';

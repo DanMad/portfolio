@@ -1,4 +1,4 @@
-import { BEM } from '../../../utils';
+import { BEM } from '../../utils';
 
 const { toElement } = BEM('social');
 

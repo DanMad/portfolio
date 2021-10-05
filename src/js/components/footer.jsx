@@ -1,21 +1,20 @@
+import 'on-the-case';
 import { useContext } from 'react';
-import { copyright } from '../../../config';
-import { BEM } from '../../utils';
-import Context from '../context';
+import { copyright } from '../../config';
+import { BEM } from '../utils';
+import Context from './context';
 import Social from './social';
 
-const { statement } = copyright;
 const { toBlock, toElement } = BEM('footer');
 
 const Footer = () => {
   const { data } = useContext(Context);
-  const { social } = data;
 
   return (
     <footer className={toBlock()}>
       <div className={toElement('inner')}>
-        {Object.keys(social).map((key) => {
-          const { name, URL } = social[key];
+        {Object.keys(data.social).map((key) => {
+          const { name, URL } = data.social[key];
 
           return (
             <a
@@ -30,7 +29,9 @@ const Footer = () => {
           );
         })}
       </div>
-      <p className={toElement('statement')}>{statement}</p>
+      <p className={toElement('statement')}>
+        {copyright.statement.toTitleCase()}
+      </p>
     </footer>
   );
 };

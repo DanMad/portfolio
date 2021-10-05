@@ -1,6 +1,5 @@
-import 'on-the-case';
-import toRange from '../js/utils/to-range';
-import name from './name';
+import name from '../name';
+import toRange from './to-range';
 
 const date = '2021-07-02';
 const holder = name.full;
@@ -12,10 +11,7 @@ const copyright = {
     const copyrightYear = new Date(this.date).getFullYear();
     const currentYear = new Date().getFullYear();
 
-    return (
-      `© Copyright ${holder.toTitleCase()} ` +
-      toRange(copyrightYear, currentYear)
-    );
+    return `© copyright ${holder}, ${toRange(copyrightYear, currentYear)}`;
   },
 };
 

@@ -1,16 +1,19 @@
 import { useContext } from 'react';
-import Context from './context';
 import { BEM } from '../utils';
+import Context from './context';
 
 const { toBlock, toElement } = BEM('preloader');
 
 const Preloader = () => {
   const { isReady, setIsLoading } = useContext(Context);
-  const classNames = toBlock() + (isReady ? ' ready' : '');
 
   const handleTransitionEnd = () => {
-    if (!isReady) setIsLoading(false);
+    if (!isReady) {
+      setIsLoading(false);
+    }
   };
+
+  const classNames = toBlock() + (isReady ? ' ready' : '');
 
   return (
     <div className={classNames} onTransitionEnd={handleTransitionEnd}>

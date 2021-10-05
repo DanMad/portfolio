@@ -1,26 +1,23 @@
 import PropTypes from 'prop-types';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import { duration } from '../../config';
-import Context from '../components/context';
 
-const DelayedNavLink = (props) => {
+const DelayedNavLink = ({ onClick, to, ...rest }) => {
   const history = useHistory();
-  const location = useLocation();
-  const { setIsReady } = useContext(Context);
-  const { onClick, to, ...misc } = props;
+  const { pathname } = useLocation();
 
   let timer;
 
   const handleClick = (e) => {
-    if (location.pathname === to) return;
+    if (pathname === to) {
+      return;
+    }
 
     e.preventDefault();
-    setIsReady(false);
 
     timer = setTimeout(() => {
       history.push(to);
-    }, duration.pageTransitionOut);
+    }, 500);
 
     onClick();
   };
@@ -32,7 +29,7 @@ const DelayedNavLink = (props) => {
     [timer],
   );
 
-  return <NavLink onClick={handleClick} to={to} {...misc} />;
+  return <NavLink {...rest} onClick={handleClick} to={to} />;
 };
 
 DelayedNavLink.propTypes = {

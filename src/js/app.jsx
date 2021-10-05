@@ -10,6 +10,7 @@ import {
 import Context from './components/context';
 import Preloader from './components/preloader';
 import Footer from './components/footer';
+import Main from './components/main';
 import Nav from './components/nav';
 import About from './pages/about';
 import Contact from './pages/contact';
@@ -66,13 +67,15 @@ const App = () => {
       ) : (
         <Router>
           <Nav />
-          <Switch>
-            <Redirect exact from="/" to="/portfolio" />
-            <Route component={About} path="/about" />
-            <Route component={Contact} path="/contact" />
-            <Route component={Portfolio} path="/portfolio" />
-            <Route component={NotFound} />
-          </Switch>
+          <Main>
+            <Switch>
+              <Redirect exact from="/" to="/portfolio" />
+              <Route component={About} path="/about" />
+              <Route component={Contact} path="/contact" />
+              <Route component={Portfolio} path="/portfolio" />
+              <Route component={NotFound} />
+            </Switch>
+          </Main>
           <Footer />
         </Router>
       )}
