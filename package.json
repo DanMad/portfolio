@@ -23,7 +23,7 @@
   "dependencies": {
     "color": "^4.0.1",
     "html-react-parser": "^1.4.0",
-    "on-the-case": "^2.0.4",
+    "on-the-case": "^2.1.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -54,7 +54,7 @@
     "sass-loader": "^12.1.0",
     "sort-package-json": "^1.52.0",
     "style-loader": "^3.3.0",
-    "webpack": "^5.56.1",
+    "webpack": "^5.57.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.3.1"
   }

@@ -3390,10 +3390,10 @@ on-headers@~1.0.2:
   resolved "https://registry.yarnpkg.com/on-headers/-/on-headers-1.0.2.tgz#772b0ae6aaa525c399e489adfad90c403eb3c28f"
   integrity sha512-pZAE+FJLoyITytdqK0U5s+FIpjN0JP3OzFi/u8Rx+EV5/W+JTWGXG8xFzevE7AjBfDqHv/8vL8qQsIhHnqRkrA==
 
-on-the-case@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/on-the-case/-/on-the-case-2.0.4.tgz#558e5a10adb532ef2f631090449f7b5c7be96a2c"
-  integrity sha512-k4A81CJUI7IoZC3GojxgR0kb9wGHKGpZR4XW67wmgw0CS5quxJnXcm/DtWujVylAqllXF+x52c/wk9FCQUkt/Q==
+on-the-case@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/on-the-case/-/on-the-case-2.1.0.tgz#0fe7ffaf255eab6c5a1386f31c398d08e16b447f"
+  integrity sha512-U9D1TTRD1Co062/YQv7Rfde5e/JDOem5/Ich2uCHA4tmGX2D8pvJzJ9FEfTfXmO0I7WR7tLyDe48XL3pafT5tw==
 
 once@^1.3.0:
   version "1.4.0"
@@ -4727,10 +4727,10 @@ webpack-sources@^3.2.0:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.1.tgz#251a7d9720d75ada1469ca07dbb62f3641a05b6d"
   integrity sha512-t6BMVLQ0AkjBOoRTZgqrWm7xbXMBzD+XDq2EZ96+vMfn3qKgsvdXZhbPZ4ElUOpdv4u+iiGe+w3+J75iy/bYGA==
 
-webpack@^5.56.1:
-  version "5.56.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.56.1.tgz#e39d1d1f1acdb6f07e346f74b7dcfe323da4ded9"
-  integrity sha512-MRbTPooHJuSAfbx7Lh/qEMRUe/d0p4cRj2GPo/fq+4JUeR/+Q1EfLvS1lexslbMcJZyPXxxz/k/NzVepkA5upA==
+webpack@^5.57.1:
+  version "5.57.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.57.1.tgz#ead5ace2c17ecef2ae8126f143bfeaa7f55eab44"
+  integrity sha512-kHszukYjTPVfCOEyrUthA3jqJwduY/P3eO8I0gMNOZGIQWKAwZftxmp5hq6paophvwo9NoUrcZOecs9ulOyyTg==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.50"
