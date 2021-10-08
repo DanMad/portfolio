@@ -1,4 +1,3 @@
-import 'on-the-case';
 import CnamePlugin from 'cname-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
@@ -34,16 +33,15 @@ const commonConfig = {
         exclude: /node_modules/,
         test: /\.s[ac]ss$/,
         use: [
-          'style-loader',
+          {
+            loader: 'style-loader',
+            options: { injectType: 'singletonStyleTag' },
+          },
           'css-loader',
           'postcss-loader',
           {
             loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                importer: tokenImporter(),
-              },
-            },
+            options: { sassOptions: { importer: tokenImporter() } },
           },
         ],
       },
@@ -64,14 +62,14 @@ const commonConfig = {
           template: path.join(__dirname, './src/html/index.html'),
           templateParameters: {
             ns,
-            author: page.author.toTitleCase(),
+            author: page.author,
             description: page.description,
             image: page.image,
             imageAlt: page.imageAlt,
             robots: page.robots,
             styles: page.styles,
             themeColor: page.themeColor,
-            title: page.title.toTitleCase(),
+            title: page.title,
             URL: page.URL,
           },
         }),
@@ -87,7 +85,7 @@ const commonConfig = {
   },
 };
 
-const webpackConfig = (env) => {
+const config = (env) => {
   if (env.development) {
     return {
       ...commonConfig,
@@ -124,4 +122,4 @@ const webpackConfig = (env) => {
   };
 };
 
-export { webpackConfig as default };
+export { config as default };
