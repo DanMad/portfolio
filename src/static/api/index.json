@@ -140,7 +140,7 @@
     },
     {
       "content": "<h1>OCDS</h1><p>Paragraph...</p>",
-      "description": "An accessible design system built for Open Colleges' Learning Management System.",
+      "description": "An accessible design system built for Open Colleges' LMS.",
       "image": "<svg></svg>",
       "name": "open colleges' design system",
       "theme": {
