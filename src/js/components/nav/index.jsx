@@ -1,6 +1,7 @@
 import 'on-the-case';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { BEM, useEventListener } from '../../utils';
+import { useEventListener } from '../../hooks';
+import { BEM } from '../../utils';
 import Context from '../context';
 import DelayedNavLink from '../delayed-nav-link';
 import toRefIndex from './to-ref-index';

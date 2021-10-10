@@ -4,7 +4,7 @@ import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import Context from '../components/context';
 import Slide from '../components/slide';
-import { useEventListener } from '../utils';
+import { useEventListener } from '../hooks';
 
 const Portfolio = ({ match }) => {
   const { data, isReady, setIsReady } = useContext(Context);

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
-import { BEM, useEventListener } from '../../utils';
+import { useEventListener } from '../../hooks';
+import { BEM } from '../../utils';
 import toOrientation from './to-orientation';
 
 const { toBlock } = BEM('main');
