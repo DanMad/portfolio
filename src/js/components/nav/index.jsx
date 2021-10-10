@@ -40,12 +40,12 @@ const Nav = () => {
         <DelayedNavLink
           className={toElement('link')}
           exact
-          key={page.name}
+          key={page.title}
           onClick={() => handleClick(i)}
           innerRef={(ref) => (refs.current[i] = ref)}
-          to={'/' + page.name.toKebabCase()}
+          to={'/' + page.title.toKebabCase()}
         >
-          {page.name.toTitleCase()}
+          {page.title.toTitleCase()}
         </DelayedNavLink>
       ))}
       <div className={toElement('stroke')} style={styles} />

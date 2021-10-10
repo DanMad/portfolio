@@ -13,8 +13,8 @@ const Slide = ({
   // content,
   description,
   // image,
-  name,
   theme,
+  title,
 }) => {
   const { isReady, setIsReady } = useContext(Context);
 
@@ -27,10 +27,10 @@ const Slide = ({
 
   return (
     <>
-      <SEO title={name} />
+      <SEO description={description} title={title} />
       <div className={classNames}>
         <div className={toElement('inner')}>
-          <Heading className={toElement('name')}>{name}</Heading>
+          <Heading className={toElement('title')}>{title}</Heading>
           <p className={toElement('description')}>{description}</p>
         </div>
         <div className={toElement('inner')}>{/* insert image */}</div>
@@ -43,7 +43,6 @@ Slide.propTypes = {
   // content: PropTypes.string,
   description: PropTypes.string.isRequired,
   // image: PropTypes.string,
-  name: PropTypes.string.isRequired,
   theme: PropTypes.shape({
     accent: PropTypes.string.isRequired,
     backgroundPrimary: PropTypes.string.isRequired,
@@ -51,6 +50,7 @@ Slide.propTypes = {
     backgroundTertiary: PropTypes.string.isRequired,
     lighting: PropTypes.string.isRequired,
   }),
+  title: PropTypes.string.isRequired,
 };
 
 Slide.defaultProps = {

@@ -5,17 +5,26 @@ import address from '../address';
 import name from '../name';
 import theme from '../theme';
 
-const author = name.full;
-const themeColor = `var(${toCSSVariable('background-primary')})`;
+const toPageConfig = (title, options = {}) => {
+  let author = name.full.toTitleCase();
 
-const toPageConfig = (title, description, options = {}) => {
+  if (options.author) {
+    author = options.author.trim();
+  }
+
+  let description = `A compilation of the stuff ${name.first.toTitleCase()} makes and the things ${name.first.toTitleCase()} does.`;
+
+  if (!!options.description) {
+    description = options.description.trim();
+  }
+
   let filename = 'index.html';
 
   if (options.filename) {
     filename = options.filename.trim();
   }
 
-  let image = 'assets/og-img-default.png';
+  let image = '/assets/social-image-default.png';
 
   if (options.image) {
     image = options.image.trim();
@@ -37,8 +46,10 @@ const toPageConfig = (title, description, options = {}) => {
 
   let robots = 'index, follow';
 
-  if (options.robots) {
+  if (typeof options.robots === 'string' && !!options.robots) {
     robots = options.robots.trim();
+  } else if (typeof options.robots === 'boolean' && !options.robots) {
+    robots = 'noindex, nofollow';
   }
 
   const mergedTheme = { ...theme, ...options.theme };
@@ -56,6 +67,12 @@ const toPageConfig = (title, description, options = {}) => {
 
   styles += '}}</style>';
 
+  let themeColor = `var(${toCSSVariable('background-primary')})`;
+
+  if (options.themeColor) {
+    themeColor = options.themeColor.trim();
+  }
+
   let URL = address.URL + '/' + path;
 
   if (filename !== 'index.html') {
@@ -64,6 +81,7 @@ const toPageConfig = (title, description, options = {}) => {
 
   return {
     author,
+    description,
     filename,
     image,
     imageAlt,
@@ -72,8 +90,7 @@ const toPageConfig = (title, description, options = {}) => {
     styles,
     themeColor,
     URL,
-    description: description.trim(),
-    title: title.trim() + ' | ' + address.nakedDomain,
+    title: title.toTitleCase().trim() + ' | ' + address.nakedDomain,
   };
 };
 

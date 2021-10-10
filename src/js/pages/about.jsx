@@ -1,3 +1,4 @@
+import 'on-the-case';
 import parse from 'html-react-parser';
 import { useContext, useEffect } from 'react';
 import Context from '../components/context';
@@ -7,7 +8,7 @@ import { setTheme } from '../utils';
 
 const About = () => {
   const { data } = useContext(Context);
-  const content = data.pages.find((page) => page.name === 'about').content;
+  const page = data.pages.find((page) => page.title === 'about');
 
   useEffect(() => {
     setTheme();
@@ -15,9 +16,9 @@ const About = () => {
 
   return (
     <>
-      <SEO title="about" />
+      <SEO description={page.description} title="about" />
       <Heading level="1">about</Heading>
-      {parse(content)}
+      {parse(page.innerHTML)}
     </>
   );
 };

@@ -7,7 +7,7 @@ import { setTheme } from '../utils';
 
 const Contact = () => {
   const { data } = useContext(Context);
-  const content = data.pages.find((page) => page.name === 'contact').content;
+  const page = data.pages.find((page) => page.title === 'contact');
 
   useEffect(() => {
     setTheme();
@@ -15,9 +15,9 @@ const Contact = () => {
 
   return (
     <>
-      <SEO title="contact" />
+      <SEO description={page.description} title="contact" />
       <Heading level="1">contact</Heading>
-      {parse(content)}
+      {parse(page.innerHTML)}
     </>
   );
 };

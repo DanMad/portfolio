@@ -11,7 +11,7 @@ const Portfolio = ({ match }) => {
   const history = useHistory();
   let paths = [
     '',
-    ...data.projects.map((project) => project.name.toKebabCase()),
+    ...data.projects.map((project) => project.title.toKebabCase()),
   ];
 
   let initIndex = 0;
@@ -95,13 +95,13 @@ const Portfolio = ({ match }) => {
         exact
         path={match.path}
         render={() => (
-          <Slide description="Testing, 1... 2... 3..." name="Portfolio" />
+          <Slide description="Testing, 1... 2... 3..." title="Portfolio" />
         )}
       />
       {data.projects.map((project) => (
         <Route
-          key={project.name}
-          path={match.path + '/' + project.name.toKebabCase()}
+          key={project.title}
+          path={match.path + '/' + project.title.toKebabCase()}
           render={() => <Slide {...project} />}
         />
       ))}

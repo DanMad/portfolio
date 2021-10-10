@@ -14,24 +14,22 @@ const Footer = () => {
     <footer className={toBlock()}>
       <div className={toElement('inner')}>
         {Object.keys(data.social).map((key) => {
-          const { name, URL } = data.social[key];
+          const { type, URL } = data.social[key];
 
           return (
             <a
               className={toElement('link')}
               href={URL}
-              key={name}
+              key={type}
               rel="noopener noreferrer"
               target="_blank"
             >
-              <Social name={name} />
+              <Social type={type} />
             </a>
           );
         })}
       </div>
-      <p className={toElement('statement')}>
-        {copyright.statement.toTitleCase()}
-      </p>
+      <p className={toElement('statement')}>{copyright.statement}</p>
     </footer>
   );
 };

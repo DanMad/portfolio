@@ -61,8 +61,8 @@
       "dates": {
         "start": "2020-12-03"
       },
-      "employer": "up education",
       "logo": "images/insert-file-name.svg",
+      "organisation": "up education",
       "role": "head of design"
     },
     {
@@ -70,8 +70,8 @@
         "end": "2020-12-02",
         "start": "2020-01-04"
       },
-      "employer": "up education",
       "logo": "images/insert-file-name.svg",
+      "organisation": "up education",
       "role": "design lead"
     },
     {
@@ -79,8 +79,8 @@
         "end": "2020-01-03",
         "start": "2019-01-05"
       },
-      "employer": "open colleges",
       "logo": "images/insert-file-name.svg",
+      "organisation": "open colleges",
       "role": "lead product designer"
     },
     {
@@ -88,8 +88,8 @@
         "end": "2019-01-04",
         "start": "2018-04-16"
       },
-      "employer": "open colleges",
       "logo": "images/insert-file-name.svg",
+      "organisation": "open colleges",
       "role": "lead designer"
     },
     {
@@ -97,8 +97,8 @@
         "end": "2018-04-15",
         "start": "2013-10-22"
       },
-      "employer": "open colleges",
       "logo": "images/insert-file-name.svg",
+      "organisation": "open colleges",
       "role": "digital designer"
     },
     {
@@ -106,62 +106,66 @@
         "end": "2012-10-27",
         "start": "2012-04-03"
       },
-      "employer": "cleanrooms australia",
       "logo": "images/insert-file-name.svg",
+      "organisation": "cleanrooms australia",
       "role": "digital designer"
     }
   ],
   "pages": [
     {
-      "content": "<h1>The Things I Make and Do</h1><p>Have a gander...</p>",
-      "name": "portfolio"
+      "innerHTML": "<h1>The Things I Make and Do</h1><p>Have a gander...</p>",
+      "title": "portfolio"
     },
     {
-      "content": "<p>Hi! 👋</p><p>My name's Dan.</p><p>I'm a cross-disciplinary designer and I get a kick out of creating memorable, digital experiences. With an intimate understanding of design and development, I'm perfectly positioned to solve problems while adhering to the constraints of both camps.</p><p>One of my favourite quotes is \"God is in the detail\". I think sweating the small stuff can pay big dividends. Simultaneously taking this approach and managing a project's scope is a balancing act, but an incredibly rewarding one when you deliver quality on time and on budget.</p><p>If you have a project or opportunity and suspect that I might be your guy, then don't be a stranger. I'd love to chat!</p>",
-      "name": "about"
+      "description": "A little bit of background on Daniel.",
+      "innerHTML": "<p>Hi! 👋</p><p>My name's Dan.</p><p>I'm a cross-disciplinary designer and I get a kick out of creating memorable, digital experiences. With an intimate understanding of design and development, I'm perfectly positioned to solve problems while adhering to the constraints of both camps.</p><p>One of my favourite quotes is \"God is in the detail\". I think sweating the small stuff can pay big dividends. Simultaneously taking this approach and managing a project's scope is a balancing act, but an incredibly rewarding one when you deliver quality on time and on budget.</p><p>If you have a project or opportunity and suspect that I might be your guy, then don't be a stranger. I'd love to chat!</p>",
+      "title": "about"
     },
     {
-      "content": "<p>How to contact me...</p>",
-      "name": "contact"
+      "description": "How to get in touch with Daniel.",
+      "innerHTML": "<p>How to contact me...</p>",
+      "title": "contact"
     }
   ],
   "projects": [
     {
-      "content": "<h1>A Galaxy Far, Far Away</h1><p>Paragraph...</p>",
       "description": "A Visual Studio Code theme from a galaxy far, far away...",
       "image": "<svg></svg>",
-      "name": "a galaxy far, far away theme",
+      "innerHTML": "<h1>A Galaxy Far, Far Away</h1><p>Paragraph...</p>",
       "theme": {
         "accent": "rgb(244, 80, 10)",
         "backgroundPrimary": "rgb(10, 15, 23)",
         "backgroundSecondary": "rgb(1, 2, 3)",
+        "backgroundTertiary": "rgb(1, 2, 3)",
         "lighting": "rgba(193, 10, 10, 0.03)"
-      }
+      },
+      "title": "a galaxy far, far away theme"
     },
     {
-      "content": "<h1>OCDS</h1><p>Paragraph...</p>",
       "description": "An accessible design system built for Open Colleges' LMS.",
       "image": "<svg></svg>",
-      "name": "open colleges' design system",
+      "innerHTML": "<h1>OCDS</h1><p>Paragraph...</p>",
       "theme": {
         "accent": "rgb(17, 160, 173)",
         "backgroundPrimary": "rgb(249, 248, 248)",
         "backgroundSecondary": "rgb(236, 235, 235)",
+        "backgroundTertiary": "rgb(236, 235, 235)",
         "lighting": "rgba(193, 10, 10, 0.03)"
-      }
+      },
+      "title": "open colleges' design system"
     }
   ],
   "social": [
     {
-      "name": "linkedin",
+      "type": "linkedin",
       "URL": "https://www.linkedin.com/in/daniel-maddisons-profile/"
     },
     {
-      "name": "github",
+      "type": "github",
       "URL": "https://github.com/danmad"
     },
     {
-      "name": "dribbble",
+      "type": "dribbble",
       "URL": "https://dribbble.com/danmad"
     }
   ]
