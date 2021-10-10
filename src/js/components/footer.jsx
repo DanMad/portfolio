@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { copyright } from '../../config';
 import { BEM } from '../utils';
 import Context from './context';
-import Social from './social';
+import SocialPlatform from './social-platform';
 
 const { toBlock, toElement } = BEM('footer');
 
@@ -13,8 +13,8 @@ const Footer = () => {
   return (
     <footer className={toBlock()}>
       <div className={toElement('inner')}>
-        {Object.keys(data.social).map((key) => {
-          const { type, URL } = data.social[key];
+        {Object.keys(data.socialPlatforms).map((key) => {
+          const { type, URL } = data.socialPlatforms[key];
 
           return (
             <a
@@ -24,7 +24,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <Social type={type} />
+              <SocialPlatform type={type} />
             </a>
           );
         })}

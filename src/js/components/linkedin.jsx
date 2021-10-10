@@ -1,8 +1,6 @@
-import { BEM } from '../../utils';
+import PropTypes from 'prop-types';
 
-const { toElement } = BEM('social');
-
-const Linkedin = () => (
+const Linkedin = ({ toElement }) => (
   <>
     <path
       className={toElement('tile')}
@@ -14,5 +12,9 @@ const Linkedin = () => (
     />
   </>
 );
+
+Linkedin.propTypes = {
+  toElement: PropTypes.func.isRequired,
+};
 
 export { Linkedin as default };

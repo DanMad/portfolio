@@ -1,8 +1,6 @@
-import { BEM } from '../../utils';
+import PropTypes from 'prop-types';
 
-const { toElement } = BEM('social');
-
-const Dribbble = () => (
+const Dribbble = ({ toElement }) => (
   <>
     <path
       className={toElement('tile')}
@@ -14,5 +12,9 @@ const Dribbble = () => (
     />
   </>
 );
+
+Dribbble.propTypes = {
+  toElement: PropTypes.func.isRequired,
+};
 
 export { Dribbble as default };

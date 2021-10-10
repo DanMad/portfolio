@@ -1,12 +1,12 @@
 @import '../tokens/namespace';
 @import '../functions/to-theme-var';
 
-.#{$ns}-social {
+.#{$ns}-social-platform {
   pointer-events: none;
   user-select: none;
 }
 
-.#{$ns}-social__tile {
+.#{$ns}-social-platform__tile {
   opacity: 0;
   transform: scale(0);
   transform-origin: center;
@@ -15,24 +15,24 @@
     transform 300ms cubic-bezier(0.5, -0.5, 0.5, 1.5);
 }
 
-:hover > .#{$ns}-social .#{$ns}-social__tile,
-:focus > .#{$ns}-social .#{$ns}-social__tile {
+:hover > .#{$ns}-social-platform .#{$ns}-social-platform__tile,
+:focus > .#{$ns}-social-platform .#{$ns}-social-platform__tile {
   opacity: 1;
   transform: scale(1);
 }
 
-:active > .#{$ns}-social .#{$ns}-social__tile {
+:active > .#{$ns}-social-platform .#{$ns}-social-platform__tile {
   opacity: 0;
   transform: scale(0);
 }
 
-.#{$ns}-social__logo {
+.#{$ns}-social-platform__logo {
   fill: to-theme-var(foreground-primary);
   transition: fill 300ms ease-in;
 }
 
-:hover > .#{$ns}-social .#{$ns}-social__logo,
-:focus > .#{$ns}-social .#{$ns}-social__logo,
-:active > .#{$ns}-social .#{$ns}-social__logo {
+:hover > .#{$ns}-social-platform .#{$ns}-social-platform__logo,
+:focus > .#{$ns}-social-platform .#{$ns}-social-platform__logo,
+:active > .#{$ns}-social-platform .#{$ns}-social-platform__logo {
   fill: to-theme-var(foreground-secondary);
 }

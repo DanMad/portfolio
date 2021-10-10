@@ -1,8 +1,6 @@
-import { BEM } from '../../utils';
+import PropTypes from 'prop-types';
 
-const { toElement } = BEM('social');
-
-const Github = () => (
+const Github = ({ toElement }) => (
   <>
     <path
       className={toElement('tile')}
@@ -14,5 +12,9 @@ const Github = () => (
     />
   </>
 );
+
+Github.propTypes = {
+  toElement: PropTypes.func.isRequired,
+};
 
 export { Github as default };
