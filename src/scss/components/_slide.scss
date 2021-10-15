@@ -1,10 +1,37 @@
 @import '../tokens/namespace';
+@import '../mixins/center';
 
 .#{$ns}-slide {
-  opacity: 0;
-  transition: opacity 250ms ease;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
 }
 
-.#{$ns}-slide.ready {
-  opacity: 1;
+.landscape .#{$ns}-slide {
+  flex-direction: row;
+}
+
+.#{$ns}-slide__outer {
+  position: relative;
+}
+
+.#{$ns}-slide__outer:last-of-type {
+  flex-grow: 1;
+}
+
+.landscape .#{$ns}-slide__outer:first-of-type {
+  flex-basis: 50%;
+}
+
+.landscape .#{$ns}-slide__outer:last-of-type {
+  flex-basis: 50%;
+  flex-grow: unset;
+}
+
+.#{$ns}-slide__outer:last-of-type .#{$ns}-slide__inner {
+  @include center();
+}
+
+.landscape .#{$ns}-slide__outer:first-of-type .#{$ns}-slide__inner {
+  @include center();
 }
