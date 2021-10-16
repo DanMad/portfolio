@@ -7,7 +7,7 @@
   height: 100%;
 }
 
-.landscape .#{$ns}-slide {
+.landscape > .#{$ns}-slide {
   flex-direction: row;
 }
 
@@ -34,4 +34,29 @@
 
 .landscape .#{$ns}-slide__outer:first-of-type .#{$ns}-slide__inner {
   @include center();
+}
+
+.slide__title {
+  opacity: 0;
+  // display: none;
+  // visibility: hidden;
+  transition: opacity 300ms ease-in-out;
+}
+
+.ready .slide__title {
+  opacity: 1;
+  // display: initial;
+  // visibility: visible;
+}
+
+.slide__description {
+  opacity: 0;
+  // display: none;
+  // visibility: hidden;
+}
+
+.slide__button {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
 }

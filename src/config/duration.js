@@ -1,14 +1,17 @@
 const unit = 100;
 
 const duration = {
-  get pageTransitionIn() {
+  get boxShadow() {
     return this.unit * 3;
   },
-  get pageTransitionOut() {
-    return this.pageTransitionIn + this.themeTransition;
+  get color() {
+    return this.unit * 3;
   },
-  get themeTransition() {
-    return this.unit * 2;
+  get transform() {
+    return this.unit * 5;
+  },
+  get opacity() {
+    return this.unit * 5;
   },
   unit,
 };

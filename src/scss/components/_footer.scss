@@ -23,14 +23,14 @@
   outline: none;
   margin-right: to-rem(4px);
   margin-left: to-rem(4px);
-}
 
-.#{$ns}-footer__link:first-of-type {
-  margin-left: 0;
-}
+  &:first-of-type {
+    margin-left: 0;
+  }
 
-.#{$ns}-footer__link:last-of-type {
-  margin-right: 0;
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
 
 .#{$ns}-footer__statement {

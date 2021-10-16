@@ -41,7 +41,13 @@ const commonConfig = {
           'postcss-loader',
           {
             loader: 'sass-loader',
-            options: { sassOptions: { importer: tokenImporter() } },
+            options: {
+              sassOptions: {
+                importer: tokenImporter({
+                  convertCase: true,
+                }),
+              },
+            },
           },
         ],
       },

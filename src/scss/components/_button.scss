@@ -1,0 +1,34 @@
+@import '../tokens/namespace';
+@import '../tokens/transition';
+@import '../functions/to-rem';
+@import '../functions/to-theme-var';
+
+.#{$ns}-button {
+  height: to-rem(44px);
+  width: 100%;
+  padding: to-rem(12px) to-rem(20px);
+  border: none;
+  border-radius: to-rem(22px);
+  outline: none;
+  margin-right: 0;
+  margin-left: 0;
+  background-color: to-theme-var(foreground-primary);
+  color: to-theme-var(background-primary);
+  font-size: to-rem(14px);
+  font-weight: 800;
+  line-height: to-rem(20px);
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow $transition-duration-box-shadow
+      $transition-timing-func-default,
+    background-color $transition-duration-color $transition-timing-func-bounce-s;
+
+  &:hover {
+    background-color: to-theme-var(foreground-secondary);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 to-rem(4px) to-theme-var(accent);
+    background-color: to-theme-var(foreground-secondary);
+  }
+}
