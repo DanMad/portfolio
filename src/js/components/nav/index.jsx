@@ -2,28 +2,30 @@ import 'on-the-case';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useEventListener } from '../../hooks';
 import { BEM } from '../../utils';
-import Context from '../context';
+import Data from '../data';
 import DelayedNavLink from '../delayed-nav-link';
 import toRefIndex from './to-ref-index';
 import toStyles from './to-styles';
 
-const { toBlock, toElement } = BEM('nav');
+const { toBlock, toElement, toModifier } = BEM('nav');
 
 const Nav = () => {
-  const { data, setIsReady } = useContext(Context);
+  const { pages } = useContext(Data);
   const refs = useRef([]);
-  const [styles, setStyles] = useState();
+  const [isReady, setIsReady] = useState(false);
+  const [styles, setStyles] = useState({});
 
-  const handleClick = (refIndex) => {
-    const currentStyles = toStyles(refs, refIndex);
+  const handleClick = (i) => {
+    const currentStyles = toStyles(refs, i);
 
-    setIsReady(false);
     setStyles(currentStyles);
   };
 
   useEffect(() => {
-    const refIndex = toRefIndex(refs);
-    const currentStyles = toStyles(refs, refIndex);
+    setIsReady(true);
+
+    const i = toRefIndex(refs);
+    const currentStyles = toStyles(refs, i);
 
     setStyles(currentStyles);
   }, []);
@@ -35,9 +37,11 @@ const Nav = () => {
     setStyles(currentStyles);
   });
 
+  const classNames = toBlock() + (isReady ? ' ' + toModifier('ready') : '');
+
   return (
-    <nav className={toBlock()}>
-      {data.pages.map((page, i) => (
+    <nav className={classNames}>
+      {pages.map((page, i) => (
         <DelayedNavLink
           className={toElement('link')}
           exact

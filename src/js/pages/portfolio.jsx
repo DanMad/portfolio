@@ -2,17 +2,14 @@ import 'on-the-case';
 import PropTypes from 'prop-types';
 import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
-import Context from '../components/context';
+import Data from '../components/data';
 import Slide from '../components/slide';
 import { useEventListener } from '../hooks';
 
 const Portfolio = ({ match }) => {
-  const { data, isReady, setIsReady } = useContext(Context);
+  const { projects } = useContext(Data);
   const history = useHistory();
-  let paths = [
-    '',
-    ...data.projects.map((project) => project.title.toKebabCase()),
-  ];
+  let paths = ['', ...projects.map((project) => project.title.toKebabCase())];
 
   let initIndex = 0;
 
@@ -71,18 +68,17 @@ const Portfolio = ({ match }) => {
   // ---------------------------------------------------------------------------
 
   useEffect(() => {
-    if (!isReady) {
-      return;
-    }
+    // if (!isAppReady) {
+    //   return;
+    // }
 
-    setIsReady(false);
+    // setIsAppReady(false);
 
     const timer = setTimeout(() => {
-      // .toKebabCase() doesn't work here.
       history.push(
         match.path + (!paths[slideIndex].length ? '' : '/' + paths[slideIndex]),
       );
-    }, 250);
+    }, 300);
 
     return () => {
       clearTimeout(timer);
@@ -98,7 +94,7 @@ const Portfolio = ({ match }) => {
           <Slide description="Testing, 1... 2... 3..." title="Portfolio" />
         )}
       />
-      {data.projects.map((project) => (
+      {projects.map((project) => (
         <Route
           key={project.title}
           path={match.path + '/' + project.title.toKebabCase()}

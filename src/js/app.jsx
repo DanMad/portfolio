@@ -7,11 +7,11 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import Context from './components/context';
-import Preloader from './components/preloader';
+import Data from './components/data';
 import Footer from './components/footer';
 import Main from './components/main';
 import Nav from './components/nav';
+import Preloader from './components/preloader';
 import About from './pages/about';
 import Contact from './pages/contact';
 import NotFound from './pages/not-found';
@@ -22,7 +22,7 @@ import '../scss/styles.scss';
 const { toBlock } = BEM('app');
 
 const App = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
 
@@ -41,17 +41,18 @@ const App = () => {
         Accept: 'application/json',
       },
     })
-      .then((response) => {
-        // Mocked response time.
-        return new Promise((resolve) => {
-          timer = setTimeout(() => {
-            resolve(response.json());
-          }, 3000);
-        });
-      })
+      .then(
+        (response) =>
+          // Mock response time.
+          new Promise((resolve) => {
+            timer = setTimeout(() => {
+              resolve(response.json());
+            }, 3000);
+          }),
+      )
       .then((json) => {
-        setIsReady(false);
         setData(json);
+        setIsReady(false);
       })
       .catch((error) => {
         console.error(error);
@@ -63,9 +64,13 @@ const App = () => {
   }, [isLoading]);
 
   return (
-    <Context.Provider value={{ data, isReady, setIsLoading, setIsReady }}>
+    <Data.Provider value={{ ...data }}>
       {isLoading ? (
-        <Preloader />
+        <Preloader
+          isReady={isReady}
+          setIsLoading={setIsLoading}
+          setIsReady={setIsReady}
+        />
       ) : (
         <Router>
           <Nav />
@@ -81,7 +86,7 @@ const App = () => {
           <Footer />
         </Router>
       )}
-    </Context.Provider>
+    </Data.Provider>
   );
 };
 

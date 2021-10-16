@@ -2,19 +2,19 @@ import 'on-the-case';
 import { useContext } from 'react';
 import { copyright } from '../../config';
 import { BEM } from '../utils';
-import Context from './context';
+import Data from './data';
 import SocialPlatform from './social-platform';
 
 const { toBlock, toElement } = BEM('footer');
 
 const Footer = () => {
-  const { data } = useContext(Context);
+  const { socialPlatforms } = useContext(Data);
 
   return (
     <footer className={toBlock()}>
       <div className={toElement('inner')}>
-        {Object.keys(data.socialPlatforms).map((key) => {
-          const { type, URL } = data.socialPlatforms[key];
+        {Object.keys(socialPlatforms).map((key) => {
+          const { type, URL } = socialPlatforms[key];
 
           return (
             <a

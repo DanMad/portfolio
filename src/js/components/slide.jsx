@@ -1,9 +1,9 @@
 import 'on-the-case';
 import PropTypes from 'prop-types';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { theme } from '../../config';
 import { BEM, setTheme } from '../utils';
-import Context from './context';
+import Button from './button';
 import Heading from './heading';
 import SEO from './seo';
 
@@ -16,14 +16,12 @@ const Slide = ({
   theme,
   title,
 }) => {
-  const { isReady, setIsReady } = useContext(Context);
-
   useEffect(() => {
-    setIsReady(true);
     setTheme(theme);
   }, []);
 
-  const classNames = toBlock() + (isReady ? ' ready' : '');
+  // const classNames = toBlock() + (isAppReady ? ' ready' : '');
+  const classNames = toBlock();
 
   return (
     <>
@@ -33,6 +31,7 @@ const Slide = ({
           <div className={toElement('inner')}>
             <Heading className={toElement('title')}>{title}</Heading>
             <p className={toElement('description')}>{description}</p>
+            <Button className={toElement('button')}>view more</Button>
           </div>
         </div>
         <div className={toElement('outer')}>

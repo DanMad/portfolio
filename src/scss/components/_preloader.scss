@@ -18,7 +18,7 @@
   transition: width 0.25s ease;
 }
 
-.#{$ns}-preloader.ready > .#{$ns}-preloader__track {
+.#{$ns}-preloader.#{$ns}-preloader--ready > .#{$ns}-preloader__track {
   width: 100%;
 }
 
@@ -31,7 +31,7 @@
   background-color: to-theme-var(accent);
 }
 
-.#{$ns}-preloader.ready .#{$ns}-preloader__bar {
+.#{$ns}-preloader.#{$ns}-preloader--ready .#{$ns}-preloader__bar {
   animation: loading 1.5s ease infinite 0.25s;
 }
 
@@ -39,11 +39,9 @@
   0% {
     transform: translateX(-50%);
   }
-
   50% {
     transform: translateX(150%);
   }
-
   100% {
     transform: translateX(-50%);
   }
