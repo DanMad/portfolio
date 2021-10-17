@@ -67,7 +67,8 @@ const toPageConfig = (title, options = {}) => {
 
   styles += '}}</style>';
 
-  let themeColor = `var(${toCSSVariable('background-primary')})`;
+  // Doesn't support var()
+  let themeColor = `var(${toCSSVariable('accent')})`;
 
   if (options.themeColor) {
     themeColor = options.themeColor.trim();

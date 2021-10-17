@@ -20,15 +20,16 @@
   cursor: pointer;
   user-select: none;
   transition: box-shadow $transition-duration-box-shadow
-      $transition-timing-func-default,
-    background-color $transition-duration-color $transition-timing-func-bounce-s;
+      $transition-timing-function-default,
+    background-color $transition-duration-color
+      $transition-timing-function-bounce-s;
+}
 
-  &:hover {
-    background-color: to-theme-var(foreground-secondary);
-  }
+.#{$ns}-button:hover {
+  background-color: to-theme-var(foreground-secondary);
+}
 
-  &:focus {
-    box-shadow: 0 0 0 to-rem(4px) to-theme-var(accent);
-    background-color: to-theme-var(foreground-secondary);
-  }
+.#{$ns}-button:focus {
+  box-shadow: 0 0 0 to-rem(4px) to-theme-var(accent);
+  background-color: to-theme-var(foreground-secondary);
 }

@@ -1,4 +1,6 @@
 @import '../tokens/namespace';
+@import '../tokens/transition';
+@import '../functions/to-rem';
 @import '../mixins/center';
 
 .#{$ns}-slide {
@@ -36,27 +38,49 @@
   @include center();
 }
 
-.slide__title {
+.#{$ns}-slide__title {
   opacity: 0;
-  // display: none;
-  // visibility: hidden;
-  transition: opacity 300ms ease-in-out;
+  position: relative;
+  transform: translateY(#{to-rem(20px)});
+  transition: opacity $transition-duration-opacity
+      $transition-timing-function-default,
+    transform $transition-duration-transform $transition-timing-function-default;
+  transition-delay: $transition-duration-unit * 7 + ms;
 }
 
-.ready .slide__title {
+.#{$ns}-slide--ready .#{$ns}-slide__title {
   opacity: 1;
-  // display: initial;
-  // visibility: visible;
+  transform: translateY(0);
+  transition-delay: $transition-duration-unit * 5 + ms;
 }
 
-.slide__description {
+.#{$ns}-slide__description {
   opacity: 0;
-  // display: none;
-  // visibility: hidden;
+  position: relative;
+  transform: translateY(#{to-rem(20px)});
+  transition: opacity $transition-duration-opacity
+      $transition-timing-function-default,
+    transform $transition-duration-transform $transition-timing-function-default;
+  transition-delay: $transition-duration-unit * 6 + ms;
 }
 
-.slide__button {
+.#{$ns}-slide--ready .#{$ns}-slide__description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.#{$ns}-slide__button {
   opacity: 0;
-  display: none;
-  visibility: hidden;
+  position: relative;
+  transform: translateY(#{to-rem(20px)});
+  transition: opacity $transition-duration-opacity
+      $transition-timing-function-default,
+    transform $transition-duration-transform $transition-timing-function-default;
+  transition-delay: $transition-duration-unit * 5 + ms;
+}
+
+.#{$ns}-slide--ready .#{$ns}-slide__button {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: $transition-duration-unit * 7 + ms;
 }

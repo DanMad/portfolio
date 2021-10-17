@@ -2,11 +2,13 @@
 
 $transition-duration-box-shadow: map-get($duration, 'box-shadow') + ms;
 $transition-duration-color: map-get($duration, 'color') + ms;
-$transition-duration-transform: map-get($duration, 'transform') + ms;
+$transition-duration-left: map-get($duration, 'left') + ms;
 $transition-duration-opacity: map-get($duration, 'opacity') + ms;
+$transition-duration-transform: map-get($duration, 'transform') + ms;
 $transition-duration-unit: map-get($duration, 'unit');
+$transition-duration-width: map-get($duration, 'width') + ms;
 
-$transition-timing-func-bounce-s: cubic-bezier(0.25, -0.25, 0.25, 1.25);
-$transition-timing-func-bounce-m: cubic-bezier(0.5, -0.5, 0.5, 1.5);
-$transition-timing-func-bounce-l: cubic-bezier(0.75, -0.75, 0.75, 1.75);
-$transition-timing-func-default: ease-in-out;
+$transition-timing-function-bounce-s: cubic-bezier(0.25, -0.25, 0.25, 1.25);
+$transition-timing-function-bounce-m: cubic-bezier(0.5, -0.5, 0.5, 1.5);
+$transition-timing-function-bounce-l: cubic-bezier(0.75, -0.75, 0.75, 1.75);
+$transition-timing-function-default: ease-in-out;

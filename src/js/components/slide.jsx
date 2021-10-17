@@ -7,21 +7,23 @@ import Button from './button';
 import Heading from './heading';
 import SEO from './seo';
 
-const { toBlock, toElement } = BEM('slide');
+const { toBlock, toElement, toModifier } = BEM('slide');
 
 const Slide = ({
   // content,
   description,
   // image,
+  isReady,
+  setIsReady,
   theme,
   title,
 }) => {
   useEffect(() => {
+    setIsReady(true);
     setTheme(theme);
   }, []);
 
-  // const classNames = toBlock() + (isAppReady ? ' ready' : '');
-  const classNames = toBlock();
+  const classNames = toBlock() + (isReady ? ' ' + toModifier('ready') : '');
 
   return (
     <>
@@ -46,6 +48,8 @@ Slide.propTypes = {
   // content: PropTypes.string,
   description: PropTypes.string.isRequired,
   // image: PropTypes.string,
+  isReady: PropTypes.bool.isRequired,
+  setIsReady: PropTypes.func.isRequired,
   theme: PropTypes.shape({
     accent: PropTypes.string.isRequired,
     backgroundPrimary: PropTypes.string.isRequired,

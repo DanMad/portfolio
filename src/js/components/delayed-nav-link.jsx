@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { duration } from '../../config';
 
 const DelayedNavLink = ({ onClick, to, ...rest }) => {
   const history = useHistory();
@@ -17,7 +18,7 @@ const DelayedNavLink = ({ onClick, to, ...rest }) => {
 
     timer = setTimeout(() => {
       history.push(to);
-    }, 500);
+    }, duration.unit * 12);
 
     onClick();
   };

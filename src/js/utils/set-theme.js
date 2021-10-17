@@ -45,7 +45,7 @@ const setTheme = (theme = defaultTheme) => {
     });
 
     return clearTimeout(timer);
-  }, 500);
+  }, 500); // FIX
 
   const foregroundPrimaryVar = toCSSVariable('foreground-primary');
   const foregroundSecondaryVar = toCSSVariable('foreground-secondary');

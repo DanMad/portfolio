@@ -1,4 +1,5 @@
 @import '../tokens/namespace';
+@import '../tokens/transition';
 @import '../functions/to-rem';
 @import '../mixins/breakpoint';
 @import '../mixins/center';
@@ -29,25 +30,30 @@
   font-weight: 700;
   line-height: to-rem(20px);
   text-decoration: none;
+  transition: opacity $transition-duration-opacity
+      $transition-timing-function-default,
+    transform $transition-duration-transform $transition-timing-function-default;
   user-select: none;
-  transition: opacity 300ms ease-in-out,
-    transform 300ms cubic-bezier(0.5, -0.5, 0.5, 1.5); // set to variable duration
+}
 
-  &:first-of-type {
-    margin-left: 0;
-  }
+.#{$ns}-nav__link:first-of-type {
+  margin-left: 0;
+}
 
-  &:last-of-type {
-    margin-right: 0;
-  }
+.#{$ns}-nav__link:last-of-type {
+  margin-right: 0;
+}
 
-  &:nth-of-type(2) {
-    transition-delay: 100ms;
-  }
+.#{$ns}-nav__link:nth-of-type(1) {
+  transition-delay: $transition-duration-unit * 8 + ms;
+}
 
-  &:nth-of-type(3) {
-    transition-delay: 200ms;
-  }
+.#{$ns}-nav__link:nth-of-type(2) {
+  transition-delay: $transition-duration-unit * 9 + ms;
+}
+
+.#{$ns}-nav__link:nth-of-type(3) {
+  transition-delay: $transition-duration-unit * 10 + ms;
 }
 
 .#{$ns}-nav--ready .#{$ns}-nav__link {
@@ -63,17 +69,18 @@
   height: to-rem(2px);
   border-radius: to-rem(1px);
   background-color: currentColor;
-  transition: opacity 300ms ease,
-    left 300ms cubic-bezier(0.25, -0.25, 0.25, 1.25), transform 300ms ease,
-    width 300ms ease;
-  transition-delay: 300ms;
+  transition: opacity $transition-duration-opacity
+      $transition-timing-function-default,
+    left $transition-duration-left $transition-timing-function-bounce-s,
+    transform $transition-duration-transform $transition-timing-function-default,
+    width $transition-duration-width $transition-timing-function-default;
+  transition-delay: $transition-duration-unit * 11 + ms;
   pointer-events: none;
 }
 
 .#{$ns}-nav--ready .#{$ns}-nav__stroke {
   opacity: 1;
   transform: translate(-50%, 0);
-  transition-delay: 0ms;
 }
 
 @include has-touch() {
