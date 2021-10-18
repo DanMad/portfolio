@@ -11,4 +11,3 @@ $transition-duration-width: map-get($duration, 'width') + ms;
 $transition-timing-function-bounce-s: cubic-bezier(0.25, -0.25, 0.25, 1.25);
 $transition-timing-function-bounce-m: cubic-bezier(0.5, -0.5, 0.5, 1.5);
 $transition-timing-function-bounce-l: cubic-bezier(0.75, -0.75, 0.75, 1.75);
-$transition-timing-function-default: ease-in-out;

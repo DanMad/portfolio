@@ -30,9 +30,9 @@
   font-weight: 700;
   line-height: to-rem(20px);
   text-decoration: none;
-  transition: opacity $transition-duration-opacity
-      $transition-timing-function-default,
-    transform $transition-duration-transform $transition-timing-function-default;
+  transition: opacity $transition-duration-opacity ease,
+    transform $transition-duration-transform
+      $transition-timing-function-bounce-m;
   user-select: none;
 }
 
@@ -45,15 +45,15 @@
 }
 
 .#{$ns}-nav__link:nth-of-type(1) {
-  transition-delay: $transition-duration-unit * 8 + ms;
+  transition-delay: $transition-duration-unit * 11 + ms;
 }
 
 .#{$ns}-nav__link:nth-of-type(2) {
-  transition-delay: $transition-duration-unit * 9 + ms;
+  transition-delay: $transition-duration-unit * 12 + ms;
 }
 
 .#{$ns}-nav__link:nth-of-type(3) {
-  transition-delay: $transition-duration-unit * 10 + ms;
+  transition-delay: $transition-duration-unit * 13 + ms;
 }
 
 .#{$ns}-nav--ready .#{$ns}-nav__link {
@@ -69,18 +69,19 @@
   height: to-rem(2px);
   border-radius: to-rem(1px);
   background-color: currentColor;
-  transition: opacity $transition-duration-opacity
-      $transition-timing-function-default,
+  transition: opacity $transition-duration-opacity ease,
     left $transition-duration-left $transition-timing-function-bounce-s,
-    transform $transition-duration-transform $transition-timing-function-default,
-    width $transition-duration-width $transition-timing-function-default;
-  transition-delay: $transition-duration-unit * 11 + ms;
+    transform $transition-duration-transform
+      $transition-timing-function-bounce-m,
+    width $transition-duration-width ease;
+  transition-delay: 0ms;
   pointer-events: none;
 }
 
 .#{$ns}-nav--ready .#{$ns}-nav__stroke {
   opacity: 1;
   transform: translate(-50%, 0);
+  transition-delay: $transition-duration-unit * 14 + ms;
 }
 
 @include has-touch() {

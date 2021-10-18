@@ -20,9 +20,8 @@
   cursor: pointer;
   user-select: none;
   transition: box-shadow $transition-duration-box-shadow
-      $transition-timing-function-default,
-    background-color $transition-duration-color
-      $transition-timing-function-bounce-s;
+      $transition-timing-function-bounce-s,
+    background-color $transition-duration-color ease;
 }
 
 .#{$ns}-button:hover {

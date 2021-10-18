@@ -1,5 +1,6 @@
 import Color from 'color';
 import defaultTheme from '../../config/theme';
+import duration from '../../config/duration';
 import ns from '../../config/namespace';
 import hasDisplayP3Support from './has-display-p3-support';
 import toCSSVariable from './to-css-variable';
@@ -45,7 +46,7 @@ const setTheme = (theme = defaultTheme) => {
     });
 
     return clearTimeout(timer);
-  }, 500); // FIX
+  }, duration.color);
 
   const foregroundPrimaryVar = toCSSVariable('foreground-primary');
   const foregroundSecondaryVar = toCSSVariable('foreground-secondary');

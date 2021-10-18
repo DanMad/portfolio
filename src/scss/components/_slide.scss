@@ -42,29 +42,30 @@
   opacity: 0;
   position: relative;
   transform: translateY(#{to-rem(20px)});
-  transition: opacity $transition-duration-opacity
-      $transition-timing-function-default,
-    transform $transition-duration-transform $transition-timing-function-default;
-  transition-delay: $transition-duration-unit * 7 + ms;
+  transition: opacity $transition-duration-opacity ease,
+    transform $transition-duration-transform
+      $transition-timing-function-bounce-m;
+  transition-delay: $transition-duration-unit * 5 + ms;
 }
 
 .#{$ns}-slide--ready .#{$ns}-slide__title {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: $transition-duration-unit * 5 + ms;
+  transition-delay: $transition-duration-unit * 8 + ms;
 }
 
 .#{$ns}-slide__description {
   opacity: 0;
   position: relative;
   transform: translateY(#{to-rem(20px)});
-  transition: opacity $transition-duration-opacity
-      $transition-timing-function-default,
-    transform $transition-duration-transform $transition-timing-function-default;
-  transition-delay: $transition-duration-unit * 6 + ms;
+  transition: opacity $transition-duration-opacity ease,
+    transform $transition-duration-transform
+      $transition-timing-function-bounce-m;
+  transition-delay: $transition-duration-unit * 4 + ms;
 }
 
 .#{$ns}-slide--ready .#{$ns}-slide__description {
+  transition-delay: $transition-duration-unit * 9 + ms;
   opacity: 1;
   transform: translateY(0);
 }
@@ -73,14 +74,14 @@
   opacity: 0;
   position: relative;
   transform: translateY(#{to-rem(20px)});
-  transition: opacity $transition-duration-opacity
-      $transition-timing-function-default,
-    transform $transition-duration-transform $transition-timing-function-default;
-  transition-delay: $transition-duration-unit * 5 + ms;
+  transition: opacity $transition-duration-opacity ease,
+    transform $transition-duration-transform
+      $transition-timing-function-bounce-m;
+  transition-delay: $transition-duration-unit * 3 + ms;
 }
 
 .#{$ns}-slide--ready .#{$ns}-slide__button {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: $transition-duration-unit * 7 + ms;
+  transition-delay: $transition-duration-unit * 10 + ms;
 }
