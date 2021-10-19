@@ -11,7 +11,7 @@ const Preloader = ({ isReady, setIsLoading, setIsReady }) => {
     }
   };
 
-  const classNames = toBlock() + (isReady ? ' ' + toModifier('ready') : '');
+  const classNames = toBlock() + (isReady ? toModifier('ready') : '');
 
   return (
     <div className={classNames} onTransitionEnd={handleTransitionEnd}>

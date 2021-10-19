@@ -15,7 +15,7 @@ const Footer = () => {
     setIsReady(true);
   }, []);
 
-  const classNames = toBlock() + (isReady ? ' ' + toModifier('ready') : '');
+  const classNames = toBlock() + (isReady ? toModifier('ready') : '');
 
   return (
     <footer className={classNames}>

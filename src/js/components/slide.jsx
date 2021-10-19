@@ -23,7 +23,7 @@ const Slide = ({
     setTheme(theme);
   }, []);
 
-  const classNames = toBlock() + (isReady ? ' ' + toModifier('ready') : '');
+  const classNames = toBlock() + (isReady ? toModifier('ready') : '');
 
   return (
     <>

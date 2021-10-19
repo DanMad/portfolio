@@ -21,7 +21,9 @@ const BEM = (block) => {
       blockAndElement = element.toKebabCase().trim();
     }
 
-    return blockAndElement + modifierSeparator + modifier.toKebabCase().trim();
+    return (
+      ' ' + blockAndElement + modifierSeparator + modifier.toKebabCase().trim()
+    );
   };
 
   return {
