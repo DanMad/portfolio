@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { useEffect, useContext, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import { duration } from '../../config';
-import Data from '../components/data';
+import Payload from '../components/payload';
 import Slide from '../components/slide';
 import { useEventListener } from '../hooks';
 
 const Portfolio = ({ match }) => {
-  const { projects } = useContext(Data);
+  const { projects } = useContext(Payload);
   const history = useHistory();
   const [isReady, setIsReady] = useState(false);
   let paths = ['', ...projects.map((project) => project.title.toKebabCase())];

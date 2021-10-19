@@ -7,10 +7,10 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import Data from './components/data';
 import Footer from './components/footer';
 import Main from './components/main';
 import Nav from './components/nav';
+import Payload from './components/payload';
 import Preloader from './components/preloader';
 import About from './pages/about';
 import Contact from './pages/contact';
@@ -22,15 +22,11 @@ import '../scss/styles.scss';
 const { toBlock } = BEM('app');
 
 const App = () => {
-  const [data, setData] = useState({});
+  const [payload, setPayload] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (!isLoading) {
-      return;
-    }
-
     let timer;
 
     setIsReady(true);
@@ -51,8 +47,8 @@ const App = () => {
           }),
       )
       .then((json) => {
-        setData(json);
         setIsReady(false);
+        setPayload(json);
       })
       .catch((error) => {
         console.error(error);
@@ -61,10 +57,10 @@ const App = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [isLoading]);
+  }, []);
 
   return (
-    <Data.Provider value={{ ...data }}>
+    <Payload.Provider value={{ ...payload }}>
       {isLoading ? (
         <Preloader
           isReady={isReady}
@@ -86,7 +82,7 @@ const App = () => {
           <Footer />
         </Router>
       )}
-    </Data.Provider>
+    </Payload.Provider>
   );
 };
 

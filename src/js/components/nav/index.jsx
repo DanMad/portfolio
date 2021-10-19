@@ -2,18 +2,18 @@ import 'on-the-case';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useEventListener } from '../../hooks';
 import { BEM } from '../../utils';
-import Data from '../data';
 import DelayedNavLink from '../delayed-nav-link';
+import Payload from '../payload';
 import toRefIndex from './to-ref-index';
 import toStyles from './to-styles';
 
 const { toBlock, toElement, toModifier } = BEM('nav');
 
 const Nav = () => {
-  const { pages } = useContext(Data);
+  const { pages } = useContext(Payload);
   const refs = useRef([]);
   const [isReady, setIsReady] = useState(false);
-  const [styles, setStyles] = useState({});
+  const [styles, setStyles] = useState();
 
   const handleClick = (i) => {
     const currentStyles = toStyles(refs, i);
