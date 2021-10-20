@@ -2,23 +2,24 @@ import 'on-the-case';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useEventListener } from '../../hooks';
 import { BEM } from '../../utils';
+import Context from '../context';
 import DelayedNavLink from '../delayed-nav-link';
-import Payload from '../payload';
 import toRefIndex from './to-ref-index';
 import toStyles from './to-styles';
 
 const { toBlock, toElement, toModifier } = BEM('nav');
 
 const Nav = () => {
-  const { pages } = useContext(Payload);
+  const { app, data } = useContext(Context);
   const refs = useRef([]);
   const [isReady, setIsReady] = useState(false);
-  const [styles, setStyles] = useState();
+  const [styles, setStyles] = useState({});
 
   const handleClick = (i) => {
     const currentStyles = toStyles(refs, i);
 
     setStyles(currentStyles);
+    app.setIsReady(false);
   };
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const Nav = () => {
 
   return (
     <nav className={classNames}>
-      {pages.map((page, i) => (
+      {data.pages.map((page, i) => (
         <DelayedNavLink
           className={toElement('link')}
           exact

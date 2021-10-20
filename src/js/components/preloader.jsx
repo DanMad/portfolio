@@ -1,17 +1,19 @@
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import { BEM } from '../utils';
+import Context from './context';
 
 const { toBlock, toElement, toModifier } = BEM('preloader');
 
-const Preloader = ({ isReady, setIsLoading, setIsReady }) => {
+const Preloader = () => {
+  const { app } = useContext(Context);
+
   const handleTransitionEnd = () => {
-    if (!isReady) {
-      setIsLoading(false);
-      setIsReady(true);
+    if (!app.isReady) {
+      app.setIsLoading(false);
     }
   };
 
-  const classNames = toBlock() + (isReady ? toModifier('ready') : '');
+  const classNames = toBlock() + (app.isReady ? toModifier('ready') : '');
 
   return (
     <div className={classNames} onTransitionEnd={handleTransitionEnd}>
@@ -20,12 +22,6 @@ const Preloader = ({ isReady, setIsLoading, setIsReady }) => {
       </div>
     </div>
   );
-};
-
-Preloader.propTypes = {
-  isReady: PropTypes.bool.isRequired,
-  setIsLoading: PropTypes.func.isRequired,
-  setIsReady: PropTypes.func.isRequired,
 };
 
 export { Preloader as default };

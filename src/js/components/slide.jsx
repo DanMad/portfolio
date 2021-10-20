@@ -1,8 +1,8 @@
-import 'on-the-case';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { theme } from '../../config';
 import { BEM, setTheme } from '../utils';
+import Context from './context';
 import Button from './button';
 import Heading from './heading';
 import SEO from './seo';
@@ -13,17 +13,17 @@ const Slide = ({
   // content,
   description,
   // image,
-  isReady,
-  setIsReady,
   theme,
   title,
 }) => {
+  const { app } = useContext(Context);
+
   useEffect(() => {
-    setIsReady(true);
+    app.setIsReady(true);
     setTheme(theme);
   }, []);
 
-  const classNames = toBlock() + (isReady ? toModifier('ready') : '');
+  const classNames = toBlock() + (app.isReady ? toModifier('ready') : '');
 
   return (
     <>
@@ -48,8 +48,6 @@ Slide.propTypes = {
   // content: PropTypes.string,
   description: PropTypes.string.isRequired,
   // image: PropTypes.string,
-  isReady: PropTypes.bool.isRequired,
-  setIsReady: PropTypes.func.isRequired,
   theme: PropTypes.shape({
     accent: PropTypes.string.isRequired,
     backgroundPrimary: PropTypes.string.isRequired,

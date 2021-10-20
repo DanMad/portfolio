@@ -7,10 +7,10 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import Context from './components/context';
 import Footer from './components/footer';
 import Main from './components/main';
 import Nav from './components/nav';
-import Payload from './components/payload';
 import Preloader from './components/preloader';
 import About from './pages/about';
 import Contact from './pages/contact';
@@ -22,14 +22,14 @@ import '../scss/styles.scss';
 const { toBlock } = BEM('app');
 
 const App = () => {
-  const [payload, setPayload] = useState();
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    let timer;
-
     setIsReady(true);
+
+    let timer;
 
     fetch('/api/index.json', {
       headers: {
@@ -47,8 +47,8 @@ const App = () => {
           }),
       )
       .then((json) => {
+        setData(json);
         setIsReady(false);
-        setPayload(json);
       })
       .catch((error) => {
         console.error(error);
@@ -60,13 +60,14 @@ const App = () => {
   }, []);
 
   return (
-    <Payload.Provider value={{ ...payload }}>
+    <Context.Provider
+      value={{
+        app: { isLoading, isReady, setIsLoading, setIsReady },
+        data,
+      }}
+    >
       {isLoading ? (
-        <Preloader
-          isReady={isReady}
-          setIsLoading={setIsLoading}
-          setIsReady={setIsReady}
-        />
+        <Preloader />
       ) : (
         <Router>
           <Nav />
@@ -82,7 +83,7 @@ const App = () => {
           <Footer />
         </Router>
       )}
-    </Payload.Provider>
+    </Context.Provider>
   );
 };
 
