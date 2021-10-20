@@ -1,17 +1,19 @@
 import 'on-the-case';
 import PropTypes from 'prop-types';
-import { useEffect, useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 import { duration } from '../../config';
-import Payload from '../components/payload';
+import Context from '../components/context';
 import Slide from '../components/slide';
 import { useEventListener } from '../hooks';
 
 const Portfolio = ({ match }) => {
-  const { projects } = useContext(Payload);
+  const { app, data } = useContext(Context);
   const history = useHistory();
-  const [isReady, setIsReady] = useState(false);
-  let paths = ['', ...projects.map((project) => project.title.toKebabCase())];
+  let paths = [
+    '',
+    ...data.projects.map((project) => project.title.toKebabCase()),
+  ];
 
   let initIndex = 0;
 
@@ -70,11 +72,11 @@ const Portfolio = ({ match }) => {
   // ---------------------------------------------------------------------------
 
   useEffect(() => {
-    if (!isReady) {
+    if (!app.isReady) {
       return;
     }
 
-    setIsReady(false);
+    app.setIsReady(false);
 
     const timer = setTimeout(() => {
       history.push(
@@ -93,21 +95,14 @@ const Portfolio = ({ match }) => {
         exact
         path={match.path}
         render={() => (
-          <Slide
-            description="Testing, 1... 2... 3..."
-            isReady={isReady}
-            setIsReady={setIsReady}
-            title="Portfolio"
-          />
+          <Slide description="Testing, 1... 2... 3..." title="Portfolio" />
         )}
       />
-      {projects.map((project) => (
+      {data.projects.map((project) => (
         <Route
           key={project.title}
           path={match.path + '/' + project.title.toKebabCase()}
-          render={() => (
-            <Slide {...project} isReady={isReady} setIsReady={setIsReady} />
-          )}
+          render={() => <Slide {...project} />}
         />
       ))}
     </>

@@ -2,13 +2,13 @@ import 'on-the-case';
 import { useContext, useEffect, useState } from 'react';
 import { copyright } from '../../config';
 import { BEM } from '../utils';
-import Payload from './payload';
+import Context from './context';
 import SocialPlatform from './social-platform';
 
 const { toBlock, toElement, toModifier } = BEM('footer');
 
 const Footer = () => {
-  const { socialPlatforms } = useContext(Payload);
+  const { data } = useContext(Context);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -20,8 +20,8 @@ const Footer = () => {
   return (
     <footer className={classNames}>
       <div className={toElement('inner')}>
-        {Object.keys(socialPlatforms).map((key) => {
-          const { type, URL } = socialPlatforms[key];
+        {Object.keys(data.socialPlatforms).map((key) => {
+          const { type, URL } = data.socialPlatforms[key];
 
           return (
             <a
