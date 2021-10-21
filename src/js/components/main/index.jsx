@@ -1,12 +1,16 @@
-import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { useEventListener } from '../../hooks';
+import About from '../../pages/about';
+import Contact from '../../pages/contact';
+import NotFound from '../../pages/not-found';
+import Portfolio from '../../pages/portfolio';
 import { BEM } from '../../utils';
 import toOrientation from './to-orientation';
 
-const { toBlock } = BEM('main');
+const { toBlock, toModifier } = BEM('main');
 
-const Main = ({ children }) => {
+const Main = () => {
   const ref = useRef();
   const [orientation, setOrientation] = useState();
 
@@ -26,20 +30,19 @@ const Main = ({ children }) => {
     }
   });
 
-  const classNames = toBlock() + (orientation ? ' ' + orientation : '');
+  const classNames = toBlock() + (orientation ? toModifier(orientation) : '');
 
   return (
     <main className={classNames} ref={ref}>
-      {children}
+      <Switch>
+        <Redirect exact from="/" to="/portfolio" />
+        <Route component={About} path="/about" />
+        <Route component={Contact} path="/contact" />
+        <Route component={Portfolio} path="/portfolio" />
+        <Route component={NotFound} />
+      </Switch>
     </main>
   );
-};
-
-Main.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
 };
 
 export { Main as default };

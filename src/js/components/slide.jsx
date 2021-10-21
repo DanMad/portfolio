@@ -30,14 +30,14 @@ const Slide = ({
       <SEO description={description} title={title} />
       <div className={classNames}>
         <div className={toElement('outer')}>
+          <div className={toElement('inner')}>{/* insert image */}</div>
+        </div>
+        <div className={toElement('outer')}>
           <div className={toElement('inner')}>
             <Heading className={toElement('title')}>{title}</Heading>
             <p className={toElement('description')}>{description}</p>
             <Button className={toElement('button')}>view more</Button>
           </div>
-        </div>
-        <div className={toElement('outer')}>
-          <div className={toElement('inner')}>{/* insert image */}</div>
         </div>
       </div>
     </>
