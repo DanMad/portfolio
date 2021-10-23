@@ -1,0 +1,17 @@
+.dm-waving {
+  display: inline-block;
+  // transform: rotate(0deg);
+  animation: test 1000ms ease infinite 300ms;
+}
+
+@keyframes test {
+  0% {
+    transform: rotate(-50deg);
+  }
+  50% {
+    transform: rotate(50deg);
+  }
+  100% {
+    transform: rotate(-50deg);
+  }
+}

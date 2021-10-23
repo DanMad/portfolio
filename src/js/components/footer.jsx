@@ -5,7 +5,7 @@ import { BEM } from '../utils';
 import Context from './context';
 import SocialPlatform from './social-platform';
 
-const { toBlock, toElement, toModifier } = BEM('footer');
+const { toBlock, toElement } = BEM('footer');
 
 const Footer = () => {
   const { data } = useContext(Context);
@@ -15,7 +15,7 @@ const Footer = () => {
     setIsReady(true);
   }, []);
 
-  const classNames = toBlock() + (isReady ? toModifier('ready') : '');
+  const classNames = toBlock() + (isReady ? ' ready' : '');
 
   return (
     <footer className={classNames}>

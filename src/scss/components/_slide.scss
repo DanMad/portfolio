@@ -9,7 +9,7 @@
   height: 100%;
 }
 
-.#{$ns}-main--landscape > .#{$ns}-slide {
+.#{$ns}-slide.landscape {
   flex-direction: row-reverse;
 }
 
@@ -21,12 +21,12 @@
   flex-grow: 1;
 }
 
-.#{$ns}-main--landscape .#{$ns}-slide__outer:first-of-type {
+.landscape .#{$ns}-slide__outer:first-of-type {
   flex-basis: 50%;
   flex-grow: unset;
 }
 
-.#{$ns}-main--landscape .#{$ns}-slide__outer:last-of-type {
+.landscape .#{$ns}-slide__outer:last-of-type {
   flex-basis: 50%;
 }
 
@@ -34,7 +34,7 @@
   @include center();
 }
 
-.#{$ns}-main--landscape .#{$ns}-slide__outer:last-of-type .#{$ns}-slide__inner {
+.landscape .#{$ns}-slide__outer:last-of-type .#{$ns}-slide__inner {
   @include center();
 }
 
@@ -48,7 +48,7 @@
   transition-delay: $transition-duration-unit * 5 + ms;
 }
 
-.#{$ns}-slide--ready .#{$ns}-slide__title {
+.ready .#{$ns}-slide__title {
   opacity: 1;
   transform: translateY(0);
   transition-delay: $transition-duration-unit * 8 + ms;
@@ -64,7 +64,7 @@
   transition-delay: $transition-duration-unit * 4 + ms;
 }
 
-.#{$ns}-slide--ready .#{$ns}-slide__description {
+.ready .#{$ns}-slide__description {
   transition-delay: $transition-duration-unit * 9 + ms;
   opacity: 1;
   transform: translateY(0);
@@ -80,7 +80,7 @@
   transition-delay: $transition-duration-unit * 3 + ms;
 }
 
-.#{$ns}-slide--ready .#{$ns}-slide__button {
+.ready .#{$ns}-slide__button {
   opacity: 1;
   transform: translateY(0);
   transition-delay: $transition-duration-unit * 10 + ms;

@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
-import { useContext, useEffect } from 'react';
-import { theme } from '../../config';
-import { BEM, setTheme } from '../utils';
-import Context from './context';
-import Button from './button';
-import Heading from './heading';
-import SEO from './seo';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { theme } from '../../../config';
+import { useEventListener } from '../../hooks';
+import { BEM, setTheme } from '../../utils';
+import Context from '../context';
+import Button from '../button';
+import Heading from '../heading';
+import SEO from '../seo';
+import toOrientation from './to-orientation';
 
-const { toBlock, toElement, toModifier } = BEM('slide');
+const { toBlock, toElement } = BEM('slide');
 
 const Slide = ({
   // content,
@@ -17,18 +19,31 @@ const Slide = ({
   title,
 }) => {
   const { app } = useContext(Context);
+  const ref = useRef();
+  const [orientation, setOrientation] = useState();
 
   useEffect(() => {
-    app.setIsReady(true);
+    const currentOrientation = toOrientation(ref);
+
+    setOrientation(currentOrientation);
     setTheme(theme);
+    app.setIsReady(true);
   }, []);
 
-  const classNames = toBlock() + (app.isReady ? toModifier('ready') : '');
+  useEventListener('resize', () => {
+    const currentOrientation = toOrientation(ref);
+
+    if (currentOrientation !== orientation) {
+      setOrientation(currentOrientation);
+    }
+  });
+
+  const classNames = toBlock() + (orientation ? ' ' + orientation : '');
 
   return (
     <>
       <SEO description={description} title={title} />
-      <div className={classNames}>
+      <div className={classNames} ref={ref}>
         <div className={toElement('outer')}>
           <div className={toElement('inner')}>{/* insert image */}</div>
         </div>

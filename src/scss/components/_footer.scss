@@ -52,7 +52,7 @@
   transition-delay: $transition-duration-unit * 17 + ms;
 }
 
-.#{$ns}-footer--ready .#{$ns}-footer__link {
+.ready .#{$ns}-footer__link {
   opacity: 1;
   transform: translateY(0);
 }
@@ -73,7 +73,7 @@
   transition-delay: $transition-duration-unit * 18 + ms;
 }
 
-.#{$ns}-footer--ready .#{$ns}-footer__statement {
+.ready .#{$ns}-footer__statement {
   opacity: 1;
   transform: translateY(0);
 }
@@ -126,7 +126,7 @@
   }
 
   // Transition in hack
-  .#{$ns}-footer--ready .#{$ns}-footer__statement {
+  .ready .#{$ns}-footer__statement {
     transform: translateY(-50%);
   }
 

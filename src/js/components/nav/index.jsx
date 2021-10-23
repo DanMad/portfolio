@@ -7,7 +7,7 @@ import DelayedNavLink from '../delayed-nav-link';
 import toRefIndex from './to-ref-index';
 import toStyles from './to-styles';
 
-const { toBlock, toElement, toModifier } = BEM('nav');
+const { toBlock, toElement } = BEM('nav');
 
 const Nav = () => {
   const { app, data } = useContext(Context);
@@ -38,7 +38,7 @@ const Nav = () => {
     setStyles(currentStyles);
   });
 
-  const classNames = toBlock() + (isReady ? toModifier('ready') : '');
+  const classNames = toBlock() + (isReady ? ' ready' : '');
 
   return (
     <nav className={classNames}>

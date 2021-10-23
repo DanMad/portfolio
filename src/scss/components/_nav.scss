@@ -56,7 +56,7 @@
   transition-delay: $transition-duration-unit * 13 + ms;
 }
 
-.#{$ns}-nav--ready .#{$ns}-nav__link {
+.ready .#{$ns}-nav__link {
   opacity: 1;
   transform: translateY(0);
 }
@@ -78,7 +78,7 @@
   pointer-events: none;
 }
 
-.#{$ns}-nav--ready .#{$ns}-nav__stroke {
+.ready .#{$ns}-nav__stroke {
   opacity: 1;
   transform: translate(-50%, 0);
   transition-delay: $transition-duration-unit * 14 + ms;
