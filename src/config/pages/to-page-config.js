@@ -68,7 +68,8 @@ const toPageConfig = (title, options = {}) => {
   styles += '}}</style>';
 
   // Doesn't support var()
-  let themeColor = `var(${toCSSVariable('accent')})`;
+  // let themeColor = `var(${toCSSVariable('accent')})`;
+  let themeColor = mergedTheme.accent;
 
   if (options.themeColor) {
     themeColor = options.themeColor.trim();

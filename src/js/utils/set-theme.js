@@ -21,6 +21,7 @@ const foreground = {
 const setTheme = (theme = defaultTheme) => {
   const body = document.querySelector('body');
   const bodyDouble = document.querySelector(`.${ns}-body-double`);
+  const themeColor = document.querySelector('meta[name="theme-color"]');
 
   bodyDouble.classList.add('active');
 
@@ -35,6 +36,7 @@ const setTheme = (theme = defaultTheme) => {
 
   let timer = setTimeout(() => {
     bodyDouble.classList.remove('active');
+    themeColor.content = theme.accent;
 
     Object.keys(theme).map((key) => {
       const themeVar = toCSSVariable(key + '-double');

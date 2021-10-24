@@ -26,6 +26,10 @@ const Portfolio = ({ match }) => {
   const [slideIndex, setSlideIndex] = useState(initIndex);
 
   const handleKeyDown = (e) => {
+    if (!app.isReady) {
+      return;
+    }
+
     const isArrowKeyDown = e.keyCode === 40;
     const isArrowKeyUp = e.keyCode === 38;
 
@@ -43,12 +47,46 @@ const Portfolio = ({ match }) => {
 
   useEventListener('keydown', handleKeyDown);
 
+  useEventListener('wheel', (e) => {
+    if (!app.isReady) {
+      return;
+    }
+
+    var delta = null,
+      direction = false;
+
+    if (e.wheelDelta) {
+      // will work in most cases
+      delta = e.wheelDelta / 60;
+    } else if (e.detail) {
+      // fallback for Firefox
+      delta = -e.detail / 2;
+    }
+    if (delta !== null) {
+      direction = delta > 0 ? 'up' : 'down';
+    }
+
+    console.log(direction);
+
+    if (direction === 'down' && slideIndex < paths.length - 1) {
+      setSlideIndex(slideIndex + 1);
+    }
+
+    if (direction === 'up' && slideIndex > 0) {
+      setSlideIndex(slideIndex - 1);
+    }
+  });
+
   // Swipe testing
   // ---------------------------------------------------------------------------
   let touchstartY = 0;
   let touchendY = 0;
 
   const handleSwipe = () => {
+    if (!app.isReady) {
+      return;
+    }
+
     if (touchendY > touchstartY && slideIndex > 0) {
       setSlideIndex(slideIndex - 1);
     }
