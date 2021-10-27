@@ -47,10 +47,16 @@ const Portfolio = ({ match }) => {
 
   useEventListener('keydown', handleKeyDown);
 
+  const [isReady, setIsReady] = useState(true);
+
   useEventListener('wheel', (e) => {
-    if (!app.isReady) {
+    if (!isReady) {
       return;
     }
+
+    setIsReady(false);
+
+    console.log('firing');
 
     var delta = null,
       direction = false;
@@ -62,11 +68,10 @@ const Portfolio = ({ match }) => {
       // fallback for Firefox
       delta = -e.detail / 2;
     }
+
     if (delta !== null) {
       direction = delta > 0 ? 'up' : 'down';
     }
-
-    console.log(direction);
 
     if (direction === 'down' && slideIndex < paths.length - 1) {
       setSlideIndex(slideIndex + 1);
