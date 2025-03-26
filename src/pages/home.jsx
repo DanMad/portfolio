@@ -1,6 +1,6 @@
 import Article from 'components/article';
 import Heading from 'components/heading';
-import Page from 'components/Page';
+import Page from 'components/page';
 import Paragraph from 'components/paragraph';
 
 function Home() {

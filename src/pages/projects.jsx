@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import Slider from 'components/slider';
-import Page from 'components/Page';
+import Page from 'components/page';
 
 const projects = [
   // {
