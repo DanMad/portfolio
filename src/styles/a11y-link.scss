@@ -1,0 +1,16 @@
+.a11y-link {
+  z-index: 100;
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  translate: -50% 0;
+  padding: var(--space-xs);
+  background-color: var(--color-background-primary-inverse);
+  color: var(--color-text-primary-inverse);
+  white-space: nowrap;
+  transition: top 0.3s;
+}
+
+.a11y-link:focus-visible {
+  top: 2.75rem;
+}

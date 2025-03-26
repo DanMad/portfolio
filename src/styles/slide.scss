@@ -1,0 +1,66 @@
+.slide {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--space-m);
+  justify-content: center;
+  text-align: center;
+}
+
+.slide__inner {
+  width: 100%;
+}
+
+.slide__inner:nth-of-type(2) {
+  z-index: 1;
+}
+
+.slide .button {
+  width: 100%;
+}
+@media screen and (min-width: 30.0625em) {
+  .slide {
+    gap: var(--space-l);
+  }
+}
+
+// Mabybe address this size???
+@media screen and (min-width: 44.0625em) {
+  .slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: stretch;
+    flex: 1;
+    flex-direction: row;
+    gap: var(--space-xl);
+    justify-content: unset;
+    text-align: unset;
+  }
+
+  .slide__inner {
+    flex: 1 1 auto;
+    width: 50%;
+  }
+
+  .slide__inner:nth-of-type(1) {
+    align-content: center;
+    max-width: 25rem;
+  }
+
+  .slide__inner:nth-of-type(2) {
+    z-index: unset;
+  }
+
+  .slide .button {
+    width: unset;
+  }
+}
+
+@media screen and (min-width: 60.0625em) {
+  .slide {
+    gap: var(--space-xxl);
+  }
+}

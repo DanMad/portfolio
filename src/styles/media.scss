@@ -1,0 +1,26 @@
+.media {
+  overflow: hidden;
+  border: var(--border-s) solid var(--color-border);
+  margin-bottom: calc(var(--font-size-p) * var(--line-height-p));
+  //   user-select: none;
+}
+
+.media__inner {
+  position: relative;
+}
+
+.media--16\:9 > .media__inner {
+  padding-top: 56.25%;
+}
+
+.media--4\:3 > .media__inner {
+  padding-top: 75%;
+}
+
+.media__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

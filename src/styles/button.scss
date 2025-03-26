@@ -1,0 +1,202 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0 var(--space-m);
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans-serif);
+  font-feature-settings: 'ss02' on;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button:active {
+  translate: 0 0.0625rem;
+}
+
+.button--primary {
+  color: var(--color-text-primary);
+}
+
+.button--secondary {
+  color: var(--color-text-secondary);
+}
+
+.button * {
+  pointer-events: none;
+}
+
+.button .icon {
+  min-width: var(--space-m);
+  margin: 0 calc(var(--space-xs) * -1);
+}
+
+.button__shadow {
+  position: absolute;
+  top: var(--border-m);
+  height: 100%;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background: var(--color-shadow-button);
+}
+
+.button:active .button__shadow {
+  opacity: 0;
+}
+
+.button__outline {
+  opacity: 0;
+  position: absolute;
+  top: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
+  right: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
+  bottom: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
+  left: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
+  border: var(--color-interaction) solid var(--border-l);
+  border-radius: calc(
+    var(--border-radius) + var(--space-xxs) * 0.5 + var(--border-l)
+  );
+}
+
+.button:focus-visible .button__outline {
+  opacity: 1;
+}
+
+.button__background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--color-background-button-primary);
+  border-radius: var(--border-radius);
+}
+
+.button--secondary .button__background {
+  background: var(--color-background-button-secondary);
+}
+
+.button__border {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: var(--color-border) solid var(--border-s);
+  border-radius: var(--border-radius);
+}
+
+.button__embossing::before {
+  content: '';
+  mix-blend-mode: soft-light;
+  position: absolute;
+  top: var(--border-s);
+  right: var(--border-s);
+  bottom: var(--border-s);
+  left: var(--border-s);
+  border-radius: calc(var(--border-radius) - var(--border-s));
+  background: var(--linear-gradient-embossing);
+}
+
+.button:active .button__embossing::before {
+  mix-blend-mode: normal;
+  background: var(--color-shadow-button);
+}
+
+.button__embossing::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--border-s) * 2);
+  right: calc(var(--border-s) * 2);
+  bottom: calc(var(--border-s) * 2);
+  left: calc(var(--border-s) * 2);
+  border-radius: calc(var(--border-radius) - var(--border-s) * 2);
+  background: var(--color-background-button-primary);
+}
+
+.button--secondary .button__embossing::after {
+  background: var(--color-background-button-secondary);
+}
+
+.button__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@supports (background: paint(squircle)) {
+  .button__shadow {
+    --squircle-radius: 8px;
+    --squircle-smooth: 0.5;
+
+    mask-image: paint(squircle);
+    border-radius: 0;
+  }
+
+  .button__outline {
+    --squircle-outline: 3px;
+    --squircle-radius: 13px;
+    --squircle-smooth: 0.5;
+
+    mask-image: paint(squircle);
+    border: 0;
+    border-radius: 0;
+    background: var(--color-interaction);
+  }
+
+  .button__background {
+    --squircle-radius: 8px;
+    --squircle-smooth: 0.5;
+
+    mask-image: paint(squircle);
+  }
+
+  .button__border {
+    --squircle-outline: 1px;
+    --squircle-radius: 8px;
+    --squircle-smooth: 0.5;
+
+    mask-image: paint(squircle);
+    border: 0;
+    border-radius: 0;
+    background: var(--color-border);
+  }
+
+  .button__embossing {
+    --squircle-outline: 1px;
+    --squircle-radius: 7px;
+    --squircle-smooth: 0.5;
+
+    mask-image: paint(squircle);
+    mix-blend-mode: soft-light;
+    position: absolute;
+    top: var(--border-s);
+    right: var(--border-s);
+    bottom: var(--border-s);
+    left: var(--border-s);
+    background: var(--linear-gradient-embossing);
+  }
+
+  .button:active .button__embossing {
+    mix-blend-mode: normal;
+    background: var(--color-shadow-button);
+  }
+
+  .button__embossing::before {
+    content: unset;
+  }
+
+  .button__embossing::after {
+    content: unset;
+  }
+}

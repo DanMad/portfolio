@@ -1,5 +1,0 @@
-@mixin has-touch() {
-  @media (any-pointer: coarse) {
-    @content;
-  }
-}

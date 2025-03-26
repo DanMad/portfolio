@@ -1,0 +1,22 @@
+.slider {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+@media screen and (min-width: 30.0625em) {
+  .slider {
+    gap: var(--space-xxl);
+  }
+}
+
+// Mabybe address this size???
+@media screen and (min-width: 44.0625em) {
+  .slider {
+    position: relative;
+    display: unset;
+    // flex-direction: unset;
+    // gap: unset;
+  }
+}

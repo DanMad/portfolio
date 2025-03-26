@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+@media print {
+  .header {
+    display: none;
+  }
+}

@@ -1,32 +1,12 @@
-# Asset files
-*.gif
 *.ico
-*.jpg
-*.jpeg
+*.log
 *.png
 *.svg
-
-# CNAME
-CNAME
-
-# Dependencies
-node_modules/
-
-# Distribution directory
-dist/
-
-# Hidden directories and files
 .*
-!.github/workflows/**
-
-# License
+CNAME
+dist
 LICENSE
-
-# Log files
-*.log
-
-# Operating System
+node_modules
+public
 Thumbs.db
-
-# Package files
 yarn.lock

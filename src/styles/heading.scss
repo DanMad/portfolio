@@ -1,0 +1,119 @@
+.h1 {
+  margin-bottom: calc(var(--font-size-h1) * var(--line-height-h1) * 0.2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-serif);
+  font-feature-settings:
+    'dlig' on,
+    'calt' off,
+    'rclt' off;
+  font-size: var(--font-size-h1);
+  font-variant-numeric: lining-nums proportional-nums;
+  font-weight: 900;
+  line-height: var(--line-height-h1);
+}
+
+* + .h1 {
+  margin-top: calc(var(--font-size-h1) * var(--line-height-h1));
+}
+
+.h1--squashed {
+  margin-bottom: calc(
+    var(--font-size-h1-squashed) * var(--line-height-h1) * 0.1
+  );
+  font-size: var(--font-size-h1-squashed);
+}
+
+* + .h1--squashed {
+  margin-top: calc(var(--font-size-h1-squashed) * var(--line-height-h1) * 0.5);
+}
+
+.h1__action {
+  cursor: pointer;
+}
+
+.h1__action:hover {
+  display: block;
+}
+
+.h1__action:active {
+  translate: 0 0.0625rem;
+}
+
+.h2 {
+  margin-bottom: calc(var(--font-size-h2) * var(--line-height-h2) * 0.2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans-serif);
+  font-feature-settings:
+    'ss02' on,
+    'rclt' off;
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  line-height: var(--line-height-h2);
+}
+
+:not(.h1) + .h2 {
+  margin-top: calc(var(--font-size-h2) * var(--line-height-h2));
+}
+
+.h2--squashed {
+  margin-bottom: calc(
+    var(--font-size-h2-squashed) * var(--line-height-h2) * 0.1
+  );
+  font-size: var(--font-size-h2-squashed);
+}
+
+:not(.h1) + .h2--squashed {
+  margin-top: calc(var(--font-size-h2-squashed) * var(--line-height-h2) * 0.5);
+}
+
+.h2__action {
+  cursor: pointer;
+}
+
+.h2__action:hover {
+  display: block;
+}
+
+.h2__action:active {
+  translate: 0 0.0625rem;
+}
+
+.h3 {
+  margin-bottom: calc(var(--font-size-h3) * var(--line-height-h3) * 0.2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans-serif);
+  font-feature-settings:
+    'ss02' on,
+    'rclt' off;
+  font-size: var(--font-size-h3);
+  font-weight: 500;
+  line-height: var(--line-height-h3);
+  cursor: pointer;
+}
+
+:not(.h2) + .h3 {
+  margin-top: calc(var(--font-size-h3) * var(--line-height-h3));
+}
+
+.h3--squashed {
+  margin-bottom: calc(
+    var(--font-size-h3-squashed) * var(--line-height-h3) * 0.1
+  );
+  font-size: var(--font-size-h3-squashed);
+}
+
+:not(.h2) + .h3--squashed {
+  margin-top: calc(var(--font-size-h3-squashed) * var(--line-height-h3) * 0.5);
+}
+
+.h3__action {
+  cursor: pointer;
+}
+
+.h3__action:hover {
+  display: block;
+}
+
+.h3__action:active {
+  translate: 0 0.0625rem;
+}

@@ -1,12 +1,7 @@
-# Dependencies
-node_modules/
-
-# Distribution directory
-dist/
-
-# Log files
 *.log
-
-# Operating System
 .DS_Store
+.env.development
+.env.production
+dist
+node_modules
 Thumbs.db
