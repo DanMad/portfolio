@@ -1,6 +1,7 @@
 import Article from 'components/article';
 import Heading from 'components/heading';
 import Page from 'components/Page';
+import Paragraph from 'components/paragraph';
 
 function Weather() {
   return (
@@ -10,13 +11,15 @@ function Weather() {
         <Heading level="2">Background</Heading>
         <Heading level="2">Objective</Heading>
         <Heading level="2">Outcome</Heading>
-        <a
-          href="https://weather.danielmaddison.io/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Check the weather!
-        </a>
+        <Paragraph>
+          <a
+            href="https://weather.danielmaddison.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check the weather!
+          </a>
+        </Paragraph>
       </Article>
     </Page>
   );

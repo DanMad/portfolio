@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router';
 import Article from 'components/article';
+import Button from 'components/button';
 import Heading from 'components/heading';
 import Page from 'components/Page';
-import Button from 'components/button';
+import Paragraph from 'components/paragraph';
 
 function NotFound() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function NotFound() {
     <Page isIndexed={false} title="Not Found">
       <Article>
         <Heading isCopyable={false}>Not Found</Heading>
-        <p className="p">The page you are looking for doesn't exist.</p>
+        <Paragraph>The page you are looking for doesn't exist.</Paragraph>
         <Button onClick={handleClick}>Go Home</Button>
       </Article>
     </Page>

@@ -2,6 +2,7 @@ import Article from 'components/article';
 import Heading from 'components/heading';
 import Media from 'components/media';
 import Page from 'components/Page';
+import Paragraph from 'components/paragraph';
 
 function OpenCollegesDesignSystem() {
   return (
@@ -17,7 +18,7 @@ function OpenCollegesDesignSystem() {
         <Heading isCopyable={false} level="2">
           Background
         </Heading>
-        <p className="p">
+        <Paragraph>
           While working in the Product Team at Open Colleges, it became clear
           that our Learning Management System (LMS) was lacking cohesion. An
           interface audit revealed several critical issues, including divergent
@@ -28,24 +29,24 @@ function OpenCollegesDesignSystem() {
           design and development workflows, as we repeatedly solved the same
           problems—redesigning solutions and rebuilding patterns we’d already
           worked through in the past.
-        </p>
-        <p className="p">
+        </Paragraph>
+        <Paragraph>
           This exposed a larger issue: the absence of a coherent approach was
           not only detracting from the user experience, but also slowing down
           delivery, contributing to delays and unnecessary rework. It became
           evident that to move forward, we needed a consistent language and a
           shared vision to inform the way we worked.
-        </p>
+        </Paragraph>
         <Heading level="2">Objective</Heading>
-        <p className="p">
+        <Paragraph>
           With Salesforce launching Lightning Design System and Brad Frost
           publishing Atomic Design, we saw an opportunity to adopt a similar
           approach to resolve our challenges. Our long-term goal was to build a
           design system that would standardise our visual language, define
           reusable patterns and conventions, and ultimately, reduce cognitive
           load for users by providing a more intuitive user experience.
-        </p>
-        <p className="p">
+        </Paragraph>
+        <Paragraph>
           Additionally, a design system could potentially optimise our design
           and development workflows, improving delivery times. We were aiming to
           align the efforts of design and development teams to avoid redesigning
@@ -53,11 +54,11 @@ function OpenCollegesDesignSystem() {
           Centralising these decisions wouldn’t just increase efficiency, it
           would lead to improved output, enhanced quality, or a combination of
           both.
-        </p>
-        <p className="p">
+        </Paragraph>
+        <Paragraph>
           With this in mind, we set out to build a design system that would
           address immediate challenges and scale with future requirements.
-        </p>
+        </Paragraph>
         <Media
           alt="Small compositions of Quiz pages that leverage Open Colleges’ Design System"
           backgroundColor="rgb(229, 187, 12)"
@@ -65,28 +66,28 @@ function OpenCollegesDesignSystem() {
           type="image"
         />
         <Heading level="2">Outcome</Heading>
-        <p className="p">
+        <Paragraph>
           The design system quickly became the single source of truth for both
           designers and developers and solved the problems that we initially set
           out to. This meant that we could prioritise higher-value tasks, such
           as refining user flows and incorporating functionality into features
           that we otherwise couldn’t afford to do because of resourcing
           constraints.
-        </p>
+        </Paragraph>
         <Media
           alt="A large composition of a Payment page that leverages Open Colleges’ Design System"
           backgroundColor="rgb(25, 152, 76)"
           src="/assets/oc-payment-comp.png"
           type="image"
         />
-        <p className="p">
+        <Paragraph>
           By abstracting the front of the front-end into reusable components,
           developers noticed a meaningful change in their workflow. One went so
           far as to say “The design system allowed him to deliver in half the
           time, and focus on high-value work instead of annoying, repetitive
           tasks.”
-        </p>
-        <p className="p">
+        </Paragraph>
+        <Paragraph>
           While the design system brought about tangible improvements, securing
           stakeholder buy-in was one of our biggest challenges throughout this
           process. We had to clearly communicate its long-term ROI, demonstrate
@@ -94,8 +95,8 @@ function OpenCollegesDesignSystem() {
           value across departments. Through persistence, clear communication,
           and collaboration, we gained the necessary support to continue pushing
           forward.
-        </p>
-        <p className="p">
+        </Paragraph>
+        <Paragraph>
           I was fortunate to play a key role in establishing the design system,
           but its success was an incredible team effort. The integration into
           our workflows was made possible by the close collaboration of
@@ -103,13 +104,13 @@ function OpenCollegesDesignSystem() {
           became central to our process, enabling faster iterations, reducing
           redundancy, and tightening the feedback loop between designers and
           developers, and across the whole Product Team.
-        </p>
-        <p className="p">
+        </Paragraph>
+        <Paragraph>
           Ultimately, the design system laid the groundwork for a more
           efficient, cohesive, and scalable product. It reshaped how we worked,
           improved collaboration, and elevated the user experience—setting the
           scene for future experimentation and innovation.
-        </p>
+        </Paragraph>
       </Article>
     </Page>
   );

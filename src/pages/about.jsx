@@ -1,6 +1,7 @@
 import Article from 'components/article';
 import Heading from 'components/heading';
 import Page from 'components/Page';
+import Paragraph from 'components/paragraph';
 
 function About() {
   return (
@@ -10,21 +11,21 @@ function About() {
         <Heading isCopyable={false} level="2">
           Profile
         </Heading>
-        <p className="p">
+        <Paragraph>
           I&rsquo;m a designer that codes, specialising in user interface and
           design systems, with a keen interest in pushing technical limits to
           preserve design integrity.
-        </p>
-        <p className="p">
+        </Paragraph>
+        <Paragraph>
           I have a deep understanding of design and development that enables me
           to be flexible and efficient. I make informed, balanced decisions
           within the constraints of both disciplines, bridge communication
           between teams, and thrive during delivery across several stages of a
           project.
-        </p>
+        </Paragraph>
         <Heading level="2">Experience</Heading>
         <Heading level="3">Front-End Developer (UI Engineer)</Heading>
-        <p className="p">Up Education | Aug 2023&ndash;Dec 2024</p>
+        <Paragraph>Up Education | Aug 2023&ndash;Dec 2024</Paragraph>
         <ul className="ul">
           <li className="li">
             Designed and developed responsive user interfaces, delivering
@@ -48,7 +49,7 @@ function About() {
           </li>
         </ul>
         <Heading level="3">Head of Design</Heading>
-        <p className="p">Up Education | Dec 2020&ndash;Aug 2023</p>
+        <Paragraph>Up Education | Dec 2020&ndash;Aug 2023</Paragraph>
         <ul className="ul">
           <li className="li">
             Established a team, scaling as the organisation's needs evolved and
@@ -72,7 +73,7 @@ function About() {
           </li>
         </ul>
         <Heading level="3">Design Lead</Heading>
-        <p className="p">Up Education | Jan 2020&ndash;Dec 2020</p>
+        <Paragraph>Up Education | Jan 2020&ndash;Dec 2020</Paragraph>
         <ul className="ul">
           <li className="li">
             Established a team, scaling as the organisation's needs evolved and
@@ -96,7 +97,7 @@ function About() {
           </li>
         </ul>
         <Heading level="3">Lead Designer</Heading>
-        <p className="p">Open Colleges | Apr 2018&ndash;Jan 2020</p>
+        <Paragraph>Open Colleges | Apr 2018&ndash;Jan 2020</Paragraph>
         <ul className="ul">
           <li className="li">
             Created user interfaces, aligning them with the organisation's brand
@@ -120,7 +121,7 @@ function About() {
           </li>
         </ul>
         <Heading level="3">Digital Designer</Heading>
-        <p className="p">Open Colleges | Oct 2013&ndash;Apr 2018</p>
+        <Paragraph>Open Colleges | Oct 2013&ndash;Apr 2018</Paragraph>
         <ul className="ul">
           <li className="li">
             Produced numerous assets and layouts, maintaining design integrity
@@ -145,19 +146,19 @@ function About() {
         </ul>
         <Heading level="2">Education and Certifications</Heading>
         <Heading level="3">Certificate IV in Web Technologies</Heading>
-        <p className="p">Open Colleges | Oct 2019</p>
+        <Paragraph>Open Colleges | Oct 2019</Paragraph>
         <Heading level="3">Product Management: Elevate</Heading>
-        <p className="p">Academy Xi | Nov 2018</p>
+        <Paragraph>Academy Xi | Nov 2018 </Paragraph>
         <Heading level="3">React.js (Advanced)</Heading>
-        <p className="p">SuperHi | Jun 2018</p>
+        <Paragraph>SuperHi | Jun 2018</Paragraph>
         <Heading level="3">User Experience Design</Heading>
-        <p className="p">General Assembly | Jun 2015</p>
+        <Paragraph>General Assembly | Jun 2015</Paragraph>
         <Heading level="3">Diploma of Animation</Heading>
-        <p className="p">Yoobee School of Design | Dec 2006</p>
+        <Paragraph>Yoobee School of Design | Dec 2006</Paragraph>
         <Heading level="3">Diploma of Multimedia</Heading>
-        <p className="p">Yoobee School of Design | Dec 2005</p>
+        <Paragraph>Yoobee School of Design | Dec 2005</Paragraph>
         <Heading level="2">References</Heading>
-        <p className="p">References are available upon request.</p>
+        <Paragraph>References are available upon request.</Paragraph>
       </Article>
     </Page>
   );
