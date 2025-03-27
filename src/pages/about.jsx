@@ -12,16 +12,16 @@ function About() {
           Profile
         </Heading>
         <Paragraph>
-          I&rsquo;m a designer that codes, specialising in user interface and
-          design systems, with a keen interest in pushing technical limits to
-          preserve design integrity.
+          I&rsquo;m a product designer specialising in design systems, dedicated
+          to preserving design integrity by pushing technical boundaries. I
+          combine creativity and precision to continuously elevate the quality
+          of my output.
         </Paragraph>
         <Paragraph>
-          I have a deep understanding of design and development that enables me
-          to be flexible and efficient. I make informed, balanced decisions
+          With a deep understanding of both design and development, I&rsquo;m
+          able to be flexible and efficient. I make informed, balanced decisions
           within the constraints of both disciplines, bridge communication
-          between teams, and thrive during delivery across several stages of a
-          project.
+          between teams, and thrive during every stage of a project.
         </Paragraph>
         <Heading level="2">Experience</Heading>
         <Heading level="3">Front-End Developer (UI Engineer)</Heading>

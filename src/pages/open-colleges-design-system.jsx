@@ -14,7 +14,7 @@ function OpenCollegesDesignSystem() {
           src="/assets/oc-sign-in-comps.png"
           type="image"
         />
-        <Heading isCopyable={false}>Open Colleges’ Design System</Heading>
+        <Heading isCopyable={false}>Open Colleges&rsquo; Design System</Heading>
         <Heading isCopyable={false} level="2">
           Background
         </Heading>
@@ -23,12 +23,12 @@ function OpenCollegesDesignSystem() {
           that our Learning Management System (LMS) was lacking cohesion. An
           interface audit revealed several critical issues, including divergent
           colour palettes, inconsistent typeface usage, and many different
-          interpretations of common HTML elements. These inconsistencies weren’t
-          just cosmetic; they were creating a fragmented user experience for
-          students and staff. They also introduced substantial inefficiencies in
-          design and development workflows, as we repeatedly solved the same
-          problems—redesigning solutions and rebuilding patterns we’d already
-          worked through in the past.
+          interpretations of common HTML elements. These inconsistencies
+          weren&rsquo;t just cosmetic; they were creating a fragmented user
+          experience for students and staff. They also introduced substantial
+          inefficiencies in design and development workflows, as we repeatedly
+          solved the same problems—redesigning solutions and rebuilding patterns
+          we&rsquo;d already worked through in the past.
         </Paragraph>
         <Paragraph>
           This exposed a larger issue: the absence of a coherent approach was
@@ -51,9 +51,9 @@ function OpenCollegesDesignSystem() {
           and development workflows, improving delivery times. We were aiming to
           align the efforts of design and development teams to avoid redesigning
           and rebuilding elements, components, and even some small features.
-          Centralising these decisions wouldn’t just increase efficiency, it
-          would lead to improved output, enhanced quality, or a combination of
-          both.
+          Centralising these decisions wouldn&rsquo;t just increase efficiency,
+          it would lead to improved output, enhanced quality, or a combination
+          of both.
         </Paragraph>
         <Paragraph>
           With this in mind, we set out to build a design system that would
@@ -71,7 +71,7 @@ function OpenCollegesDesignSystem() {
           designers and developers and solved the problems that we initially set
           out to. This meant that we could prioritise higher-value tasks, such
           as refining user flows and incorporating functionality into features
-          that we otherwise couldn’t afford to do because of resourcing
+          that we otherwise couldn&rsquo;t afford to do because of resourcing
           constraints.
         </Paragraph>
         <Media
