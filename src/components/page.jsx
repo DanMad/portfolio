@@ -65,7 +65,7 @@ function Page({ children, title, isIndexed = true }) {
 
 Page.displayName = 'Page';
 
-Main.propTypes = {
+Page.propTypes = {
   children: PropTypes.node.isRequired,
   isIndexed: PropTypes.bool,
   title: PropTypes.string.isRequired,
