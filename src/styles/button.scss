@@ -43,7 +43,7 @@
 
 .button__shadow {
   position: absolute;
-  top: var(--border-m);
+  top: var(--border-width-m);
   height: 100%;
   width: 100%;
   border-radius: var(--border-radius);
@@ -57,13 +57,13 @@
 .button__outline {
   opacity: 0;
   position: absolute;
-  top: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
-  right: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
-  bottom: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
-  left: calc(var(--space-xxs) * -0.5 + var(--border-l) * -1);
-  border: var(--color-interaction) solid var(--border-l);
+  top: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
+  right: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
+  bottom: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
+  left: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
+  border: var(--color-interaction) solid var(--border-width-l);
   border-radius: calc(
-    var(--border-radius) + var(--space-xxs) * 0.5 + var(--border-l)
+    var(--border-radius) + var(--space-xxs) * 0.5 + var(--border-width-l)
   );
 }
 
@@ -91,7 +91,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  border: var(--color-border) solid var(--border-s);
+  border: var(--color-border) solid var(--border-width-s);
   border-radius: var(--border-radius);
 }
 
@@ -99,11 +99,11 @@
   content: '';
   mix-blend-mode: soft-light;
   position: absolute;
-  top: var(--border-s);
-  right: var(--border-s);
-  bottom: var(--border-s);
-  left: var(--border-s);
-  border-radius: calc(var(--border-radius) - var(--border-s));
+  top: var(--border-width-s);
+  right: var(--border-width-s);
+  bottom: var(--border-width-s);
+  left: var(--border-width-s);
+  border-radius: calc(var(--border-radius) - var(--border-width-s));
   background: var(--linear-gradient-embossing);
 }
 
@@ -115,11 +115,11 @@
 .button__embossing::after {
   content: '';
   position: absolute;
-  top: calc(var(--border-s) * 2);
-  right: calc(var(--border-s) * 2);
-  bottom: calc(var(--border-s) * 2);
-  left: calc(var(--border-s) * 2);
-  border-radius: calc(var(--border-radius) - var(--border-s) * 2);
+  top: calc(var(--border-width-s) * 2);
+  right: calc(var(--border-width-s) * 2);
+  bottom: calc(var(--border-width-s) * 2);
+  left: calc(var(--border-width-s) * 2);
+  border-radius: calc(var(--border-radius) - var(--border-width-s) * 2);
   background: var(--color-background-button-primary);
 }
 
@@ -180,10 +180,10 @@
     mask-image: paint(squircle);
     mix-blend-mode: soft-light;
     position: absolute;
-    top: var(--border-s);
-    right: var(--border-s);
-    bottom: var(--border-s);
-    left: var(--border-s);
+    top: var(--border-width-s);
+    right: var(--border-width-s);
+    bottom: var(--border-width-s);
+    left: var(--border-width-s);
     background: var(--linear-gradient-embossing);
   }
 

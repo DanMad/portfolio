@@ -110,11 +110,10 @@
         --height-viewport-dynamic: 100dvh;
         --width-viewport-dynamic: 100dvw;
 
-        /* Probs need to be border-width */
-        --border-l: 0.1875rem;
-        --border-m: 0.125rem;
-        --border-s: 0.0625rem;
         --border-radius: 0.6875rem;
+        --border-width-l: 0.1875rem;
+        --border-width-m: 0.125rem;
+        --border-width-s: 0.0625rem;
 
         --color-bunker-100: rgb(13 16 18);
         --color-charade-100: rgb(34 37 39);
@@ -348,7 +347,7 @@
         color: var(--color-text-tertiary);
         font-size: var(--font-size-xxxs);
         font-weight: 500;
-        line-height: calc(var(--space-l) - var(--border-s));
+        line-height: calc(var(--space-l) - var(--border-width-s));
         line-height: var(--space-l);
         text-align: center;
         white-space: nowrap;

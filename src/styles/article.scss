@@ -35,8 +35,8 @@
 
 @media screen and (min-width: 44.0625em) {
   .article .media {
-    border-right: var(--border-s) solid var(--color-border);
-    border-left: var(--border-s) solid var(--color-border);
+    border-right: var(--border-width-s) solid var(--color-border);
+    border-left: var(--border-width-s) solid var(--color-border);
     margin-left: 0;
     width: 100%;
   }

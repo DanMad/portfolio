@@ -1,6 +1,6 @@
 .media {
   overflow: hidden;
-  border: var(--border-s) solid var(--color-border);
+  border: var(--border-width-s) solid var(--color-border);
   margin-bottom: calc(var(--font-size-p) * var(--line-height-p));
   //   user-select: none;
 }
