@@ -2,56 +2,85 @@ import classNames from 'classnames';
 import { motion, useInView } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
-import useMedia from 'use-media';
+import useColorScheme from 'hooks/use-color-scheme';
+import useDevicePixelRatio from 'hooks/use-device-pixel-ratio';
 import 'styles/media.scss';
 
-function Image({ alt, isDark, onLoad, src }) {
-  const contextualSrc = src.replace(
-    /(@[23]x)?(\.[a-zA-Z]{3,4})$/,
-    (match, p1, p2) => {
-      return (isDark ? '-dark' : '-light') + (p1 || '') + p2;
-    },
-  );
+function Image({ alt, isInView, src }) {
+  const colorScheme = useColorScheme();
+  const devicePixelRatio = useDevicePixelRatio();
+  const [loadedColorSchemes, setLoadedColorSchemes] = useState([]);
 
-  // useEffect(() => {
-  //   // setIsLoading(false);
-  // }, [isDark]);
+  const handleLoad = () => {
+    setLoadedColorSchemes((prevColorSchemes) => {
+      return [...prevColorSchemes, colorScheme];
+    });
+  };
+
+  const isLoading = !loadedColorSchemes.includes(colorScheme);
+
+  const contextualSrc = src.replace(/(\.[a-zA-Z]{3,4})$/, (_, extension) => {
+    return `-${colorScheme}@${devicePixelRatio > 3 ? 3 : devicePixelRatio}x${extension}`;
+  });
+
+  useEffect(() => {
+    if (!isInView || !isLoading) {
+      return;
+    }
+
+    const img = document.createElement('img');
+
+    img.src = contextualSrc;
+
+    if (img.complete) {
+      handleLoad();
+    } else {
+      img.addEventListener('load', handleLoad);
+    }
+
+    return () => {
+      img.removeEventListener('load', handleLoad);
+    };
+  }, [colorScheme, devicePixelRatio, isInView]);
 
   return (
-    <motion.img
-      alt={alt}
-      animate="active"
-      className="media__img"
-      initial="inactive"
-      onLoad={onLoad}
-      src={contextualSrc}
-      transition={{
-        duration: 3,
-        ease: [0.39, 0.575, 0.565, 1],
-      }}
-      variants={{
-        active: {
-          opacity: 1,
-        },
-        hovered: {
-          scale: 1.078313,
-          transition: {
-            duration: 3,
-            ease: [0.39, 0.575, 0.565, 1],
+    !isLoading && (
+      <motion.img
+        alt={alt}
+        animate="active"
+        className="media__img"
+        initial="inactive"
+        src={contextualSrc}
+        transition={{
+          duration: 3,
+          ease: [0.39, 0.575, 0.565, 1],
+        }}
+        variants={{
+          active: {
+            opacity: 1,
           },
-        },
-        inactive: { opacity: 0 },
-      }}
-      whileHover="hovered"
-    />
+          hovered: {
+            scale: 1.078313,
+            transition: {
+              duration: 3,
+              ease: [0.39, 0.575, 0.565, 1],
+            },
+          },
+          inactive: {
+            opacity: 0,
+          },
+        }}
+        whileHover="hovered"
+      />
+    )
   );
 }
 
 Image.displayName = 'Image';
 
 Image.propTypes = {
-  alt: PropTypes.string.isRequired,
-  onLoad: PropTypes.func.isRequired,
+  alt: PropTypes.string,
+  isInView: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
 };
 
@@ -65,25 +94,16 @@ function Media({
   type = 'image',
   ...rest
 }) {
-  const isDark = useMedia('(prefers-color-scheme: dark)');
   const ref = useRef(null);
   const isInView = useInView(ref);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleLoad = () => {
-    setIsLoading(false);
-    console.log('Media loaded');
-  };
 
   const Component = media[type];
-  const className = classNames('media', `media--${aspectRatio}`);
+  const mediaClassNames = classNames('media', `media--${aspectRatio}`);
 
   return (
-    <div className={className} ref={ref} style={{ backgroundColor }}>
+    <div className={mediaClassNames} ref={ref} style={{ backgroundColor }}>
       <div className="media__inner">
-        {(isInView || !isLoading) && (
-          <Component isDark={isDark} onLoad={handleLoad} {...rest} />
-        )}
+        <Component isInView={isInView} {...rest} />
       </div>
     </div>
   );
@@ -94,7 +114,7 @@ Media.displayName = 'Media';
 Media.propTypes = {
   alt: PropTypes.string,
   aspectRatio: PropTypes.oneOf(['4:3', '16:9']),
-  background: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
   src: PropTypes.string,
   type: PropTypes.oneOf(['image']),
 };
