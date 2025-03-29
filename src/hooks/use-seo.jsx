@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useSeo = ({ title, isIndexed = true, url = window.location.href }) => {
+function useSeo({ title, isIndexed = true, url = window.location.href }) {
   useEffect(() => {
     document.title = title;
 
@@ -56,6 +56,6 @@ const useSeo = ({ title, isIndexed = true, url = window.location.href }) => {
       }
     }
   }, [isIndexed, title, url]);
-};
+}
 
 export default useSeo;
