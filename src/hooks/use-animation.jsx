@@ -5,16 +5,16 @@ function useAnimation() {
   const { isAnimating } = useAnimationContext();
 
   useEffect(() => {
-    const html = document.documentElement;
+    const rootElement = document.querySelector('#root');
 
     if (isAnimating) {
-      html.classList.add('is-animating');
+      rootElement.classList.add('is-animating');
     } else {
-      html.classList.remove('is-animating');
+      rootElement.classList.remove('is-animating');
     }
 
     return () => {
-      html.classList.remove('is-animating');
+      rootElement.classList.remove('is-animating');
     };
   }, [isAnimating]);
 }

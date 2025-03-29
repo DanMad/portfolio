@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router';
 import App from 'app';
 import AnimationProvider from 'context/animation';
 
-const rootElement = document.getElementById('root');
+const rootElement = document.querySelector('#root');
 const root = createRoot(rootElement);
 
 root.render(

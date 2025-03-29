@@ -21,29 +21,29 @@ function Image({ alt, isInView, src }) {
     });
   };
 
-  const isLoading = !loadedColorSchemes.includes(colorScheme);
-
   const contextualSrc = src.replace(/(\.[a-zA-Z]{3,4})$/, (_, extension) => {
     return `-${colorScheme}@${devicePixelRatio > 3 ? 3 : devicePixelRatio}x${extension}`;
   });
+
+  const isLoading = !loadedColorSchemes.includes(colorScheme);
 
   useEffect(() => {
     if (!isInView || !isLoading) {
       return;
     }
 
-    const img = document.createElement('img');
+    const imageElement = document.createElement('img');
 
-    img.src = contextualSrc;
+    imageElement.src = contextualSrc;
 
-    if (img.complete) {
+    if (imageElement.complete) {
       handleLoad();
     } else {
-      img.addEventListener('load', handleLoad);
+      imageElement.addEventListener('load', handleLoad);
     }
 
     return () => {
-      img.removeEventListener('load', handleLoad);
+      imageElement.removeEventListener('load', handleLoad);
     };
   }, [colorScheme, devicePixelRatio, isInView]);
 

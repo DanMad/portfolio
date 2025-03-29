@@ -4,55 +4,55 @@ function useSeo({ title, isIndexed = true, url = window.location.href }) {
   useEffect(() => {
     document.title = title;
 
-    let ogTitle = document.querySelector('meta[property="og:title"]');
+    let ogTitleElement = document.querySelector('meta[property="og:title"]');
 
-    if (!ogTitle) {
-      ogTitle = document.createElement('meta');
-      ogTitle.property = 'og:title';
+    if (!ogTitleElement) {
+      ogTitleElement = document.createElement('meta');
+      ogTitleElement.property = 'og:title';
 
-      document.head.appendChild(ogTitle);
+      document.head.appendChild(ogTitleElement);
     }
 
-    ogTitle.content = title;
+    ogTitleElement.content = title;
 
-    let ogUrl = document.querySelector('meta[property="og:url"]');
+    let ogUrlElement = document.querySelector('meta[property="og:url"]');
 
-    if (!ogUrl) {
-      ogUrl = document.createElement('meta');
-      ogUrl.property = 'og:url';
+    if (!ogUrlElement) {
+      ogUrlElement = document.createElement('meta');
+      ogUrlElement.property = 'og:url';
 
-      document.head.appendChild(ogUrl);
+      document.head.appendChild(ogUrlElement);
     }
 
-    ogUrl.content = url;
+    ogUrlElement.content = url;
 
-    let robots = document.querySelector('meta[name="robots"]');
+    let robotsElement = document.querySelector('meta[name="robots"]');
 
-    if (!robots) {
-      robots = document.createElement('meta');
-      robots.name = 'robots';
+    if (!robotsElement) {
+      robotsElement = document.createElement('meta');
+      robotsElement.name = 'robots';
 
-      document.head.appendChild(robots);
+      document.head.appendChild(robotsElement);
     }
 
-    robots.content = isIndexed ? 'index, follow' : 'noindex, nofollow';
+    robotsElement.content = isIndexed ? 'index, follow' : 'noindex, nofollow';
 
     if (isIndexed) {
-      let canonical = document.querySelector('link[rel="canonical"]');
+      let canonicalElement = document.querySelector('link[rel="canonical"]');
 
-      if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.rel = 'canonical';
+      if (!canonicalElement) {
+        canonicalElement = document.createElement('link');
+        canonicalElement.rel = 'canonical';
 
-        document.head.appendChild(canonical);
+        document.head.appendChild(canonicalElement);
       }
 
-      canonical.href = url;
+      canonicalElement.href = url;
     } else {
-      const canonical = document.querySelector('link[rel="canonical"]');
+      const canonicalElement = document.querySelector('link[rel="canonical"]');
 
-      if (canonical) {
-        canonical.remove();
+      if (canonicalElement) {
+        canonicalElement.remove();
       }
     }
   }, [isIndexed, title, url]);
