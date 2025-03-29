@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router';
 import { useWindowSize } from 'react-use';
 import Artworks from 'components/artworks';
 import Button from 'components/button';
+import Heading from 'components/heading';
+import Paragraph from 'components/paragraph';
 import useVariants from 'hooks/use-variants';
 import 'styles/slide';
 
@@ -52,16 +54,20 @@ function Slide({
             <Artworks {...artworks} />
           </div>
           <div className="slide__inner">
-            <h2 className="h1">{title}</h2>
-            <p className="p">{description}</p>
+            <Heading element="h2" isCopyable={false} level={1}>
+              {title}
+            </Heading>
+            <Paragraph>{description}</Paragraph>
             <Button onClick={handleClick}>View Project</Button>
           </div>
         </>
       ) : (
         <>
           <div className="slide__inner">
-            <h2 className="h1">{title}</h2>
-            <p className="p">{description}</p>
+            <Heading element="h2" isCopyable={false} level={1}>
+              {title}
+            </Heading>
+            <Paragraph>{description}</Paragraph>
             <Button onClick={handleClick}>View Project</Button>
           </div>
           <div className="slide__inner">
