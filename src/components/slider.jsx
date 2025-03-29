@@ -1,33 +1,47 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import debounce from 'lodash/debounce';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useSessionStorage, useWindowSize } from 'react-use';
 import Slide from 'components/slide';
+import { useAnimationContext } from 'context/animation';
 import 'styles/slider';
 
 function Slider({ slides }) {
+  const { setIsAnimating } = useAnimationContext();
   const [lastIndex, setLastIndex] = useSessionStorage('lastIndex', 0);
   const [index, setIndex] = useState(lastIndex);
+  const [direction, setDirection] = useState(null);
   const { width } = useWindowSize();
 
+  const handleAnimationComplete = (variant) => {
+    if (variant === 'animate') {
+      setDirection(null);
+      setIsAnimating(false);
+    }
+  };
+
+  const handleAnimationStart = (variant) => {
+    if (variant === 'exit') {
+      setIsAnimating(true);
+    }
+  };
+
   const handleKeyDown = (e) => {
-    if (e.key === 'ArrowUp') {
+    if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setIndex((prev) => (prev - 1 + slides.length) % slides.length);
-    } else if (e.key === 'ArrowDown') {
+      setDirection('down');
+    } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setIndex((prev) => (prev + 1) % slides.length);
+      setDirection('up');
     }
   };
 
   const handleWheel = (e) => {
-    if (e.deltaY < 0) {
-      console.log('up');
-      setIndex((prev) => (prev - 1 + slides.length) % slides.length);
-    } else if (e.deltaY > 0) {
-      console.log('down');
-      setIndex((prev) => (prev + 1) % slides.length);
+    if (e.deltaY > 0) {
+      setDirection('down');
+    } else if (e.deltaY < 0) {
+      setDirection('up');
     }
   };
 
@@ -42,6 +56,14 @@ function Slider({ slides }) {
   });
 
   const isSmallWindow = width < 705;
+
+  useEffect(() => {
+    if (direction === 'down') {
+      setIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    } else if (direction === 'up') {
+      setIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+    }
+  }, [direction]);
 
   useEffect(() => {
     if (isSmallWindow) {
@@ -68,7 +90,13 @@ function Slider({ slides }) {
           slides.map((slide) => <Slide key={slide.id} {...slide} />)
         ) : (
           <AnimatePresence mode="wait" propagate>
-            <Slide key={slides[index].id} {...slides[index]} />
+            <Slide
+              direction={direction}
+              key={slides[index].id}
+              onAnimationComplete={handleAnimationComplete}
+              onAnimationStart={handleAnimationStart}
+              {...slides[index]}
+            />
           </AnimatePresence>
         )}
       </>
@@ -79,7 +107,7 @@ function Slider({ slides }) {
 Slider.displayName = 'Slider';
 
 Slider.propTypes = {
-  slides: PropTypes.arrayOf(PropTypes.node).isRequired,
+  slides: PropTypes.arrayOf(Slide.propTypes).isRequired,
 };
 
 export default Slider;

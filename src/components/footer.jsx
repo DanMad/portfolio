@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import Button from 'components/button';
 import Icon from 'components/icon';
+import useVariants from 'hooks/use-variants';
 import 'styles/footer';
 
 const links = [
@@ -25,6 +26,8 @@ const links = [
 ];
 
 function Footer({ year = dayjs().year() }) {
+  const { animate, exit, initial } = useVariants();
+
   const handleClick = (url) => {
     window.open(url, '_blank', 'rel=noopener noreferrer');
   };
@@ -33,22 +36,9 @@ function Footer({ year = dayjs().year() }) {
     <motion.footer
       className="footer"
       variants={{
-        active: {
-          opacity: 1,
-          transition: {
-            duration: 0.3,
-            ease: [0.39, 0.575, 0.565, 1],
-          },
-          y: 0,
-        },
-        inactive: {
-          opacity: 0,
-          transition: {
-            duration: 0.3,
-            ease: [0.47, 0, 0.745, 0.715],
-          },
-          y: 84,
-        },
+        animate: animate(),
+        exit: exit(),
+        initial: initial(),
       }}
     >
       <p className="footer__copyright" element="p">

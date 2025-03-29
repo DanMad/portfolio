@@ -4,10 +4,20 @@ import { useNavigate } from 'react-router';
 import { useWindowSize } from 'react-use';
 import Artworks from 'components/artworks';
 import Button from 'components/button';
+import useVariants from 'hooks/use-variants';
 import 'styles/slide';
 
-function Slide({ artworks, description, title, to }) {
+function Slide({
+  artworks,
+  description,
+  direction,
+  title,
+  to,
+  onAnimationComplete = () => {},
+  onAnimationStart = () => {},
+}) {
   const navigate = useNavigate();
+  const { animate, exit, initial } = useVariants();
   const { width } = useWindowSize();
 
   const handleClick = () => {
@@ -18,28 +28,22 @@ function Slide({ artworks, description, title, to }) {
 
   return (
     <motion.div
-      animate="active"
+      animate="animate"
       className="slide"
-      exit="inactive"
-      initial="inactive"
+      exit="exit"
+      initial="initial"
+      onAnimationComplete={onAnimationComplete}
+      onAnimationStart={onAnimationStart}
       variants={{
-        active: {
-          opacity: 1,
-          transition: {
-            duration: 0.3,
-            ease: [0.39, 0.575, 0.565, 1],
-          },
-          y: 0,
-        },
-        inactive: {
-          opacity: 0,
-          transition: {
-            delay: 0.1,
-            duration: 0.3,
-            ease: [0.47, 0, 0.745, 0.715],
-          },
-          y: 84,
-        },
+        animate: animate(),
+        exit: exit(
+          direction
+            ? { transition: { delay: 0 }, y: direction === 'down' ? -84 : 84 }
+            : { transition: { delay: 0.1 }, y: 84 },
+        ),
+        initial: initial(
+          direction ? { y: direction === 'down' ? 84 : -84 } : {},
+        ),
       }}
     >
       {isSmallWindow ? (
@@ -73,10 +77,14 @@ Slide.displayName = 'Slide';
 
 Slide.propTypes = {
   artworks: PropTypes.shape({
+    hasDarkMode: PropTypes.bool,
     type: PropTypes.string.isRequired,
     urls: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   description: PropTypes.string.isRequired,
+  direction: PropTypes.oneOf([null, 'down', 'up']),
+  onAnimationComplete: PropTypes.func,
+  onAnimationStart: PropTypes.func,
   title: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };

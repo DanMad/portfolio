@@ -11,34 +11,35 @@ import useSeo from 'hooks/use-seo';
 function Page({ children, title, isIndexed = true }) {
   const { setHasAnimated, setIsAnimating } = useAnimationContext();
 
-  useAnimation();
   useSeo({
     isIndexed,
     title: `${title} | Daniel Maddison’s Portfolio`,
   });
 
+  useAnimation();
+
   const handleAnimationComplete = (variant) => {
-    if (variant === 'active') {
+    if (variant === 'animate') {
       setHasAnimated(true);
       setIsAnimating(false);
     }
   };
 
   const handleAnimationStart = (variant) => {
-    if (variant === 'inactive') {
+    if (variant === 'exit') {
       setIsAnimating(true);
     }
   };
 
   return (
     <motion.div
-      animate="active"
-      exit="inactive"
-      initial="inactive"
+      animate="animate"
+      exit="exit"
+      initial="initial"
       onAnimationComplete={handleAnimationComplete}
       onAnimationStart={handleAnimationStart}
       variants={{
-        active: {
+        animate: {
           transition: {
             delayChildren: 0.1,
             staggerChildren: 0.1,
@@ -46,7 +47,14 @@ function Page({ children, title, isIndexed = true }) {
             when: 'beforeChildren',
           },
         },
-        inactive: {
+        exit: {
+          transition: {
+            staggerChildren: 0.1,
+            staggerDirection: -1,
+            when: 'afterChildren',
+          },
+        },
+        initial: {
           transition: {
             staggerChildren: 0.1,
             staggerDirection: -1,

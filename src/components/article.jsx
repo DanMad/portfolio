@@ -1,28 +1,18 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import useVariants from 'hooks/use-variants';
 import 'styles/article.scss';
 
 function Article({ children }) {
+  const { animate, exit, initial } = useVariants();
+
   return (
     <motion.article
       className="article"
       variants={{
-        active: {
-          opacity: 1,
-          transition: {
-            duration: 0.3,
-            ease: [0.39, 0.575, 0.565, 1],
-          },
-          y: 0,
-        },
-        inactive: {
-          opacity: 0,
-          transition: {
-            duration: 0.3,
-            ease: [0.47, 0, 0.745, 0.715],
-          },
-          y: 84,
-        },
+        animate: animate(),
+        exit: exit(),
+        initial: initial(),
       }}
     >
       {children}

@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import useColorScheme from 'hooks/use-color-scheme';
 import useDevicePixelRatio from 'hooks/use-device-pixel-ratio';
+import useVariants from 'hooks/use-variants';
 import 'styles/media.scss';
 
 function Image({ alt, isInView, src }) {
   const colorScheme = useColorScheme();
   const devicePixelRatio = useDevicePixelRatio();
   const [loadedColorSchemes, setLoadedColorSchemes] = useState([]);
+  const { animate, initial } = useVariants();
 
   const handleLoad = () => {
     setLoadedColorSchemes((prevColorSchemes) => {
@@ -47,28 +49,23 @@ function Image({ alt, isInView, src }) {
     !isLoading && (
       <motion.img
         alt={alt}
-        animate="active"
+        animate="animate"
         className="media__img"
-        initial="inactive"
+        initial="initial"
         src={contextualSrc}
         transition={{
           duration: 3,
           ease: [0.39, 0.575, 0.565, 1],
         }}
         variants={{
-          active: {
-            opacity: 1,
-          },
+          animate: animate({ transition: { duration: 3 }, y: null }),
           hovered: {
             scale: 1.078313,
-            transition: {
-              duration: 3,
-              ease: [0.39, 0.575, 0.565, 1],
-            },
           },
-          inactive: {
-            opacity: 0,
-          },
+          initial: initial({
+            transition: { duration: 3, ease: [0.39, 0.575, 0.565, 1] },
+            y: null,
+          }),
         }}
         whileHover="hovered"
       />
