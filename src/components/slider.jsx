@@ -85,21 +85,19 @@ function Slider({ slides }) {
 
   return (
     <div className="slider">
-      <>
+      <AnimatePresence mode="wait" propagate>
         {isSmallWindow ? (
           slides.map((slide) => <Slide key={slide.id} {...slide} />)
         ) : (
-          <AnimatePresence mode="wait" propagate>
-            <Slide
-              direction={direction}
-              key={slides[index].id}
-              onAnimationComplete={handleAnimationComplete}
-              onAnimationStart={handleAnimationStart}
-              {...slides[index]}
-            />
-          </AnimatePresence>
+          <Slide
+            direction={direction}
+            key={slides[index].id}
+            onAnimationComplete={handleAnimationComplete}
+            onAnimationStart={handleAnimationStart}
+            {...slides[index]}
+          />
         )}
-      </>
+      </AnimatePresence>
     </div>
   );
 }
