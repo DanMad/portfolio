@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import useColorScheme from 'hooks/use-color-scheme';
 import useDevicePixelRatio from 'hooks/use-device-pixel-ratio';
+import useHasHover from 'hooks/use-has-hover';
 import useVariants from 'hooks/use-variants';
 import 'styles/media.scss';
 
 function Image({ alt, isInView, src }) {
   const colorScheme = useColorScheme();
   const devicePixelRatio = useDevicePixelRatio();
+  const hasHover = useHasHover();
   const [loadedColorSchemes, setLoadedColorSchemes] = useState([]);
   const { animate, initial } = useVariants();
 
@@ -59,15 +61,17 @@ function Image({ alt, isInView, src }) {
         }}
         variants={{
           animate: animate({ transition: { duration: 3 }, y: null }),
-          hovered: {
-            scale: 1.078313,
-          },
           initial: initial({
             transition: { duration: 3, ease: [0.39, 0.575, 0.565, 1] },
             y: null,
           }),
+          ...(hasHover && {
+            hover: {
+              scale: 1.078313,
+            },
+          }),
         }}
-        whileHover="hovered"
+        {...(hasHover && { whileHover: 'hover' })}
       />
     )
   );
