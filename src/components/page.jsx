@@ -1,15 +1,18 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import A11yLink from 'components/a11y-link';
 import Header from 'components/header';
 import Footer from 'components/footer';
 import Main from 'components/main';
 import { useAnimationContext } from 'context/animation';
 import useAnimation from 'hooks/use-animation';
+import useScroll from 'hooks/use-scroll';
 import useSeo from 'hooks/use-seo';
 
 function Page({ children, title, isIndexed = true }) {
   const { setHasAnimated, setIsAnimating } = useAnimationContext();
+  const { scroll } = useScroll();
 
   useSeo({
     isIndexed,
@@ -30,6 +33,27 @@ function Page({ children, title, isIndexed = true }) {
       setIsAnimating(true);
     }
   };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!location.hash) {
+        return;
+      }
+
+      const anchorElement = document.querySelector(location.hash);
+
+      if (anchorElement) {
+        const anchorStyles = window.getComputedStyle(anchorElement);
+        const anchorMarginTop = parseInt(anchorStyles.marginTop, 10) || 0;
+
+        scroll(anchorElement.offsetTop - anchorMarginTop);
+      }
+    }, 600);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [location]);
 
   return (
     <motion.div

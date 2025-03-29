@@ -6,6 +6,7 @@ import Artworks from 'components/artworks';
 import Button from 'components/button';
 import Heading from 'components/heading';
 import Paragraph from 'components/paragraph';
+import useScroll from 'hooks/use-scroll';
 import useVariants from 'hooks/use-variants';
 import 'styles/slide';
 
@@ -19,14 +20,23 @@ function Slide({
   onAnimationStart = () => {},
 }) {
   const navigate = useNavigate();
+  const { scroll } = useScroll();
   const { animate, exit, initial } = useVariants();
   const { width } = useWindowSize();
 
+  const isSmallWindow = width < 705;
+
   const handleClick = () => {
+    if (isSmallWindow) {
+      scroll(0, () => {
+        navigate(to);
+      });
+
+      return;
+    }
+
     navigate(to);
   };
-
-  const isSmallWindow = width < 705;
 
   return (
     <motion.div
