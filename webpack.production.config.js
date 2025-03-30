@@ -125,6 +125,44 @@ module.exports = {
       },
     }),
     new HtmlWebpackPlugin({
+      filename: 'projects/open-colleges-design-system/index.html',
+      inject: 'body',
+      template: './public/index.html',
+      templateParameters: {
+        description:
+          "Welcome to Daniel Maddison's portfolio. Explore projects, learn about my skills and experience, and get in touch for collaboration opportunities.",
+        image: {
+          alt: '',
+          src: '/assets/thumbnail.svg',
+        },
+        isDevelopment: false,
+        isIndexed: true,
+        referrer: 'strict-origin-when-cross-origin',
+        title: "Open Colleges’ Design System | Daniel Maddison's Portfolio",
+        url: 'https://www.danielmaddison.io/projects/open-colleges-design-system',
+        version,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'projects/personal-brand/index.html',
+      inject: 'body',
+      template: './public/index.html',
+      templateParameters: {
+        description:
+          "Welcome to Daniel Maddison's portfolio. Explore projects, learn about my skills and experience, and get in touch for collaboration opportunities.",
+        image: {
+          alt: '',
+          src: '/assets/thumbnail.svg',
+        },
+        isDevelopment: false,
+        isIndexed: true,
+        referrer: 'strict-origin-when-cross-origin',
+        title: "Personal Brand | Daniel Maddison's Portfolio",
+        url: 'https://www.danielmaddison.io/projects/personal-brand',
+        version,
+      },
+    }),
+    new HtmlWebpackPlugin({
       filename: 'projects/weather/index.html',
       inject: 'body',
       template: './public/index.html',

@@ -15,19 +15,19 @@ const App = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes key={location.pathname} location={location}>
-        <Route element={<Home />} path="/" />
+        <Route element={<About />} path="about" />
+        <Route element={<Home />} index />
         <Route path="projects/*">
           <Route element={<Projects />} index />
-          <Route element={<PersonalBrand />} path="personal-brand" />
           {/* <Route element={<EddyDesignSystem />} path="eddy-design-system" /> */}
           <Route
             element={<OpenCollegesDesignSystem />}
             path="open-colleges-design-system"
           />
+          <Route element={<PersonalBrand />} path="personal-brand" />
           <Route element={<Weather />} path="weather" />
           <Route element={<NotFound />} path="*" />
         </Route>
-        <Route element={<About />} path="about" />
         <Route element={<NotFound />} path="*" />
       </Routes>
     </AnimatePresence>
