@@ -42,6 +42,8 @@ function Image({ alt, isInView, src }) {
       imageElement.addEventListener('load', handleLoad);
     }
 
+    // window.imageCache[contextualSrc] = imageElement;
+
     return () => {
       imageElement.removeEventListener('load', handleLoad);
     };

@@ -4,15 +4,91 @@ import { BrowserRouter as Router } from 'react-router';
 import App from 'app';
 import AnimationProvider from 'context/animation';
 
-const rootElement = document.querySelector('#root');
-const root = createRoot(rootElement);
+const handleTransitionEnd = (e) => {
+  if (e.target.classList.contains('is-ready')) {
+    return;
+  }
 
-root.render(
-  <StrictMode>
-    <AnimationProvider>
-      <Router>
-        <App />
-      </Router>
-    </AnimationProvider>
-  </StrictMode>,
-);
+  e.target.removeEventListener('transitionend', handleTransitionEnd);
+  e.target.remove();
+
+  const rootElement = document.querySelector('#root');
+  const root = createRoot(rootElement);
+
+  root.render(
+    <StrictMode>
+      <AnimationProvider>
+        <Router>
+          <App />
+        </Router>
+      </AnimationProvider>
+    </StrictMode>,
+  );
+};
+
+async function loadFonts(fonts) {
+  const promises = fonts.map(async (font) => {
+    await font.load();
+    return document.fonts.add(font);
+  });
+
+  await Promise.all(promises);
+}
+
+function loadImages(urls) {
+  const promises = urls.map((url) => {
+    return new Promise((resolve) => {
+      const image = new Image();
+
+      image.onerror = resolve;
+      image.onload = resolve;
+      image.src = url;
+
+      // window.imageCache[url] = image;
+    });
+  });
+
+  return Promise.all(promises);
+}
+
+async function loadAssets(fonts, urls) {
+  try {
+    await Promise.all([loadFonts(fonts), loadImages(urls)]);
+
+    if ('paintWorklet' in CSS) {
+      await CSS.paintWorklet.addModule('/squircle.min.js');
+    }
+
+    const preloaderElement = document.querySelector('.preloader');
+
+    preloaderElement.addEventListener('transitionend', handleTransitionEnd);
+    preloaderElement.classList.remove('is-ready');
+  } catch (error) {
+    console.error('Error loading assets', error);
+  }
+}
+
+const fonts = [
+  new FontFace('Bitter', 'url(/assets/bitter.woff2)', {
+    format: 'woff2-variations',
+    style: 'normal',
+    weight: '900',
+  }),
+  new FontFace('Inter', 'url(/assets/inter.woff2)', {
+    format: 'woff2-variations',
+    style: 'normal',
+    weight: '400 700',
+  }),
+];
+
+const images = [
+  '/assets/360x640-placeholder-1.svg',
+  '/assets/360x640-placeholder-2.svg',
+  '/assets/360x640-placeholder-3.svg',
+  '/assets/memoji.png',
+  '/assets/texture.png',
+];
+
+// window.imageCache = window.imageCache || {};
+
+loadAssets(fonts, images);

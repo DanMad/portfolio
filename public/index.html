@@ -243,6 +243,55 @@
         margin: 0 auto;
       }
 
+      .preloader {
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% calc(-50% + var(--space-xxl));
+        width: 50%;
+        max-width: 10rem;
+        transition:
+          opacity 0.3s cubic-bezier(0.47, 0, 0.745, 0.715),
+          translate 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
+        pointer-events: none;
+      }
+
+      .preloader.is-ready {
+        opacity: 1;
+        translate: -50% 0;
+      }
+
+      .preloader__track {
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        height: var(--border-width-m);
+        width: 100%;
+      }
+
+      .preloader__track::before {
+        content: '';
+        opacity: 0.15;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: currentColor;
+      }
+
+      .preloader__fill {
+        position: absolute;
+        translate: -50% 0;
+        height: 100%;
+        width: 50%;
+        background: currentColor;
+        animation: oscillate 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+      }
+
       .h1 {
         margin-bottom: calc(var(--font-size-h1) * var(--line-height-h1) * 0.2);
         color: var(--color-text-primary);
@@ -261,6 +310,18 @@
         margin-bottom: calc(var(--font-size-p) * var(--line-height-p));
         font-size: var(--font-size-p);
         line-height: var(--line-height-p);
+      }
+
+      @keyframes oscillate {
+        0% {
+          translate: -50% 0;
+        }
+        50% {
+          translate: 150% 0;
+        }
+        100% {
+          translate: -50% 0;
+        }
       }
 
       @media screen and (min-width: 30.0625em) {
@@ -391,6 +452,11 @@
     </div>
     <% } %>
     <div id="root">
+      <div aria-hidden="true" class="preloader">
+        <div class="preloader__track">
+          <div class="preloader__fill"></div>
+        </div>
+      </div>
       <noscript class="error">
         <h1 class="h1">JavaScript is Disabled</h1>
         <p class="p">
@@ -401,9 +467,10 @@
     </div>
     <script>
       (() => {
-        if ('paintWorklet' in CSS) {
-          CSS.paintWorklet.addModule('/squircle.min.js');
-        }
+        const preloaderElement = document.querySelector('.preloader');
+
+        preloaderElement.classList.add('is-ready');
+        preloaderElement.setAttribute('aria-hidden', 'false');
       })();
     </script>
   </body>
