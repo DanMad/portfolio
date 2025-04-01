@@ -12,7 +12,7 @@ import useSeo from 'hooks/use-seo';
 
 function Page({ children, title, isIndexed = true }) {
   const { setHasAnimated, setIsAnimating } = useAnimationContext();
-  const { scroll } = useScroll();
+  const scroll = useScroll();
 
   useSeo({
     isIndexed,

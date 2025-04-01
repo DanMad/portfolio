@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { memo, useRef } from 'react';
-import { useWindowSize } from 'react-use';
-import useElementSize from 'hooks/use-element-size';
+import { memo, useMemo } from 'react';
+import { useMeasure, useWindowSize } from 'react-use';
+import useHasHover from 'hooks/use-has-hover';
 import 'styles/artworks.scss';
 
 const toRem = (value) => {
@@ -31,132 +31,134 @@ Artwork.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-function AngledScreens({ rootSize, urls }) {
-  const scale = rootSize.height / 674.124268;
+function AngledScreens({ height, width, urls }) {
+  const isLandscape = height < width;
 
-  const toScale = (number) => {
-    return toRem(number * scale);
-  };
+  const styles = useMemo(() => {
+    const scale = height / 674.124268;
 
-  const isLandscape = rootSize.height < rootSize.width;
+    const toScale = (number) => {
+      return toRem(number * scale);
+    };
+
+    const scaledSizes = {
+      [-27]: toScale(-27),
+      [0]: '0rem',
+      [4]: toScale(4.39622),
+      [8]: toScale(8.780391),
+      [27]: toScale(27),
+      [31]: toScale(31),
+      [33]: toScale(33.495012),
+      [34]: toScale(34.124268),
+      [66]: toScale(66.898216),
+      [94]: toScale(94),
+      [117]: toScale(117.379893),
+      [125]: toScale(125),
+      [150]: toScale(150.438056),
+      [200]: toScale(200),
+      [244]: toScale(244),
+      [256]: toScale(256),
+      [360]: toScale(360),
+      [536]: toScale(536),
+      [556]: toScale(556),
+      [640]: toScale(640),
+    };
+
+    return [
+      {
+        filter:
+          // The colors here will need to be updated to a token.
+          `drop-shadow(${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[125]} rgba(2, 5, 7, 0.91))` +
+          `drop-shadow(${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} rgba(55, 6, 16, 0.13))`,
+      },
+      {
+        bottom: scaledSizes[8],
+        left: scaledSizes[150],
+        height: scaledSizes[556],
+        width: scaledSizes[244],
+      },
+      {
+        ...(!isLandscape && { left: scaledSizes[117] }),
+        bottom: isLandscape ? scaledSizes[34] : scaledSizes[8],
+        height: scaledSizes[556],
+        width: scaledSizes[244],
+      },
+      {
+        right: isLandscape ? scaledSizes[150] : scaledSizes[117],
+        bottom: isLandscape ? scaledSizes[8] : scaledSizes[8],
+        height: scaledSizes[556],
+        width: scaledSizes[244],
+      },
+      {
+        right: scaledSizes[66],
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        right: scaledSizes[66],
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        right: `calc(100% + ${width / 2 - 393.001648 * scale}px)`,
+        height: scaledSizes[536],
+        width: scaledSizes[256],
+        boxShadow:
+          // The colors here will need to be updated to a token.
+          `${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} ${scaledSizes[31]} rgba(55, 6, 16, 0.1)` +
+          `, ${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[94]} ${scaledSizes[31]} #020507`,
+      },
+      {
+        left: isLandscape ? scaledSizes[66] : scaledSizes[33],
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        left: isLandscape ? scaledSizes[66] : scaledSizes[33],
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        left: isLandscape
+          ? `calc(100% + ${width / 2 - 393.001648 * scale}px)`
+          : `${width - (393.001648 - 51.928736) * scale}px`,
+        height: scaledSizes[536],
+        width: scaledSizes[256],
+        boxShadow:
+          // The colors here will need to be updated to a token.
+          `${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} ${scaledSizes[31]} rgba(55, 6, 16, 0.1)` +
+          `, ${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[94]} ${scaledSizes[31]} #020507`,
+      },
+      {
+        ...(isLandscape
+          ? { bottom: scaledSizes[34] }
+          : { right: scaledSizes[33] }),
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+    ];
+  }, [height, width]);
 
   return (
     <>
-      <div
-        className="shadow shadow--artworks"
-        style={{
-          filter:
-            // The colors here will need to be updated to a token.
-            `drop-shadow(${toScale(0)} ${toScale(27)} ${toScale(125)} rgba(2, 5, 7, 0.91))` +
-            `drop-shadow(${toScale(0)} ${toScale(-27)} ${toScale(200)} rgba(55, 6, 16, 0.13))`,
-        }}
-      >
-        {isLandscape && (
-          <div
-            className="shadow__inner"
-            style={{
-              bottom: toScale(8.780391),
-              left: toScale(150.438056),
-              height: toScale(556),
-              width: toScale(244),
-            }}
-          />
-        )}
-
-        <div
-          className="shadow__inner"
-          style={{
-            ...(!isLandscape && { left: toScale(117.379893) }),
-            bottom: toScale(isLandscape ? 34.124268 : 4.39622),
-            height: toScale(556),
-            width: toScale(244),
-          }}
-        />
-
-        <div
-          className="shadow__inner"
-          style={{
-            right: toScale(isLandscape ? 150.438056 : 117.379893),
-            bottom: toScale(isLandscape ? 8.780391 : 4.39622),
-            height: toScale(556),
-            width: toScale(244),
-          }}
-        />
+      <div className="shadow shadow--artworks" style={styles[0]}>
+        {isLandscape && <div className="shadow__inner" style={styles[1]} />}
+        <div className="shadow__inner" style={styles[2]} />
+        <div className="shadow__inner" style={styles[3]} />
       </div>
       {isLandscape && (
         <>
-          <Artwork
-            style={{
-              right: toScale(66.898216),
-              height: toScale(640),
-              width: toScale(360),
-            }}
-            url={urls[2]}
-          />
-          <div
-            className="shadow shadow--artwork"
-            style={{
-              right: toScale(66.898216),
-              height: toScale(640),
-              width: toScale(360),
-            }}
-          >
-            <div
-              className="shadow__inner"
-              style={{
-                right: `calc(100% + ${rootSize.width / 2 - 393.001648 * scale}px)`,
-                height: toScale(536),
-                width: toScale(256),
-                boxShadow:
-                  // The colors here will need to be updated to a token.
-                  `${toScale(0)} ${toScale(-27)} ${toScale(200)} ${toScale(31)} rgba(55, 6, 16, 0.1)` +
-                  `, ${toScale(0)} ${toScale(27)} ${toScale(94)} ${toScale(31)} #020507`,
-              }}
-            />
+          <Artwork style={styles[4]} url={urls[2]} />
+          <div className="shadow shadow--artwork" style={styles[5]}>
+            <div className="shadow__inner" style={styles[6]} />
           </div>
         </>
       )}
-      <Artwork
-        style={{
-          left: toScale(isLandscape ? 66.898216 : 33.495012),
-          height: toScale(640),
-          width: toScale(360),
-        }}
-        url={urls[1]}
-      />
-      <div
-        className="shadow shadow--artwork"
-        style={{
-          left: toScale(isLandscape ? 66.898216 : 33.495012),
-          height: toScale(640),
-          width: toScale(360),
-        }}
-      >
-        <div
-          className="shadow__inner"
-          style={{
-            left: isLandscape
-              ? `calc(100% + ${rootSize.width / 2 - 393.001648 * scale}px)`
-              : `${rootSize.width - (393.001648 - 51.928736) * scale}px`,
-            height: toScale(536),
-            width: toScale(256),
-            boxShadow:
-              // The colors here will need to be updated to a token.
-              `${toScale(0)} ${toScale(-27)} ${toScale(200)} ${toScale(31)} rgba(55, 6, 16, 0.1)` +
-              `, ${toScale(0)} ${toScale(27)} ${toScale(94)} ${toScale(31)} #020507`,
-          }}
-        />
+      <Artwork style={styles[7]} url={urls[1]} />
+      <div className="shadow shadow--artwork" style={styles[8]}>
+        <div className="shadow__inner" style={styles[9]} />
       </div>
-      <Artwork
-        style={{
-          ...(isLandscape
-            ? { bottom: toScale(34.124268) }
-            : { right: toScale(33.495012) }),
-          height: toScale(640),
-          width: toScale(360),
-        }}
-        url={urls[0]}
-      />
+      <Artwork style={styles[10]} url={urls[0]} />
     </>
   );
 }
@@ -171,80 +173,92 @@ AngledScreens.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-function Pages({ rootSize, urls }) {
-  const scale = rootSize.height / 899.501099;
+function Pages({ height, width, urls }) {
+  const styles = useMemo(() => {
+    const scale = height / 899.501099;
 
-  const toScale = (number) => {
-    return toRem(number * scale);
-  };
+    const toScale = (number) => {
+      return toRem(number * scale);
+    };
+
+    const scaledSizes = {
+      [-27]: toScale(-27),
+      [0]: '0rem',
+      [8]: toScale(8.780391),
+      [27]: toScale(27),
+      [28]: toScale(28.805664),
+      [31]: toScale(31),
+      [84]: toScale(84),
+      [88]: toScale(88.001444),
+      [94]: toScale(94),
+      [125]: toScale(125),
+      [171]: toScale(171.541283),
+      [200]: toScale(200),
+      [479]: toScale(479.275574),
+      [491]: toScale(491.275574),
+      [595]: toScale(595.275574),
+      [737]: toScale(737.889771),
+      [757]: toScale(757.889771),
+      [841]: toScale(841.889771),
+    };
+
+    return [
+      {
+        filter:
+          // The colors here will need to be updated to a token.
+          `drop-shadow(${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[125]} rgba(2, 5, 7, 0.91))` +
+          `drop-shadow(${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} rgba(55, 6, 16, 0.13))`,
+      },
+      {
+        bottom: scaledSizes[28],
+        left: scaledSizes[84],
+        height: scaledSizes[757],
+        width: scaledSizes[479],
+      },
+      {
+        right: scaledSizes[171],
+        bottom: scaledSizes[8],
+        height: scaledSizes[757],
+        width: scaledSizes[479],
+      },
+      {
+        right: scaledSizes[84],
+        height: scaledSizes[841],
+        width: scaledSizes[595],
+      },
+      {
+        right: scaledSizes[84],
+        height: scaledSizes[841],
+        width: scaledSizes[595],
+      },
+      {
+        right: `calc(100% + ${width - (52 + 491.275574) * scale - 680.016052 * scale}px)`,
+        height: scaledSizes[737],
+        width: scaledSizes[491],
+        boxShadow:
+          // The colors here will need to be updated to a token.
+          `${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} ${scaledSizes[31]} rgba(55, 6, 16, 0.1)` +
+          `, ${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[94]} ${scaledSizes[31]} #020507`,
+      },
+      {
+        bottom: scaledSizes[28],
+        height: scaledSizes[841],
+        width: scaledSizes[595],
+      },
+    ];
+  }, [height, width]);
 
   return (
     <>
-      <div
-        className="shadow shadow--artworks"
-        style={{
-          filter:
-            // The colors here will need to be updated to a token.
-            `drop-shadow(${toScale(0)} ${toScale(27)} ${toScale(125)} rgba(2, 5, 7, 0.91))` +
-            `drop-shadow(${toScale(0)} ${toScale(-27)} ${toScale(200)} rgba(55, 6, 16, 0.13))`,
-        }}
-      >
-        <div
-          className="shadow__inner"
-          style={{
-            bottom: toScale(28.805664),
-            left: toScale(84),
-            height: toScale(757.889771),
-            width: toScale(479.275574),
-          }}
-        />
-        <div
-          className="shadow__inner"
-          style={{
-            right: toScale(171.541283),
-            bottom: toScale(8.780391),
-            height: toScale(757.889771),
-            width: toScale(479.275574),
-          }}
-        />
+      <div className="shadow shadow--artworks" style={styles[0]}>
+        <div className="shadow__inner" style={styles[1]} />
+        <div className="shadow__inner" style={styles[2]} />
       </div>
-      <Artwork
-        style={{
-          right: toScale(88.001444),
-          height: toScale(841.889771),
-          width: toScale(595.275574),
-        }}
-        url={urls[1]}
-      />
-      <div
-        className="shadow shadow--artwork"
-        style={{
-          right: toScale(88.001444),
-          height: toScale(841.889771),
-          width: toScale(595.275574),
-        }}
-      >
-        <div
-          className="shadow__inner"
-          style={{
-            right: `calc(100% + ${rootSize.width - (52 + 491.275574) * scale - 680.016052 * scale}px)`,
-            height: toScale(737.889771),
-            width: toScale(491.275574),
-            boxShadow:
-              // The colors here will need to be updated to a token.
-              `${toScale(0)} ${toScale(-27)} ${toScale(200)} ${toScale(31)} rgba(55, 6, 16, 0.1)` +
-              `, ${toScale(0)} ${toScale(27)} ${toScale(94)} ${toScale(31)} #020507`,
-          }}
-        />
+      <Artwork style={styles[3]} url={urls[1]} />
+      <div className="shadow shadow--artwork" style={styles[4]}>
+        <div className="shadow__inner" style={styles[5]} />
       </div>
-      <Artwork
-        style={{
-          bottom: toScale(28.805664),
-          height: toScale(841.889771),
-          width: toScale(595.275574),
-        }}
-        url={urls[0]}
-      />
+      <Artwork style={styles[6]} url={urls[0]} />
     </>
   );
 }
@@ -259,128 +273,130 @@ Pages.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-function StraightScreens({ rootSize, urls }) {
-  const scale = rootSize.height / 674.124268;
+function StraightScreens({ height, width, urls }) {
+  const isLandscape = height < width;
 
-  const toScale = (number) => {
-    return toRem(number * scale);
-  };
+  const styles = useMemo(() => {
+    const scale = height / 674.124268;
 
-  const isLandscape = rootSize.height < rootSize.width;
+    const toScale = (number) => {
+      return toRem(number * scale);
+    };
+
+    const scaledSizes = {
+      [-27]: toScale(-27),
+      [0]: '0rem',
+      [8]: toScale(8.531067),
+      [17]: toScale(17.062134),
+      [25]: toScale(25.593201),
+      [27]: toScale(27),
+      [31]: toScale(31),
+      [34]: toScale(34.124268),
+      [84]: toScale(84),
+      [94]: toScale(94),
+      [125]: toScale(125),
+      [200]: toScale(200),
+      [244]: toScale(244),
+      [256]: toScale(256),
+      [360]: toScale(360),
+      [536]: toScale(536),
+      [556]: toScale(556),
+      [640]: toScale(640),
+    };
+
+    return [
+      {
+        filter:
+          // The colors here will need to be updated to a token.
+          `drop-shadow(${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[125]} rgba(2, 5, 7, 0.91))` +
+          `drop-shadow(${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} rgba(55, 6, 16, 0.13))`,
+      },
+      {
+        bottom: scaledSizes[17],
+        height: scaledSizes[556],
+        width: scaledSizes[244],
+      },
+      {
+        right: scaledSizes[84],
+        bottom: isLandscape ? scaledSizes[34] : scaledSizes[25],
+        height: scaledSizes[556],
+        width: scaledSizes[244],
+      },
+      {
+        ...(!isLandscape && { bottom: scaledSizes[8] }),
+        left: scaledSizes[84],
+        height: scaledSizes[556],
+        width: scaledSizes[244],
+      },
+      {
+        bottom: scaledSizes[34],
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        bottom: `calc(50% - ${scaledSizes[17]})`,
+        right: `calc(100% + ${width / 2 - (52 + 256 + 360 / 2) * scale}px)`,
+        height: scaledSizes[536],
+        width: scaledSizes[256],
+        boxShadow:
+          // The colors here will need to be updated to a token.
+          `${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} ${scaledSizes[31]} rgba(55, 6, 16, 0.1)` +
+          `, ${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[94]} ${scaledSizes[31]} #020507`,
+      },
+      {
+        bottom: isLandscape ? scaledSizes[17] : scaledSizes[25],
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        bottom: isLandscape ? scaledSizes[17] : scaledSizes[25],
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+      {
+        bottom: `calc(50% - ${scaledSizes[17]})`,
+        right: isLandscape
+          ? `calc(100% + ${width / 2 - (52 + 256 + 360 / 2) * scale}px)`
+          : `calc(100% + ${width - (52 + 256 + 360) * scale}px)`,
+        height: scaledSizes[536],
+        width: scaledSizes[256],
+        boxShadow:
+          // The colors here will need to be updated to a token.
+          `${scaledSizes[0]} ${scaledSizes[-27]} ${scaledSizes[200]} ${scaledSizes[31]} rgba(55, 6, 16, 0.1)` +
+          `, ${scaledSizes[0]} ${scaledSizes[27]} ${scaledSizes[94]} ${scaledSizes[31]} #020507`,
+      },
+      {
+        ...(!isLandscape && { bottom: scaledSizes[8] }),
+        height: scaledSizes[640],
+        width: scaledSizes[360],
+      },
+    ];
+  }, [height, width]);
 
   return (
     <>
-      <div
-        className="shadow shadow--artworks"
-        style={{
-          filter:
-            // The colors here will need to be updated to a token.
-            `drop-shadow(${toScale(0)} ${toScale(27)} ${toScale(125)} rgba(2, 5, 7, 0.91))` +
-            `drop-shadow(${toScale(0)} ${toScale(-27)} ${toScale(200)} rgba(55, 6, 16, 0.13))`,
-        }}
-      >
-        {isLandscape && (
-          <div
-            className="shadow__inner"
-            style={{
-              bottom: toScale(17.062134),
-              height: toScale(556),
-              width: toScale(244),
-            }}
-          />
-        )}
-        <div
-          className="shadow__inner"
-          style={{
-            right: toScale(84),
-            bottom: toScale(isLandscape ? 34.124268 : 25.593201),
-            height: toScale(556),
-            width: toScale(244),
-          }}
-        />
-        <div
-          className="shadow__inner"
-          style={{
-            ...(!isLandscape && { bottom: toScale(8.531067) }),
-            left: toScale(84),
-            height: toScale(556),
-            width: toScale(244),
-          }}
-        />
+      <div className="shadow shadow--artworks" style={styles[0]}>
+        {isLandscape && <div className="shadow__inner" style={styles[1]} />}
+        <div className="shadow__inner" style={styles[2]} />
+        <div className="shadow__inner" style={styles[3]} />
       </div>
       {isLandscape && (
         <>
-          <Artwork
-            style={{
-              bottom: toScale(34.124268),
-              height: toScale(640),
-              width: toScale(360),
-            }}
-            url={urls[2]}
-          />
-          <div
-            className="shadow shadow--artwork"
-            style={{
-              height: toScale(640),
-              width: toScale(360),
-            }}
-          >
-            <div
-              className="shadow__inner"
-              style={{
-                bottom: `calc(50% - ${toScale(17.062134)})`,
-                right: `calc(100% + ${rootSize.width / 2 - (52 + 256 + 360 / 2) * scale}px)`,
-                height: toScale(536),
-                width: toScale(256),
-                boxShadow:
-                  // The colors here will need to be updated to a token.
-                  `${toScale(0)} ${toScale(-27)} ${toScale(200)} ${toScale(31)} rgba(55, 6, 16, 0.1)` +
-                  `, ${toScale(0)} ${toScale(27)} ${toScale(94)} ${toScale(31)} #020507`,
-              }}
-            />
+          <Artwork style={styles[4]} url={urls[2]} />
+          <div className="shadow shadow--artwork" style={styles[5]}>
+            <div className="shadow__inner" style={styles[6]} />
           </div>
         </>
       )}
-      <Artwork
-        style={{
-          bottom: toScale(isLandscape ? 17.062134 : 25.593201),
-          height: toScale(640),
-          width: toScale(360),
-        }}
-        url={urls[1]}
-      />
-      <div
-        className="shadow shadow--artwork"
-        style={{
-          bottom: toScale(isLandscape ? 17.062134 : 25.593201),
-          height: toScale(640),
-          width: toScale(360),
-        }}
-      >
-        <div
-          className="shadow__inner"
-          style={{
-            bottom: `calc(50% - ${toScale(17.062134)})`,
-            right: isLandscape
-              ? `calc(100% + ${rootSize.width / 2 - (52 + 256 + 360 / 2) * scale}px)`
-              : `calc(100% + ${rootSize.width - (52 + 256 + 360) * scale}px)`,
-            height: toScale(536),
-            width: toScale(256),
-            boxShadow:
-              // The colors here will need to be updated to a token.
-              `${toScale(0)} ${toScale(-27)} ${toScale(200)} ${toScale(31)} rgba(55, 6, 16, 0.1)` +
-              `, ${toScale(0)} ${toScale(27)} ${toScale(94)} ${toScale(31)} #020507`,
-          }}
-        />
+      <Artwork style={styles[7]} url={urls[1]} />
+      <div className="shadow shadow--artwork" style={styles[8]}>
+        <div className="shadow__inner" style={styles[9]} />
       </div>
-      <Artwork
-        style={{
-          ...(!isLandscape && { bottom: toScale(8.531067) }),
-          height: toScale(640),
-          width: toScale(360),
-        }}
-        url={urls[0]}
-      />
+      <Artwork style={styles[10]} url={urls[0]} />
     </>
   );
 }
@@ -418,13 +434,11 @@ const artworksTypes = {
   },
 };
 
-function Artworks({ type, urls, hasDarkMode = true }) {
-  const artworksRef = useRef(null);
-  const artworksSize = useElementSize(artworksRef);
+const Artworks = memo(({ type, urls, hasDarkMode = true }) => {
+  const [artworksRef, artworksSize] = useMeasure();
+  const [artworksInnerRef, artworksInnerSize] = useMeasure();
 
-  const artworksInnerRef = useRef(null);
-  const artworksInnerSize = useElementSize(artworksInnerRef);
-
+  const hasHover = useHasHover();
   const { width } = useWindowSize();
 
   const isLandscapeArtowrk = artworksInnerSize.height < artworksInnerSize.width;
@@ -437,31 +451,39 @@ function Artworks({ type, urls, hasDarkMode = true }) {
     isLandscapeArtowrk && 'artworks--is-landscape',
   );
 
-  const artworksInnerStyle = {
-    maxHeight: toRem(
-      artworksSize.width * artworksTypes[type].aspectRatio.height,
-    ),
-    maxWidth: toRem(
-      artworksSize.height * artworksTypes[type].aspectRatio.width,
-    ),
-  };
+  const artworksInnerStyle = useMemo(() => {
+    return {
+      maxHeight: toRem(
+        artworksSize.width * artworksTypes[type].aspectRatio.height,
+      ),
+      maxWidth: toRem(
+        artworksSize.height * artworksTypes[type].aspectRatio.width,
+      ),
+    };
+  }, [artworksSize.height, artworksSize.width]);
+
+  const memoizedArtworksInnerSize = useMemo(() => {
+    return artworksInnerSize;
+  }, [artworksInnerSize.height, artworksInnerSize.width]);
 
   const Component = artworksTypes[type].component;
-  // Fairly certain this is necessary.
-  const MemoizedComponent = memo(Component);
 
   return (
     <div className={artworksClassName} ref={artworksRef}>
       <div
         className="artworks__inner"
         ref={artworksInnerRef}
-        style={isSmallWindow ? null : artworksInnerStyle}
+        style={hasHover && !isSmallWindow ? artworksInnerStyle : null}
       >
-        <MemoizedComponent rootSize={artworksInnerSize} urls={urls} />
+        <Component
+          height={memoizedArtworksInnerSize.height}
+          urls={urls}
+          width={memoizedArtworksInnerSize.width}
+        />
       </div>
     </div>
   );
-}
+});
 
 Artworks.displayName = 'Artworks';
 

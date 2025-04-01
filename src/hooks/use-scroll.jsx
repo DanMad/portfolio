@@ -1,8 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 
 const useScroll = () => {
-  const [scrollCoords, setScrollCoords] = useState({ x: 0, y: 0 });
-
   const scroll = useCallback((to, callback = () => {}) => {
     const rootElement = document.querySelector('#root');
 
@@ -22,26 +20,7 @@ const useScroll = () => {
     rootElement.scrollTo({ behavior: 'smooth', top: to });
   }, []);
 
-  useEffect(() => {
-    const rootElement = document.querySelector('#root');
-
-    const handleScroll = () => {
-      if (rootElement) {
-        setScrollCoords({
-          x: rootElement.scrollLeft,
-          y: rootElement.scrollTop,
-        });
-      }
-    };
-
-    rootElement.addEventListener('scroll', handleScroll);
-
-    return () => {
-      rootElement.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  return { scroll, scrollCoords };
+  return scroll;
 };
 
 export default useScroll;

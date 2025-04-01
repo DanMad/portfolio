@@ -20,7 +20,7 @@ function Slide({
   onAnimationStart = () => {},
 }) {
   const navigate = useNavigate();
-  const { scroll } = useScroll();
+  const scroll = useScroll();
   const { animate, exit, initial } = useVariants();
   const { width } = useWindowSize();
 
