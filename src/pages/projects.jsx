@@ -4,11 +4,11 @@ import Page from 'components/page';
 
 const projects = [
   // {
-  //   artworks: {
-  //     type: 'angled-screens',
-  //     urls: [
+  //   composition: {
+  //     srcs: [
   //       // '/public/assets/filename.png',
   //     ],
+  //     type: 'angled-screens',
   //   },
   //   description: 'The launch of Eddy’s multi-tenancy Design System',
   //   id: nanoid(),
@@ -16,14 +16,14 @@ const projects = [
   //   to: '/projects/eddy-design-system',
   // },
   {
-    artworks: {
+    composition: {
       hasDarkMode: false,
-      type: 'straight-screens',
-      urls: [
+      srcs: [
         '/assets/360x640-placeholder-1.svg',
         '/assets/360x640-placeholder-2.svg',
         '/assets/360x640-placeholder-3.svg',
       ],
+      type: 'screens',
     },
     description: 'A weather app that emphasises the UV Index',
     id: nanoid(),
@@ -31,14 +31,15 @@ const projects = [
     to: '/projects/weather',
   },
   {
-    artworks: {
+    composition: {
       hasDarkMode: false,
-      type: 'angled-screens',
-      urls: [
+      isAngled: true,
+      srcs: [
         '/assets/360x640-placeholder-3.svg',
         '/assets/360x640-placeholder-2.svg',
         '/assets/360x640-placeholder-1.svg',
       ],
+      type: 'screens',
     },
     description: 'The launch of Open Colleges’ Design System',
     id: nanoid(),
@@ -46,9 +47,9 @@ const projects = [
     to: '/projects/open-colleges-design-system',
   },
   {
-    artworks: {
+    composition: {
+      srcs: ['https://placehold.co/595x842', 'https://placehold.co/595x842'],
       type: 'pages',
-      urls: ['https://placehold.co/595x842', 'https://placehold.co/595x842'],
     },
     description: 'The personal brand that informs my online presence',
     id: nanoid(),

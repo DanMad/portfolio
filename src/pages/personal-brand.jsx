@@ -1,5 +1,6 @@
 import Article from 'components/article';
 import Heading from 'components/heading';
+import Media from 'components/media';
 import Page from 'components/page';
 import Paragraph from 'components/paragraph';
 
@@ -7,6 +8,15 @@ function PersonalBrand() {
   return (
     <Page title="Personal Brand">
       <Article>
+        <Media
+          alt="Large compositions of Projects pages that leverage Daniel Maddison’s Personal Brand"
+          background={{
+            dark: '#00ffee',
+            light: '#01b3f7',
+          }}
+          src="/assets/pb-projects-comps.png"
+          type="image"
+        />
         <Heading isCopyable={false}>Personal Brand</Heading>
         <Heading level="2">Background</Heading>
         <Paragraph>

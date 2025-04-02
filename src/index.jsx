@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router';
 import App from 'app';
 import AnimationProvider from 'context/animation';
+import MediaProvider from 'context/media';
 
 const handleTransitionEnd = (e) => {
   if (e.target.classList.contains('is-ready')) {
@@ -18,24 +19,26 @@ const handleTransitionEnd = (e) => {
   root.render(
     <StrictMode>
       <AnimationProvider>
-        <Router>
-          <App />
-        </Router>
+        <MediaProvider>
+          <Router>
+            <App />
+          </Router>
+        </MediaProvider>
       </AnimationProvider>
     </StrictMode>,
   );
 };
 
-async function loadFonts(fonts) {
+const loadFonts = async (fonts) => {
   const promises = fonts.map(async (font) => {
     await font.load();
     return document.fonts.add(font);
   });
 
   await Promise.all(promises);
-}
+};
 
-function loadImages(urls) {
+const loadImages = async (urls) => {
   const promises = urls.map((url) => {
     return new Promise((resolve) => {
       const image = new Image();
@@ -49,9 +52,9 @@ function loadImages(urls) {
   });
 
   return Promise.all(promises);
-}
+};
 
-async function loadAssets(fonts, urls) {
+const loadAssets = async (fonts, urls) => {
   try {
     await Promise.all([loadFonts(fonts), loadImages(urls)]);
 
@@ -66,7 +69,7 @@ async function loadAssets(fonts, urls) {
   } catch (error) {
     console.error('Error loading assets', error);
   }
-}
+};
 
 const fonts = [
   new FontFace('Bitter', 'url(/assets/bitter.woff2)', {

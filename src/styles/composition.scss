@@ -1,0 +1,56 @@
+.composition {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.composition__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  height: 100%;
+  width: 100%;
+}
+
+.shadow-group {
+  filter: drop-shadow(0px 9px 20px rgba(2, 5, 7, 0.91))
+    drop-shadow(0px -9px 20px rgba(55, 6, 16, 0.13));
+}
+
+.shadow {
+  background: var(--color-eggshell-100);
+}
+
+.composition--has-dark-mode .shadow {
+  background: var(--color-background-primary);
+}
+
+.page {
+  background: var(--color-eggshell-100);
+}
+
+.composition--has-dark-mode .page {
+  background: var(--color-background-primary);
+}
+
+.screen {
+  background: var(--color-eggshell-100);
+}
+
+.composition--has-dark-mode .screen {
+  background: var(--color-background-primary);
+}
+
+@media only screen and (min-width: 30.0625em) {
+  .composition {
+    padding-top: 75%;
+  }
+}
+
+@media screen and (min-width: 44.0625em) {
+  .composition {
+    padding-top: unset;
+  }
+}

@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.media--1\:1 > .media__inner {
+  padding-top: 100%;
+}
+
 .media--16\:9 > .media__inner {
   padding-top: 56.25%;
 }

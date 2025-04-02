@@ -10,7 +10,10 @@ function OpenCollegesDesignSystem() {
       <Article>
         <Media
           alt="Small and large compositions of Sign In pages that leverage Open Colleges’ Design System"
-          backgroundColor="rgb(29, 182, 191)"
+          background={{
+            dark: '#1db6bf',
+            light: '#1db6bf',
+          }}
           src="/assets/oc-sign-in-comps.png"
           type="image"
         />
@@ -61,7 +64,10 @@ function OpenCollegesDesignSystem() {
         </Paragraph>
         <Media
           alt="Small compositions of Quiz pages that leverage Open Colleges’ Design System"
-          backgroundColor="rgb(229, 187, 12)"
+          background={{
+            dark: '#e5bb0c',
+            light: '#e5bb0c',
+          }}
           src="/assets/oc-quiz-comps.png"
           type="image"
         />
@@ -76,7 +82,10 @@ function OpenCollegesDesignSystem() {
         </Paragraph>
         <Media
           alt="A large composition of a Payment page that leverages Open Colleges’ Design System"
-          backgroundColor="rgb(25, 152, 76)"
+          background={{
+            dark: '#19984c',
+            light: '#19984c',
+          }}
           src="/assets/oc-payment-comp.png"
           type="image"
         />

@@ -1,110 +1,37 @@
 import classNames from 'classnames';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
-import useColorScheme from 'hooks/use-color-scheme';
-import useDevicePixelRatio from 'hooks/use-device-pixel-ratio';
-import useHasHover from 'hooks/use-has-hover';
-import useVariants from 'hooks/use-variants';
+import { useRef } from 'react';
+import Image from 'components/image';
+import { useMediaContext } from 'context/media';
+import toP3 from 'helpers/to-p3';
 import 'styles/media.scss';
 
-function Image({ alt, isInView, src }) {
-  const colorScheme = useColorScheme();
-  const devicePixelRatio = useDevicePixelRatio();
-  const hasHover = useHasHover();
-  const [loadedColorSchemes, setLoadedColorSchemes] = useState([]);
-  const { animate, initial } = useVariants();
-
-  const handleLoad = () => {
-    setLoadedColorSchemes((prevColorSchemes) => {
-      return [...prevColorSchemes, colorScheme];
-    });
-  };
-
-  const contextualSrc = src.replace(/(\.[a-zA-Z]{3,4})$/, (_, extension) => {
-    return `-${colorScheme}@${devicePixelRatio > 3 ? 3 : devicePixelRatio}x${extension}`;
-  });
-
-  const isLoading = !loadedColorSchemes.includes(colorScheme);
-
-  useEffect(() => {
-    if (!isInView || !isLoading) {
-      return;
-    }
-
-    const imageElement = document.createElement('img');
-
-    imageElement.src = contextualSrc;
-
-    if (imageElement.complete) {
-      handleLoad();
-    } else {
-      imageElement.addEventListener('load', handleLoad);
-    }
-
-    // window.imageCache[contextualSrc] = imageElement;
-
-    return () => {
-      imageElement.removeEventListener('load', handleLoad);
-    };
-  }, [colorScheme, devicePixelRatio, isInView]);
-
-  return (
-    !isLoading && (
-      <motion.img
-        alt={alt}
-        animate="animate"
-        className="media__img"
-        initial="initial"
-        src={contextualSrc}
-        transition={{
-          duration: 3,
-          ease: [0.39, 0.575, 0.565, 1],
-        }}
-        variants={{
-          animate: animate({ transition: { duration: 3 }, y: null }),
-          initial: initial({
-            transition: { duration: 3, ease: [0.39, 0.575, 0.565, 1] },
-            y: null,
-          }),
-          ...(hasHover && {
-            hover: {
-              scale: 1.078313,
-            },
-          }),
-        }}
-        {...(hasHover && { whileHover: 'hover' })}
-      />
-    )
-  );
-}
-
-Image.displayName = 'Image';
-
-Image.propTypes = {
-  alt: PropTypes.string,
-  isInView: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
-};
-
-const media = {
+const components = {
   image: Image,
 };
 
-function Media({
-  backgroundColor,
-  aspectRatio = '4:3',
-  type = 'image',
-  ...rest
-}) {
+function Media({ background, aspectRatio = '4:3', type = 'image', ...rest }) {
   const ref = useRef(null);
   const isInView = useInView(ref);
+  const { isDark, isP3 } = useMediaContext();
 
-  const Component = media[type];
   const mediaClassNames = classNames('media', `media--${aspectRatio}`);
 
+  let contextualBackground = isDark ? background.dark : background.light;
+
+  if (isP3) {
+    contextualBackground = toP3(contextualBackground);
+  }
+
+  const mediaStyles = {
+    background: contextualBackground,
+  };
+
+  const Component = components[type];
+
   return (
-    <div className={mediaClassNames} ref={ref} style={{ backgroundColor }}>
+    <div className={mediaClassNames} ref={ref} style={mediaStyles}>
       <div className="media__inner">
         <Component isInView={isInView} {...rest} />
       </div>
@@ -116,8 +43,11 @@ Media.displayName = 'Media';
 
 Media.propTypes = {
   alt: PropTypes.string,
-  aspectRatio: PropTypes.oneOf(['4:3', '16:9']),
-  backgroundColor: PropTypes.string.isRequired,
+  aspectRatio: PropTypes.oneOf(['1:1', '4:3', '16:9']),
+  background: PropTypes.shape({
+    dark: PropTypes.string.isRequired,
+    light: PropTypes.string.isRequired,
+  }).isRequired,
   src: PropTypes.string,
   type: PropTypes.oneOf(['image']),
 };

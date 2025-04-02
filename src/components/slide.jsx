@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { useWindowSize } from 'react-use';
-import Artworks from 'components/artworks';
+import Composition from 'components/composition';
 import Button from 'components/button';
 import Heading from 'components/heading';
 import Paragraph from 'components/paragraph';
@@ -11,7 +11,7 @@ import useVariants from 'hooks/use-variants';
 import 'styles/slide';
 
 function Slide({
-  artworks,
+  composition,
   description,
   direction,
   title,
@@ -61,7 +61,7 @@ function Slide({
       {isSmallWindow ? (
         <>
           <div className="slide__inner">
-            <Artworks {...artworks} />
+            <Composition {...composition} />
           </div>
           <div className="slide__inner">
             <Heading element="h2" isCopyable={false} level={1}>
@@ -81,7 +81,7 @@ function Slide({
             <Button onClick={handleClick}>View Project</Button>
           </div>
           <div className="slide__inner">
-            <Artworks {...artworks} />
+            <Composition {...composition} />
           </div>
         </>
       )}
@@ -92,10 +92,11 @@ function Slide({
 Slide.displayName = 'Slide';
 
 Slide.propTypes = {
-  artworks: PropTypes.shape({
+  composition: PropTypes.shape({
     hasDarkMode: PropTypes.bool,
+    isAngled: PropTypes.bool,
+    srcs: PropTypes.arrayOf(PropTypes.string).isRequired,
     type: PropTypes.string.isRequired,
-    urls: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   description: PropTypes.string.isRequired,
   direction: PropTypes.oneOf([null, 'down', 'up']),

@@ -28,7 +28,9 @@ AnimationProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const useAnimationContext = () => useContext(AnimationContext);
+const useAnimationContext = () => {
+  return useContext(AnimationContext);
+};
 
 export default AnimationProvider;
 export { useAnimationContext };
