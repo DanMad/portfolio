@@ -103,8 +103,11 @@
         --border-width-s: 0.0625rem;
 
         --color-bunker-100: rgb(13 16 18);
+        --color-cerulean-100: rgb(1, 179, 247);
         --color-charade-100: rgb(34 37 39);
         --color-cloud-100: rgb(203 200 194);
+        --color-cobalt-100: rgb(1, 103, 255);
+        --color-cyan-100: rgb(0, 255, 238);
         --color-ecru-100: rgb(229 227 220);
         --color-ecru-70: rgb(229 227 220 / 70%);
         --color-ecru-85: rgb(229 227 220 / 85%);
@@ -115,7 +118,6 @@
         --color-gunmetal-85: rgb(45 48 50 / 85%);
         --color-gunmetal-70: rgb(45 48 50 / 70%);
 
-        --color-hot-pink: hotpink;
 
         --color-white-100: rgb(255 255 255);
         --color-white-82: rgb(
@@ -133,6 +135,10 @@
         --color-white-44: rgb(255 255 255 / 44%);
         --color-white-11: rgb(255 255 255 / 11%);
 
+        --color-accent-primary: var(--color-cobalt-100);
+        --color-accent-secondary: var(--color-cerulean-100);
+        --color-accent-tertiary: var(--color-cyan-100);
+
         --color-background-primary: var(--color-eggshell-100);
         --color-background-primary-inverse: var(--color-gunmetal-100);
         --color-background-secondary: var(--color-ecru-100);
@@ -146,8 +152,6 @@
         --color-text-primary-inverse: var(--color-eggshell-100);
         --color-text-secondary: var(--color-gunmetal-85);
         --color-text-tertiary: var(--color-gunmetal-70);
-
-        --color-interaction: var(--color-hot-pink);
 
         --font-family-monospace: 'Fira Code', 'JetBrains Mono',
           'Source Code Pro', 'Inconsolata', 'Monaco', 'Consolas', monospace;
@@ -348,6 +352,9 @@
       @media screen and (prefers-color-scheme: dark) {
         #__next,
         :root {
+          --color-accent-primary: var(--color-cyan-100);
+          --color-accent-secondary: var(--color-cerulean-100);
+          --color-accent-tertiary: var(--color-cobalt-100);
           --color-background-primary: var(--color-gunmetal-100);
           --color-background-primary-inverse: var(--color-eggshell-100);
           --color-background-secondary: var(--color-charade-100);
@@ -370,8 +377,11 @@
       @supports (color: color(display-p3 0 0 0)) {
         :root {
           --color-bunker-100: color(display-p3 0.0509804 0.062745 0.070588);
+          --color-cerulean-100: color(display-p3 0.003922 0.701961 0.968627);
           --color-charade-100: color(display-p3 0.133333 0.145098 0.152941);
           --color-cloud-100: color(display-p3 0.796078 0.784314 0.760784);
+          --color-cobalt-100: color(display-p3 0.003922 0.403922 1);
+          --color-cyan-100: color(display-p3 0 1 0.933333);
           --color-ecru-100: color(display-p3 0.898039 0.890196 0.862745);
           --color-ecru-85: color(display-p3 0.898039 0.890196 0.862745 / 85%);
           --color-ecru-70: color(display-p3 0.898039 0.890196 0.862745 / 70%);
@@ -382,9 +392,9 @@
           --color-gunmetal-85: color(display-p3 0.176471 0.188235 0.196078 / 85%);
           --color-gunmetal-70: color(display-p3 0.176471 0.188235 0.196078 / 70%);
         }
-      }</style><link href="/assets/favicon.ico" rel="icon" sizes="48x48"/><link href="/assets/favicon.png" rel="icon" sizes="any" type="image/png"/><link href="/assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><meta content="Welcome to Daniel Maddison's portfolio. Explore projects, learn about my skills and experience, and get in touch for collaboration opportunities." property="og:description"/><meta content="/assets/thumbnail.svg" property="og:image"/><meta content="" property="og:image:alt"/><meta content="en_AU" property="og:locale"/><meta content="Projects | Daniel Maddison's Portfolio" property="og:title"/><meta content="website" property="og:type"/><meta content="https://www.danielmaddison.io/projects" property="og:url"/><meta content="index, follow" name="robots"/><link href="https://www.danielmaddison.io/projects" rel="canonical"/><link href="/main.b2f9f5a7d4bb26580802.css" rel="stylesheet"></head><body><div id="root"><div aria-hidden="true" class="preloader"><div class="preloader__track"><div class="preloader__fill"></div></div></div><noscript class="error"><h1 class="h1">JavaScript is Disabled</h1><p class="p">This application requires JavaScript to function. Please enable JavaScript in your browser settings and try&nbsp;again.</p></noscript></div><script>(() => {
+      }</style><link href="/assets/favicon.ico" rel="icon" sizes="48x48"/><link href="/assets/favicon.png" rel="icon" sizes="any" type="image/png"/><link href="/assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><meta content="Welcome to Daniel Maddison's portfolio. Explore projects, learn about my skills and experience, and get in touch for collaboration opportunities." property="og:description"/><meta content="/assets/thumbnail.svg" property="og:image"/><meta content="" property="og:image:alt"/><meta content="en_AU" property="og:locale"/><meta content="Projects | Daniel Maddison's Portfolio" property="og:title"/><meta content="website" property="og:type"/><meta content="https://www.danielmaddison.io/projects" property="og:url"/><meta content="index, follow" name="robots"/><link href="https://www.danielmaddison.io/projects" rel="canonical"/><link href="/main.1a0180b853c2c6c5a6c6.css" rel="stylesheet"></head><body><div id="root"><div aria-hidden="true" class="preloader"><div class="preloader__track"><div class="preloader__fill"></div></div></div><noscript class="error"><h1 class="h1">JavaScript is Disabled</h1><p class="p">This application requires JavaScript to function. Please enable JavaScript in your browser settings and try&nbsp;again.</p></noscript></div><script>(() => {
         const preloaderElement = document.querySelector('.preloader');
 
         preloaderElement.classList.add('is-ready');
         preloaderElement.setAttribute('aria-hidden', 'false');
-      })();</script><script defer="defer" src="/main.59b084315c43084bcc4f.js"></script></body></html>
+      })();</script><script defer="defer" src="/main.faca1abfe443957df092.js"></script></body></html>
