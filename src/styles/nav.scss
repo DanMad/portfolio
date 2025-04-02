@@ -16,7 +16,7 @@
   outline: none;
   background:
     url('/public/assets/memoji.png') 50% 0 / 109.090909% 109.090909% no-repeat,
-    var(--color-interaction);
+    var(--color-cobalt-100);
 }
 
 .nav__logo:active {
@@ -59,7 +59,7 @@
     var(--border-width-s) * -1 + var(--space-xxs) * -0.5 +
       var(--border-width-l) * -1
   );
-  border: var(--border-width-l) solid var(--color-interaction);
+  border: var(--border-width-l) solid var(--color-accent-primary);
   border-radius: 100%;
 }
 
@@ -102,7 +102,7 @@
 
 .nav__link:hover,
 .nav__link:focus-visible {
-  text-decoration-color: var(--color-interaction);
+  text-decoration-color: var(--color-accent-primary);
   text-decoration-line: underline;
   text-decoration-skip-ink: none;
   text-decoration-style: solid;

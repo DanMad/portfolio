@@ -61,7 +61,7 @@
   right: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
   bottom: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
   left: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
-  border: var(--color-interaction) solid var(--border-width-l);
+  border: var(--color-accent-primary) solid var(--border-width-l);
   border-radius: calc(
     var(--border-radius) + var(--space-xxs) * 0.5 + var(--border-width-l)
   );
@@ -151,7 +151,7 @@
     mask-image: paint(squircle);
     border: 0;
     border-radius: 0;
-    background: var(--color-interaction);
+    background: var(--color-accent-primary);
   }
 
   .button__background {
