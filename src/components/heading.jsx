@@ -4,22 +4,31 @@ import kebabCase from 'lodash/kebabCase';
 import 'styles/heading.scss';
 
 function Heading({ children, element, size, isCopyable = true, level = 1 }) {
-  const handleClick = () => {
-    const url = `${window.location.href}#${id}`;
+  const handleClick = (headingId) => {
+    const url = `${window.location.href}#${headingId}`;
 
     navigator.clipboard.writeText(url).then(() => {
-      alert('Anchor copied to your clipboard!');
+      console.log('Anchor copied to the clipboard!');
     });
   };
 
   const Element = element || `h${level}`;
-  const className = classNames(`h${level}`, size && `h${level}--${size}`);
-  const id = kebabCase(children);
+
+  const headingClassName = classNames(
+    `h${level}`,
+    size && `h${level}--${size}`,
+  );
+
+  const headingId = kebabCase(children);
+  const headingActionClassName = `h${level}__action`;
 
   return (
-    <Element className={className} id={id}>
+    <Element className={headingClassName} id={headingId}>
       {isCopyable ? (
-        <span className={`${className}__action`} onClick={handleClick}>
+        <span
+          className={headingActionClassName}
+          onClick={() => handleClick(headingId)}
+        >
           {children}
         </span>
       ) : (
@@ -29,10 +38,10 @@ function Heading({ children, element, size, isCopyable = true, level = 1 }) {
   );
 }
 
-Heading.propTypes = {
-  // string type?
-  children: PropTypes.node.isRequired,
+Heading.displayName = 'Heading';
 
+Heading.propTypes = {
+  children: PropTypes.string.isRequired,
   element: PropTypes.oneOf(['h1', 'h2', 'h3']),
   isCopyable: PropTypes.bool,
   level: PropTypes.oneOf([1, 2, 3]),
