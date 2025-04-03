@@ -15,8 +15,8 @@
 }
 
 .shadow-group {
-  filter: drop-shadow(0px 9px 20px rgba(2, 5, 7, 0.91))
-    drop-shadow(0px -9px 20px rgba(55, 6, 16, 0.13));
+  filter: drop-shadow(0px 9px 20px rgba(60, 38, 68, 0.33))
+    drop-shadow(0px -9px 20px rgba(216, 24, 63, 0.09));
 }
 
 .shadow {
@@ -52,5 +52,12 @@
 @media screen and (min-width: 44.0625em) {
   .composition {
     padding-top: unset;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .shadow-group {
+    filter: drop-shadow(0px 9px 20px rgba(2, 5, 7, 0.91))
+      drop-shadow(0px -9px 20px rgba(55, 6, 16, 0.13));
   }
 }

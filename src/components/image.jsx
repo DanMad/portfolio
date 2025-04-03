@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useMediaContext } from 'context/media';
 import useVariants from 'hooks/use-variants';
-import 'styles/media.scss';
+import 'styles/media';
 
 function Image({ alt, isInView, src }) {
   const { devicePixelRatio, hasCursor, isDark } = useMediaContext();

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useMeasure, useWindowSize } from 'react-use';
-import 'styles/composition.scss';
+import 'styles/composition';
 
 function Artwork({ src }) {
   return (

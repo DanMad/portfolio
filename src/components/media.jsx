@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Image from 'components/image';
 import { useMediaContext } from 'context/media';
 import toP3 from 'helpers/to-p3';
-import 'styles/media.scss';
+import 'styles/media';
 
 const components = {
   image: Image,

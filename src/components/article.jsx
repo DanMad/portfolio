@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import useVariants from 'hooks/use-variants';
-import 'styles/article.scss';
+import 'styles/article';
 
 function Article({ children }) {
   const { animate, exit, initial } = useVariants();

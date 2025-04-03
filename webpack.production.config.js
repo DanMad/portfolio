@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotenvWebpack = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { version } = require('./package.json');
+const package = require('./package.json');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -80,9 +80,9 @@ module.exports = {
         },
         isDevelopment: false,
         isIndexed: true,
+        package,
         title: "Home | Daniel Maddison's Portfolio",
         url: 'https://www.danielmaddison.io',
-        version,
       },
     }),
     new HtmlWebpackPlugin({
@@ -98,9 +98,9 @@ module.exports = {
         },
         isDevelopment: false,
         isIndexed: true,
+        package,
         title: "About | Daniel Maddison's Portfolio",
         url: 'https://www.danielmaddison.io/about',
-        version,
       },
     }),
     new HtmlWebpackPlugin({
@@ -116,9 +116,9 @@ module.exports = {
         },
         isDevelopment: false,
         isIndexed: true,
+        package,
         title: "Projects | Daniel Maddison's Portfolio",
         url: 'https://www.danielmaddison.io/projects',
-        version,
       },
     }),
     new HtmlWebpackPlugin({
@@ -134,9 +134,9 @@ module.exports = {
         },
         isDevelopment: false,
         isIndexed: true,
+        package,
         title: "Open Colleges’ Design System | Daniel Maddison's Portfolio",
         url: 'https://www.danielmaddison.io/projects/open-colleges-design-system',
-        version,
       },
     }),
     new HtmlWebpackPlugin({
@@ -152,9 +152,9 @@ module.exports = {
         },
         isDevelopment: false,
         isIndexed: true,
+        package,
         title: "Personal Brand | Daniel Maddison's Portfolio",
         url: 'https://www.danielmaddison.io/projects/personal-brand',
-        version,
       },
     }),
     new HtmlWebpackPlugin({
@@ -170,9 +170,9 @@ module.exports = {
         },
         isDevelopment: false,
         isIndexed: true,
+        package,
         title: "The Weather | Daniel Maddison's Portfolio",
         url: 'https://www.danielmaddison.io/projects/weather',
-        version,
       },
     }),
     new HtmlWebpackPlugin({
@@ -188,9 +188,9 @@ module.exports = {
         },
         isDevelopment: false,
         isIndexed: false,
+        package,
         title: "Page Not Found | Daniel Maddison's Portfolio",
         url: 'https://www.danielmaddison.io',
-        version,
       },
     }),
     new MiniCssExtractPlugin({

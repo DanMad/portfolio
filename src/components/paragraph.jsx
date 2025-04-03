@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import 'styles/paragraph.scss';
+import 'styles/paragraph';
 
 function Paragraph({ children, size }) {
   const paragraphClassNames = classNames('p', size && `p--${size}`);

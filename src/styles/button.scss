@@ -77,12 +77,12 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: var(--color-background-button-primary);
+  background: var(--color-background-primary);
   border-radius: var(--border-radius);
 }
 
 .button--secondary .button__background {
-  background: var(--color-background-button-secondary);
+  background: var(--color-background-secondary);
 }
 
 .button__border {
@@ -120,11 +120,11 @@
   bottom: calc(var(--border-width-s) * 2);
   left: calc(var(--border-width-s) * 2);
   border-radius: calc(var(--border-radius) - var(--border-width-s) * 2);
-  background: var(--color-background-button-primary);
+  background: var(--color-background-primary);
 }
 
 .button--secondary .button__embossing::after {
-  background: var(--color-background-button-secondary);
+  background: var(--color-background-secondary);
 }
 
 .button__label {

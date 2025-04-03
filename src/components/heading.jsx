@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import kebabCase from 'lodash/kebabCase';
-import 'styles/heading.scss';
+import 'styles/heading';
 
 function Heading({ children, element, size, isCopyable = true, level = 1 }) {
   const handleClick = (headingId) => {
