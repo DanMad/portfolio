@@ -21,7 +21,7 @@ const links = [
   {
     id: nanoid(),
     type: 'linkedin',
-    url: 'https://www.linkedin.com/in/daniel-maddisons-profile',
+    url: 'https://www.linkedin.com/in/danmad',
   },
 ];
 

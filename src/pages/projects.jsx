@@ -5,10 +5,8 @@ import Page from 'components/page';
 const projects = [
   // {
   //   composition: {
-  //     srcs: [
-  //       // '/public/assets/filename.png',
-  //     ],
-  //     type: 'angled-screens',
+  //     srcs: [''],
+  //     type: 'screens',
   //   },
   //   description: 'The launch of Eddy’s multi-tenancy Design System',
   //   id: nanoid(),
@@ -18,11 +16,7 @@ const projects = [
   {
     composition: {
       hasDarkMode: false,
-      srcs: [
-        '/assets/360x640-placeholder-1.svg',
-        '/assets/360x640-placeholder-2.svg',
-        '/assets/360x640-placeholder-3.svg',
-      ],
+      srcs: ['', '', ''],
       type: 'screens',
     },
     description: 'A weather app that emphasises the UV Index',
@@ -34,11 +28,7 @@ const projects = [
     composition: {
       hasDarkMode: false,
       isAngled: true,
-      srcs: [
-        '/assets/360x640-placeholder-3.svg',
-        '/assets/360x640-placeholder-2.svg',
-        '/assets/360x640-placeholder-1.svg',
-      ],
+      srcs: ['', '', ''],
       type: 'screens',
     },
     description: 'The launch of Open Colleges’ Design System',
@@ -48,7 +38,7 @@ const projects = [
   },
   {
     composition: {
-      srcs: ['https://placehold.co/595x842', 'https://placehold.co/595x842'],
+      srcs: ['', ''],
       type: 'pages',
     },
     description: 'The personal brand that informs my online presence',

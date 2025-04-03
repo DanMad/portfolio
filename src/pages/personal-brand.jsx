@@ -9,12 +9,12 @@ function PersonalBrand() {
     <Page title="Personal Brand">
       <Article>
         <Media
-          alt="Large compositions of Projects pages that leverage Daniel Maddison’s Personal Brand"
+          alt="Large compositions of Projects pages that leverage Daniel Maddison’s Personal Brand and Design System"
           background={{
             dark: '#00ffee',
             light: '#01b3f7',
           }}
-          src="/assets/pb-projects-comps.png"
+          src="/assets/personal-brand-large-various-comps.png"
           type="image"
         />
         <Heading isCopyable={false}>Personal Brand</Heading>
@@ -29,6 +29,15 @@ function PersonalBrand() {
           my work; it had to reflect my evolution as a designer and developer,
           making a lasting impression on clients, employers, and peers alike.
         </Paragraph>
+        <Media
+          alt="Small compositionss of various pages that leverage Daniel Maddison’s Personal Brand and Design System"
+          background={{
+            dark: '#00ffee',
+            light: '#01b3f7',
+          }}
+          src="/assets/personal-brand-small-various-comps.png"
+          type="image"
+        />
         <Paragraph>
           While the design side wasn&rsquo;t technically challenging, there was
           a delicate balance to strike between creating a strong identity and
@@ -63,6 +72,15 @@ function PersonalBrand() {
           core values, and I made sure that everything from the tone of voice to
           the visual style reinforced that commitment.
         </Paragraph>
+        <Media
+          alt="Large compositions of Daniel Maddison’s Design System"
+          background={{
+            dark: '#222527',
+            light: '#e5e3dc',
+          }}
+          src="/assets/personal-brand-design-system-comps.png"
+          type="image"
+        />
         <Heading level="2">Outcome</Heading>
         <Paragraph>
           The outcome was a simple yet powerful design system I could apply
@@ -72,6 +90,15 @@ function PersonalBrand() {
           crucial for me as a freelance designer, ensuring a cohesive user
           experience across different media.
         </Paragraph>
+        <Media
+          alt="Large compositions of various documents that leverage Daniel Maddison’s Personal Brand and Design System"
+          background={{
+            dark: '#222527',
+            light: '#e5e3dc',
+          }}
+          src="/assets/personal-brand-documents-comps.png"
+          type="image"
+        />
         <Paragraph>
           I developed my portfolio website entirely from scratch, without
           relying on website builders. The site itself is a reflection of my
@@ -79,6 +106,13 @@ function PersonalBrand() {
           user-centered, functional, and visually engaging designs. It&rsquo;s a
           custom-built platform that houses all my projects, including this one.
         </Paragraph>
+        <Media
+          alt="Small compositions of a project page that leverage Daniel Maddison’s Personal Brand and Design System"
+          background="#01b3f7"
+          hasDarkMode={false}
+          src="/assets/personal-brand-small-project-comps-dual.png"
+          type="image"
+        />
         <Paragraph>
           My personal brand now reflects my range of skills, from design to
           front-end development, but also my dedication to quality, precision,
