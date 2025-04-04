@@ -1,0 +1,35 @@
+import PropTypes from 'prop-types';
+import { createContext, useState } from 'react';
+import { useMedia } from 'react-use';
+
+const Context = createContext({
+  isDarkMode: false,
+  setShouldHeaderAnimate: () => {},
+  shouldHeaderAnimate: true,
+});
+
+const Provider = ({ children }) => {
+  const isDarkMode = useMedia('(prefers-color-scheme: dark)');
+  const [shouldHeaderAnimate, setShouldHeaderAnimate] = useState(true);
+
+  return (
+    <Context
+      value={{
+        isDarkMode,
+        setShouldHeaderAnimate,
+        shouldHeaderAnimate,
+      }}
+    >
+      {children}
+    </Context>
+  );
+};
+
+Provider.displayName = 'Provider';
+
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Context;
+export { Provider };

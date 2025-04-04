@@ -1,15 +1,18 @@
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router';
 import About from 'pages/about';
+import EddyDesignSystem from 'pages/eddy-design-system';
 import Home from 'pages/home';
 import NotFound from 'pages/not-found';
 import OpenCollegesDesignSystem from 'pages/open-colleges-design-system';
 import PersonalBrand from 'pages/personal-brand';
 import Projects from 'pages/projects';
 import Weather from 'pages/weather';
-import 'styles/app';
+import 'styles/reset';
+import 'styles/tokens';
+import 'styles/boilerplate';
 
-const App = () => {
+function App() {
   const location = useLocation();
 
   return (
@@ -18,8 +21,8 @@ const App = () => {
         <Route element={<About />} path="about" />
         <Route element={<Home />} index />
         <Route path="projects/*">
+          <Route element={<EddyDesignSystem />} path="eddy-design-system" />
           <Route element={<Projects />} index />
-          {/* <Route element={<EddyDesignSystem />} path="eddy-design-system" /> */}
           <Route
             element={<OpenCollegesDesignSystem />}
             path="open-colleges-design-system"
@@ -32,6 +35,6 @@ const App = () => {
       </Routes>
     </AnimatePresence>
   );
-};
+}
 
 export default App;

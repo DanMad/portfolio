@@ -4,9 +4,9 @@ import 'styles/nav';
 
 function Nav() {
   const handleClick = () => {
+    const body = encodeURIComponent('Hello Daniel,\n\n');
     const recipient = 'hello@danielmaddison.io';
     const subject = encodeURIComponent("I'm reaching out through your site.");
-    const body = encodeURIComponent('Hello Daniel,\n\n');
 
     window.open(
       `mailto:${recipient}?body=${body}&subject=${subject}`,

@@ -1,34 +1,26 @@
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import kebabCase from 'lodash/kebabCase';
 import 'styles/heading';
 
-function Heading({ children, element, size, isCopyable = true, level = 1 }) {
-  const handleClick = (headingId) => {
-    const url = `${window.location.href}#${headingId}`;
+function Heading({ children, element, isCopyable = true, level = 1 }) {
+  const handleClick = async () => {
+    const url = `${window.location.href}#${computedId}`;
 
-    navigator.clipboard.writeText(url).then(() => {
+    try {
+      await navigator.clipboard.writeText(url);
       console.log('Anchor copied to the clipboard!');
-    });
+    } catch (error) {
+      console.error('Failed to copy anchor:', error);
+    }
   };
 
-  const Element = element || `h${level}`;
-
-  const headingClassName = classNames(
-    `h${level}`,
-    size && `h${level}--${size}`,
-  );
-
-  const headingId = kebabCase(children);
-  const headingActionClassName = `h${level}__action`;
+  const computedId = kebabCase(children);
+  const computedLevel = Math.min(level, 6);
+  const Element = element || `h${computedLevel}`;
 
   return (
-    <Element className={headingClassName} id={headingId}>
+    <Element className={`h${computedLevel}`} id={computedId}>
       {isCopyable ? (
-        <span
-          className={headingActionClassName}
-          onClick={() => handleClick(headingId)}
-        >
+        <span className={`h${computedLevel}__action`} onClick={handleClick}>
           {children}
         </span>
       ) : (
@@ -39,13 +31,5 @@ function Heading({ children, element, size, isCopyable = true, level = 1 }) {
 }
 
 Heading.displayName = 'Heading';
-
-Heading.propTypes = {
-  children: PropTypes.string.isRequired,
-  element: PropTypes.oneOf(['h1', 'h2', 'h3']),
-  isCopyable: PropTypes.bool,
-  level: PropTypes.oneOf([1, 2, 3]),
-  size: PropTypes.oneOf(['squashed']),
-};
 
 export default Heading;

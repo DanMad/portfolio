@@ -1,37 +1,39 @@
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { useMediaContext } from 'context/media';
-import useVariants from 'hooks/use-variants';
+import { useContext, useEffect, useState } from 'react';
+import { useMedia } from 'react-use';
+import Context from 'context';
+import toVariant from 'helpers/to-variant';
 import 'styles/media';
 
-function Image({ alt, isInView, src }) {
-  const { devicePixelRatio, hasCursor, isDark } = useMediaContext();
-  const [loadedColorSchemes, setLoadedColorSchemes] = useState([]);
-  const { animate, initial } = useVariants();
+function Image({ alt, src, hasDarkMode = false, isInView = false }) {
+  const { isDarkMode } = useContext(Context);
+  const hasCursor = useMedia('(hover: hover) and (pointer: fine)');
+  const [loadedModes, setLoadedModes] = useState([]);
 
-  const colorScheme = isDark ? 'dark' : 'light';
-
-  const handleLoad = () => {
-    setLoadedColorSchemes((prevColorSchemes) => {
-      return [...prevColorSchemes, colorScheme];
-    });
-  };
-
-  const contextualSrc = src.replace(/(\.[a-zA-Z]{3,4})$/, (_, extension) => {
-    return `-${colorScheme}@${devicePixelRatio > 3 ? 3 : devicePixelRatio}x${extension}`;
-  });
-
-  const isLoading = !loadedColorSchemes.includes(colorScheme);
+  const mode = hasDarkMode && isDarkMode ? 'dark' : 'light';
+  const computedSrc = src.replace(
+    /(\.[a-zA-Z]{3,4})$/,
+    `${hasDarkMode ? `-${mode}` : ''}@${Math.min(window.devicePixelRatio, 3)}x$1`,
+  );
+  const isLoading = !loadedModes.includes(mode);
 
   useEffect(() => {
-    if (!isInView || !isLoading) {
+    if (!isInView) {
       return;
     }
 
-    const imageElement = document.createElement('img');
+    if (!isLoading) {
+      return;
+    }
 
-    imageElement.src = contextualSrc;
+    const handleLoad = () => {
+      setLoadedModes((prevModes) => {
+        return [...prevModes, mode];
+      });
+    };
+
+    const imageElement = document.createElement('img');
+    imageElement.src = computedSrc;
 
     if (imageElement.complete) {
       handleLoad();
@@ -39,12 +41,31 @@ function Image({ alt, isInView, src }) {
       imageElement.addEventListener('load', handleLoad);
     }
 
-    // window.imageCache[contextualSrc] = imageElement;
-
     return () => {
       imageElement.removeEventListener('load', handleLoad);
     };
-  }, [colorScheme, devicePixelRatio, isInView]);
+  }, [computedSrc, mode, isInView, isLoading]);
+
+  const variants = {
+    animate: toVariant('animate', {
+      transition: {
+        duration: 3,
+      },
+      y: null,
+    }),
+    initial: toVariant('initial', {
+      transition: {
+        duration: 3,
+        ease: [0.39, 0.575, 0.565, 1],
+      },
+      y: null,
+    }),
+    ...(hasCursor && {
+      hover: {
+        scale: 1.078313,
+      },
+    }),
+  };
 
   return (
     !isLoading && (
@@ -53,23 +74,12 @@ function Image({ alt, isInView, src }) {
         animate="animate"
         className="media__img"
         initial="initial"
-        src={contextualSrc}
+        src={computedSrc}
         transition={{
           duration: 3,
           ease: [0.39, 0.575, 0.565, 1],
         }}
-        variants={{
-          animate: animate({ transition: { duration: 3 }, y: null }),
-          initial: initial({
-            transition: { duration: 3, ease: [0.39, 0.575, 0.565, 1] },
-            y: null,
-          }),
-          ...(hasCursor && {
-            hover: {
-              scale: 1.078313,
-            },
-          }),
-        }}
+        variants={variants}
         {...(hasCursor && { whileHover: 'hover' })}
       />
     )
@@ -77,11 +87,5 @@ function Image({ alt, isInView, src }) {
 }
 
 Image.displayName = 'Image';
-
-Image.propTypes = {
-  alt: PropTypes.string,
-  isInView: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
-};
 
 export default Image;

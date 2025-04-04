@@ -3,16 +3,17 @@ import Slider from 'components/slider';
 import Page from 'components/page';
 
 const projects = [
-  // {
-  //   composition: {
-  //     srcs: [''],
-  //     type: 'screens',
-  //   },
-  //   description: 'The launch of Eddy’s multi-tenancy Design System',
-  //   id: nanoid(),
-  //   title: 'Eddy Design System',
-  //   to: '/projects/eddy-design-system',
-  // },
+  {
+    composition: {
+      isAngled: true,
+      srcs: ['', '', ''],
+      type: 'screens',
+    },
+    description: 'The launch of Eddy’s multi-tenancy Design System',
+    id: nanoid(),
+    title: 'Eddy Design System',
+    to: '/projects/eddy-design-system',
+  },
   {
     composition: {
       hasDarkMode: false,

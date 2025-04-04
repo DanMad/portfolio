@@ -1,18 +1,22 @@
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
 import Nav from 'components/nav';
-import { useAnimationContext } from 'context/animation';
-import useVariants from 'hooks/use-variants';
+import Context from 'context';
+import toVariant from 'helpers/to-variant';
 import 'styles/header';
 
-function Header() {
-  const { hasAnimated } = useAnimationContext();
-  const { animate, initial } = useVariants();
+function Header({ ref }) {
+  const { shouldHeaderAnimate } = useContext(Context);
+
+  const animate = toVariant('animate');
+  const initial = toVariant('initial');
 
   return (
     <motion.header
+      animate={shouldHeaderAnimate && animate}
       className="header"
-      animate={animate()}
-      initial={!hasAnimated && initial()}
+      initial={shouldHeaderAnimate && initial}
+      ref={ref}
     >
       <Nav />
     </motion.header>

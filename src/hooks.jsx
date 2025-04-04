@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
-import { useAnimationContext } from 'context/animation';
+import { useEffect, useState } from 'react';
 
-function useAnimation() {
-  const { isAnimating } = useAnimationContext();
+const useIsAnimating = () => {
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const rootElement = document.querySelector('#root');
+
+    if (!rootElement) {
+      return;
+    }
 
     if (isAnimating) {
       rootElement.classList.add('is-animating');
@@ -17,6 +20,8 @@ function useAnimation() {
       rootElement.classList.remove('is-animating');
     };
   }, [isAnimating]);
-}
 
-export default useAnimation;
+  return { isAnimating, setIsAnimating };
+};
+
+export { useIsAnimating };

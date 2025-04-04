@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import 'styles/main';
 
 function Main({ children }) {
   return (
@@ -9,9 +9,5 @@ function Main({ children }) {
 }
 
 Main.displayName = 'Main';
-
-Main.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Main;

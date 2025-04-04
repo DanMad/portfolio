@@ -1,29 +1,21 @@
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
-import useVariants from 'hooks/use-variants';
+import toVariant from 'helpers/to-variant';
 import 'styles/article';
 
 function Article({ children }) {
-  const { animate, exit, initial } = useVariants();
+  const variants = {
+    animate: toVariant('animate'),
+    exit: toVariant('exit'),
+    initial: toVariant('initial'),
+  };
 
   return (
-    <motion.article
-      className="article"
-      variants={{
-        animate: animate(),
-        exit: exit(),
-        initial: initial(),
-      }}
-    >
+    <motion.article className="article" variants={variants}>
       {children}
     </motion.article>
   );
 }
 
 Article.displayName = 'Article';
-
-Article.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Article;

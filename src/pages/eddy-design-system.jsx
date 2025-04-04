@@ -3,11 +3,11 @@ import Heading from 'components/heading';
 import Page from 'components/page';
 import Paragraph from 'components/paragraph';
 
-function Home() {
+function EddyDesignSystem() {
   return (
-    <Page title="Home">
+    <Page title="Eddy Design System">
       <Article>
-        <Heading isCopyable={false}>Home</Heading>
+        <Heading isCopyable={false}>Eddy Design System</Heading>
         <Heading isCopyable={false} level="2">
           Background
         </Heading>
@@ -68,6 +68,6 @@ function Home() {
   );
 }
 
-Home.displayName = 'Home';
+EddyDesignSystem.displayName = 'EddyDesignSystem';
 
-export default Home;
+export default EddyDesignSystem;

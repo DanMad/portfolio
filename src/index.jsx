@@ -1,9 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router';
-import App from 'app';
-import AnimationProvider from 'context/animation';
-import MediaProvider from 'context/media';
+import App from 'components/app';
+import { Provider } from 'context';
 
 const handleTransitionEnd = (e) => {
   if (e.target.classList.contains('is-ready')) {
@@ -18,13 +17,11 @@ const handleTransitionEnd = (e) => {
 
   root.render(
     <StrictMode>
-      <AnimationProvider>
-        <MediaProvider>
-          <Router>
-            <App />
-          </Router>
-        </MediaProvider>
-      </AnimationProvider>
+      <Provider>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
     </StrictMode>,
   );
 };
@@ -46,8 +43,6 @@ const loadImages = async (urls) => {
       image.onerror = resolve;
       image.onload = resolve;
       image.src = url;
-
-      // window.imageCache[url] = image;
     });
   });
 
@@ -91,7 +86,5 @@ const images = [
   '/assets/memoji.png',
   '/assets/texture.png',
 ];
-
-// window.imageCache = window.imageCache || {};
 
 loadAssets(fonts, images);

@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { useWindowSize } from 'react-use';
 import Composition from 'components/composition';
 import Button from 'components/button';
 import Heading from 'components/heading';
 import Paragraph from 'components/paragraph';
-import useScroll from 'hooks/use-scroll';
-import useVariants from 'hooks/use-variants';
+import toVariant from 'helpers/to-variant';
 import 'styles/slide';
 
 function Slide({
@@ -20,22 +18,26 @@ function Slide({
   onAnimationStart = () => {},
 }) {
   const navigate = useNavigate();
-  const scroll = useScroll();
-  const { animate, exit, initial } = useVariants();
   const { width } = useWindowSize();
+
+  const handleClick = () => {
+    navigate(to);
+  };
 
   const isSmallWindow = width < 705;
 
-  const handleClick = () => {
-    if (isSmallWindow) {
-      scroll(0, () => {
-        navigate(to);
-      });
-
-      return;
-    }
-
-    navigate(to);
+  const variants = {
+    animate: toVariant('animate'),
+    exit: toVariant(
+      'exit',
+      direction
+        ? { transition: { delay: 0 }, y: direction === 'down' ? -84 : 84 }
+        : { transition: { delay: 0.1 }, y: 84 },
+    ),
+    initial: toVariant(
+      'initial',
+      direction ? { y: direction === 'down' ? 84 : -84 } : {},
+    ),
   };
 
   return (
@@ -46,17 +48,7 @@ function Slide({
       initial="initial"
       onAnimationComplete={onAnimationComplete}
       onAnimationStart={onAnimationStart}
-      variants={{
-        animate: animate(),
-        exit: exit(
-          direction
-            ? { transition: { delay: 0 }, y: direction === 'down' ? -84 : 84 }
-            : { transition: { delay: 0.1 }, y: 84 },
-        ),
-        initial: initial(
-          direction ? { y: direction === 'down' ? 84 : -84 } : {},
-        ),
-      }}
+      variants={variants}
     >
       {isSmallWindow ? (
         <>
@@ -90,20 +82,5 @@ function Slide({
 }
 
 Slide.displayName = 'Slide';
-
-Slide.propTypes = {
-  composition: PropTypes.shape({
-    hasDarkMode: PropTypes.bool,
-    isAngled: PropTypes.bool,
-    srcs: PropTypes.arrayOf(PropTypes.string).isRequired,
-    type: PropTypes.string.isRequired,
-  }).isRequired,
-  description: PropTypes.string.isRequired,
-  direction: PropTypes.oneOf([null, 'down', 'up']),
-  onAnimationComplete: PropTypes.func,
-  onAnimationStart: PropTypes.func,
-  title: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-};
 
 export default Slide;

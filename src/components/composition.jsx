@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import { useMeasure, useWindowSize } from 'react-use';
+import Context from 'context';
 import 'styles/composition';
 
 function Artwork({ src }) {
@@ -27,7 +27,7 @@ function Artwork({ src }) {
           left: '0',
           height: '1px',
           width: '100%',
-          background: 'rgb(255 255 255 / 22%)',
+          background: 'rgb(255 255 255 / 0.22)',
         }}
       />
       <div
@@ -39,7 +39,7 @@ function Artwork({ src }) {
           height: 'calc(100% - 1px)',
           width: '1px',
           background:
-            'linear-gradient(180deg, rgb(255 255 255 / 22%), rgb(255 255 255 / 0%) 50%)',
+            'linear-gradient(180deg, rgb(255 255 255 / 0.22), rgb(255 255 255 / 0) 50%)',
         }}
       />
       <div
@@ -51,7 +51,7 @@ function Artwork({ src }) {
           height: 'calc(100% - 1px)',
           width: '1px',
           background:
-            'linear-gradient(180deg, rgb(255 255 255 / 22%), rgb(255 255 255 / 0%) 50%)',
+            'linear-gradient(180deg, rgb(255 255 255 / 0.22), rgb(255 255 255 / 0) 50%)',
         }}
       />
     </>
@@ -60,11 +60,9 @@ function Artwork({ src }) {
 
 Artwork.displayName = 'Artwork';
 
-Artwork.propTypes = {
-  src: PropTypes.string.isRequired,
-};
+function Pages({ hasDarkMode, height, srcs, width }) {
+  const { isDarkMode } = useContext(Context);
 
-function Pages({ height, srcs, width }) {
   const scale = height / 899.501099;
   const computedHeight = 841.889771 * scale;
   const computedWidth = 595.275574 * scale;
@@ -130,6 +128,7 @@ function Pages({ height, srcs, width }) {
       <div
         className="page"
         style={{
+          overflow: 'hidden',
           position: 'absolute',
           right: '0',
           bottom: '0',
@@ -146,6 +145,7 @@ function Pages({ height, srcs, width }) {
       {/* First Shadow */}
       <div
         style={{
+          overflow: 'hidden',
           position: 'absolute',
           right: '0',
           bottom: '0',
@@ -165,6 +165,9 @@ function Pages({ height, srcs, width }) {
             translate: `calc(${(width - (592.0145921209169 + 51.715139) * scale) * -1}px) 8.208955%`, // This property is a rough estimate
             height: '87.646839%', // 737.889771 / 841.889771
             width: '82.5291%', // 491.275574 / 595.275574
+            boxShadow:
+              `0 ${-27 * scale}px ${200 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '55, 6, 16, 0.1' : '216, 24, 63, 0.06'})` +
+              `, 0 ${27 * scale}px ${94 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '2, 5, 7, 1' : '60, 38, 68, 0.44'})`,
           }}
         />
       </div>
@@ -173,6 +176,7 @@ function Pages({ height, srcs, width }) {
       <div
         className="page"
         style={{
+          overflow: 'hidden',
           position: 'absolute',
           bottom: '50%',
           translate: '0 50%',
@@ -188,13 +192,9 @@ function Pages({ height, srcs, width }) {
 
 Pages.displayName = 'Pages';
 
-Pages.propTypes = {
-  height: PropTypes.number.isRequired,
-  srcs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  width: PropTypes.number.isRequired,
-};
+function Screens({ hasDarkMode, height, srcs, width, isAngled = false }) {
+  const { isDarkMode } = useContext(Context);
 
-function Screens({ height, srcs, width, isAngled = false }) {
   const isLandscape = height < width;
 
   const scale = height / 674.124268;
@@ -340,9 +340,8 @@ function Screens({ height, srcs, width, isAngled = false }) {
                 height: '83.75%', // 536 / 640
                 width: '71.111111%', // 256 / 360
                 boxShadow:
-                  // Shadow's dimensions and color to be addressed.
-                  `0 -27px 200px 31px rgba(55, 6, 16, 0.1)` +
-                  `, 0 27px 94px 31px #020507`,
+                  `0 ${-27 * scale}px ${200 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '55, 6, 16, 0.1' : '216, 24, 63, 0.06'})` +
+                  `, 0 ${27 * scale}px ${94 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '2, 5, 7, 1' : '60, 38, 68, 0.44'})`,
               }}
             />
           </div>
@@ -395,9 +394,8 @@ function Screens({ height, srcs, width, isAngled = false }) {
               height: '83.75%', // 536 / 640
               width: '71.111111%', // 256 / 360
               boxShadow:
-                // Shadow's dimensions and color to be addressed.
-                `0 -27px 200px 31px rgba(55, 6, 16, 0.1)` +
-                `, 0 27px 94px 31px #020507`,
+                `0 ${-27 * scale}px ${200 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '55, 6, 16, 0.1' : '216, 24, 63, 0.06'})` +
+                `, 0 ${27 * scale}px ${94 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '2, 5, 7, 1' : '60, 38, 68, 0.44'})`,
             }}
           />
         </div>
@@ -548,9 +546,8 @@ function Screens({ height, srcs, width, isAngled = false }) {
               height: '83.75%', // 536 / 640
               width: '71.111111%', // 256 / 360
               boxShadow:
-                // Shadow's dimensions and color to be addressed.
-                `0 -27px 200px 31px rgba(55, 6, 16, 0.1)` +
-                `, 0 27px 94px 31px #020507`,
+                `0 ${-27 * scale}px ${200 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '55, 6, 16, 0.1' : '216, 24, 63, 0.06'})` +
+                `, 0 ${27 * scale}px ${94 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '2, 5, 7, 1' : '60, 38, 68, 0.44'})`,
             }}
           />
         </div>
@@ -594,9 +591,8 @@ function Screens({ height, srcs, width, isAngled = false }) {
             height: '83.75%', // 536 / 640
             width: '71.111111%', // 256 / 360
             boxShadow:
-              // Shadow's dimensions and color to be addressed.
-              `0 -27px 200px 31px rgba(55, 6, 16, 0.1)` +
-              `, 0 27px 94px 31px #020507`,
+              `0 ${-27 * scale}px ${200 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '55, 6, 16, 0.1' : '216, 24, 63, 0.06'})` +
+              `, 0 ${27 * scale}px ${94 * scale}px ${31 * scale}px rgba(${hasDarkMode && isDarkMode ? '2, 5, 7, 1' : '60, 38, 68, 0.44'})`,
           }}
         />
       </div>
@@ -624,13 +620,6 @@ function Screens({ height, srcs, width, isAngled = false }) {
 
 Screens.displayName = 'Screens';
 
-Screens.propTypes = {
-  height: PropTypes.number.isRequired,
-  isAngled: PropTypes.bool,
-  srcs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  width: PropTypes.number.isRequired,
-};
-
 const components = {
   pages: {
     aspectRatio: {
@@ -655,10 +644,7 @@ function Composition({ type, hasDarkMode = true, ...rest }) {
 
   const isSmallWindow = width < 705;
 
-  const compositionClassNames = classNames(
-    'composition',
-    hasDarkMode && 'composition--has-dark-mode',
-  );
+  const computedClassName = `composition${hasDarkMode ? ' composition--has-dark-mode' : ''}`;
 
   const compositionInnerStyle = {
     ...(!isSmallWindow && {
@@ -670,13 +656,14 @@ function Composition({ type, hasDarkMode = true, ...rest }) {
   const Component = components[type].component;
 
   return (
-    <div className={compositionClassNames} ref={compositionRef}>
+    <div className={computedClassName} ref={compositionRef}>
       <div
         className="composition__inner"
         ref={compositionInnerRef}
         style={compositionInnerStyle}
       >
         <Component
+          hasDarkMode={hasDarkMode}
           height={compositionInnerSize.height}
           width={compositionInnerSize.width}
           {...rest}
@@ -687,12 +674,5 @@ function Composition({ type, hasDarkMode = true, ...rest }) {
 }
 
 Composition.displayName = 'Composition';
-
-Composition.propTypes = {
-  hasDarkMode: PropTypes.bool,
-  isAngled: PropTypes.bool,
-  srcs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  type: PropTypes.oneOf(['pages', 'screens']).isRequired,
-};
 
 export default Composition;
