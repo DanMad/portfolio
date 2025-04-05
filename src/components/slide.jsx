@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
+import { useContext, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { useWindowSize } from 'react-use';
 import Composition from 'components/composition';
 import Button from 'components/button';
 import Heading from 'components/heading';
 import Paragraph from 'components/paragraph';
+import Context from 'context';
 import toVariant from 'helpers/to-variant';
 import 'styles/slide';
 
@@ -17,11 +19,27 @@ function Slide({
   onAnimationComplete = () => {},
   onAnimationStart = () => {},
 }) {
+  const { isSlideButtonFocused, setIsSlideButtonFocused } = useContext(Context);
   const navigate = useNavigate();
+  const buttonRef = useRef(null);
   const { width } = useWindowSize();
+
+  useEffect(() => {
+    if (isSlideButtonFocused) {
+      buttonRef.current.focus();
+    }
+  }, [isSlideButtonFocused]);
+
+  const handleBlur = () => {
+    setIsSlideButtonFocused(false);
+  };
 
   const handleClick = () => {
     navigate(to);
+  };
+
+  const handleFocus = () => {
+    setIsSlideButtonFocused(true);
   };
 
   const isSmallWindow = width < 705;
@@ -60,7 +78,14 @@ function Slide({
               {title}
             </Heading>
             <Paragraph>{description}</Paragraph>
-            <Button onClick={handleClick}>View Project</Button>
+            <Button
+              onBlur={handleBlur}
+              onClick={handleClick}
+              onFocus={handleFocus}
+              ref={buttonRef}
+            >
+              View Project
+            </Button>
           </div>
         </>
       ) : (
@@ -70,7 +95,14 @@ function Slide({
               {title}
             </Heading>
             <Paragraph>{description}</Paragraph>
-            <Button onClick={handleClick}>View Project</Button>
+            <Button
+              onBlur={handleBlur}
+              onClick={handleClick}
+              onFocus={handleFocus}
+              ref={buttonRef}
+            >
+              View Project
+            </Button>
           </div>
           <div className="slide__inner">
             <Composition {...composition} />

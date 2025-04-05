@@ -1,10 +1,20 @@
 import 'styles/button';
 
-function Button({ children, onClick = () => {}, type = 'primary' }) {
+function Button({
+  children,
+  ref,
+  onBlur = () => {},
+  onClick = () => {},
+  onFocus = () => {},
+  type = 'primary',
+}) {
   return (
     <button
       className={`button button--${type}`}
+      onBlur={onBlur}
       onClick={onClick}
+      onFocus={onFocus}
+      ref={ref}
       type="button"
     >
       <div aria-hidden="true" className="button__shadow" />
