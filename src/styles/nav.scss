@@ -19,10 +19,6 @@
     var(--color-cobalt-100);
 }
 
-.nav__logo:active {
-  translate: 0 0.0625rem;
-}
-
 .nav__logo::before {
   content: '';
   mask:

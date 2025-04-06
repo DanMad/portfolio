@@ -1,8 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
-import { Route, Routes, useLocation } from 'react-router';
+import { Navigate, Route, Routes, useLocation } from 'react-router';
 import About from 'pages/about';
 import EddyDesignSystem from 'pages/eddy-design-system';
-import Home from 'pages/home';
 import NotFound from 'pages/not-found';
 import OpenCollegesDesignSystem from 'pages/open-colleges-design-system';
 import PersonalBrand from 'pages/personal-brand';
@@ -19,7 +18,7 @@ function App() {
     <AnimatePresence mode="wait">
       <Routes key={location.pathname} location={location}>
         <Route element={<About />} path="about" />
-        <Route element={<Home />} index />
+        <Route element={<Navigate replace to="projects" />} index />
         <Route path="projects/*">
           <Route element={<EddyDesignSystem />} path="eddy-design-system" />
           <Route element={<Projects />} index />
