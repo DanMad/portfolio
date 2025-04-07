@@ -27,40 +27,40 @@ function OpenCollegesDesignSystem() {
           interface audit revealed several critical issues, including divergent
           colour palettes, inconsistent typeface usage, and many different
           interpretations of common HTML elements. These inconsistencies
-          weren&rsquo;t just cosmetic; they were creating a fragmented user
+          weren&rsquo;t just cosmetic&mdash;they were creating a fragmented user
           experience for students and staff. They also introduced substantial
-          inefficiencies in design and development workflows, as we repeatedly
-          solved the same problems—redesigning solutions and rebuilding patterns
-          we&rsquo;d already worked through in the past.
+          inefficiencies in design and development workflows, as we kept solving
+          the same problems&mdash;redesigning solutions and rebuilding patterns
+          we&rsquo;d already worked through.
         </Paragraph>
         <Paragraph>
-          This exposed a larger issue: the absence of a coherent approach was
-          not only detracting from the user experience, but also slowing down
-          delivery, contributing to delays and unnecessary rework. It became
-          evident that to move forward, we needed a consistent language and a
-          shared vision to inform the way we worked.
+          This highlighted a larger issue. The lack of a consistent approach
+          wasn&rsquo;t just slowing delivery, it was introducing unnecessary
+          risk, compromising the experience, and contributing to rising
+          operational costs. It became clear that we needed a shared language
+          and a more scalable way of working, not just to improve our workflows
+          but to support the business as it grew.
         </Paragraph>
         <Heading level="2">Objective</Heading>
         <Paragraph>
-          With Salesforce launching Lightning Design System and Brad Frost
-          publishing Atomic Design, we saw an opportunity to adopt a similar
-          approach to resolve our challenges. Our long-term goal was to build a
-          design system that would standardise our visual language, define
-          reusable patterns and conventions, and ultimately, reduce cognitive
-          load for users by providing a more intuitive user experience.
+          At the time, Salesforce had just launched Lightning Design System and
+          Brad Frost had published Atomic Design. Inspired by these frameworks,
+          we saw an opportunity to introduce a design system that would resolve
+          many of the challenges we were facing.
         </Paragraph>
         <Paragraph>
-          Additionally, a design system could potentially optimise our design
-          and development workflows, improving delivery times. We were aiming to
-          align the efforts of design and development teams to avoid redesigning
-          and rebuilding elements, components, and even some small features.
-          Centralising these decisions wouldn&rsquo;t just increase efficiency,
-          it would lead to improved output, enhanced quality, or a combination
-          of both.
+          Our goal was to standardise our visual language, define reusable
+          patterns and conventions, and reduce cognitive load for users. But
+          more broadly, we aimed to improve efficiency across the
+          board—minimising rework, accelerating delivery, and enabling the team
+          to focus on higher-value work. By reducing friction and creating
+          alignment between design and development, we hoped to lift both the
+          quality and consistency of the product, while lowering the cost of
+          change.
         </Paragraph>
         <Paragraph>
-          With this in mind, we set out to build a design system that would
-          address immediate challenges and scale with future requirements.
+          Ultimately, we weren&rsquo;t just building a design system—we were
+          building the infrastructure that would help the business scale.
         </Paragraph>
         <Media
           alt="Small compositions of Quiz pages that leverage Open Colleges’ Design System"
@@ -73,12 +73,11 @@ function OpenCollegesDesignSystem() {
         />
         <Heading level="2">Outcome</Heading>
         <Paragraph>
-          The design system quickly became the single source of truth for both
-          designers and developers and solved the problems that we initially set
-          out to. This meant that we could prioritise higher-value tasks, such
-          as refining user flows and incorporating functionality into features
-          that we otherwise couldn&rsquo;t afford to do because of resourcing
-          constraints.
+          The design system quickly became the single source of truth for
+          designers and developers, solving the problems we initially set out to
+          address. It allowed us to shift focus to higher-value tasks, such as
+          refining user flows and incorporating functionality we previously
+          couldn&rsquo;t prioritise due to resourcing constraints.
         </Paragraph>
         <Media
           alt="A large composition of a Payment page that leverages Open Colleges’ Design System"
@@ -90,35 +89,47 @@ function OpenCollegesDesignSystem() {
           type="image"
         />
         <Paragraph>
-          By abstracting the front of the front-end into reusable components,
-          developers noticed a meaningful change in their workflow. One went so
-          far as to say “The design system allowed him to deliver in half the
-          time, and focus on high-value work instead of annoying, repetitive
-          tasks.”
+          By abstracting common UI patterns into reusable components, we reduced
+          complexity and freed up developer capacity. One developer remarked
+          that the design system helped him deliver in half the time, allowing
+          him to focus on meaningful work instead of repetitive tasks.
         </Paragraph>
         <Paragraph>
-          While the design system brought about tangible improvements, securing
-          stakeholder buy-in was one of our biggest challenges throughout this
-          process. We had to clearly communicate its long-term ROI, demonstrate
-          its alignment with strategic goals, and effectively advocate for its
-          value across departments. Through persistence, clear communication,
-          and collaboration, we gained the necessary support to continue pushing
-          forward.
+          While the benefits were clear to the team, securing stakeholder buy-in
+          was a bigger hurdle. We had to position the system not just as a
+          design solution, but as a strategic investment. That meant
+          articulating its long-term ROI, aligning it with business priorities,
+          and communicating its value in terms that resonated with leadership.
+          Through persistent communication and cross-functional collaboration,
+          we built the case for continued investment and support.
         </Paragraph>
         <Paragraph>
           I was fortunate to play a key role in establishing the design system,
-          but its success was an incredible team effort. The integration into
-          our workflows was made possible by the close collaboration of
-          designers, developers and product owners across the team. The system
-          became central to our process, enabling faster iterations, reducing
-          redundancy, and tightening the feedback loop between designers and
-          developers, and across the whole Product Team.
+          but its success was a genuine team effort. Integration into our
+          workflows was only possible through close collaboration between
+          designers, developers, and product owners. The system became an
+          operational cornerstone&mdash;enabling faster iterations, reducing
+          waste, and tightening feedback loops across the team.
         </Paragraph>
         <Paragraph>
-          Ultimately, the design system laid the groundwork for a more
-          efficient, cohesive, and scalable product. It reshaped how we worked,
-          improved collaboration, and elevated the user experience—setting the
-          scene for future experimentation and innovation.
+          In the end, the design system helped shift our delivery model from
+          reactive to proactive. It created a more cohesive and scalable
+          product, reduced cost-to-serve, and gave us the headroom to explore
+          new ideas with less overhead.
+        </Paragraph>
+        <Heading level="2">Insights</Heading>
+        <Paragraph>
+          The biggest takeaway from this work was how deeply design impacts the
+          bottom line when it's systematised. Building the system wasn’t just
+          about creating consistency—it was about creating leverage. We
+          delivered better outcomes with less effort and opened up new capacity
+          for innovation, all while reducing operational friction.
+        </Paragraph>
+        <Paragraph>
+          For me, it reinforced how important it is to frame design work through
+          a business lens. When you can show that good design leads to faster
+          delivery, lower costs, and better user engagement, it's much easier to
+          bring people along for the ride.
         </Paragraph>
       </Article>
     </Page>

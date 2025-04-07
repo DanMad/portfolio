@@ -20,17 +20,22 @@ function PersonalBrand() {
         <Heading isCopyable={false}>Personal Brand</Heading>
         <Heading level="2">Background</Heading>
         <Paragraph>
-          I needed a strong identity to represent myself online—one that
-          implicitly communicated how I blend creativity with precision. My goal
-          was clear: to establish an identity that would align with my personal
-          and professional values, showcasing my commitment to detail, the
-          quality of my work, and the technical expertise I bring to every
-          project. I wanted my online presence to be more than just a display of
-          my work; it had to reflect my evolution as a designer and developer,
-          making a lasting impression on clients, employers, and peers alike.
+          This project was born from necessity. My online presence had fallen
+          behind, and I needed a brand identity that captured who I am: creative
+          but precise, technical but human. I wanted to strike a
+          balance&mdash;something expressive enough to feel like <em>me</em>,
+          but restrained enough that it wouldn&rsquo;t compete with the work I
+          wanted to showcase.
+        </Paragraph>
+        <Paragraph>
+          There was also a broader strategic need: as both a jobseeker and
+          freelancer, I needed a digital foundation that could scale with my
+          ambitions. That meant designing not just a visual language, but a
+          system&mdash;one that could work just as well on a screen as it could
+          in a PDF résumé, invoice, or proposal.
         </Paragraph>
         <Media
-          alt="Small compositionss of various pages that leverage Daniel Maddison’s Personal Brand and Design System"
+          alt="Small compositions of various pages that leverage Daniel Maddison’s Personal Brand and Design System"
           background={{
             darkMode: '#00ffee',
             lightMode: '#01b3f7',
@@ -38,39 +43,30 @@ function PersonalBrand() {
           src="/assets/personal-brand-small-various-comps.png"
           type="image"
         />
-        <Paragraph>
-          While the design side wasn&rsquo;t technically challenging, there was
-          a delicate balance to strike between creating a strong identity and
-          ensuring the design decisions didn&rsquo;t overshadow the work I was
-          showcasing. My portfolio needed to shine on its own, without being
-          overpowered by its design system. On the development side, performance
-          was key. I wanted to ensure that the site was optimized, with minimal
-          resource usage, and that it wasn&rsquo;t putting unnecessary strain on
-          the client, especially with graphical computations and data requests.
-        </Paragraph>
         <Heading level="2">Objective</Heading>
         <Paragraph>
-          The key aspect I wanted to communicate through my personal brand was
-          my unwavering commitment to detail and quality. In a world where the
-          line between product and design is often blurred, I felt that
-          uniqueness and quality sometimes take a back seat. My goal was to
-          avoid this. If my work could be easily replicated, then I could easily
-          be replaced. I wanted my personal brand to reflect my dedication to
-          creating bespoke, high-quality designs that stand out. This
-          wasn&rsquo;t just about design—it was about positioning myself as a
-          designer who sees the big picture and who can balance creativity with
-          technical expertise.
+          The challenge was to build a personal design system that extended
+          beyond the browser. While most design systems are tailored for
+          flexible, digital layouts, mine also had to function within the fixed
+          constraints of print. Designing responsively for A4 pages, with their
+          immutable dimensions, presented a unique set of spatial and
+          typographic challenges&mdash;ones I rarely face when designing purely
+          for the web.
         </Paragraph>
         <Paragraph>
-          I targeted a broad audience, from potential clients to employers and
-          fellow designers. Building a stronger online presence was critical,
-          and I needed my brand to resonate across all these touchpoints. In
-          terms of presentation, my portfolio had to reflect a design philosophy
-          that highlighted my technical side as well. I didn&rsquo;t want a
-          generic website builder—I wanted a custom-built platform to show off
-          my development skills. Every design decision needed to align with my
-          core values, and I made sure that everything from the tone of voice to
-          the visual style reinforced that commitment.
+          My aim was to create a lightweight but versatile identity system that
+          could stretch across multiple touchpoints: website, portfolio,
+          documentation, and business comms. It had to reflect a high level of
+          craft, without stealing the spotlight from the work it was meant to
+          support. And it had to load fast and run lean&mdash;performance was
+          just as much a design decision as colour or type.
+        </Paragraph>
+        <Paragraph>
+          Crucially, I wanted to sidestep the noise of templated site builders
+          and generic portfolios. This needed to be hand-built, not just to
+          reflect my technical capabilities, but to show that I can design and
+          develop systems that scale cleanly and feel considered from every
+          angle.
         </Paragraph>
         <Media
           alt="Large compositions of Daniel Maddison’s Design System"
@@ -83,12 +79,12 @@ function PersonalBrand() {
         />
         <Heading level="2">Outcome</Heading>
         <Paragraph>
-          The outcome was a simple yet powerful design system I could apply
-          consistently across my portfolio and beyond. The core of this system
-          was built with versatility in mind, not just for digital displays but
-          also for print—resumes, quotes, and invoices. This continuity was
-          crucial for me as a freelance designer, ensuring a cohesive user
-          experience across different media.
+          What emerged was a concise but capable design system that underpins my
+          personal brand across both digital and print media. From dark mode
+          toggles to typographic grids optimised for A4 layouts, the system
+          supports everything from my portfolio site to client-facing documents
+          like quotes and résumés—ensuring brand continuity wherever my work
+          appears.
         </Paragraph>
         <Media
           alt="Large compositions of various documents that leverage Daniel Maddison’s Personal Brand and Design System"
@@ -100,11 +96,10 @@ function PersonalBrand() {
           type="image"
         />
         <Paragraph>
-          I developed my portfolio website entirely from scratch, without
-          relying on website builders. The site itself is a reflection of my
-          technical capabilities, demonstrating my commitment to creating
-          user-centered, functional, and visually engaging designs. It&rsquo;s a
-          custom-built platform that houses all my projects, including this one.
+          The website was built from the ground up without templates or
+          frameworks, giving me full control over performance, accessibility,
+          and tone. It functions as both a showcase and a sandbox—housing my
+          projects while evolving alongside them.
         </Paragraph>
         <Media
           alt="Small compositions of a project page that leverage Daniel Maddison’s Personal Brand and Design System"
@@ -113,14 +108,36 @@ function PersonalBrand() {
           type="image"
         />
         <Paragraph>
-          My personal brand now reflects my range of skills, from design to
-          front-end development, but also my dedication to quality, precision,
-          and thinking at scale. It&rsquo;s a statement of who I am as a
-          designer and a developer, and where I&rsquo;m headed. While the site
-          is still fresh and the impact is yet to be fully realised, it&rsquo;s
-          the foundation of my professional identity moving forward. I&rsquo;m
-          excited about how it will evolve with more interactivity in the future
-          to tell stories even more effectively.
+          This wasn&rsquo;t just a design exercise—it was an investment in
+          professional clarity. The result is a system that&rsquo;s technically
+          sound, visually distinctive, and reflective of where I&rsquo;ve been
+          and where I&rsquo;m heading. As it continues to grow, I&rsquo;m
+          excited to layer in more interactivity to deepen the storytelling and
+          expand the reach of my work.
+        </Paragraph>
+        <Heading level="2">Insights</Heading>
+        <Paragraph>
+          Creating a personal brand is always going to be a bit
+          introspective—but what surprised me was how much technical constraint
+          can fuel creative clarity. Designing for both screen and static page
+          formats forced me to interrogate the fundamentals: spacing, rhythm,
+          legibility, tone. There&rsquo;s nowhere to hide on a blank A4 page.
+        </Paragraph>
+        <Paragraph>
+          The process also reminded me just how easy it is to overlook your own
+          needs when you're used to designing for clients or products. In some
+          ways, this was about reclaiming that space—giving myself the time and
+          permission to build something thoughtful, for me. And in doing so, I
+          ended up with more than a portfolio. I created a system I can rely on,
+          one that&rsquo;s flexible enough to evolve as my work does.
+        </Paragraph>
+        <Paragraph>
+          Finally, this project reinforced how important it is to treat even
+          personal work with the same level of rigour and respect you&rsquo;d
+          give to client-facing projects. Whether it&rsquo;s a small invoice or
+          a large case study, consistency matters. Presentation matters. And
+          more often than not, the systems behind the scenes are what make it
+          all work.
         </Paragraph>
       </Article>
     </Page>

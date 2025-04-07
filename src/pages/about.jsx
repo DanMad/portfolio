@@ -13,10 +13,9 @@ function About() {
           Profile
         </Heading>
         <Paragraph>
-          I&rsquo;m a product designer specialising in design systems, dedicated
+          I&rsquo;m a product designer with a focus on design systems, dedicated
           to preserving design integrity by pushing technical boundaries. I
-          combine creativity and precision to continuously elevate the quality
-          of my output.
+          think in systems <em>and</em> sweat the details.
         </Paragraph>
         <Paragraph>
           With a deep understanding of both design and development, I&rsquo;m
