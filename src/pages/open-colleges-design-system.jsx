@@ -9,10 +9,10 @@ function OpenCollegesDesignSystem() {
     <Page title="Open Colleges’ Design System">
       <Article>
         <Media
-          alt="Small and large compositions of Sign In pages that leverage Open Colleges’ Design System"
+          alt="Small and large compositions of sign in pages that leverage Open Colleges’ Design System"
           background={{
-            darkMode: '#1db6bf',
-            lightMode: '#1db6bf',
+            darkMode: '#06b7bf',
+            lightMode: '#059f1f',
           }}
           src="/assets/oc-sign-in-comps.png"
           type="image"
@@ -39,7 +39,7 @@ function OpenCollegesDesignSystem() {
           risk, compromising the experience, and contributing to rising
           operational costs. It became clear that we needed a shared language
           and a more scalable way of working, not just to improve our workflows
-          but to support the business as it grew.
+          but to support the business as its requirements grew.
         </Paragraph>
         <Heading level="2">Objective</Heading>
         <Paragraph>
@@ -63,10 +63,10 @@ function OpenCollegesDesignSystem() {
           building the infrastructure that would help the business scale.
         </Paragraph>
         <Media
-          alt="Small compositions of Quiz pages that leverage Open Colleges’ Design System"
+          alt="Small compositions of quiz pages that leverage Open Colleges’ Design System"
           background={{
-            darkMode: '#e5bb0c',
-            lightMode: '#e5bb0c',
+            darkMode: '#06ad47',
+            lightMode: '#098d58',
           }}
           src="/assets/oc-quiz-comps.png"
           type="image"
@@ -79,15 +79,6 @@ function OpenCollegesDesignSystem() {
           refining user flows and incorporating functionality we previously
           couldn&rsquo;t prioritise due to resourcing constraints.
         </Paragraph>
-        <Media
-          alt="A large composition of a Payment page that leverages Open Colleges’ Design System"
-          background={{
-            darkMode: '#19984c',
-            lightMode: '#19984c',
-          }}
-          src="/assets/oc-payment-comp.png"
-          type="image"
-        />
         <Paragraph>
           By abstracting common UI patterns into reusable components, we reduced
           complexity and freed up developer capacity. One developer remarked
@@ -111,6 +102,15 @@ function OpenCollegesDesignSystem() {
           operational cornerstone&mdash;enabling faster iterations, reducing
           waste, and tightening feedback loops across the team.
         </Paragraph>
+        <Media
+          alt="A large composition of a payment page that leverages Open Colleges’ Design System"
+          background={{
+            darkMode: '#04b768',
+            lightMode: '#069b4c',
+          }}
+          src="/assets/oc-payment-comp.png"
+          type="image"
+        />
         <Paragraph>
           In the end, the design system helped shift our delivery model from
           reactive to proactive. It created a more cohesive and scalable

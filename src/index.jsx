@@ -80,9 +80,9 @@ const fonts = [
 ];
 
 const images = [
-  '/assets/360x640-placeholder-1.svg',
-  '/assets/360x640-placeholder-2.svg',
-  '/assets/360x640-placeholder-3.svg',
+  '/assets/oc-sign-in-comp-1.svg',
+  '/assets/oc-quiz-comp-1.svg',
+  '/assets/oc-quiz-comp-2.svg',
   '/assets/memoji.png',
   '/assets/texture.png',
 ];

@@ -20,7 +20,8 @@ const projects = [
       srcs: ['', '', ''],
       type: 'screens',
     },
-    description: 'A weather app that emphasises the UV Index',
+    description:
+      'Crafted UVI and weather forecasts through design, code, and animation',
     id: nanoid(),
     title: 'The Weather',
     to: '/projects/weather',
@@ -29,10 +30,15 @@ const projects = [
     composition: {
       hasDarkMode: false,
       isAngled: true,
-      srcs: ['', '', ''],
+      srcs: [
+        '/assets/oc-sign-in-comp-1.svg',
+        '/assets/oc-quiz-comp-1.svg',
+        '/assets/oc-quiz-comp-2.svg',
+      ],
       type: 'screens',
     },
-    description: 'The launch of Open Colleges’ Design System',
+    description:
+      'Establishing a design system to scale and streamline delivery',
     id: nanoid(),
     title: 'Open Colleges’ Design System',
     to: '/projects/open-colleges-design-system',
@@ -42,7 +48,8 @@ const projects = [
       srcs: ['', ''],
       type: 'pages',
     },
-    description: 'The personal brand that informs my online presence',
+    description:
+      'Blending design and development into a cohesive personal identity',
     id: nanoid(),
     title: 'Personal Brand',
     to: '/projects/personal-brand',
