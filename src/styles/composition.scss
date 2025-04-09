@@ -37,6 +37,9 @@
 
 .screen {
   background: var(--color-eggshell-100);
+
+  // Visual fix for mobile browsers (improves antialiasing).
+  outline: 0.0652rem solid rgb(0 0 0 / 0);
 }
 
 .composition--has-dark-mode .screen {
