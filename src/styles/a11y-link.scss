@@ -1,16 +1,44 @@
 .a11y-link {
-  z-index: 100;
+  opacity: 0;
   position: absolute;
-  top: -2.5rem;
+  top: 0;
   left: 50%;
-  translate: -50% 0;
-  padding: var(--space-xs);
-  background-color: var(--color-background-primary-inverse);
-  color: var(--color-text-primary-inverse);
-  white-space: nowrap;
-  transition: top 0.3s;
+  translate: -50% -2.75rem;
+  transition:
+    opacity 0.3s step-end,
+    translate 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
+  pointer-events: none;
 }
 
 .a11y-link:focus-visible {
-  top: 2.75rem;
+  opacity: 1;
+  translate: -50% 2rem;
+  transition:
+    opacity 0.3s step-start,
+    translate 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  pointer-events: auto;
+}
+
+.a11y-link:active {
+  translate: -50% 2.0625rem;
+}
+
+@media screen and (min-width: 30.0625em) {
+  .a11y-link:focus-visible {
+    translate: -50% 3.25rem;
+  }
+
+  .a11y-link:active {
+    translate: -50% 3.3125rem;
+  }
+}
+
+@media screen and (min-width: 60.0625em) {
+  .a11y-link:focus-visible {
+    translate: -50% 5.25rem;
+  }
+
+  .a11y-link:active {
+    translate: -50% 5.3125rem;
+  }
 }
