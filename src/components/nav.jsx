@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router';
+import { Link } from 'react-router';
 import Button from 'components/button';
 import 'styles/nav';
 
@@ -20,24 +20,14 @@ function Nav() {
       <div className="nav__divider" />
       <ul className="nav__list">
         <li className="nav__item">
-          <NavLink
-            className={({ isActive }) => {
-              return `nav__link${isActive ? ' nav__link--is-active' : ''}`;
-            }}
-            to="/projects"
-          >
+          <Link className="nav__link" to="/projects">
             Projects
-          </NavLink>
+          </Link>
         </li>
         <li className="nav__item">
-          <NavLink
-            className={({ isActive }) => {
-              return `nav__link${isActive ? ' nav__link--is-active' : ''}`;
-            }}
-            to="/about"
-          >
+          <Link className="nav__link" to="/about">
             About
-          </NavLink>
+          </Link>
         </li>
         <li className="nav__item">
           <Button onClick={handleClick} type="secondary">
