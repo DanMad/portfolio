@@ -24,13 +24,23 @@ function Slide({
   const buttonRef = useRef(null);
   const { width } = useWindowSize();
 
+  const isSmallWindow = width < 705;
+
   useEffect(() => {
+    if (isSmallWindow) {
+      return;
+    }
+
     if (isSlideButtonFocused) {
       buttonRef.current.focus();
     }
   }, [isSlideButtonFocused]);
 
   const handleBlur = () => {
+    if (isSmallWindow) {
+      return;
+    }
+
     setIsSlideButtonFocused(false);
   };
 
@@ -39,10 +49,12 @@ function Slide({
   };
 
   const handleFocus = () => {
+    if (isSmallWindow) {
+      return;
+    }
+
     setIsSlideButtonFocused(true);
   };
-
-  const isSmallWindow = width < 705;
 
   const variants = {
     animate: toVariant('animate'),
