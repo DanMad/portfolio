@@ -1,3 +1,4 @@
+import Anchor from 'components/anchor';
 import Article from 'components/article';
 import Heading from 'components/heading';
 import Page from 'components/page';
@@ -56,13 +57,9 @@ function Weather() {
         <Heading level="2">Outcome</Heading>
         <Paragraph>
           The result was a responsive,{' '}
-          <a
-            href="https://weather.danielmaddison.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Anchor href="https://weather.danielmaddison.io/" target="_blank">
             single-page React app
-          </a>{' '}
+          </Anchor>{' '}
           powered by OpenWeather&rsquo;s API and supported by libraries such as
           Framer Motion and Lodash. The interface adapts to the user&rsquo;s
           location or a URL-specified city, and the animated icons provide

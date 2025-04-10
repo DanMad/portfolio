@@ -2,6 +2,7 @@ import 'styles/button';
 
 function Button({
   children,
+  className,
   ref,
   onBlur = () => {},
   onClick = () => {},
@@ -10,7 +11,7 @@ function Button({
 }) {
   return (
     <button
-      className={`button button--${type}`}
+      className={`button button--${type}${className ? ` ${className}` : ''}`}
       onBlur={onBlur}
       onClick={onClick}
       onFocus={onFocus}

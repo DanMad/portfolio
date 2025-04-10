@@ -98,12 +98,11 @@
 
 .nav__link:hover,
 .nav__link:focus-visible {
+  color: var(--color-text-primary);
   text-decoration-color: var(--color-accent-primary);
   text-decoration-line: underline;
-  text-decoration-skip-ink: none;
   text-decoration-style: solid;
-  text-decoration-thickness: 12.8%;
-  text-underline-offset: 31.64%;
+  text-decoration-thickness: var(--border-width-m);
   text-underline-position: from-font;
 }
 

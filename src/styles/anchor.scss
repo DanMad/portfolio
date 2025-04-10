@@ -1,0 +1,15 @@
+.a {
+  outline: none;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-decoration-color: var(--color-accent-primary);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: var(--border-width-m);
+  text-underline-position: from-font;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: none;
+}
