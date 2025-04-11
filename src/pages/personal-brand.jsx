@@ -11,8 +11,8 @@ function PersonalBrand() {
         <Media
           alt="Large compositions of Projects pages that leverage Daniel Maddison’s Personal Brand and Design System"
           background={{
-            darkMode: '#00ffee',
-            lightMode: '#01b3f7',
+            darkMode: '#04CF0D',
+            lightMode: '#15a14d',
           }}
           src="/assets/personal-brand-large-various-comps.png"
           type="image"
@@ -68,15 +68,6 @@ function PersonalBrand() {
           develop systems that scale cleanly and feel considered from every
           angle.
         </Paragraph>
-        <Media
-          alt="Large compositions of Daniel Maddison’s Design System"
-          background={{
-            darkMode: '#222527',
-            lightMode: '#e5e3dc',
-          }}
-          src="/assets/personal-brand-design-system-comps.png"
-          type="image"
-        />
         <Heading level="2">Outcome</Heading>
         <Paragraph>
           What emerged was a concise but capable design system that underpins my
@@ -101,12 +92,6 @@ function PersonalBrand() {
           and tone. It functions as both a showcase and a sandbox—housing my
           projects while evolving alongside them.
         </Paragraph>
-        <Media
-          alt="Small compositions of a project page that leverage Daniel Maddison’s Personal Brand and Design System"
-          background="#01b3f7"
-          src="/assets/personal-brand-small-project-comps-dual.png"
-          type="image"
-        />
         <Paragraph>
           This wasn&rsquo;t just a design exercise—it was an investment in
           professional clarity. The result is a system that&rsquo;s technically

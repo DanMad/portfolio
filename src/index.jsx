@@ -80,11 +80,16 @@ const fonts = [
 ];
 
 const images = [
-  '/assets/oc-sign-in-comp-1.svg',
+  '/assets/oc-sign-in-comp.svg',
   '/assets/oc-quiz-comp-1.svg',
   '/assets/oc-quiz-comp-2.svg',
   '/assets/memoji.png',
+  '/assets/personal-brand-resume-comp-light.svg',
+  '/assets/personal-brand-tax-invoice-comp-light.svg',
   '/assets/texture.png',
+  '/assets/weather-app-low-uvi-comp.svg',
+  '/assets/weather-app-moderate-uvi-comp.svg',
+  '/assets/weather-app-extreme-uvi-comp.svg',
 ];
 
 loadAssets(fonts, images);

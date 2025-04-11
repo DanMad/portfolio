@@ -1,6 +1,7 @@
 import Anchor from 'components/anchor';
 import Article from 'components/article';
 import Heading from 'components/heading';
+import Media from 'components/media';
 import Page from 'components/page';
 import Paragraph from 'components/paragraph';
 
@@ -8,6 +9,15 @@ function Weather() {
   return (
     <Page title="The Weather">
       <Article>
+        <Media
+          alt="Small compositions of a weather app conveying different UV Indexes and weather conditions"
+          background={{
+            darkMode: '#cca9d6',
+            lightMode: '#f8b205',
+          }}
+          src="/assets/weather-app-various-comps.png"
+          type="image"
+        />
         <Heading isCopyable={false}>The Weather</Heading>
         <Heading level="2">Background</Heading>
         <Paragraph>
@@ -38,6 +48,12 @@ function Weather() {
           me to refine my animation workflow and explore how motion can elevate
           everyday interactions.
         </Paragraph>
+        <Media
+          alt="Small compositions of a weather app conveying different UV Indexes and weather conditions"
+          background="#c36bf3"
+          src="/assets/weather-app-various-comps-dual.png"
+          type="image"
+        />
         <Paragraph>
           From a development standpoint, I wanted to demonstrate thoughtful
           integration of third-party APIs—specifically, how to consume public
@@ -65,6 +81,15 @@ function Weather() {
           location or a URL-specified city, and the animated icons provide
           immediate visual context at a glance.
         </Paragraph>
+        <Media
+          alt="Small compositions of a weather app conveying different UV Indexes and weather conditions"
+          background={{
+            darkMode: '#04d304',
+            lightMode: '#04d304',
+          }}
+          src="/assets/weather-app-low-uvi-comps.png"
+          type="image"
+        />
         <Paragraph>
           The project helped reinforce and accelerate my ability to move from
           idea to implementation. It sharpened how I approach front-end

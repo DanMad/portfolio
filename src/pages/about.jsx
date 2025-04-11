@@ -13,9 +13,9 @@ function About() {
           Profile
         </Heading>
         <Paragraph>
-          I&rsquo;m a product designer with a focus on design systems, dedicated
-          to preserving design integrity by pushing technical boundaries. I
-          think in systems <em>and</em> sweat the details.
+          I&rsquo;m a product designer who codes, with a focus on design
+          systems, dedicated to preserving design integrity by pushing technical
+          boundaries. I think in systems <em>and</em> sweat the details.
         </Paragraph>
         <Paragraph>
           With a deep understanding of both design and development, I&rsquo;m

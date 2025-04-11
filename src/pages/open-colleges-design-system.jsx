@@ -105,8 +105,8 @@ function OpenCollegesDesignSystem() {
         <Media
           alt="A large composition of a payment page that leverages Open Colleges’ Design System"
           background={{
-            darkMode: '#04b768',
-            lightMode: '#069b4c',
+            darkMode: '#06b86a',
+            lightMode: '#089a4e',
           }}
           src="/assets/oc-payment-comp.png"
           type="image"
