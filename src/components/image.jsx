@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useMedia } from 'react-use';
 import Context from 'context';
 import toVariant from 'helpers/to-variant';
-import 'styles/media';
+import 'styles/image';
 
 function Image({ alt, src, hasDarkMode = false, isInView = false }) {
   const { isDarkMode } = useContext(Context);
@@ -72,7 +72,7 @@ function Image({ alt, src, hasDarkMode = false, isInView = false }) {
       <motion.img
         alt={alt}
         animate="animate"
-        className="media__img"
+        className="img"
         initial="initial"
         src={computedSrc}
         transition={{
