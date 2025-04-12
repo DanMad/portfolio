@@ -26,7 +26,7 @@ const links = [
 
 function Footer() {
   const handleClick = (url) => {
-    window.open(url, '_blank', 'rel=noopener noreferrer');
+    window.open(url, '_blank');
   };
 
   const variants = {
