@@ -2,16 +2,19 @@ import { Link } from 'react-router';
 import Button from 'components/button';
 import 'styles/nav';
 
+const body = encodeURIComponent('Hello Daniel,\n\n');
+const recipient = 'hello@danielmaddison.io';
+const subject = encodeURIComponent("I'm reaching out through your site.");
+
 function Nav() {
   const handleClick = () => {
-    const body = encodeURIComponent('Hello Daniel,\n\n');
-    const recipient = 'hello@danielmaddison.io';
-    const subject = encodeURIComponent("I'm reaching out through your site.");
+    // Avoiding window.open to ensure the mailto: link works consistently in
+    // browsers like Brave and Firefox, which may block them due to popup
+    // restrictions. Simulating a user-initiated anchor click instead.
+    const anchorElement = document.createElement('a');
 
-    window.open(
-      `mailto:${recipient}?body=${body}&subject=${subject}`,
-      '_blank',
-    );
+    anchorElement.href = `mailto:${recipient}?body=${body}&subject=${subject}`;
+    anchorElement.click();
   };
 
   return (
