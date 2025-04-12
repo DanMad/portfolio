@@ -371,6 +371,17 @@
         </p>
       </noscript>
     </div>
+    <% if (isDevelopment) { %>
+    <script>
+      // Brave on iOS can sometimes inject wallet-related scripts that expect
+      // `window.ethereum` to be defined — even when no wallet is installed or
+      // used. This results in runtime errors (e.g., accessing
+      // `window.ethereum.selectedAddress`).
+      if (typeof window.ethereum === 'undefined') {
+        window.ethereum = {};
+      }
+    </script>
+    <% } %>
     <script>
       (() => {
         const preloaderElement = document.querySelector('.preloader');
