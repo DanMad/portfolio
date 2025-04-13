@@ -27,35 +27,34 @@ function OpenCollegesDesignSystem() {
           interface audit revealed several critical issues, including divergent
           colour palettes, inconsistent typeface usage, and many different
           interpretations of common HTML elements. These inconsistencies
-          weren&rsquo;t just cosmetic&mdash;they were creating a fragmented user
+          weren&rsquo;t just cosmetic. They were creating a fragmented user
           experience for students and staff. They also introduced substantial
-          inefficiencies in design and development workflows, as we kept solving
-          the same problems&mdash;redesigning solutions and rebuilding patterns
-          we&rsquo;d already worked through.
+          inefficiencies in design and development workflows, as we kept
+          designing solutions to problems we&rsquo;d likely already solved.
         </Paragraph>
         <Paragraph>
-          This highlighted a larger issue. The lack of a consistent approach
-          wasn&rsquo;t just slowing delivery, it was introducing unnecessary
-          risk, compromising the experience, and contributing to rising
-          operational costs. It became clear that we needed a shared language
-          and a more scalable way of working, not just to improve our workflows
-          but to support the business as its requirements grew.
+          This highlighted a larger issue: our lack of consistency wasn't just
+          compromising the experience, it was introducing unnecessary risk,
+          slowing delivery, and contributing to rising operational costs. It
+          became clear that we needed a shared language and a more scalable way
+          of working, not just to improve our workflows but to support the
+          business as its requirements grew.
         </Paragraph>
         <Heading level="2">Objective</Heading>
         <Paragraph>
           At the time, Salesforce had just launched Lightning Design System and
-          Brad Frost had published Atomic Design. Inspired by these frameworks,
-          we saw an opportunity to introduce a design system that would resolve
-          many of the challenges we were facing.
+          Brad Frost had published <em>Atomic Design</em>. Inspired by their
+          work, we saw an opportunity to introduce a design system that would
+          resolve many of the challenges we were facing.
         </Paragraph>
         <Paragraph>
           Our goal was to standardise our visual language, define reusable
-          patterns and conventions, and reduce cognitive load for users. But
-          more broadly, we aimed to improve efficiency across the
+          patterns, establish convention, and reduce cognitive load for users.
+          But more broadly, we aimed to improve efficiency across the
           board—minimising rework, accelerating delivery, and enabling the team
           to focus on higher-value work. By reducing friction and creating
           alignment between design and development, we hoped to lift both the
-          quality and consistency of the product, while lowering the cost of
+          consistency and quality of the product, while lowering the cost of
           change.
         </Paragraph>
         <Paragraph>
@@ -75,9 +74,9 @@ function OpenCollegesDesignSystem() {
         <Paragraph>
           The design system quickly became the single source of truth for
           designers and developers, solving the problems we initially set out to
-          address. It allowed us to shift focus to higher-value tasks, such as
-          refining user flows and incorporating functionality we previously
-          couldn&rsquo;t prioritise due to resourcing constraints.
+          address. It allowed us to shift focus to higher-value tasks, like
+          refining user flows and adding functionality we previously
+          couldn&rsquo;t justify due to resourcing limitations.
         </Paragraph>
         <Paragraph>
           By abstracting common UI patterns into reusable components, we reduced
@@ -99,8 +98,8 @@ function OpenCollegesDesignSystem() {
           but its success was a genuine team effort. Integration into our
           workflows was only possible through close collaboration between
           designers, developers, and product owners. The system became an
-          operational cornerstone&mdash;enabling faster iterations, reducing
-          waste, and tightening feedback loops across the team.
+          operational cornerstonethat enabled faster iterations, reduced waste,
+          and tightened feedback loops across the team.
         </Paragraph>
         <Media
           alt="A large composition of a payment page that leverages Open Colleges’ Design System"
@@ -114,16 +113,17 @@ function OpenCollegesDesignSystem() {
         <Paragraph>
           In the end, the design system helped shift our delivery model from
           reactive to proactive. It created a more cohesive and scalable
-          product, reduced cost-to-serve, and gave us the headroom to explore
+          product, reduced cost-to-serve, and gave us the opportunity to explore
           new ideas with less overhead.
         </Paragraph>
         <Heading level="2">Insights</Heading>
         <Paragraph>
           The biggest takeaway from this work was how deeply design impacts the
-          bottom line when it's systematised. Building the system wasn’t just
-          about creating consistency—it was about creating leverage. We
-          delivered better outcomes with less effort and opened up new capacity
-          for innovation, all while reducing operational friction.
+          bottom line when it's implemented systematically. Building the system
+          wasn&rsquo;t just about creating consistency, it was also about
+          creating leverage. We delivered better outcomes with less effort and
+          unlocked capacity for innovation, all while reducing operational
+          friction.
         </Paragraph>
         <Paragraph>
           For me, it reinforced how important it is to frame design work through
