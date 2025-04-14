@@ -33,10 +33,10 @@ function Slider({ slides }) {
     }
 
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowDown') {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
         e.preventDefault();
         setDirection('down');
-      } else if (e.key === 'ArrowUp') {
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault();
         setDirection('up');
       }
