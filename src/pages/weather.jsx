@@ -4,6 +4,7 @@ import Heading from 'components/heading';
 import Media from 'components/media';
 import Page from 'components/page';
 import Paragraph from 'components/paragraph';
+import WeatherIcon from 'components/weather-icon';
 
 function Weather() {
   return (
@@ -43,6 +44,29 @@ function Weather() {
           tool I&rsquo;d find useful, but one that runners, commuters, and
           everyday users would benefit from as well.
         </Paragraph>
+        <Media
+          aspectRatio="5:3"
+          background='transparent'
+          type="inline"
+        >
+          <div className="weather-icons">
+            <WeatherIcon size="100%" type="sunrise" />
+            <WeatherIcon size="100%" type="clear-day" />
+            <WeatherIcon size="100%" type="cloudy-day" />
+            <WeatherIcon size="100%" type="drizzle-day" />
+            <WeatherIcon size="100%" type="rain" />
+            <WeatherIcon size="100%" type="sunset" />
+            <WeatherIcon size="100%" type="clear-night" />
+            <WeatherIcon size="100%" type="cloudy-night" />
+            <WeatherIcon size="100%" type="drizzle-night" />
+            <WeatherIcon size="100%" type="overcast" />
+            <WeatherIcon size="100%" type="snow" />
+            <WeatherIcon size="100%" type="wind" />
+            <WeatherIcon size="100%" type="storm" />
+            <WeatherIcon size="100%" type="humidity" />
+            <WeatherIcon size="100%" type="pressure" />
+          </div>
+        </Media>
         <Paragraph>
           On the design side, I created a suite of animated SVG icons to
           represent weather conditions. While this level of polish isn&rsquo;t

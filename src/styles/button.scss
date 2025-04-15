@@ -62,9 +62,7 @@
   bottom: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
   left: calc(var(--space-xxs) * -0.5 + var(--border-width-l) * -1);
   border: var(--color-accent-primary) solid var(--border-width-l);
-  border-radius: calc(
-    var(--border-radius) + var(--space-xxs) * 0.5 + var(--border-width-l)
-  );
+  border-radius: calc(var(--border-radius) + var(--space-xxs) * 0.5 + var(--border-width-l));
 }
 
 .button:focus-visible .button__outline {
@@ -132,6 +130,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button .icon {
+  pointer-events: none;
+  user-select: none;
 }
 
 @supports (background: paint(squircle)) {

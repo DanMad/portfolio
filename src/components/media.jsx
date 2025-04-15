@@ -7,11 +7,18 @@ import Context from 'context';
 import toDisplayP3 from 'helpers/to-display-p3';
 import 'styles/media';
 
+function Inline({ children }) {
+  return children;
+}
+
+Inline.displayName = 'Inline';
+
 const components = {
   image: Image,
+  inline: Inline,
 };
 
-function Media({ background, aspectRatio = '4:3', type = 'image', ...rest }) {
+function Media({ background, children, aspectRatio = '4:3', type = 'image', ...rest }) {
   const { isDarkMode } = useContext(Context);
   const mediaRef = useRef(null);
   const isInView = useInView(mediaRef);
@@ -41,7 +48,9 @@ function Media({ background, aspectRatio = '4:3', type = 'image', ...rest }) {
       style={{ background: computedBackground }}
     >
       <div className="media__inner">
-        <Component hasDarkMode={hasDarkMode} isInView={isInView} {...rest} />
+        <Component hasDarkMode={hasDarkMode} isInView={isInView} {...rest}>
+          {children}
+        </Component>
       </div>
     </div>
   );
