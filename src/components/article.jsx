@@ -16,6 +16,8 @@ function Article({ children }) {
   );
 }
 
-Article.displayName = 'Article';
+if (process.env.NODE_ENV !== 'production') {
+  Article.displayName = 'Article';
+}
 
 export default Article;

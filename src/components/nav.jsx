@@ -42,6 +42,8 @@ function Nav() {
   );
 }
 
-Nav.displayName = 'Nav';
+if (process.env.NODE_ENV !== 'production') {
+  Nav.displayName = 'Nav';
+}
 
 export default Nav;

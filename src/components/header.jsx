@@ -23,6 +23,8 @@ function Header({ ref }) {
   );
 }
 
-Header.displayName = 'Header';
+if (process.env.NODE_ENV !== 'production') {
+  Header.displayName = 'Header';
+}
 
 export default Header;

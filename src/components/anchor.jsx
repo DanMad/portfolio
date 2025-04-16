@@ -13,6 +13,8 @@ function Anchor({ children, href, target }) {
   );
 }
 
-Anchor.displayName = 'Anchor';
+if (process.env.NODE_ENV !== 'production') {
+  Anchor.displayName = 'Anchor';
+}
 
 export default Anchor;

@@ -42,6 +42,8 @@ function Icon({ type }) {
   );
 }
 
-Icon.displayName = 'Icon';
+if (process.env.NODE_ENV !== 'production') {
+  Icon.displayName = 'Icon';
+}
 
 export default Icon;

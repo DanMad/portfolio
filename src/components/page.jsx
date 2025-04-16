@@ -167,6 +167,8 @@ function Page({ children, title, isIndexed = true }) {
   );
 }
 
-Page.displayName = 'Page';
+if (process.env.NODE_ENV !== 'production') {
+  Page.displayName = 'Page';
+}
 
 export default Page;

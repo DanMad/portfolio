@@ -4,6 +4,8 @@ function Paragraph({ children }) {
   return <p className="p">{children}</p>;
 }
 
-Paragraph.displayName = 'Paragraph';
+if (process.env.NODE_ENV !== 'production') {
+  Paragraph.displayName = 'Paragraph';
+}
 
 export default Paragraph;

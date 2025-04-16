@@ -126,6 +126,8 @@ function PersonalBrand() {
   );
 }
 
-PersonalBrand.displayName = 'PersonalBrand';
+if (process.env.NODE_ENV !== 'production') {
+  PersonalBrand.displayName = 'PersonalBrand';
+}
 
 export default PersonalBrand;

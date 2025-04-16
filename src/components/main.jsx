@@ -8,6 +8,8 @@ function Main({ children }) {
   );
 }
 
-Main.displayName = 'Main';
+if (process.env.NODE_ENV !== 'production') {
+  Main.displayName = 'Main';
+}
 
 export default Main;

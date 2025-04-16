@@ -30,11 +30,12 @@ const Provider = ({ children }) => {
   );
 };
 
-Provider.displayName = 'Provider';
-
-Provider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+if (process.env.NODE_ENV !== 'production') {
+  Provider.displayName = 'Provider';
+  Provider.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+}
 
 export default Context;
 export { Provider };

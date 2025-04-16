@@ -72,6 +72,8 @@ function Projects() {
   );
 }
 
-Projects.displayName = 'Projects';
+if (process.env.NODE_ENV !== 'production') {
+  Projects.displayName = 'Projects';
+}
 
 export default Projects;

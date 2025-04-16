@@ -28,6 +28,8 @@ function Button({
   );
 }
 
-Button.displayName = 'Button';
+if (process.env.NODE_ENV !== 'production') {
+  Button.displayName = 'Button';
+}
 
 export default Button;

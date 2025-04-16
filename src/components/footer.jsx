@@ -56,6 +56,8 @@ function Footer() {
   );
 }
 
-Footer.displayName = 'Footer';
+if (process.env.NODE_ENV !== 'production') {
+  Footer.displayName = 'Footer';
+}
 
 export default Footer;

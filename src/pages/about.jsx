@@ -164,6 +164,8 @@ function About() {
   );
 }
 
-About.displayName = 'About';
+if (process.env.NODE_ENV !== 'production') {
+  About.displayName = 'About';
+}
 
 export default About;

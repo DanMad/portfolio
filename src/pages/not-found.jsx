@@ -23,6 +23,8 @@ function NotFound() {
   );
 }
 
-NotFound.displayName = 'NotFound';
+if (process.env.NODE_ENV !== 'production') {
+  NotFound.displayName = 'NotFound';
+}
 
 export default NotFound;

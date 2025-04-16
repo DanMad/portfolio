@@ -19,8 +19,6 @@ function ClearDay() {
   );
 }
 
-ClearDay.displayName = 'ClearDay';
-
 function ClearNight() {
   return (
     <>
@@ -37,8 +35,6 @@ function ClearNight() {
     </>
   );
 }
-
-ClearNight.displayName = 'ClearNight';
 
 function CloudyDay() {
   const id = useId();
@@ -78,8 +74,6 @@ function CloudyDay() {
   );
 }
 
-CloudyDay.displayName = 'CloudyDay';
-
 function CloudyNight() {
   const id = useId();
 
@@ -116,8 +110,6 @@ function CloudyNight() {
     </>
   );
 }
-
-CloudyNight.displayName = 'CloudyNight';
 
 function DrizzleDay() {
   const id = useId();
@@ -164,8 +156,6 @@ function DrizzleDay() {
   );
 }
 
-DrizzleDay.displayName = 'DrizzleDay';
-
 function DrizzleNight() {
   const id = useId();
 
@@ -210,23 +200,17 @@ function DrizzleNight() {
   );
 }
 
-DrizzleNight.displayName = 'DrizzleNight';
-
 function Humidity() {
   return (
     <path d="M28.25 25C28.25 28.4518 25.4518 31.25 22 31.25C18.5482 31.25 15.75 28.4518 15.75 25C15.75 22.4955 16.7571 20.7833 18.1577 18.9563C18.4383 18.5903 18.7373 18.2174 19.0465 17.8317C20.0148 16.6239 21.0832 15.2913 22 13.6563C22.9168 15.2913 23.9852 16.6239 24.9535 17.8317C25.2627 18.2174 25.5617 18.5903 25.8423 18.9563C27.243 20.7833 28.25 22.4955 28.25 25Z" />
   );
 }
 
-Humidity.displayName = 'Humidity';
-
 function Overcast() {
   return (
     <path d="M12.625 31.25H31.8749C34.8434 31.25 37.25 28.8435 37.25 25.875C37.25 22.9065 34.8435 20.5 31.875 20.5C31.7081 20.5 31.5429 20.5076 31.3797 20.5226C30.9434 18.7857 29.372 17.5 27.5 17.5C26.8298 17.5 26.1977 17.6652 25.6427 17.9566C24.6735 14.9361 21.8426 12.75 18.5 12.75C14.5352 12.75 11.2889 15.8266 11.0183 19.7226C8.55456 20.4218 6.75 22.687 6.75 25.375C6.75 28.6197 9.38037 31.25 12.625 31.25Z" />
   );
 }
-
-Overcast.displayName = 'Overcast';
 
 function Pressure() {
   return (
@@ -239,8 +223,6 @@ function Pressure() {
     </>
   );
 }
-
-Pressure.displayName = 'Pressure';
 
 function Rain() {
   return (
@@ -255,8 +237,6 @@ function Rain() {
   );
 }
 
-Rain.displayName = 'Rain';
-
 function Snow() {
   return (
     <path
@@ -266,15 +246,11 @@ function Snow() {
   );
 }
 
-Snow.displayName = 'Snow';
-
 function Storm() {
   return (
     <path d="M16.4449 22.75L23.75 12.369V20.5V21.25H24.5H27.5551L20.25 31.631V23.5V22.75H19.5H16.4449Z" />
   );
 }
-
-Storm.displayName = 'Storm';
 
 function Sunrise() {
   const id = useId();
@@ -305,8 +281,6 @@ function Sunrise() {
   );
 }
 
-Sunrise.displayName = 'Sunrise';
-
 function Sunset() {
   const id = useId();
 
@@ -336,8 +310,6 @@ function Sunset() {
   );
 }
 
-Sunset.displayName = 'Sunset';
-
 function Wind() {
   return (
     <>
@@ -356,8 +328,6 @@ function Wind() {
     </>
   );
 }
-
-Wind.displayName = 'Wind';
 
 const components = {
   'clear-day': ClearDay,
@@ -399,6 +369,23 @@ function WeatherIcon(props) {
   );
 }
 
-WeatherIcon.displayName = 'WeatherIcon';
+if (process.env.NODE_ENV !== 'production') {
+  ClearDay.displayName = 'ClearDay';
+  ClearNight.displayName = 'ClearNight';
+  CloudyDay.displayName = 'CloudyDay';
+  CloudyNight.displayName = 'CloudyNight';
+  DrizzleDay.displayName = 'DrizzleDay';
+  DrizzleNight.displayName = 'DrizzleNight';
+  Humidity.displayName = 'Humidity';
+  Overcast.displayName = 'Overcast';
+  Pressure.displayName = 'Pressure';
+  Rain.displayName = 'Rain';
+  Snow.displayName = 'Snow';
+  Storm.displayName = 'Storm';
+  Sunrise.displayName = 'Sunrise';
+  Sunset.displayName = 'Sunset';
+  Wind.displayName = 'Wind';
+  WeatherIcon.displayName = 'WeatherIcon';
+}
 
 export default WeatherIcon;

@@ -125,6 +125,8 @@ function Slide({
   );
 }
 
-Slide.displayName = 'Slide';
+if (process.env.NODE_ENV !== 'production') {
+  Slide.displayName = 'Slide';
+}
 
 export default Slide;

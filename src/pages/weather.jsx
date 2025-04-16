@@ -149,6 +149,8 @@ function Weather() {
   );
 }
 
-Weather.displayName = 'Weather';
+if (process.env.NODE_ENV !== 'production') {
+  Weather.displayName = 'Weather';
+}
 
 export default Weather;

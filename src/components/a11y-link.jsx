@@ -16,6 +16,8 @@ function A11yLink() {
   );
 }
 
-A11yLink.displayName = 'A11yLink';
+if (process.env.NODE_ENV !== 'production') {
+  A11yLink.displayName = 'A11yLink';
+}
 
 export default A11yLink;

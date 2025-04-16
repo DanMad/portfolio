@@ -11,8 +11,6 @@ function Inline({ children }) {
   return children;
 }
 
-Inline.displayName = 'Inline';
-
 const components = {
   image: Image,
   inline: Inline,
@@ -56,6 +54,9 @@ function Media({ background, children, aspectRatio = '4:3', type = 'image', ...r
   );
 }
 
-Media.displayName = 'Media';
+if (process.env.NODE_ENV !== 'production') {
+  Inline.displayName = 'Inline';
+  Media.displayName = 'Media';
+}
 
 export default Media;

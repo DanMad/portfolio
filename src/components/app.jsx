@@ -36,4 +36,8 @@ function App() {
   );
 }
 
+if (process.env.NODE_ENV !== 'production') {
+  App.displayName = 'App';
+}
+
 export default App;

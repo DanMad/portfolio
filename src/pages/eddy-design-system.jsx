@@ -68,6 +68,8 @@ function EddyDesignSystem() {
   );
 }
 
-EddyDesignSystem.displayName = 'EddyDesignSystem';
+if (process.env.NODE_ENV !== 'production') {
+  EddyDesignSystem.displayName = 'EddyDesignSystem';
+}
 
 export default EddyDesignSystem;

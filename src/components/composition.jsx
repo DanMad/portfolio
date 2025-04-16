@@ -58,8 +58,6 @@ function Artwork({ src }) {
   );
 }
 
-Artwork.displayName = 'Artwork';
-
 function Pages({ hasDarkMode, height, srcs, width }) {
   const { isDarkMode } = useContext(Context);
 
@@ -189,8 +187,6 @@ function Pages({ hasDarkMode, height, srcs, width }) {
     </>
   );
 }
-
-Pages.displayName = 'Pages';
 
 function Screens({ hasDarkMode, height, srcs, width, isAngled = false }) {
   const { isDarkMode } = useContext(Context);
@@ -618,8 +614,6 @@ function Screens({ hasDarkMode, height, srcs, width, isAngled = false }) {
   );
 }
 
-Screens.displayName = 'Screens';
-
 const components = {
   pages: {
     aspectRatio: {
@@ -673,6 +667,11 @@ function Composition({ type, hasDarkMode = true, ...rest }) {
   );
 }
 
-Composition.displayName = 'Composition';
+if (process.env.NODE_ENV !== 'production') {
+  Artwork.displayName = 'Artwork';
+  Composition.displayName = 'Composition';
+  Pages.displayName = 'Pages';
+  Screens.displayName = 'Screens';
+}
 
 export default Composition;

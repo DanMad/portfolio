@@ -136,6 +136,8 @@ function OpenCollegesDesignSystem() {
   );
 }
 
-OpenCollegesDesignSystem.displayName = 'PersonalBrand';
+if (process.env.NODE_ENV !== 'production') {
+  OpenCollegesDesignSystem.displayName = 'OpenCollegesDesignSystem';
+}
 
 export default OpenCollegesDesignSystem;

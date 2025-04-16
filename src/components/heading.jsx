@@ -30,6 +30,8 @@ function Heading({ children, element, isCopyable = true, level = 1 }) {
   );
 }
 
-Heading.displayName = 'Heading';
+if (process.env.NODE_ENV !== 'production') {
+  Heading.displayName = 'Heading';
+}
 
 export default Heading;

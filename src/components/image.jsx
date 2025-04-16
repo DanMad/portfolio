@@ -86,6 +86,8 @@ function Image({ alt, src, hasDarkMode = false, isInView = false }) {
   );
 }
 
-Image.displayName = 'Image';
+if (process.env.NODE_ENV !== 'production') {
+  Image.displayName = 'Image';
+}
 
 export default Image;
