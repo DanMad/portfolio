@@ -11,12 +11,9 @@ function Weather() {
     <Page title="The Weather">
       <Article>
         <Media
-          alt="Small compositions of Daniel Maddison’s weather app conveying different UV Indexes and weather conditions"
-          background={{
-            darkMode: '#cca9d6',
-            lightMode: '#f8b205',
-          }}
-          src="/assets/weather-app-various-comps.png"
+          alt="Small and large compositions of a weather app conveying a low UV Index and rainy weather conditions"
+          background="#af5be5"
+          src="/assets/weather-app-extreme-uvi-comps.png"
           type="image"
         />
         <Heading isCopyable={false}>The Weather</Heading>
@@ -39,34 +36,11 @@ function Weather() {
         <Paragraph>
           From the start, I was aiming to design and build a weather app that
           didn&rsquo;t compromise on quality. The goal was to create a
-          lightweight, performant single-page app that balanced accessibility,
+          performant single-page app that balanced accessibility,
           user-centric design, and responsible technical execution. Not just a
           tool I&rsquo;d find useful, but one that runners, commuters, and
           everyday users would benefit from as well.
         </Paragraph>
-        <Media
-          aspectRatio="5:3"
-          background='transparent'
-          type="inline"
-        >
-          <div className="weather-icons">
-            <WeatherIcon size="100%" type="sunrise" />
-            <WeatherIcon size="100%" type="clear-day" />
-            <WeatherIcon size="100%" type="cloudy-day" />
-            <WeatherIcon size="100%" type="drizzle-day" />
-            <WeatherIcon size="100%" type="rain" />
-            <WeatherIcon size="100%" type="sunset" />
-            <WeatherIcon size="100%" type="clear-night" />
-            <WeatherIcon size="100%" type="cloudy-night" />
-            <WeatherIcon size="100%" type="drizzle-night" />
-            <WeatherIcon size="100%" type="overcast" />
-            <WeatherIcon size="100%" type="snow" />
-            <WeatherIcon size="100%" type="wind" />
-            <WeatherIcon size="100%" type="storm" />
-            <WeatherIcon size="100%" type="humidity" />
-            <WeatherIcon size="100%" type="pressure" />
-          </div>
-        </Media>
         <Paragraph>
           On the design side, I created a suite of animated SVG icons to
           represent weather conditions. While this level of polish isn&rsquo;t
@@ -75,11 +49,28 @@ function Weather() {
           design and interaction.
         </Paragraph>
         <Media
-          alt="Small compositions of Daniel Maddison’s weather app conveying different weather conditions during night and day"
-          background="#c36bf3"
-          src="/assets/weather-app-various-comps-dual.png"
-          type="image"
-        />
+          aspectRatio="5:3"
+          background='transparent'
+          type="inline"
+        >
+          <div className="weather-icons">
+            <WeatherIcon hasTabIndex={true} size="100%" type="sunrise" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="clear-day" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="cloudy-day" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="drizzle-day" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="rain" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="sunset" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="clear-night" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="cloudy-night" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="drizzle-night" />
+            <WeatherIcon hasTabIndex={true} size="100%" type="overcast" />
+            <WeatherIcon size="100%" type="snow" />
+            <WeatherIcon size="100%" type="wind" />
+            <WeatherIcon size="100%" type="storm" />
+            <WeatherIcon size="100%" type="humidity" />
+            <WeatherIcon size="100%" type="pressure" />
+          </div>
+        </Media>
         <Paragraph>
           From a development standpoint, I wanted to demonstrate thoughtful
           integration of third-party APIs. Specifically, I wanted to explore how
@@ -108,12 +99,9 @@ function Weather() {
           provide immediate visual context at a glance.
         </Paragraph>
         <Media
-          alt="Small and large compositions of a weather app conveying a low UV Index and rainy weather conditions"
-          background={{
-            darkMode: '#04d304',
-            lightMode: '#04d304',
-          }}
-          src="/assets/weather-app-low-uvi-comps.png"
+          alt="Small compositions of Daniel Maddison’s weather app conveying different weather conditions during night and day"
+          background="#04bd04"
+          src="/assets/weather-app-various-comps-dual.png"
           type="image"
         />
         <Paragraph>

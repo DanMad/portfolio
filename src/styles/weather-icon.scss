@@ -327,16 +327,31 @@
   color: var(--color-text-primary);
 }
 
-.weather-icons:has(.icon:hover) * {
+.weather-icons:has(.icon:hover) *,
+.weather-icons:has(.icon:focus-visible) * {
   animation-play-state: paused;
 }
 
 .weather-icons .icon {
+  opacity: 0.85;
   height: 19.950125%;
   width: 11.111111%;
+  outline: none;
+  transition: opacity 0.2s linear;
 }
 
-.weather-icons .icon:hover * {
+.weather-icons:has(.icon:hover) .icon,
+.weather-icons:has(.icon:focus-visible) .icon {
+  opacity: 0.15;
+}
+
+.weather-icons:has(.icon:hover) .icon:hover,
+.weather-icons:has(.icon:focus-visible) .icon:focus-visible {
+  opacity: 0.85;
   color: var(--color-accent-primary);
+}
+
+.weather-icons .icon:hover *,
+.weather-icons .icon:focus-visible * {
   animation-play-state: running;
 }

@@ -348,17 +348,17 @@ const components = {
   wind: Wind,
 };
 
-function WeatherIcon(props) {
-  const Component = components[props.type];
-  const size = props.size || 44;
+function WeatherIcon({ type, hasTabIndex = false, size = 44 }) {
+  const Component = components[type];
 
   return (
     <svg
-      className={`icon icon--${props.type}`}
+      className={`icon icon--${type}`}
       fill="none"
       height={size}
       stroke="currentColor"
       strokeWidth="1.5"
+      tabIndex={hasTabIndex ? 0 : null}
       title="testing"
       viewBox="0 0 44 44"
       width={size}
