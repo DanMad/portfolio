@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 import { useMedia } from 'react-use';
 
 const Context = createContext({
+  hasCursor: false,
   isDarkMode: false,
   isSlideButtonFocused: false,
   setIsSlideButtonFocused: () => {},
@@ -10,6 +11,7 @@ const Context = createContext({
 });
 
 const Provider = ({ children }) => {
+  const hasCursor = useMedia('(hover: hover) and (pointer: fine)');
   const isDarkMode = useMedia('(prefers-color-scheme: dark)');
   const [shouldHeaderAnimate, setShouldHeaderAnimate] = useState(true);
   const [isSlideButtonFocused, setIsSlideButtonFocused] = useState(false);
@@ -17,6 +19,7 @@ const Provider = ({ children }) => {
   return (
     <Context
       value={{
+        hasCursor,
         isDarkMode,
         isSlideButtonFocused,
         setIsSlideButtonFocused,

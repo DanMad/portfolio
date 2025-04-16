@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion';
 import { useContext, useEffect, useState } from 'react';
-import { useMedia } from 'react-use';
 import Context from 'context';
 import toVariant from 'helpers/to-variant';
 import 'styles/image';
 
 function Image({ alt, src, hasDarkMode = false, isInView = false }) {
-  const { isDarkMode } = useContext(Context);
-  const hasCursor = useMedia('(hover: hover) and (pointer: fine)');
+  const { hasCursor, isDarkMode } = useContext(Context);
   const [loadedModes, setLoadedModes] = useState([]);
 
   const mode = hasDarkMode && isDarkMode ? 'dark' : 'light';
