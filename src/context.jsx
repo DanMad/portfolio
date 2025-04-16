@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { createContext, useState } from 'react';
 import { useMedia } from 'react-use';
 
@@ -32,9 +31,6 @@ const Provider = ({ children }) => {
 
 if (process.env.NODE_ENV !== 'production') {
   Provider.displayName = 'Provider';
-  Provider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
 }
 
 export default Context;
