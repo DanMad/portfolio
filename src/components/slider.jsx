@@ -1,10 +1,13 @@
 import { AnimatePresence } from 'framer-motion';
+import { Lethargy } from 'lethargy';
 import debounce from 'lodash/debounce';
 import { useEffect, useState } from 'react';
 import { useSessionStorage, useWindowSize } from 'react-use';
 import Slide from 'components/slide';
 import { useIsAnimating } from 'hooks';
 import 'styles/slider';
+
+const lethargy = new Lethargy();
 
 function Slider({ slides }) {
   const { setIsAnimating } = useIsAnimating();
@@ -43,9 +46,11 @@ function Slider({ slides }) {
     };
 
     const handleWheel = (e) => {
-      if (e.deltaY > 0) {
+      const scrollIntent = lethargy.check(e);
+
+      if (scrollIntent === -1) {
         setDirection('down');
-      } else if (e.deltaY < 0) {
+      } else if (scrollIntent === 1) {
         setDirection('up');
       }
     };
@@ -55,17 +60,12 @@ function Slider({ slides }) {
       trailing: false,
     });
 
-    const debouncedHandleWheel = debounce(handleWheel, 40, {
-      leading: true,
-      trailing: false,
-    });
-
     window.addEventListener('keydown', debouncedHandleKeyDown);
-    window.addEventListener('wheel', debouncedHandleWheel);
+    window.addEventListener('wheel', handleWheel);
 
     return () => {
       window.removeEventListener('keydown', debouncedHandleKeyDown);
-      window.removeEventListener('wheel', debouncedHandleWheel);
+      window.removeEventListener('wheel', handleWheel);
     };
   }, [isSmallWindow]);
 
