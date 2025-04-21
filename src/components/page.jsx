@@ -20,16 +20,13 @@ function Page({ children, title, isIndexed = true }) {
   useEffect(() => {
     const rootElement = document.querySelector('#root');
 
-    if (!rootElement) {
-      return;
-    }
-
     const handleScroll = throttle(() => {
       if (!headerRef.current) {
         return;
       }
 
       const { top, height } = headerRef.current.getBoundingClientRect();
+
       setHasScrolled(top + height < 0);
     }, 100);
 

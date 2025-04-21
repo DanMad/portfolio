@@ -6,10 +6,6 @@ const useIsAnimating = () => {
   useEffect(() => {
     const rootElement = document.querySelector('#root');
 
-    if (!rootElement) {
-      return;
-    }
-
     if (isAnimating) {
       rootElement.classList.add('is-animating');
     } else {

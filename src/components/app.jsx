@@ -19,10 +19,6 @@ function App() {
   useEffect(() => {
     const rootElement = document.querySelector('#root');
 
-    if (!rootElement) {
-      return;
-    }
-
     if (hasCursor) {
       rootElement.classList.add('has-cursor');
     } else {
