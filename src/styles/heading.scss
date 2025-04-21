@@ -20,12 +20,12 @@
   cursor: pointer;
 }
 
-.h1__action:hover {
-  display: block;
-}
-
 .h1__action:active {
   translate: 0 0.0625rem;
+}
+
+.has-cursor .h1__action:hover {
+  display: block;
 }
 
 .h2 {
@@ -48,12 +48,12 @@
   cursor: pointer;
 }
 
-.h2__action:hover {
-  display: block;
-}
-
 .h2__action:active {
   translate: 0 0.0625rem;
+}
+
+.has-cursor .h2__action:hover {
+  display: block;
 }
 
 .h3 {
@@ -77,10 +77,10 @@
   cursor: pointer;
 }
 
-.h3__action:hover {
-  display: block;
-}
-
 .h3__action:active {
   translate: 0 0.0625rem;
+}
+
+.has-cursor .h3__action:hover {
+  display: block;
 }

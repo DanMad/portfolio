@@ -9,7 +9,10 @@
   text-underline-position: from-font;
 }
 
-a:hover,
-a:focus-visible {
+.a:focus-visible {
+  text-decoration: none;
+}
+
+.has-cursor .a:hover {
   text-decoration: none;
 }
