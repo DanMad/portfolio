@@ -16,7 +16,8 @@
     }
   ],
   "scripts": {
-    "predeploy": "webpack --config webpack.production.config.js",
+    "build": "webpack --config webpack.production.config.js",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d dist",
     "start": "webpack serve --config webpack.development.config.js"
   },
@@ -61,5 +62,8 @@
     "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
