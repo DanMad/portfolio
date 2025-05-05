@@ -33,7 +33,7 @@ function OpenCollegesDesignSystem() {
           designing solutions to problems we&rsquo;d likely already solved.
         </Paragraph>
         <Paragraph>
-          This highlighted a larger issue: our lack of consistency wasn't just
+          This highlighted a larger issue: our lack of consistency wasn&rsquo;t just
           compromising the experience, it was introducing unnecessary risk,
           slowing delivery, and contributing to rising operational costs. It
           became clear that we needed a shared language and a more scalable way
@@ -119,7 +119,7 @@ function OpenCollegesDesignSystem() {
         <Heading level="2">Insights</Heading>
         <Paragraph>
           The biggest takeaway from this work was how deeply design impacts the
-          bottom line when it's implemented systematically. Building the system
+          bottom line when it&rsquo;s implemented systematically. Building the system
           wasn&rsquo;t just about creating consistency, it was also about
           creating leverage. We delivered better outcomes with less effort and
           unlocked capacity for innovation, all while reducing operational
@@ -128,7 +128,7 @@ function OpenCollegesDesignSystem() {
         <Paragraph>
           For me, it reinforced how important it is to frame design work through
           a business lens. When you can show that good design leads to faster
-          delivery, lower costs, and better user engagement, it's much easier to
+          delivery, lower costs, and better user engagement, it&rsquo;s much easier to
           bring people along for the ride.
         </Paragraph>
       </Article>

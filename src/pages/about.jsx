@@ -52,7 +52,7 @@ function About() {
         <Paragraph>Up Education | Dec 2020&ndash;Aug 2023</Paragraph>
         <List>
           <ListItem>
-            Established a team, scaling as the organisation's needs evolved and
+            Established a team, scaling as the organisation&rsquo;s needs evolved and
             expanded.
           </ListItem>
           <ListItem>
@@ -65,10 +65,10 @@ function About() {
           </ListItem>
           <ListItem>
             Engaged cross-functional teams, strengthening communication to unify
-            design execution with the organisation's objectives.
+            design execution with the organisation&rsquo;s objectives.
           </ListItem>
           <ListItem>
-            Launched the organisation's design system, supporting multi-tenancy
+            Launched the organisation&rsquo;s design system, supporting multi-tenancy
             for more versatile feature delivery.
           </ListItem>
         </List>
@@ -76,31 +76,31 @@ function About() {
         <Paragraph>Up Education | Jan 2020&ndash;Dec 2020</Paragraph>
         <List>
           <ListItem>
-            Established a team, scaling as the organisation's needs evolved and
-            expanded.
+            Designed user interfaces, aligning them with several of the
+            organisation&rsquo;s brand identitiesand style guides.
           </ListItem>
           <ListItem>
-            Fostered a culture of continuous learning and development, refining
-            design practices across the team.
+            Collaborated with stakeholders, translating the organisation&rsquo;s
+            requirements into scalable design solutions.
           </ListItem>
           <ListItem>
-            Introduced workflows that improved team capacity and capability,
-            enhancing timeframes and quality.
+            Mentored junior designers, providing guidance and conducting reviews
+            to enhance their capabilities.
           </ListItem>
           <ListItem>
-            Engaged cross-functional teams, strengthening communication to unify
-            design execution with the organisation's objectives.
+            Led usability testing, drawing on user insights to iterate on
+            designs and refine the user experience.
           </ListItem>
           <ListItem>
-            Launched the organisation's design system, supporting multi-tenancy
-            for more versatile feature delivery.
+            Developed tools and guidelines, driving team efficiency and
+            consistency across features.
           </ListItem>
         </List>
         <Heading level="3">Lead Designer</Heading>
         <Paragraph>Open Colleges | Apr 2018&ndash;Jan 2020</Paragraph>
         <List>
           <ListItem>
-            Created user interfaces, aligning them with the organisation's brand
+            Created user interfaces, aligning them with the organisation&rsquo;s brand
             identity.
           </ListItem>
           <ListItem>

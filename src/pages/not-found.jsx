@@ -16,7 +16,7 @@ function NotFound() {
     <Page isIndexed={false} title="Not Found">
       <Article>
         <Heading isCopyable={false}>Not Found</Heading>
-        <Paragraph>The page you are looking for doesn't exist.</Paragraph>
+        <Paragraph>The page you are looking for doesn&rsquo;t exist.</Paragraph>
         <Button onClick={handleClick}>Go Home</Button>
       </Article>
     </Page>
