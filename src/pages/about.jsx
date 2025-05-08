@@ -77,7 +77,7 @@ function About() {
         <List>
           <ListItem>
             Designed user interfaces, aligning them with several of the
-            organisation&rsquo;s brand identitiesand style guides.
+            organisation&rsquo;s brand identities and style guides.
           </ListItem>
           <ListItem>
             Collaborated with stakeholders, translating the organisation&rsquo;s
