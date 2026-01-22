@@ -27,7 +27,7 @@
     "dayjs": "^1.11.13",
     "framer-motion": "^12.7.3",
     "lethargy": "^1.0.9",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "nanoid": "^5.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
